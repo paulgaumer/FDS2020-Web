@@ -13,6 +13,14 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: `uql6kgt5`,
+        dataset: `production`,
+        // graphqlTag: "default",
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
