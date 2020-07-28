@@ -7,7 +7,7 @@ import Image from '../components/image';
 import SEO from '../components/seo';
 
 const Button = styled.button`
-  ${tw`bg-blue-500 hover:bg-blue-800 text-white p-2 rounded`}
+  ${tw`bg-primary hover:bg-blue-800 text-white p-2 rounded`}
 `;
 
 const IndexPage = () => (
@@ -16,12 +16,11 @@ const IndexPage = () => (
     <h1>Hi people</h1>
     <Button>Activate</Button>
     <p className="">Welcome to your new Gatsby site.</p>
-    <p className="text-red-800">Now go build something great.</p>
+    <p className="text-secondary">Now go build something great.</p>
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
     </div>
     <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
   </Layout>
 );
 

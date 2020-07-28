@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@tailwindcss/ui": "^0.4.0",
     "autoprefixer": "^9.8.5",
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.23.12",
