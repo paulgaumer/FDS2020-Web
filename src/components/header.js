@@ -165,9 +165,24 @@ const Header = () => {
               <span className="inline-flex rounded-md shadow-sm">
                 <Link
                   to="/scolaires"
-                  className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm leading-6 font-medium rounded-md text-gray-700 bg-edu hover:bg-eduLight focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 uppercase font-bold"
+                  className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm leading-6 font-medium rounded-md text-gray-700 bg-edu hover:bg-eduLight focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 uppercase font-bold space-x-1"
                 >
-                  Programme Scolaires
+                  <svg
+                    className="w-7 h-7"
+                    viewBox="0 0 31 31"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8.71875 21.2303L15.5 25.0448L22.2812 21.2303V17.2002L24.2188 16.1238V22.3634L15.5 27.2677L6.78125 22.3634V16.1238L8.71875 17.2002V21.2303Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M15.5 2.78375L29.0625 9.81615V11.4954L15.5 19.0299L3.875 12.5718V17.9219H1.9375V9.81615L15.5 2.78375ZM5.8125 11.4317L7.75 12.5081L15.5 16.8139L23.25 12.5081L25.1875 11.4317L26.5304 10.6857L15.5 4.96622L4.46963 10.6857L5.8125 11.4317Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <span>Programme Scolaires</span>
                 </Link>
               </span>
             </div>
