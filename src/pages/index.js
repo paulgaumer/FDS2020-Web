@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import tw, { styled } from 'twin.macro';
 
 import Layout from '../components/layout';
-import Image from '../components/image';
 import SEO from '../components/seo';
 
 const Button = styled.button`
@@ -17,9 +16,6 @@ const IndexPage = () => (
     <Button>Activate</Button>
     <p className="">Welcome to your new Gatsby site.</p>
     <p className="text-secondary">Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
     <Link to="/page-2/">Go to page 2</Link> <br />
   </Layout>
 );
