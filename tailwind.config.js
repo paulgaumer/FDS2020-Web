@@ -12,11 +12,14 @@ module.exports = {
     extend: {
       colors: {
         primary: '#13F0BA',
+        map: '#33C8A3',
         secondary: '#FDBF37',
+        featured: '#EF4F5F',
         edu: '#EDEBFE',
         eduLight: '#F6F5FF',
-        featured: '#EF4F5F',
         sectionBackground: '#F5F5F5',
+        mapLink: '#FE4B8D',
+        mapLinkHover: '#FE6BA1',
       },
     },
   },
