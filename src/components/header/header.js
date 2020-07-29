@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import Transition from './transition';
-import logo from '../images/s_bleu.png';
+import Transition from '../transition';
+import logo from '../../images/s_bleu.png';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
