@@ -7,6 +7,7 @@ import NET from 'vanta/dist/vanta.net.min';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import SectionTitle from '../../sectionTitle';
+import MapCarousel from './mapCarousel';
 
 class RegionMap extends React.Component {
   constructor() {
@@ -52,7 +53,7 @@ class RegionMap extends React.Component {
       <>
         <div
           data-name="vanta wrapper"
-          style={{ height: '800px' }}
+          style={{ height: '100%' }}
           ref={this.vantaRef}
         >
           <section className="text-white pt-20 relative z-20">
@@ -83,7 +84,9 @@ class RegionMap extends React.Component {
                 </LinksList>
               </div>
             </div>
-            <div id="carousel"></div>
+            <div id="links-carousel">
+              <MapCarousel />
+            </div>
           </section>
           {/* BACKGROUND FILTER */}
           <div

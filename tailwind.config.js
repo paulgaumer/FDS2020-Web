@@ -20,6 +20,7 @@ module.exports = {
         sectionBackground: '#F5F5F5',
         mapLink: '#FE4B8D',
         mapLinkHover: '#FE6BA1',
+        mapBackground: '#23153D',
       },
     },
   },
