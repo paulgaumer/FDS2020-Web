@@ -22,7 +22,7 @@ const CarouselContainer = styled.div`
     }
 
     .control-arrow {
-      ${tw`opacity-75 hover:opacity-100`}
+      ${tw`opacity-75 hover:opacity-100 hover:bg-white`}
     }
     .control-prev.control-arrow::before {
       border-right: 8px solid #23153d;
