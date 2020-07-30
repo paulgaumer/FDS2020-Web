@@ -2,14 +2,16 @@ import React from 'react';
 
 import Layout from '../components/layout/layout';
 import SEO from '../components/seo';
-import About from '../components/sections/homepage/about';
-import RegionMap from '../components/sections/homepage/regionMap';
+import AboutSection from '../components/sections/homepage/aboutSection';
+import RegionMapSection from '../components/sections/homepage/regionMapSection';
+import InstagramSection from '../components/sections/homepage/instagramSection';
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <About />
-    <RegionMap />
+    <AboutSection />
+    <RegionMapSection />
+    <InstagramSection />
   </Layout>
 );
 
