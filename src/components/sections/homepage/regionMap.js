@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { MdPlayArrow } from 'react-icons/md';
-import PdlMap from './vectorMap';
 import * as THREE from 'three';
 import NET from 'vanta/dist/vanta.net.min';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import SectionContainer from '../../layout/sectionContainer';
+import PdlMap from './vectorMap';
 import SectionTitle from '../../sectionTitle';
 import MapCarousel from './mapCarousel';
 
@@ -50,52 +51,47 @@ class RegionMap extends React.Component {
     `;
 
     return (
-      <>
-        <div
-          data-name="vanta wrapper"
-          style={{ height: '100%' }}
-          ref={this.vantaRef}
-        >
-          <section className="text-white pt-20 relative z-20">
-            <div className="flex flex-col items-center">
-              <SectionTitle text="Programme par département" color="white" />
+      <div
+        data-name="vanta wrapper"
+        style={{ height: '100%' }}
+        ref={this.vantaRef}
+      >
+        <SectionContainer customClasses="z-20 py-20">
+          <div className="flex flex-col items-center">
+            <SectionTitle text="Programme par département" color="white" />
+          </div>
+          <div id="map" className="flex space-x-10 justify-center -mt-10">
+            {/* Display clickable map */}
+            <PdlMap background="map" backgroundHover="mapLink" width="w-1/2" />
+            {/* Display departments list */}
+            <div className=" flex flex-col">
+              <LinksList>
+                {departments.map((department) => (
+                  <li key={department.name}>
+                    <Link
+                      to={department.link}
+                      className="capitalize text-white bg-mapLink rounded-full py-2 px-4 inline-flex items-center space-x-1 hover:bg-mapLinkHover"
+                    >
+                      <MdPlayArrow className="text-2xl" />
+                      <span>{department.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </LinksList>
             </div>
-            <div id="map" className="flex space-x-10 justify-center -mt-10">
-              {/* Display clickable map */}
-              <PdlMap
-                background="map"
-                backgroundHover="mapLink"
-                width="w-1/2"
-              />
-              {/* Display departments list */}
-              <div className=" flex flex-col">
-                <LinksList>
-                  {departments.map((department) => (
-                    <li key={department.name}>
-                      <Link
-                        to={department.link}
-                        className="capitalize text-white bg-mapLink rounded-full py-2 px-4 inline-flex items-center space-x-1 hover:bg-mapLinkHover"
-                      >
-                        <MdPlayArrow className="text-2xl" />
-                        <span>{department.name}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </LinksList>
-              </div>
-            </div>
-            <div id="links-carousel">
-              <MapCarousel />
-            </div>
-          </section>
+          </div>
+          <div id="links-carousel">
+            <MapCarousel />
+          </div>
+
           {/* BACKGROUND FILTER */}
-          <div
-            className="absolute inset-0 z-10"
-            style={{ background: '#000D30', opacity: 0.2 }}
-          ></div>
           {/* ****************** */}
-        </div>
-      </>
+        </SectionContainer>
+        <div
+          className="absolute inset-0 z-10"
+          style={{ background: '#000D30', opacity: 0.2 }}
+        ></div>
+      </div>
     );
   }
 }
