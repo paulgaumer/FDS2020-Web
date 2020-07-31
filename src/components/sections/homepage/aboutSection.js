@@ -8,7 +8,7 @@ import SectionTitle from '../../sectionTitle';
 const About = () => {
   return (
     <SectionWrapper>
-      <SectionContainer customClasses="py-20">
+      <SectionContainer customClasses="py-28">
         <div className="flex flex-col items-center ">
           <SectionTitle text="Qu'est ce que la Fête de la Science ?" />
           <div className="pb-10">

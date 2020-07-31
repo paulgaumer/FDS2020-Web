@@ -56,7 +56,7 @@ class RegionMap extends React.Component {
         style={{ height: '100%' }}
         ref={this.vantaRef}
       >
-        <SectionContainer customClasses="z-20 py-20">
+        <SectionContainer customClasses="z-20 py-28">
           <div className="flex flex-col items-center">
             <SectionTitle text="Programme par département" color="white" />
           </div>

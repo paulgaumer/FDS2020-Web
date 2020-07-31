@@ -50,7 +50,7 @@ const HeroSection = () => {
       {/* Background filter */}
       <div
         className="absolute inset-0 z-10"
-        style={{ background: '#2A3951', opacity: 0.9 }}
+        style={{ background: 'rgb(42, 74, 81)', opacity: 0.9 }}
       />
       {/* ABSOLUTE NAVBAR START */}
       <div className="absolute inset-x-0 top-0 z-40">
@@ -63,14 +63,14 @@ const HeroSection = () => {
                 <nav className="md:flex space-x-10">
                   <Link
                     to="/"
-                    className="text-lg leading-6 font-medium text-white hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                    className="text-xl leading-6 font-medium text-white hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
                   >
                     Accueil
                   </Link>
 
                   <Link
                     to="/editorial"
-                    className="text-lg leading-6 font-medium text-white hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                    className="text-xl leading-6 font-medium text-white hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
                   >
                     Editorial
                   </Link>
@@ -82,7 +82,7 @@ const HeroSection = () => {
                       onClick={() => setIsDepartmentActive(!isDepartmentActive)}
                       className={`${
                         isDepartmentActive ? 'text-white' : 'text-white'
-                      } group inline-flex items-center space-x-2 text-lg leading-6 font-medium hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150`}
+                      } group inline-flex items-center space-x-2 text-xl leading-6 font-medium hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150`}
                     >
                       <span>Départements</span>
                       {/* Item active: "text-gray-600", Item inactive: "text-gray-400" */}
@@ -119,7 +119,7 @@ const HeroSection = () => {
                       leaveFrom="opacity-100 translate-y-0"
                       leaveTo="opacity-0 translate-y-1"
                     >
-                      <div className="absolute left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0">
+                      <div className="absolute left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0 z-50">
                         <div className="rounded-lg shadow-lg">
                           <div className="rounded-lg shadow-xs overflow-hidden">
                             <div className="z-20 relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
@@ -171,13 +171,13 @@ const HeroSection = () => {
                   </div>
                   <Link
                     to="/multimedia"
-                    className="text-lg leading-6 font-medium text-white hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                    className="text-xl leading-6 font-medium text-white hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
                   >
                     Multimedia
                   </Link>
                   <Link
                     to="/Contacts"
-                    className="text-lg leading-6 font-medium text-white hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                    className="text-xl leading-6 font-medium text-white hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
                   >
                     Contacts
                   </Link>
@@ -196,7 +196,7 @@ const HeroSection = () => {
       {/* NAVBAR PLACEHOLDER BLOCK */}
       <NavbarPlaceholder />
       {/* CENTER BLOCK */}
-      <div className="flex-grow flex flex-col justify-between z-50">
+      <div className="flex-grow flex flex-col justify-between z-30">
         <SectionContainer customClasses="flex-grow flex items-center">
           <div className="flex flex-col">
             <ContentCenter
@@ -204,7 +204,12 @@ const HeroSection = () => {
               className="flex flex-col items-center"
             >
               <div>
-                <img src={LogoFds} alt="fête de la science" id="logo-fds" />
+                <img
+                  src={LogoFds}
+                  alt="fête de la science"
+                  id="logo-fds"
+                  className=""
+                />
                 <div className="text-white my-20">
                   <h3 className="font-bold tracking-tight">Pays de la Loire</h3>
                   <p className="uppercase text-3xl">
