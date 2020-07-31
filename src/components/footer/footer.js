@@ -6,7 +6,7 @@ import InstagramIcon from '../icons/instagram';
 const Footer = () => {
   return (
     <footer className="bg-white max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 ">
-      <div className="flex">
+      <div className="flex flex-col items-center lg:items-start space-y-14 lg:flex-row lg:space-y-0">
         <div data-name="fds-logo" className="flex items-center">
           <Link to="/">
             <img src={logoFDSRouge} alt="fête de la science" className="w-64" />
@@ -14,7 +14,7 @@ const Footer = () => {
         </div>
         <div
           data-name="links"
-          className="flex flex-grow justify-center space-x-10"
+          className="flex flex-grow space-x-6 lg:justify-center lg:space-x-10"
         >
           <div>
             <h4 className="text-sm leading-5 font-semibold tracking-wider text-cool-gray-400 uppercase">
@@ -63,7 +63,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="mt-12 md:mt-0">
+          <div className="">
             <h4 className="text-sm leading-5 font-semibold tracking-wider text-cool-gray-400 uppercase">
               a propos
             </h4>
@@ -86,7 +86,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="mt-12 md:mt-0">
+          <div className="">
             <h4 className="text-sm leading-5 font-semibold tracking-wider text-cool-gray-400 uppercase">
               Légal
             </h4>
