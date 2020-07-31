@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
+import styled from 'styled-components';
+import Countdown from 'react-countdown';
 import Transition from '../../transition';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
@@ -8,7 +10,6 @@ import logoPdl from '../../../images/logo-pdl-white.svg';
 import logoMinister from '../../../images/hero-pastille-minister.svg';
 import poster from '../../../images/teaser-poster.png';
 import teaser from '../../../../static/video/teaser.mp4';
-import styled from 'styled-components';
 
 const NavbarPlaceholder = styled.div`
   height: 250px;
@@ -29,6 +30,37 @@ const Timer = styled.div`
 
 const HeroSection = () => {
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
+
+  const Completionist = () => <p className="text-3xl">La Fête vous attend!</p>;
+
+  const renderer = ({ hours, minutes, seconds, completed }) => {
+    if (completed) {
+      // Render a completed state
+      return <Completionist />;
+    } else {
+      // Render a countdown
+      return (
+        <div className="space-x-6 flex">
+          <div className="text-center">
+            <p className="text-4xl">45</p>
+            <p>jours</p>
+          </div>
+          <div className="text-center">
+            <p className="text-4xl">{hours}</p>
+            <p>heures</p>
+          </div>
+          <div className="text-center">
+            <p className="text-4xl">{minutes}</p>
+            <p>minutes</p>
+          </div>
+          <div className="text-center">
+            <p className="text-4xl">{seconds}</p>
+            <p>secondes</p>
+          </div>
+        </div>
+      );
+    }
+  };
 
   return (
     <SectionWrapper backgroundColor="bg-teal-500 h-screen relative flex flex-col">
@@ -231,24 +263,8 @@ const HeroSection = () => {
         {/* TIMER BLOCK */}
         <div className="flex justify-end z-40">
           <Timer className="uppercase text-white py-5 px-12 relative">
-            <div className="space-x-6 flex">
-              <div className="text-center">
-                <p className="text-4xl">45</p>
-                <p>jours</p>
-              </div>
-              <div className="text-center">
-                <p className="text-4xl">13</p>
-                <p>heures</p>
-              </div>
-              <div className="text-center">
-                <p className="text-4xl">26</p>
-                <p>minutes</p>
-              </div>
-              <div className="text-center">
-                <p className="text-4xl">08</p>
-                <p>secondes</p>
-              </div>
-            </div>
+            <Countdown date={'2020-10-02T00:00:00'} renderer={renderer} />
+            {/* <Countdown date={Date.now() + 500} renderer={renderer} /> */}
             {/* Top Triangle */}
             <svg
               width="42"
