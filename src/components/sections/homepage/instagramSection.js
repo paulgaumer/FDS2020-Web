@@ -106,7 +106,7 @@ const InstagramSection = () => {
               Partagez votre Fête de la Science sur notre communauté
             </p>
             <a href="https://instagram.com">
-              <InstagramIcon customClasses="w-10 h-10" />
+              <InstagramIcon customClasses="w-10 h-10 text-featured" />
             </a>
           </div>
           {picturesNumber.map((nb) => {

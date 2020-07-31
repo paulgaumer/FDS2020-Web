@@ -47,7 +47,7 @@ class RegionMap extends React.Component {
     const LinksList = styled.ul`
       background: rgba(255, 255, 255, 0.9);
       box-shadow: 6px 6px 15px rgba(255, 255, 255, 0.3);
-      ${tw`flex flex-col space-y-2 py-4 px-4 rounded-md mt-16`}
+      ${tw`flex flex-col space-y-3 py-4 px-4 rounded-md mt-16`}
     `;
 
     return (
@@ -70,7 +70,7 @@ class RegionMap extends React.Component {
                   <li key={department.name}>
                     <Link
                       to={department.link}
-                      className="capitalize text-white bg-mapLink rounded-full py-2 px-4 inline-flex items-center space-x-1 hover:bg-mapLinkHover"
+                      className="uppercase text-white bg-mapLink rounded-full py-2 px-4 inline-flex items-center space-x-1 hover:bg-mapLinkHover"
                     >
                       <MdPlayArrow className="text-2xl" />
                       <span>{department.name}</span>

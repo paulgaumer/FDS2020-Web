@@ -76,7 +76,7 @@ const MapCarousel = () => {
         </div>
         <div className="myCarousel-item h-20">
           <div className="item-text-content flex space-x-2 justify-center items-center">
-            <MdFavorite className="text-mapBackground" />
+            <MdFavorite className="text-mapLink" />
             <span>
               Retrouvez notre sélection de{' '}
               <Link
