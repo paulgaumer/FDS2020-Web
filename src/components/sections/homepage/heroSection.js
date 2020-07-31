@@ -6,6 +6,8 @@ import SectionContainer from '../../layout/sectionContainer';
 import LogoFds from '../../../images/logo-fds-rouge-white.svg';
 import logoPdl from '../../../images/logo-pdl-white.svg';
 import logoMinister from '../../../images/hero-pastille-minister.svg';
+import poster from '../../../images/teaser-poster.png';
+import teaser from '../../../../static/video/teaser.mp4';
 import styled from 'styled-components';
 
 const NavbarPlaceholder = styled.div`
@@ -34,6 +36,7 @@ const HeroSection = () => {
         autoPlay
         loop
         muted
+        poster={poster}
         style={{
           position: 'absolute',
           width: '100%',
@@ -42,11 +45,9 @@ const HeroSection = () => {
           zIndex: '0',
         }}
       >
-        <source
-          src="https://www.youtube.com/watch?v=Kna5ut8UYQE"
-          type="video/mp4"
-        />
+        <source src={teaser} type="video/mp4" />
       </video>
+      {/* Background filter */}
       <div
         className="absolute inset-0 z-10"
         style={{ background: '#2A3951', opacity: 0.9 }}
