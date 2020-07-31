@@ -17,7 +17,7 @@ const NavbarPlaceholder = styled.div`
 
 const ContentCenter = styled.div`
   h3 {
-    font-size: 3.25rem;
+    font-size: 4.5rem;
   }
   #logo-fds {
     width: 70em;
@@ -40,22 +40,24 @@ const HeroSection = () => {
     } else {
       // Render a countdown
       return (
-        <div className="space-x-6 flex">
-          <div className="text-center">
-            <p className="text-4xl">45</p>
-            <p>jours</p>
-          </div>
-          <div className="text-center">
-            <p className="text-4xl">{hours}</p>
-            <p>heures</p>
-          </div>
-          <div className="text-center">
-            <p className="text-4xl">{minutes}</p>
-            <p>minutes</p>
-          </div>
-          <div className="text-center">
-            <p className="text-4xl">{seconds}</p>
-            <p>secondes</p>
+        <div className="flex justify-center">
+          <div className="space-x-6 flex">
+            <div className="text-center">
+              <p className="text-4xl">45</p>
+              <p>jours</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl">{hours}</p>
+              <p>heures</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl">{minutes}</p>
+              <p>minutes</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl">{seconds}</p>
+              <p>secondes</p>
+            </div>
           </div>
         </div>
       );
@@ -261,10 +263,26 @@ const HeroSection = () => {
           </div>
         </SectionContainer>
         {/* TIMER BLOCK */}
-        <div className="flex justify-end z-40">
-          <Timer className="uppercase text-white py-5 px-12 relative">
+
+        <div className="grid grid-cols-12 z-40">
+          <div className="col-start-6 col-end-8 flex items-center justify-center">
+            <div className="border-2 border-white px-1 pt-4 pb-2 rounded-full">
+              <svg
+                className="animate-bounce w-6 h-6 text-white "
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+              </svg>
+            </div>
+          </div>
+          <Timer className="uppercase text-white py-5 px-12 relative col-start-10 col-end-13">
             <Countdown date={'2020-10-02T00:00:00'} renderer={renderer} />
-            {/* <Countdown date={Date.now() + 500} renderer={renderer} /> */}
+
             {/* Top Triangle */}
             <svg
               width="42"
