@@ -17,7 +17,7 @@ const ContentCenter = styled.div`
     font-size: 3.25rem;
   }
   #logo-fds {
-    width: 50em;
+    width: 70em;
   }
 `;
 
@@ -30,8 +30,29 @@ const HeroSection = () => {
 
   return (
     <SectionWrapper backgroundColor="bg-teal-500 h-screen relative flex flex-col">
+      <video
+        autoPlay
+        loop
+        muted
+        style={{
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: '0',
+        }}
+      >
+        <source
+          src="https://www.youtube.com/watch?v=Kna5ut8UYQE"
+          type="video/mp4"
+        />
+      </video>
+      <div
+        className="absolute inset-0 z-10"
+        style={{ background: '#2A3951', opacity: 0.9 }}
+      />
       {/* ABSOLUTE NAVBAR START */}
-      <div className="absolute inset-x-0 top-0">
+      <div className="absolute inset-x-0 top-0 z-40">
         <div className="flex justify-between items-start">
           <img src={logoMinister} alt="ministère de l'enseignement supérieur" />
           <div className="flex-grow flex justify-between  items-center ">
@@ -170,11 +191,11 @@ const HeroSection = () => {
       {/* ABSOLUTE NAVBAR END */}
       {/* ****************** */}
       {/* ****************** */}
-      {/* Middle & Lower parts START */}
+
       {/* NAVBAR PLACEHOLDER BLOCK */}
       <NavbarPlaceholder />
       {/* CENTER BLOCK */}
-      <div className="flex-grow flex flex-col justify-between">
+      <div className="flex-grow flex flex-col justify-between z-50">
         <SectionContainer customClasses="flex-grow flex items-center">
           <div className="flex flex-col">
             <ContentCenter
@@ -183,7 +204,7 @@ const HeroSection = () => {
             >
               <div>
                 <img src={LogoFds} alt="fête de la science" id="logo-fds" />
-                <div className="text-white my-14">
+                <div className="text-white my-20">
                   <h3 className="font-bold tracking-tight">Pays de la Loire</h3>
                   <p className="uppercase text-3xl">
                     02 Octobre - 12 Octobre 2020
@@ -199,11 +220,10 @@ const HeroSection = () => {
                 </span>
               </div>
             </ContentCenter>
-            {/* TIMER BLOCK */}
           </div>
-          {/* Middle & Lower parts END */}
         </SectionContainer>
-        <div className="flex justify-end ">
+        {/* TIMER BLOCK */}
+        <div className="flex justify-end z-40">
           <Timer className="uppercase text-white py-5 px-12 relative">
             <div className="space-x-6 flex">
               <div className="text-center">
