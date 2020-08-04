@@ -4,6 +4,8 @@ import Layout from '../components/layout/layout';
 import HeroSection from '../components/sections/eventShow/heroSection';
 import DescriptionSection from '../components/sections/eventShow/descriptionSection';
 import OrganizerSection from '../components/sections/eventShow/organizerSection';
+import BookingSection from '../components/sections/eventShow/bookingSection';
+import MapSection from '../components/sections/eventShow/mapSection';
 
 const EventShow = ({ data }) => {
   const event = data.sanityEvent;
@@ -13,6 +15,13 @@ const EventShow = ({ data }) => {
       <HeroSection event={event} />
       <DescriptionSection description={event.description} />
       <OrganizerSection organizer={event.projectOwners[0]} />
+      {event.bookingRequired && (
+        <BookingSection
+          bookingPhone={event.bookingPhone}
+          bookingEmail={event.bookingEmail}
+        />
+      )}
+      <MapSection address={event.address} />
     </Layout>
   );
 };
