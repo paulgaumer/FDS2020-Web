@@ -23,23 +23,29 @@ const OrganizerSection = ({ organizer }) => {
               {organizer.website && (
                 <a
                   href={organizer.website}
-                  className="flex items-center space-x-2 text-base"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center space-x-2 text-base group"
                 >
                   <span className="text-primary">
                     <FaGlobe />
                   </span>
-                  <span>{organizer.website}</span>
+                  <span className="group-hover:underline">
+                    {organizer.website}
+                  </span>
                 </a>
               )}
               {organizer.facebook && (
                 <a
                   href={organizer.facebook}
-                  className="flex items-center pt-2 space-x-2 text-base"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center pt-2 space-x-2 text-base group"
                 >
                   <span className="text-primary">
                     <FaFacebook />
                   </span>
-                  <span>Facebook</span>
+                  <span className="group-hover:underline">Facebook</span>
                 </a>
               )}
             </div>
