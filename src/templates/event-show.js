@@ -2,6 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout/layout';
 import HeroSection from '../components/sections/eventShow/heroSection';
+import DescriptionSection from '../components/sections/eventShow/descriptionSection';
+import OrganizerSection from '../components/sections/eventShow/organizerSection';
 
 const EventShow = ({ data }) => {
   const event = data.sanityEvent;
@@ -9,6 +11,8 @@ const EventShow = ({ data }) => {
   return (
     <Layout>
       <HeroSection event={event} />
+      <DescriptionSection description={event.description} />
+      <OrganizerSection organizer={event.projectOwners[0]} />
     </Layout>
   );
 };

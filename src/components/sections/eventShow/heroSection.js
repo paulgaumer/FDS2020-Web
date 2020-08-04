@@ -3,18 +3,19 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
-import { MdPlace, MdToday, MdFavorite } from 'react-icons/md';
+import { MdPlace, MdToday, MdFavorite, MdMic } from 'react-icons/md';
+import { IoIosPeople } from 'react-icons/io';
 
 const HeroCard = styled.div`
   [data-name='image'] {
-    height: 23.5em;
+    height: 22.5em;
   }
 
   [data-name='grid-info'] {
     display: grid;
     grid-template-columns: 70% 1fr;
     grid-template-rows: auto auto;
-    grid-row-gap: 2em;
+    grid-row-gap: 2.5em;
   }
 `;
 
@@ -33,7 +34,7 @@ const BookingButton = ({ bookingRequired }) => {
   } else {
     return (
       <span class="inline-flex rounded-md shadow-sm">
-        <div className="inline-flex items-center px-4 py-2 text-base font-medium font-bold leading-6 text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary ">
+        <div className="inline-flex items-center px-4 py-2 text-base font-medium font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary ">
           entrée libre
         </div>
       </span>
@@ -55,7 +56,7 @@ const HeroSection = ({ event }) => {
 
   return (
     <SectionWrapper>
-      <SectionContainer customClasses="py-20">
+      <SectionContainer customClasses="pt-20 pb-12">
         <HeroCard className="max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow">
           <div data-name="image" className="relative bg-red-200">
             <Img
@@ -81,7 +82,7 @@ const HeroSection = ({ event }) => {
               </h1>
               <p className="text-lg font-hairline">- {theme[0].name}</p>
             </div>
-            <div className="flex flex-col col-span-1 row-start-2 space-y-2">
+            <div className="flex flex-col col-span-1 row-start-2 space-y-4">
               <p className="flex items-center space-x-2">
                 <span className="text-xl">
                   <MdToday />
@@ -98,12 +99,22 @@ const HeroSection = ({ event }) => {
               </p>
             </div>
 
-            <div className="col-span-1 col-start-2">
+            <div className="flex items-center col-span-1 col-start-2">
               <BookingButton bookingRequired={bookingRequired} />
             </div>
             <div className="flex flex-col col-span-1 col-start-2 space-y-2">
-              <p>{format[0].name}</p>
-              <p>Tout Public</p>
+              <p className="flex items-center space-x-2">
+                <span className="p-1 text-2xl text-white rounded-full bg-primary">
+                  <MdMic />
+                </span>
+                <span>{format[0].name}</span>
+              </p>
+              <p className="flex items-center space-x-2">
+                <span className="p-1 text-2xl text-white rounded-full bg-primary">
+                  <IoIosPeople />
+                </span>
+                <span>Tout Public</span>
+              </p>
             </div>
           </div>
         </HeroCard>

@@ -22,6 +22,9 @@ module.exports = {
         mapLinkHover: '#FE6BA1',
         mapBackground: '#23153D',
       },
+      inset: {
+        '-6': '-1.5rem',
+      },
     },
   },
   variants: {
