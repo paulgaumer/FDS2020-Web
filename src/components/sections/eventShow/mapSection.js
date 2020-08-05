@@ -9,6 +9,7 @@ import SectionContainer from '../../layout/sectionContainer';
 const MapSection = ({ address, mapGps }) => {
   // this ref holds the map DOM node so that we can pass it into Mapbox GL
   const mapNode = useRef(null);
+  const mapboxToken = process.env.GATSBY_MAPBOX_API_KEY;
 
   useEffect(() => {
     // if there is no window, we cannot render this component
@@ -17,7 +18,7 @@ const MapSection = ({ address, mapGps }) => {
       let mapZoom = 15;
 
       // Token must be set before constructing map
-      mapboxgl.accessToken = process.env.GATSBY_MAPBOX_API_KEY;
+      mapboxgl.accessToken = mapboxToken;
 
       const map = new mapboxgl.Map({
         container: mapNode.current,
@@ -32,7 +33,7 @@ const MapSection = ({ address, mapGps }) => {
 
       map.addControl(new mapboxgl.NavigationControl(), 'top-right');
     }
-  }, []);
+  }, [mapGps.lng, mapGps.lat]);
 
   return (
     <SectionWrapper>

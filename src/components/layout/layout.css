@@ -3,6 +3,10 @@
 @tailwind components;
 /* purgecss end ignore */
 
+html {
+  scroll-behavior: smooth;
+}
+
 @tailwind utilities;
 
 /* ************************ */
