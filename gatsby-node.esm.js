@@ -47,7 +47,7 @@ exports.createPages = ({ graphql, actions }) => {
       createPage({
         path: `/${department}`,
         component: eventsIndexTemplate,
-        context: { departmentId: edge.node.id },
+        context: { departmentId: edge.node.id, departmentName: edge.node.name },
       });
     });
 

@@ -62,7 +62,7 @@ const HeroSection = ({ event }) => {
           <div data-name="image" className="relative bg-red-200">
             <Img
               fluid={image.asset.fluid}
-              alt={title}
+              alt={image.alt}
               className="object-cover h-full"
               imgStyle={{ objectPosition: 'center' }}
             />

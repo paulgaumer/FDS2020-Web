@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import SectionContainer from '../../layout/sectionContainer';
 import SectionWrapper from '../../layout/sectionWrapper';
 
-import SectionTitle from '../../sectionTitle';
+import SectionTitle from '../../global/sectionTitle';
 
 const About = () => {
   return (
