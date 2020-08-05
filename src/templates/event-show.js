@@ -21,7 +21,7 @@ const EventShow = ({ data }) => {
           bookingEmail={event.bookingEmail}
         />
       )}
-      <MapSection address={event.address} />
+      <MapSection address={event.address} mapGps={map} />
     </Layout>
   );
 };
@@ -61,6 +61,10 @@ export const query = graphql`
             ...GatsbySanityImageFluid
           }
         }
+      }
+      map {
+        lat
+        lng
       }
     }
   }

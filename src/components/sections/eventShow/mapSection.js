@@ -6,14 +6,14 @@ import { hasWindow } from '../../../utils/hasWindow';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 
-const MapSection = ({ address }) => {
+const MapSection = ({ address, mapGps }) => {
   // this ref holds the map DOM node so that we can pass it into Mapbox GL
   const mapNode = useRef(null);
 
   useEffect(() => {
     // if there is no window, we cannot render this component
     if (hasWindow) {
-      let mapCenter = [-0.53421, 47.44617];
+      let mapCenter = [mapGps.lng, mapGps.lat];
       let mapZoom = 15;
 
       // Token must be set before constructing map
@@ -28,7 +28,7 @@ const MapSection = ({ address }) => {
       });
 
       new mapboxgl.Marker({ color: '#FDBF37', scale: 2 })
-        .setLngLat([-0.53421, 47.44617])
+        .setLngLat([mapGps.lng, mapGps.lat])
         .addTo(map);
 
       map.addControl(new mapboxgl.NavigationControl(), 'top-right');
