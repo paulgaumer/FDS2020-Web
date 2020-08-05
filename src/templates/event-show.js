@@ -21,7 +21,7 @@ const EventShow = ({ data }) => {
           bookingEmail={event.bookingEmail}
         />
       )}
-      <MapSection address={event.address} mapGps={map} />
+      <MapSection address={event.address} mapGps={event.map} />
     </Layout>
   );
 };

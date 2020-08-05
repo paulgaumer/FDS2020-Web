@@ -17,8 +17,7 @@ const MapSection = ({ address, mapGps }) => {
       let mapZoom = 15;
 
       // Token must be set before constructing map
-      mapboxgl.accessToken =
-        'pk.eyJ1IjoibWl0c3Vkb21vZTgiLCJhIjoiY2tkNGttNjgxMDMxZzJxbndpN25tcjZiaSJ9.qRCgIMZkG3_F8hmtudg6eA';
+      mapboxgl.accessToken = process.env.GATSBY_MAPBOX_API_KEY;
 
       const map = new mapboxgl.Map({
         container: mapNode.current,
