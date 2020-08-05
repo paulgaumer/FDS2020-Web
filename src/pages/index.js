@@ -1,22 +1,19 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import tw, { styled } from 'twin.macro';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-
-const Button = styled.button`
-  ${tw`bg-primary hover:bg-blue-800 text-white p-2 rounded`}
-`;
+import Layout from '../components/layout/layout';
+import SEO from '../components/layout/seo';
+import HeroSection from '../components/sections/homepage/heroSection';
+import AboutSection from '../components/sections/homepage/aboutSection';
+import RegionMapSection from '../components/sections/homepage/regionMapSection';
+import InstagramSection from '../components/sections/homepage/instagramSection';
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <Button>Activate</Button>
-    <p className="">Welcome to your new Gatsby site.</p>
-    <p className="text-secondary">Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link> <br />
+    <HeroSection />
+    <AboutSection />
+    <RegionMapSection />
+    <InstagramSection />
   </Layout>
 );
 

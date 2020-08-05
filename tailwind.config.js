@@ -4,16 +4,32 @@ module.exports = {
     fontFamily: {
       sans: ['Arial', 'sans-serif'],
     },
+    typography: {
+      default: {
+        css: {},
+      },
+    },
     extend: {
       colors: {
-        primary: '#33C8A3',
+        primary: '#13F0BA',
+        map: '#33C8A3',
         secondary: '#FDBF37',
+        featured: '#EF4F5F',
         edu: '#EDEBFE',
         eduLight: '#F6F5FF',
-        featured: '#EF4F5F',
+        sectionBackground: '#F5F5F5',
+        mapLink: '#FE4B8D',
+        mapLinkHover: '#FE6BA1',
+        mapBackground: '#23153D',
+      },
+      inset: {
+        '-6': '-1.5rem',
       },
     },
   },
-  variants: {},
-  plugins: [require('@tailwindcss/ui')],
+  variants: {
+    borderColor: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+    borderWidth: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+  },
+  plugins: [require('@tailwindcss/ui'), require('@tailwindcss/typography')],
 };
