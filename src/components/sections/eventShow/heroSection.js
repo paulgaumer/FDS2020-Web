@@ -3,7 +3,8 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
-import { MdPlace, MdToday, MdFavorite, MdMic } from 'react-icons/md';
+import { MdToday, MdFavorite, MdMic } from 'react-icons/md';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 import { IoIosPeople } from 'react-icons/io';
 
 const HeroCard = styled.div`
@@ -92,8 +93,8 @@ const HeroSection = ({ event }) => {
                 </span>
               </p>
               <p className="flex items-center space-x-2">
-                <span className="text-xl">
-                  <MdPlace />
+                <span className="text-lg">
+                  <FaMapMarkerAlt />
                 </span>
                 <span>{address}</span>
               </p>
