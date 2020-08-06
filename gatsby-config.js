@@ -20,6 +20,8 @@ module.exports = {
       options: {
         projectId: `uql6kgt5`,
         dataset: `production`,
+        token: process.env.GATSBY_SANITY_TOKEN,
+        watchMode: true,
         // graphqlTag: "default",
       },
     },

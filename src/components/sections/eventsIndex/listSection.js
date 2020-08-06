@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SectionContainer from '../../layout/sectionContainer';
 import EventCard from './eventCard';
+import EventsFilters from './eventsFilters';
 
 const OuterGrid = styled.div`
   display: grid;
@@ -13,7 +14,7 @@ const ListSection = ({ events, department }) => {
     <SectionContainer customClasses="py-20">
       <OuterGrid className="gap-20">
         <div data-name="filters" className="bg-red-200">
-          <p>FILTERS</p>
+          <EventsFilters />
         </div>
         <div data-name="events" className="grid grid-cols-2 gap-10">
           {events.map(({ node }) => {
