@@ -2,15 +2,17 @@ import React from 'react';
 import Layout from '../components/layout/layout';
 import SectionWrapper from '../components/layout/sectionWrapper';
 import TopSection from '../components/sections/eventsIndex/topSection';
+import ListSection from '../components/sections/eventsIndex/listSection';
 
 const EventsIndex = ({ data }) => {
+  const events = data.allSanityEvent.edges;
+  const department = data.sanityDepartment.name;
+
   return (
     <Layout>
       <SectionWrapper>
-        <TopSection
-          villages={data.villages.edges}
-          department={data.sanityDepartment.name}
-        />
+        <TopSection villages={data.villages.edges} department={department} />
+        <ListSection events={events} department={department} />
       </SectionWrapper>
     </Layout>
   );
@@ -46,6 +48,10 @@ export const query = graphql`
               }
             }
             alt
+            hotspot {
+              x
+              y
+            }
           }
         }
       }
@@ -80,6 +86,10 @@ export const query = graphql`
               }
             }
             alt
+            hotspot {
+              x
+              y
+            }
           }
         }
       }

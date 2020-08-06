@@ -1,6 +1,6 @@
 import React from 'react';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
+import CustomGatsbyImage from '../../global/customGatsbyImage';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 import { MdToday, MdFavorite, MdMic } from 'react-icons/md';
@@ -60,12 +60,7 @@ const HeroSection = ({ event }) => {
       <SectionContainer customClasses="pt-20 pb-12">
         <HeroCard className="max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow">
           <div data-name="image" className="relative bg-red-200">
-            <Img
-              fluid={image.asset.fluid}
-              alt={image.alt}
-              className="object-cover h-full"
-              imgStyle={{ objectPosition: 'center' }}
-            />
+            <CustomGatsbyImage image={image} />
             <p className="absolute flex items-center px-3 py-1 space-x-1 text-base text-white rounded-lg bottom-5 left-10 bg-featured">
               <span>
                 <MdFavorite />
