@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import CustomGatsbyImage from '../../global/customGatsbyImage';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
-import { MdToday, MdFavorite, MdMic } from 'react-icons/md';
+import FeaturedLabel from '../../global/featuredLabel';
+import { MdToday, MdMic } from 'react-icons/md';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { IoIosPeople } from 'react-icons/io';
 
@@ -53,6 +54,7 @@ const HeroSection = ({ event }) => {
     startDate,
     address,
     image,
+    featured,
   } = event;
 
   return (
@@ -61,12 +63,9 @@ const HeroSection = ({ event }) => {
         <HeroCard className="max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow">
           <div data-name="image" className="relative bg-red-200">
             <CustomGatsbyImage image={image} />
-            <p className="absolute flex items-center px-3 py-1 space-x-1 text-base text-white rounded-lg bottom-5 left-10 bg-featured">
-              <span>
-                <MdFavorite />
-              </span>
-              <span>Coup de coeur</span>
-            </p>
+            {featured && (
+              <FeaturedLabel customClasses="absolute top-5 left-10 text-base" />
+            )}
           </div>
           <div
             data-name="grid-info"

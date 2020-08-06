@@ -36,8 +36,8 @@ export const query = graphql`
           theme {
             name
           }
-          startDate(formatString: "DD MMMM YYYY, hh:mm", locale: "fr")
-          endDate(formatString: "DD MMMM YYYY, hh:mm", locale: "fr")
+          startDate(formatString: "DD MMMM", locale: "fr")
+          endDate(formatString: "DD MMMM", locale: "fr")
           format {
             name
           }
