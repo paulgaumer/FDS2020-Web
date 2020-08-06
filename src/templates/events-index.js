@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/layout/layout';
 import SectionWrapper from '../components/layout/sectionWrapper';
 import TopSection from '../components/sections/eventsIndex/topSection';
-import ListSection from '../components/sections/eventsIndex/listSection';
+import FilteringSection from '../components/sections/eventsIndex/filteringSection';
 
 const EventsIndex = ({ data }) => {
   const events = data.allSanityEvent.edges;
@@ -12,7 +12,7 @@ const EventsIndex = ({ data }) => {
     <Layout>
       <SectionWrapper>
         <TopSection villages={data.villages.edges} department={department} />
-        <ListSection events={events} department={department} />
+        <FilteringSection events={events} department={department} />
       </SectionWrapper>
     </Layout>
   );
@@ -34,11 +34,13 @@ export const query = graphql`
           village
           description
           theme {
+            id
             name
           }
           startDate(formatString: "DD MMMM", locale: "fr")
           endDate(formatString: "DD MMMM", locale: "fr")
           format {
+            id
             name
           }
           image {

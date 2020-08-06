@@ -32,7 +32,9 @@ const EventCard = ({ event, department }) => {
           className="px-4 pt-8 pb-6 text-gray-500 bg-white"
         >
           <h4 className="text-xl font-bold text-gray-700">{title}</h4>
-          <p className="text-sm leading-tight">- {theme[0].name}</p>
+          <p className="text-sm leading-tight text-purple-400">
+            - {theme[0].name}
+          </p>
           <p className="pt-6">{excerpt(description)}</p>
           <div className="pt-6 text-sm">
             <span></span>

@@ -26,12 +26,8 @@ const TopSection = ({ villages, department }) => {
           {villages.length >= 1 &&
             villages.map(({ node }) => {
               return (
-                <div className="col-span-1">
-                  <VillageCard
-                    key={node.id}
-                    village={node}
-                    department={department}
-                  />
+                <div className="col-span-1" key={node.id}>
+                  <VillageCard village={node} department={department} />
                 </div>
               );
             })}
