@@ -63,6 +63,8 @@ const ListSection = ({ events, department }) => {
                   <EventCard event={node} department={department} />
                 </div>
               );
+            } else {
+              return null;
             }
           })}
         </div>

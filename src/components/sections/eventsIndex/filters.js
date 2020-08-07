@@ -56,10 +56,7 @@ const EventsFilters = ({ setThemeFilters, setFormatFilters }) => {
           </div>
         </div>
       </div>
-      <div
-        className="mt-10 overflow-hidden text-gray-500 bg-white rounded-lg"
-        style={{ height: '500px' }}
-      >
+      <div className="mt-10 overflow-hidden text-gray-500 bg-white rounded-lg">
         <div className="px-4 py-5 sm:p-6">
           <h4 className="pb-6 font-bold text-gray-700 uppercase">
             Quel Public ?

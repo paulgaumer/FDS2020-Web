@@ -78,7 +78,7 @@ const CheckboxFilter = ({ list, getValues }) => {
   // Listener to send checked items list to parent
   useEffect(() => {
     getValues(checkedItems);
-  }, [checkedItems]);
+  }, [checkedItems, getValues]);
 
   return (
     <div data-name="inputs" className="flex flex-col space-y-3">
