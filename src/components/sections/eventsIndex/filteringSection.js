@@ -11,26 +11,24 @@ const OuterGrid = styled.div`
 `;
 
 const ListSection = ({ events, department }) => {
-  const intialFilters = {
-    themes: [],
-    formats: [],
-    public: '-d4e31ef1-7615-5290-88e1-b85b940c521a',
-    dates: {
-      startDate: new Date('2020-10-02T00:00:00.000Z'),
-      endDate: new Date('2020-10-12T00:00:00.000Z'),
-    },
-  };
-
   // Initialize states
   const [allEvents] = useState(events);
   const [selectedEvents, setSelectedEvents] = useState(allEvents);
-  const [allFilters, setAllFilters] = useState(intialFilters);
   const [themeFilters, setThemeFilters] = useState([]);
   const [formatFilters, setFormatFilters] = useState([]);
-  const [publicFilter, setPublicFilter] = useState('');
+  const [publicFilter, setPublicFilter] = useState(
+    '-d4e31ef1-7615-5290-88e1-b85b940c521a'
+  );
   const [datesFilter, setDatesFilter] = useState({
     startDate: new Date('2020-10-02T00:00:00.000Z'),
     endDate: new Date('2020-10-12T00:00:00.000Z'),
+  });
+
+  const [allFilters, setAllFilters] = useState({
+    themes: themeFilters,
+    formats: formatFilters,
+    public: publicFilter,
+    dates: datesFilter,
   });
 
   // Update the list of selected events based on current filters

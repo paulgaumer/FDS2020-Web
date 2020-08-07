@@ -20,7 +20,6 @@ export const multiFilter = (arr, filters) => {
   };
 
   const checkPublic = (item, filtersList) => {
-    console.log(filtersList);
     return (
       filtersList.public === item.audience.id ||
       filtersList.public === '-d4e31ef1-7615-5290-88e1-b85b940c521a'
