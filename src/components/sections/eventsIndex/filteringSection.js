@@ -20,36 +20,20 @@ const ListSection = ({ events, department }) => {
   // Initialize states
   const [allEvents, setAllEvents] = useState(events);
   const [selectedEvents, setSelectedEvents] = useState(allEvents);
-  const [filters, setFilters] = useState(intialFilters);
-  const [isFiltered, setIsFiltered] = useState(false);
+  const [allFilters, setAllFilters] = useState(intialFilters);
   const [themeFilters, setThemeFilters] = useState([]);
   const [formatFilters, setFormatFilters] = useState([]);
-  const [publicFilter, setPublicFilter] = useState(
-    '-d4e31ef1-7615-5290-88e1-b85b940c521a'
-  );
+  const [publicFilter, setPublicFilter] = useState('');
 
-  // Monitor the activation of filters
+  // Update the list of selected events based on current filters
   useEffect(() => {
-    if (
-      filters.themes.length > 0 ||
-      filters.formats.length > 0 ||
-      filters.public !== '-d4e31ef1-7615-5290-88e1-b85b940c521a'
-    ) {
-      setIsFiltered(true);
-    } else {
-      setIsFiltered(false);
-    }
-  }, [filters]);
-
-  // Update the list of selected events based on filters
-  useEffect(() => {
-    const sortedEvents = multiFilter(allEvents, filters);
+    const sortedEvents = multiFilter(allEvents, allFilters);
     setSelectedEvents(sortedEvents);
-  }, [filters]);
+  }, [allFilters]);
 
   // Update list of filters based on inputs
   useEffect(() => {
-    setFilters({
+    setAllFilters({
       themes: themeFilters,
       formats: formatFilters,
       public: publicFilter,
