@@ -15,6 +15,10 @@ const ListSection = ({ events, department }) => {
     themes: [],
     formats: [],
     public: '-d4e31ef1-7615-5290-88e1-b85b940c521a',
+    dates: {
+      startDate: new Date('2020-10-02T00:00:00.000Z'),
+      endDate: new Date('2020-10-12T00:00:00.000Z'),
+    },
   };
 
   // Initialize states
@@ -24,7 +28,10 @@ const ListSection = ({ events, department }) => {
   const [themeFilters, setThemeFilters] = useState([]);
   const [formatFilters, setFormatFilters] = useState([]);
   const [publicFilter, setPublicFilter] = useState('');
-  const [datesFilter, setDatesFilter] = useState({});
+  const [datesFilter, setDatesFilter] = useState({
+    startDate: new Date('2020-10-02T00:00:00.000Z'),
+    endDate: new Date('2020-10-12T00:00:00.000Z'),
+  });
 
   // Update the list of selected events based on current filters
   useEffect(() => {

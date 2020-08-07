@@ -20,9 +20,22 @@ export const multiFilter = (arr, filters) => {
   };
 
   const checkPublic = (item, filtersList) => {
+    console.log(filtersList);
     return (
       filtersList.public === item.audience.id ||
       filtersList.public === '-d4e31ef1-7615-5290-88e1-b85b940c521a'
+    );
+  };
+
+  const checkDates = (item, filterList) => {
+    const itemStartDate = new Date(item.startDate).getTime();
+    const itemEndDate = new Date(item.endDate).getTime();
+    const filterStartDate = filterList.dates.startDate.getTime();
+    const filterEndDate = filterList.dates.endDate.getTime();
+
+    return (
+      (itemStartDate >= filterStartDate || itemEndDate >= filterStartDate) &&
+      (itemEndDate <= filterEndDate || itemStartDate <= filterEndDate)
     );
   };
 
@@ -31,7 +44,9 @@ export const multiFilter = (arr, filters) => {
     const matchesTheme = checkTheme(obj, filters);
     const matchesFormat = checkFormat(obj, filters);
     const matchesPublic = checkPublic(obj, filters);
-    const selected = matchesTheme && matchesFormat && matchesPublic;
+    const matchesDates = checkDates(obj, filters);
+    const selected =
+      matchesTheme && matchesFormat && matchesPublic && matchesDates;
 
     return selected;
 

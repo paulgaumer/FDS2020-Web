@@ -37,8 +37,8 @@ export const query = graphql`
             id
             name
           }
-          startDate(formatString: "DD MMMM", locale: "fr")
-          endDate(formatString: "DD MMMM", locale: "fr")
+          startDate
+          endDate
           format {
             id
             name
