@@ -18,7 +18,7 @@ const ListSection = ({ events, department }) => {
   };
 
   // Initialize states
-  const [allEvents, setAllEvents] = useState(events);
+  const [allEvents] = useState(events);
   const [selectedEvents, setSelectedEvents] = useState(allEvents);
   const [allFilters, setAllFilters] = useState(intialFilters);
   const [themeFilters, setThemeFilters] = useState([]);
@@ -29,7 +29,7 @@ const ListSection = ({ events, department }) => {
   useEffect(() => {
     const sortedEvents = multiFilter(allEvents, allFilters);
     setSelectedEvents(sortedEvents);
-  }, [allFilters]);
+  }, [allFilters, allEvents]);
 
   // Update list of filters based on inputs
   useEffect(() => {

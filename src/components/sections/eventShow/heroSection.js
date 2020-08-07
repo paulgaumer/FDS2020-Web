@@ -24,7 +24,7 @@ const HeroCard = styled.div`
 const BookingButton = ({ bookingRequired }) => {
   if (bookingRequired) {
     return (
-      <a href="#booking-section" class="inline-flex rounded-md shadow-sm">
+      <a href="#booking-section" className="inline-flex rounded-md shadow-sm">
         <button
           type="button"
           className="inline-flex items-center px-4 py-2 text-base font-medium font-bold leading-6 text-orange-900 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-secondary hover:bg-yellow-200 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
@@ -35,7 +35,7 @@ const BookingButton = ({ bookingRequired }) => {
     );
   } else {
     return (
-      <span class="inline-flex rounded-md shadow-sm">
+      <span className="inline-flex rounded-md shadow-sm">
         <div className="inline-flex items-center px-4 py-2 text-base font-medium font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary ">
           entrée libre
         </div>
