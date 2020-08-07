@@ -10,13 +10,16 @@ const OuterGrid = styled.div`
 `;
 
 const ListSection = ({ events, department }) => {
+  // Initialize states
   const [filters, setFilters] = useState({
     themes: [],
     formats: [],
+    public: null,
   });
   const [isFiltered, setIsFiltered] = useState(false);
   const [themeFilters, setThemeFilters] = useState([]);
   const [formatFilters, setFormatFilters] = useState([]);
+  const [publicFilter, setPublicFilter] = useState(null);
 
   // Monitor the activation of filters
   useEffect(() => {
@@ -32,8 +35,9 @@ const ListSection = ({ events, department }) => {
     setFilters({
       themes: themeFilters,
       formats: formatFilters,
+      public: publicFilter,
     });
-  }, [themeFilters, formatFilters]);
+  }, [themeFilters, formatFilters, publicFilter]);
 
   return (
     <SectionContainer customClasses="py-20">
@@ -42,6 +46,7 @@ const ListSection = ({ events, department }) => {
           <Filters
             setThemeFilters={setThemeFilters}
             setFormatFilters={setFormatFilters}
+            setPublicFilter={setPublicFilter}
           />
         </div>
         <div data-name="events" className="grid grid-cols-2 gap-10">
@@ -57,6 +62,8 @@ const ListSection = ({ events, department }) => {
             } else if (
               filters.themes.includes(node.theme[0].id) ||
               filters.formats.includes(node.format[0].id)
+              // filters.public === node.audience.id
+              // filters.public === '-d4e31ef1-7615-5290-88e1-b85b940c521a'
             ) {
               return (
                 <div className="col-span-1" key={node.id}>

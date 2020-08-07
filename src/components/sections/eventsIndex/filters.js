@@ -3,7 +3,11 @@ import { useStaticQuery, graphql } from 'gatsby';
 import CheckboxFilter from './checkboxFilter';
 import SelectFilter from './selectFilter';
 
-const EventsFilters = ({ setThemeFilters, setFormatFilters }) => {
+const EventsFilters = ({
+  setThemeFilters,
+  setFormatFilters,
+  setPublicFilter,
+}) => {
   const data = useStaticQuery(graphql`
     query FiltersQuery {
       allSanityTheme(sort: { fields: name, order: ASC }) {
@@ -22,6 +26,14 @@ const EventsFilters = ({ setThemeFilters, setFormatFilters }) => {
           }
         }
       }
+      allSanityAudience(sort: { fields: name, order: DESC }) {
+        edges {
+          node {
+            name
+            id
+          }
+        }
+      }
     }
   `);
 
@@ -30,6 +42,9 @@ const EventsFilters = ({ setThemeFilters, setFormatFilters }) => {
   };
   const getCheckedFormats = (items) => {
     setFormatFilters(items);
+  };
+  const getSelectedPublic = (item) => {
+    setPublicFilter(item);
   };
 
   return (
@@ -62,10 +77,21 @@ const EventsFilters = ({ setThemeFilters, setFormatFilters }) => {
             Quel Public ?
           </h4>
           <div data-name="publicFilter">
-            <SelectFilter />
+            <SelectFilter
+              list={data.allSanityAudience.edges}
+              getValue={getSelectedPublic}
+            />
           </div>
         </div>
       </div>
+      {/* <div className="mt-10 overflow-hidden text-gray-500 bg-white rounded-lg">
+        <div className="px-4 py-5 sm:p-6">
+          <h4 className="pb-6 font-bold text-gray-700 uppercase">Dates</h4>
+          <div data-name="publicFilter">
+            <SelectFilter />
+          </div>
+        </div>
+      </div> */}
     </>
   );
 };

@@ -55,6 +55,10 @@ export const query = graphql`
               y
             }
           }
+          audience {
+            id
+            name
+          }
         }
       }
     }
