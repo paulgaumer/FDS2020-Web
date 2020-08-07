@@ -2,11 +2,13 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import CheckboxFilter from './checkboxFilter';
 import SelectFilter from './selectFilter';
+import DateFilter from './dateFilter';
 
 const EventsFilters = ({
   setThemeFilters,
   setFormatFilters,
   setPublicFilter,
+  setDatesFilter,
 }) => {
   const data = useStaticQuery(graphql`
     query FiltersQuery {
@@ -34,6 +36,26 @@ const EventsFilters = ({
           }
         }
       }
+      firstDate: allSanityEvent(
+        sort: { fields: startDate, order: ASC }
+        limit: 1
+      ) {
+        edges {
+          node {
+            startDate
+          }
+        }
+      }
+      lastDate: allSanityEvent(
+        sort: { fields: endDate, order: DESC }
+        limit: 1
+      ) {
+        edges {
+          node {
+            endDate
+          }
+        }
+      }
     }
   `);
 
@@ -46,6 +68,12 @@ const EventsFilters = ({
   const getSelectedPublic = (item) => {
     setPublicFilter(item);
   };
+  const getSelectedDates = (item) => {
+    setDatesFilter(item);
+  };
+
+  const firstDate = data.firstDate.edges[0].node.startDate;
+  const lastDate = data.lastDate.edges[0].node.endDate;
 
   return (
     <>
@@ -84,14 +112,18 @@ const EventsFilters = ({
           </div>
         </div>
       </div>
-      {/* <div className="mt-10 overflow-hidden text-gray-500 bg-white rounded-lg">
+      <div className="mt-10 overflow-hidden text-gray-500 bg-white rounded-lg">
         <div className="px-4 py-5 sm:p-6">
           <h4 className="pb-6 font-bold text-gray-700 uppercase">Dates</h4>
-          <div data-name="publicFilter">
-            <SelectFilter />
+          <div data-name="dateFilter">
+            <DateFilter
+              getValues={getSelectedDates}
+              firstDate={firstDate}
+              lastDate={lastDate}
+            />
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };

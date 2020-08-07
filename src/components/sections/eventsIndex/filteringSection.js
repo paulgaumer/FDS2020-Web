@@ -24,6 +24,7 @@ const ListSection = ({ events, department }) => {
   const [themeFilters, setThemeFilters] = useState([]);
   const [formatFilters, setFormatFilters] = useState([]);
   const [publicFilter, setPublicFilter] = useState('');
+  const [datesFilter, setDatesFilter] = useState({});
 
   // Update the list of selected events based on current filters
   useEffect(() => {
@@ -37,8 +38,9 @@ const ListSection = ({ events, department }) => {
       themes: themeFilters,
       formats: formatFilters,
       public: publicFilter,
+      dates: datesFilter,
     });
-  }, [themeFilters, formatFilters, publicFilter]);
+  }, [themeFilters, formatFilters, publicFilter, datesFilter]);
 
   return (
     <SectionContainer customClasses="py-20">
@@ -48,6 +50,7 @@ const ListSection = ({ events, department }) => {
             setThemeFilters={setThemeFilters}
             setFormatFilters={setFormatFilters}
             setPublicFilter={setPublicFilter}
+            setDatesFilter={setDatesFilter}
           />
         </div>
         <div data-name="events" className="grid grid-cols-2 gap-10">
