@@ -15,6 +15,7 @@ const EventCard = ({ event, department }) => {
     title,
     theme,
     featured,
+    // audience,
   } = event;
   const dpt = formatDepartmentName(department);
 
@@ -35,6 +36,7 @@ const EventCard = ({ event, department }) => {
           <p className="text-sm leading-tight text-purple-400">
             - {theme[0].name}
           </p>
+          {/* <p>{audience.name}</p> */}
           <p className="pt-6">{excerpt(description)}</p>
           <div className="pt-6 text-sm">
             <span></span>

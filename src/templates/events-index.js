@@ -5,7 +5,7 @@ import TopSection from '../components/sections/eventsIndex/topSection';
 import FilteringSection from '../components/sections/eventsIndex/filteringSection';
 
 const EventsIndex = ({ data }) => {
-  const events = data.allSanityEvent.edges;
+  const events = data.allSanityEvent.edges.map(({ node }) => node);
   const department = data.sanityDepartment.name;
 
   return (
