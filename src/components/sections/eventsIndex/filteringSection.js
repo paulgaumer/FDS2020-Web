@@ -6,8 +6,11 @@ import Filters from './filters';
 import { multiFilter } from '../../../utils/multiFilter';
 
 const OuterGrid = styled.div`
-  display: grid;
   grid-template-columns: minmax(150px, 25%) 1fr;
+`;
+
+const InnerEventGrid = styled.div`
+  grid-auto-rows: minmax(min-content, max-content);
 `;
 
 const ListSection = ({ events, department }) => {
@@ -49,7 +52,7 @@ const ListSection = ({ events, department }) => {
 
   return (
     <SectionContainer customClasses="py-20">
-      <OuterGrid className="gap-20">
+      <OuterGrid className="grid gap-20">
         <div data-name="filters" className="">
           <Filters
             setThemeFilters={setThemeFilters}
@@ -58,7 +61,10 @@ const ListSection = ({ events, department }) => {
             setDatesFilter={setDatesFilter}
           />
         </div>
-        <div data-name="events" className="grid grid-cols-2 gap-10">
+        <InnerEventGrid
+          data-name="events"
+          className="grid grid-cols-1 gap-10 lg:grid-cols-2"
+        >
           {selectedEvents.map((event) => {
             return (
               <div className="col-span-1" key={event.id}>
@@ -66,7 +72,7 @@ const ListSection = ({ events, department }) => {
               </div>
             );
           })}
-        </div>
+        </InnerEventGrid>
       </OuterGrid>
     </SectionContainer>
   );
