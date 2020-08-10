@@ -18,7 +18,7 @@ const EventsMap = ({ selectedEvents }) => {
   const [mapInstance, setMapInstance] = useState();
   const [windowLoaded, setWindowLoaded] = useState(false);
   const [allMarkers, setAllMarkers] = useState([]);
-  const [allCenter, setAllCenter] = useState(getCenter(selectedEvents));
+  const [allCenter] = useState(getCenter(selectedEvents));
 
   const clearMarkers = (markers) => {
     markers.map((m) => m.remove());
@@ -29,7 +29,7 @@ const EventsMap = ({ selectedEvents }) => {
     if (hasWindow) {
       setWindowLoaded(true);
     }
-  });
+  }, []);
 
   // Init map instance when window is loaded
   useEffect(() => {
@@ -58,7 +58,7 @@ const EventsMap = ({ selectedEvents }) => {
       clearMarkers(allMarkers);
       let markers = [];
       if (selectedEvents.length > 0) {
-        selectedEvents.map((e, i) => {
+        selectedEvents.map((e) => {
           const m = new mapboxgl.Marker({
             color: '#FDBF37',
             scale: 1,
@@ -66,6 +66,7 @@ const EventsMap = ({ selectedEvents }) => {
             .setLngLat([e.map.lng, e.map.lat])
             .addTo(mapInstance);
           markers.push(m);
+          return markers;
         });
         setAllMarkers(markers);
         // Update map center based on new markers

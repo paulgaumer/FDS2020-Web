@@ -53,7 +53,7 @@ const ListSection = ({ events, department }) => {
   }, [themeFilters, formatFilters, publicFilter, datesFilter]);
 
   return (
-    <SectionContainer customClasses="py-20">
+    <SectionContainer customClasses="pt-16 pb-20">
       <div className="mb-16">
         <EventsMap selectedEvents={selectedEvents} />
       </div>
