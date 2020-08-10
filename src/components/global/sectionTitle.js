@@ -21,7 +21,7 @@ const Title = styled.div`
 const SectionTitle = ({ text, color = '#333' }) => {
   return (
     <Title>
-      <h1 className="text-4xl pb-20 tracking-normal" style={{ color }}>
+      <h1 className="pb-20 text-4xl tracking-normal" style={{ color }}>
         {text}
       </h1>
     </Title>

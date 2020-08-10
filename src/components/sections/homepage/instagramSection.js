@@ -111,7 +111,7 @@ const InstagramSection = () => {
           </div>
           {picturesNumber.map((nb) => {
             return (
-              <div className={`item-picture-${nb}`}>
+              <div className={`item-picture-${nb}`} key={nb}>
                 <img
                   src="https://placekitten.com/200/200"
                   alt="instagram"
