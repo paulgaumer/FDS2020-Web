@@ -8,7 +8,7 @@ const Header = () => {
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
 
   return (
-    <header>
+    <header className="fixed z-50 w-full shadow-sm">
       <div className="relative bg-white">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
