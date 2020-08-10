@@ -20,8 +20,8 @@ const EventCard = ({ event, department }) => {
   const dpt = formatDepartmentName(department);
 
   return (
-    <Link to={`/${dpt}/${slug.current}`} className="max-w-1/3">
-      <div className="overflow-hidden rounded-md shadow">
+    <Link to={`/${dpt}/${slug.current}`} className="max-w-1/3 ">
+      <div className="overflow-hidden rounded-md shadow ">
         <div data-name="image" style={{ height: '160px' }} className="relative">
           <CustomGatsbyImage image={image} />
           {featured && (

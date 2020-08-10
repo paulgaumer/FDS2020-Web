@@ -39,6 +39,7 @@ module.exports = {
   variants: {
     borderColor: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
     borderWidth: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+    scale: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
   },
   plugins: [require('@tailwindcss/ui'), require('@tailwindcss/typography')],
 };

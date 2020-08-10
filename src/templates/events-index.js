@@ -59,6 +59,10 @@ export const query = graphql`
             id
             name
           }
+          map {
+            lng
+            lat
+          }
         }
       }
     }

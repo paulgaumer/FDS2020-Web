@@ -88,7 +88,7 @@ const EventsFilters = ({
           </div>
         </div>
       </div>
-      <div className="mt-10 overflow-hidden text-gray-500 bg-white rounded-lg">
+      <div className="mt-6 overflow-hidden text-gray-500 bg-white rounded-lg">
         <div className="px-4 py-5 sm:p-6">
           <h4 className="pb-6 font-bold text-gray-700 uppercase">Formes</h4>
           <div data-name="formatsFilter">
@@ -99,7 +99,7 @@ const EventsFilters = ({
           </div>
         </div>
       </div>
-      <div className="mt-10 overflow-hidden text-gray-500 bg-white rounded-lg">
+      <div className="mt-6 overflow-hidden text-gray-500 bg-white rounded-lg">
         <div className="px-4 py-5 sm:p-6">
           <h4 className="pb-6 font-bold text-gray-700 uppercase">
             Quel Public ?
@@ -112,7 +112,7 @@ const EventsFilters = ({
           </div>
         </div>
       </div>
-      <div className="mt-10 overflow-hidden text-gray-500 bg-white rounded-lg">
+      <div className="mt-6 overflow-hidden text-gray-500 bg-white rounded-lg">
         <div className="px-4 py-5 sm:p-6">
           <h4 className="pb-6 font-bold text-gray-700 uppercase">Dates</h4>
           <div data-name="dateFilter">
