@@ -24,12 +24,22 @@ module.exports = {
       },
       inset: {
         '-6': '-1.5rem',
+        '-4': '-1rem',
+      },
+      maxWidth: {
+        '1/2': '50%',
+        '1/3': '33%',
+        '1/4': '25%',
+      },
+      zIndex: {
+        '100': '100',
       },
     },
   },
   variants: {
     borderColor: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
     borderWidth: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+    scale: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
   },
   plugins: [require('@tailwindcss/ui'), require('@tailwindcss/typography')],
 };

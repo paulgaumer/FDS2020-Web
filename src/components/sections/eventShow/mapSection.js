@@ -33,7 +33,7 @@ const MapSection = ({ address, mapGps }) => {
 
       map.addControl(new mapboxgl.NavigationControl(), 'top-right');
     }
-  }, [mapGps.lng, mapGps.lat]);
+  }, [mapGps.lng, mapGps.lat, mapboxToken]);
 
   return (
     <SectionWrapper>

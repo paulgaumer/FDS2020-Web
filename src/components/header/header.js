@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import Transition from '../transition';
+import Transition from '../global/transition';
 import logo from '../../images/s_bleu.png';
 
 const Header = () => {
@@ -10,22 +10,22 @@ const Header = () => {
   return (
     <header>
       <div className="relative bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
             <div className="lg:w-0 lg:flex-1">
               <a href="/" className="flex">
-                <img className="h-8 w-auto sm:h-12" src={logo} alt="Workflow" />
+                <img className="w-auto h-8 sm:h-12" src={logo} alt="Workflow" />
               </a>
             </div>
-            <div className="-mr-2 -my-2 md:hidden">
+            <div className="-my-2 -mr-2 md:hidden">
               {/* BURGER BUTTON FOR MOBILE MENU */}
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(true)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                className="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500"
               >
                 <svg
-                  className="h-6 w-6"
+                  className="w-6 h-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -39,17 +39,17 @@ const Header = () => {
                 </svg>
               </button>
             </div>
-            <nav className="hidden md:flex space-x-10">
+            <nav className="hidden space-x-10 md:flex">
               <Link
                 to="/"
-                className="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                className="text-base font-medium leading-6 text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
               >
                 Accueil
               </Link>
 
               <Link
                 to="/editorial"
-                className="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                className="text-base font-medium leading-6 text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
               >
                 Editorial
               </Link>
@@ -98,47 +98,47 @@ const Header = () => {
                   leaveFrom="opacity-100 translate-y-0"
                   leaveTo="opacity-0 translate-y-1"
                 >
-                  <div className="absolute left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0">
+                  <div className="absolute z-50 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0">
                     <div className="rounded-lg shadow-lg">
-                      <div className="rounded-lg shadow-xs overflow-hidden">
-                        <div className="z-20 relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                      <div className="overflow-hidden rounded-lg shadow-xs">
+                        <div className="relative z-20 grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
                           <Link
                             to="/loire-atlantique"
-                            className="-m-3 p-3 block space-y-1 rounded-md hover:bg-gray-50 transition ease-in-out duration-150"
+                            className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                           >
-                            <p className="text-base leading-6 font-medium text-gray-900">
+                            <p className="text-base font-medium leading-6 text-gray-900">
                               Loire Atlantique
                             </p>
                           </Link>
                           <Link
                             to="/maine-et-loire"
-                            className="-m-3 p-3 block space-y-1 rounded-md hover:bg-gray-50 transition ease-in-out duration-150"
+                            className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                           >
-                            <p className="text-base leading-6 font-medium text-gray-900">
+                            <p className="text-base font-medium leading-6 text-gray-900">
                               Maine et Loire
                             </p>
                           </Link>
                           <Link
                             to="/mayenne"
-                            className="-m-3 p-3 block space-y-1 rounded-md hover:bg-gray-50 transition ease-in-out duration-150"
+                            className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                           >
-                            <p className="text-base leading-6 font-medium text-gray-900">
+                            <p className="text-base font-medium leading-6 text-gray-900">
                               Mayenne
                             </p>
                           </Link>
                           <Link
                             to="/sarthe"
-                            className="-m-3 p-3 block space-y-1 rounded-md hover:bg-gray-50 transition ease-in-out duration-150"
+                            className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                           >
-                            <p className="text-base leading-6 font-medium text-gray-900">
+                            <p className="text-base font-medium leading-6 text-gray-900">
                               Sarthe
                             </p>
                           </Link>
                           <Link
                             to="/vendee"
-                            className="-m-3 p-3 block space-y-1 rounded-md hover:bg-gray-50 transition ease-in-out duration-150"
+                            className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                           >
-                            <p className="text-base leading-6 font-medium text-gray-900">
+                            <p className="text-base font-medium leading-6 text-gray-900">
                               Vendée
                             </p>
                           </Link>
@@ -150,22 +150,22 @@ const Header = () => {
               </div>
               <Link
                 to="/multimedia"
-                className="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                className="text-base font-medium leading-6 text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
               >
                 Multimedia
               </Link>
               <Link
                 to="/Contacts"
-                className="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                className="text-base font-medium leading-6 text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
               >
                 Contacts
               </Link>
             </nav>
-            <div className="hidden md:flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
+            <div className="items-center justify-end hidden space-x-8 md:flex md:flex-1 lg:w-0">
               <span className="inline-flex rounded-md shadow-sm">
                 <Link
                   to="/scolaires"
-                  className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm leading-6 font-medium rounded-md text-gray-700 bg-edu hover:bg-eduLight focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 uppercase font-bold space-x-1"
+                  className="inline-flex items-center justify-center px-4 py-2 space-x-1 text-sm font-medium font-bold leading-6 text-gray-700 uppercase whitespace-no-wrap transition duration-150 ease-in-out border border-transparent rounded-md bg-edu hover:bg-eduLight focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
                 >
                   <svg
                     className="w-7 h-7"
@@ -212,12 +212,12 @@ const Header = () => {
             className={`absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden`}
           >
             <div className="rounded-lg shadow-lg">
-              <div className="rounded-lg shadow-xs bg-white divide-y-2 divide-gray-50">
-                <div className="pt-5 pb-6 px-5 space-y-6">
+              <div className="bg-white divide-y-2 rounded-lg shadow-xs divide-gray-50">
+                <div className="px-5 pt-5 pb-6 space-y-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <img
-                        className="h-8 w-auto"
+                        className="w-auto h-8"
                         src="https://tailwindui.com/img/logos/workflow-mark-on-white.svg"
                         alt="Workflow"
                       />
@@ -226,10 +226,10 @@ const Header = () => {
                       <button
                         type="button"
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                        className="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500"
                       >
                         <svg
-                          className="h-6 w-6"
+                          className="w-6 h-6"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -248,11 +248,11 @@ const Header = () => {
                     <nav className="grid grid-cols-1 gap-7">
                       <a
                         href="/"
-                        className="-m-3 p-3 flex items-center space-x-4 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+                        className="flex items-center p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
                       >
-                        <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
+                        <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white bg-indigo-500 rounded-md">
                           <svg
-                            className="h-6 w-6"
+                            className="w-6 h-6"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -265,17 +265,17 @@ const Header = () => {
                             />
                           </svg>
                         </div>
-                        <div className="text-base leading-6 font-medium text-gray-900">
+                        <div className="text-base font-medium leading-6 text-gray-900">
                           Analytics
                         </div>
                       </a>
                       <a
                         href="/"
-                        className="-m-3 p-3 flex items-center space-x-4 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+                        className="flex items-center p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
                       >
-                        <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
+                        <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white bg-indigo-500 rounded-md">
                           <svg
-                            className="h-6 w-6"
+                            className="w-6 h-6"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -288,17 +288,17 @@ const Header = () => {
                             />
                           </svg>
                         </div>
-                        <div className="text-base leading-6 font-medium text-gray-900">
+                        <div className="text-base font-medium leading-6 text-gray-900">
                           Engagement
                         </div>
                       </a>
                       <a
                         href="/"
-                        className="-m-3 p-3 flex items-center space-x-4 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+                        className="flex items-center p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
                       >
-                        <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
+                        <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white bg-indigo-500 rounded-md">
                           <svg
-                            className="h-6 w-6"
+                            className="w-6 h-6"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -311,17 +311,17 @@ const Header = () => {
                             />
                           </svg>
                         </div>
-                        <div className="text-base leading-6 font-medium text-gray-900">
+                        <div className="text-base font-medium leading-6 text-gray-900">
                           Security
                         </div>
                       </a>
                       <a
                         href="/"
-                        className="-m-3 p-3 flex items-center space-x-4 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+                        className="flex items-center p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
                       >
-                        <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
+                        <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white bg-indigo-500 rounded-md">
                           <svg
-                            className="h-6 w-6"
+                            className="w-6 h-6"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -334,17 +334,17 @@ const Header = () => {
                             />
                           </svg>
                         </div>
-                        <div className="text-base leading-6 font-medium text-gray-900">
+                        <div className="text-base font-medium leading-6 text-gray-900">
                           Integrations
                         </div>
                       </a>
                       <a
                         href="/"
-                        className="-m-3 p-3 flex items-center space-x-4 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+                        className="flex items-center p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
                       >
-                        <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
+                        <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white bg-indigo-500 rounded-md">
                           <svg
-                            className="h-6 w-6"
+                            className="w-6 h-6"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -357,17 +357,17 @@ const Header = () => {
                             />
                           </svg>
                         </div>
-                        <div className="text-base leading-6 font-medium text-gray-900">
+                        <div className="text-base font-medium leading-6 text-gray-900">
                           Automations
                         </div>
                       </a>
                       <a
                         href="/"
-                        className="-m-3 p-3 flex items-center space-x-4 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+                        className="flex items-center p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
                       >
-                        <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
+                        <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white bg-indigo-500 rounded-md">
                           <svg
-                            className="h-6 w-6"
+                            className="w-6 h-6"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -380,78 +380,78 @@ const Header = () => {
                             />
                           </svg>
                         </div>
-                        <div className="text-base leading-6 font-medium text-gray-900">
+                        <div className="text-base font-medium leading-6 text-gray-900">
                           Reports
                         </div>
                       </a>
                     </nav>
                   </div>
                 </div>
-                <div className="py-6 px-5 space-y-6">
+                <div className="px-5 py-6 space-y-6">
                   <div className="grid grid-cols-2 gap-4">
                     <a
                       href="/"
-                      className="text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                      className="text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out hover:text-gray-700"
                     >
                       Pricing
                     </a>
                     <a
                       href="/"
-                      className="text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                      className="text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out hover:text-gray-700"
                     >
                       Docs
                     </a>
                     <a
                       href="/"
-                      className="text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                      className="text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out hover:text-gray-700"
                     >
                       Enterprise
                     </a>
                     <a
                       href="/"
-                      className="text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                      className="text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out hover:text-gray-700"
                     >
                       Blog
                     </a>
                     <a
                       href="/"
-                      className="text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                      className="text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out hover:text-gray-700"
                     >
                       Help Center
                     </a>
                     <a
                       href="/"
-                      className="text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                      className="text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out hover:text-gray-700"
                     >
                       Guides
                     </a>
                     <a
                       href="/"
-                      className="text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                      className="text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out hover:text-gray-700"
                     >
                       Security
                     </a>
                     <a
                       href="/"
-                      className="text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                      className="text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out hover:text-gray-700"
                     >
                       Events
                     </a>
                   </div>
                   <div className="space-y-6">
-                    <span className="w-full flex rounded-md shadow-sm">
+                    <span className="flex w-full rounded-md shadow-sm">
                       <a
                         href="/"
-                        className="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150"
+                        className="flex items-center justify-center w-full px-4 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
                       >
                         Sign up
                       </a>
                     </span>
-                    <p className="text-center text-base leading-6 font-medium text-gray-500">
+                    <p className="text-base font-medium leading-6 text-center text-gray-500">
                       Existing customer?
                       <a
                         href="/"
-                        className="text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150"
+                        className="text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500"
                       >
                         Sign in
                       </a>

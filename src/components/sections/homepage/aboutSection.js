@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import SectionContainer from '../../layout/sectionContainer';
 import SectionWrapper from '../../layout/sectionWrapper';
 
-import SectionTitle from '../../sectionTitle';
+import SectionTitle from '../../global/sectionTitle';
 
 const About = () => {
   return (
@@ -12,14 +12,14 @@ const About = () => {
         <div className="flex flex-col items-center ">
           <SectionTitle text="Qu'est ce que la Fête de la Science ?" />
           <div className="pb-10">
-            <div className="flex flex-col space-y-8 items-center md:flex-row md:items-start md:space-y-0 md:space-x-8">
+            <div className="flex flex-col items-center space-y-8 md:flex-row md:items-start md:space-y-0 md:space-x-8">
               <img
-                src="http://placeimg.com/300/300/people"
+                src="https://placeimg.com/300/300/people"
                 alt="fête de la science illustration"
-                className="rounded-full w-32 h-32 border-2 border-secondary flex-shrink-0"
+                className="flex-shrink-0 w-32 h-32 border-2 rounded-full border-secondary"
               />
               <p
-                className="text-lg pb-10 leading-relaxed"
+                className="pb-10 text-lg leading-relaxed"
                 style={{ color: '#535863' }}
               >
                 Magna blandit dui dolor ipsum ac condimentum amet conubia urna,
@@ -34,9 +34,9 @@ const About = () => {
                 porttitor adipiscing aliquet.
               </p>
             </div>
-            <div className="flex flex-col-reverse space-y-8 space-y-reverse items-center md:flex-row md:items-start md:space-y-0 md:space-x-8">
+            <div className="flex flex-col-reverse items-center space-y-8 space-y-reverse md:flex-row md:items-start md:space-y-0 md:space-x-8">
               <p
-                className="text-lg pb-10 leading-relaxed"
+                className="pb-10 text-lg leading-relaxed"
                 style={{ color: '#535863' }}
               >
                 Magna blandit dui dolor ipsum ac condimentum amet conubia urna,
@@ -51,9 +51,9 @@ const About = () => {
                 porttitor adipiscing aliquet.
               </p>
               <img
-                src="http://placeimg.com/300/300/people"
+                src="https://placeimg.com/300/300/people"
                 alt="fête de la science"
-                className="rounded-full w-32 h-32 border-2 border-secondary flex-shrink-0"
+                className="flex-shrink-0 w-32 h-32 border-2 rounded-full border-secondary"
               />
             </div>
           </div>

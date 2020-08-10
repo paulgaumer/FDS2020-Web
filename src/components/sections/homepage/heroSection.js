@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Countdown from 'react-countdown';
-import Transition from '../../transition';
+import Transition from '../../global/transition';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 import LogoFds from '../../../images/logo-fds-rouge-white.svg';
@@ -41,7 +41,7 @@ const HeroSection = () => {
       // Render a countdown
       return (
         <div className="flex justify-center">
-          <div className="space-x-6 flex">
+          <div className="flex space-x-6">
             <div className="text-center">
               <p className="text-4xl">45</p>
               <p>jours</p>
@@ -88,23 +88,23 @@ const HeroSection = () => {
       />
       {/* ABSOLUTE NAVBAR START */}
       <div className="absolute inset-x-0 top-0 z-40">
-        <div className="flex justify-between items-start">
+        <div className="flex items-start justify-between">
           <img src={logoMinister} alt="ministère de l'enseignement supérieur" />
-          <div className="flex-grow flex justify-between  items-center ">
+          <div className="flex items-center justify-between flex-grow ">
             {/* NAVIGATION MENU START */}
-            <div data-name="top-menu" className="mt-10 flex-grow">
+            <div data-name="top-menu" className="flex-grow mt-10">
               <div className="flex justify-center">
-                <nav className="md:flex space-x-10">
+                <nav className="space-x-10 md:flex">
                   <Link
                     to="/"
-                    className="text-xl leading-6 font-medium text-white hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                    className="text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900"
                   >
                     Accueil
                   </Link>
 
                   <Link
                     to="/editorial"
-                    className="text-xl leading-6 font-medium text-white hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                    className="text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900"
                   >
                     Editorial
                   </Link>
@@ -153,47 +153,47 @@ const HeroSection = () => {
                       leaveFrom="opacity-100 translate-y-0"
                       leaveTo="opacity-0 translate-y-1"
                     >
-                      <div className="absolute left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0 z-50">
+                      <div className="absolute z-50 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0">
                         <div className="rounded-lg shadow-lg">
-                          <div className="rounded-lg shadow-xs overflow-hidden">
-                            <div className="z-20 relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                          <div className="overflow-hidden rounded-lg shadow-xs">
+                            <div className="relative z-20 grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
                               <Link
                                 to="/loire-atlantique"
-                                className="-m-3 p-3 block space-y-1 rounded-md hover:bg-gray-50 transition ease-in-out duration-150"
+                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                               >
-                                <p className="text-lg leading-6 font-medium text-gray-900">
+                                <p className="text-lg font-medium leading-6 text-gray-900">
                                   Loire Atlantique
                                 </p>
                               </Link>
                               <Link
                                 to="/maine-et-loire"
-                                className="-m-3 p-3 block space-y-1 rounded-md hover:bg-gray-50 transition ease-in-out duration-150"
+                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                               >
-                                <p className="text-lg leading-6 font-medium text-gray-900">
+                                <p className="text-lg font-medium leading-6 text-gray-900">
                                   Maine et Loire
                                 </p>
                               </Link>
                               <Link
                                 to="/mayenne"
-                                className="-m-3 p-3 block space-y-1 rounded-md hover:bg-gray-50 transition ease-in-out duration-150"
+                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                               >
-                                <p className="text-lg leading-6 font-medium text-gray-900">
+                                <p className="text-lg font-medium leading-6 text-gray-900">
                                   Mayenne
                                 </p>
                               </Link>
                               <Link
                                 to="/sarthe"
-                                className="-m-3 p-3 block space-y-1 rounded-md hover:bg-gray-50 transition ease-in-out duration-150"
+                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                               >
-                                <p className="text-lg leading-6 font-medium text-gray-900">
+                                <p className="text-lg font-medium leading-6 text-gray-900">
                                   Sarthe
                                 </p>
                               </Link>
                               <Link
                                 to="/vendee"
-                                className="-m-3 p-3 block space-y-1 rounded-md hover:bg-gray-50 transition ease-in-out duration-150"
+                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                               >
-                                <p className="text-lg leading-6 font-medium text-gray-900">
+                                <p className="text-lg font-medium leading-6 text-gray-900">
                                   Vendée
                                 </p>
                               </Link>
@@ -205,13 +205,13 @@ const HeroSection = () => {
                   </div>
                   <Link
                     to="/multimedia"
-                    className="text-xl leading-6 font-medium text-white hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                    className="text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900"
                   >
                     Multimedia
                   </Link>
                   <Link
                     to="/Contacts"
-                    className="text-xl leading-6 font-medium text-white hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                    className="text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900"
                   >
                     Contacts
                   </Link>
@@ -230,7 +230,7 @@ const HeroSection = () => {
       {/* NAVBAR PLACEHOLDER BLOCK */}
       <NavbarPlaceholder />
       {/* CENTER BLOCK */}
-      <div className="flex-grow flex flex-col justify-between z-30">
+      <div className="z-30 flex flex-col justify-between flex-grow">
         <SectionContainer customClasses="flex-grow flex items-center">
           <div className="flex flex-col">
             <ContentCenter
@@ -244,16 +244,16 @@ const HeroSection = () => {
                   id="logo-fds"
                   className=""
                 />
-                <div className="text-white my-20">
+                <div className="my-20 text-white">
                   <h3 className="font-bold tracking-tight">Pays de la Loire</h3>
-                  <p className="uppercase text-3xl">
+                  <p className="text-3xl uppercase">
                     02 Octobre - 12 Octobre 2020
                   </p>
                 </div>
                 <span className="inline-flex rounded-md shadow-sm">
                   <Link
                     to="/"
-                    className="uppercase inline-flex items-center px-6 py-6 border border-transparent text-3xl leading-6 font-bold font-medium rounded-md text-white bg-primary hover:bg-primary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150"
+                    className="inline-flex items-center px-6 py-6 text-3xl font-medium font-bold leading-6 text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-md bg-primary hover:bg-primary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
                   >
                     découvrir les évenements
                   </Link>
@@ -264,11 +264,11 @@ const HeroSection = () => {
         </SectionContainer>
         {/* TIMER BLOCK */}
 
-        <div className="grid grid-cols-12 z-40">
-          <div className="col-start-6 col-end-8 flex items-center justify-center">
-            <div className="border-2 border-white px-1 pt-4 pb-2 rounded-full">
+        <div className="z-40 grid grid-cols-12">
+          <div className="flex items-center justify-center col-start-6 col-end-8">
+            <div className="px-1 pt-4 pb-2 border-2 border-white rounded-full">
               <svg
-                className="animate-bounce w-6 h-6 text-white "
+                className="w-6 h-6 text-white animate-bounce "
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -280,7 +280,7 @@ const HeroSection = () => {
               </svg>
             </div>
           </div>
-          <Timer className="uppercase text-white py-5 px-12 relative col-start-10 col-end-13">
+          <Timer className="relative col-start-10 col-end-13 px-12 py-5 text-white uppercase">
             <Countdown date={'2020-10-02T00:00:00'} renderer={renderer} />
 
             {/* Top Triangle */}

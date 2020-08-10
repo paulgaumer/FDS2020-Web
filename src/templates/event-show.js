@@ -14,7 +14,9 @@ const EventShow = ({ data }) => {
     <Layout>
       <HeroSection event={event} />
       <DescriptionSection description={event.description} />
-      <OrganizerSection organizer={event.projectOwners[0]} />
+      {event.projectOwners.length > 0 && (
+        <OrganizerSection organizer={event.projectOwners[0]} />
+      )}
       {event.bookingRequired && (
         <BookingSection
           bookingPhone={event.bookingPhone}
@@ -61,6 +63,7 @@ export const query = graphql`
             ...GatsbySanityImageFluid
           }
         }
+        alt
       }
       map {
         lat

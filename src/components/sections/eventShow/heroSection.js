@@ -1,9 +1,10 @@
 import React from 'react';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
+import CustomGatsbyImage from '../../global/customGatsbyImage';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
-import { MdToday, MdFavorite, MdMic } from 'react-icons/md';
+import FeaturedLabel from '../../global/featuredLabel';
+import { MdToday, MdMic } from 'react-icons/md';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { IoIosPeople } from 'react-icons/io';
 
@@ -23,7 +24,7 @@ const HeroCard = styled.div`
 const BookingButton = ({ bookingRequired }) => {
   if (bookingRequired) {
     return (
-      <a href="#booking-section" class="inline-flex rounded-md shadow-sm">
+      <a href="#booking-section" className="inline-flex rounded-md shadow-sm">
         <button
           type="button"
           className="inline-flex items-center px-4 py-2 text-base font-medium font-bold leading-6 text-orange-900 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-secondary hover:bg-yellow-200 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
@@ -34,7 +35,7 @@ const BookingButton = ({ bookingRequired }) => {
     );
   } else {
     return (
-      <span class="inline-flex rounded-md shadow-sm">
+      <span className="inline-flex rounded-md shadow-sm">
         <div className="inline-flex items-center px-4 py-2 text-base font-medium font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary ">
           entrée libre
         </div>
@@ -53,6 +54,7 @@ const HeroSection = ({ event }) => {
     startDate,
     address,
     image,
+    featured,
   } = event;
 
   return (
@@ -60,18 +62,10 @@ const HeroSection = ({ event }) => {
       <SectionContainer customClasses="pt-20 pb-12">
         <HeroCard className="max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow">
           <div data-name="image" className="relative bg-red-200">
-            <Img
-              fluid={image.asset.fluid}
-              alt={title}
-              className="object-cover h-full"
-              imgStyle={{ objectPosition: 'center' }}
-            />
-            <p className="absolute flex items-center px-3 py-1 space-x-1 text-base text-white rounded-lg bottom-5 left-10 bg-featured">
-              <span>
-                <MdFavorite />
-              </span>
-              <span>Coup de coeur</span>
-            </p>
+            <CustomGatsbyImage image={image} />
+            {featured && (
+              <FeaturedLabel customClasses="absolute top-5 left-10 text-base" />
+            )}
           </div>
           <div
             data-name="grid-info"

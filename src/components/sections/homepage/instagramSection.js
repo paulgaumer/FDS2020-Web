@@ -100,7 +100,7 @@ const InstagramSection = () => {
     <SectionWrapper backgroundColor="bg-secondary">
       <SectionContainer customClasses="py-20">
         <InstaGrid>
-          <div className="item-text-content text-purple-900 flex flex-col items-center justify-center space-y-2 px-10 font-bold">
+          <div className="flex flex-col items-center justify-center px-10 space-y-2 font-bold text-purple-900 item-text-content">
             <h2 className="text-4xl">#FDS2020</h2>
             <p className="text-2xl text-center">
               Partagez votre Fête de la Science sur notre communauté
@@ -113,7 +113,7 @@ const InstagramSection = () => {
             return (
               <div className={`item-picture-${nb}`}>
                 <img
-                  src="http://placekitten.com/200/200"
+                  src="https://placekitten.com/200/200"
                   alt="instagram"
                   className="rounded-sm"
                 />
