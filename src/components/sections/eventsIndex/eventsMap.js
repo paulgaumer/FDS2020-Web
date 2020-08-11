@@ -69,9 +69,14 @@ const EventsMap = ({ selectedEvents }) => {
           return markers;
         });
         setAllMarkers(markers);
-        // Update map center based on new markers
-        const newCenter = getCenter(selectedEvents);
-        mapInstance.setCenter([newCenter.lng, newCenter.lat]);
+
+        // Update map center & zoom level based on new markers
+        const bounds = new mapboxgl.LngLatBounds();
+        markers.map((m) => {
+          const coord = m.getLngLat();
+          bounds.extend(coord);
+        });
+        mapInstance.fitBounds(bounds, { padding: 80 });
       }
     }
   }, [selectedEvents, mapInstance]);
