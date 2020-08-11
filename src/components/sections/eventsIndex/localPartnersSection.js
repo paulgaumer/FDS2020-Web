@@ -25,9 +25,9 @@ const LogoGrid = styled.div`
   }
 `;
 
-const LocalPartnersSection = ({ logos, alt }) => {
+const LocalPartnersSection = ({ logos }) => {
   return (
-    <SectionContainer customClasses="py-20">
+    <SectionContainer customClasses="pt-20 pb-40">
       <SectionTitle text={`Nos Partenaires Locaux`} />
       <LogoGrid className="grid gap-20">
         {logos.map((logo) => {
