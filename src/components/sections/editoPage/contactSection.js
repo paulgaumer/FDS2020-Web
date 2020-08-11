@@ -3,15 +3,13 @@ import { Link } from 'gatsby';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 
-const ContactSection = ({ logos }) => {
+const ContactSection = ({ contactContent }) => {
   return (
     <SectionWrapper>
       <SectionContainer customClasses="py-20">
         <div className="flex flex-col items-center space-y-14">
           <p className="px-40 text-lg text-center text-gray-700">
-            Interessé pour participer à la prochaine édition en tant que porteur
-            de projet, ou bien en tant que partenaire ? N’hésitez pas à nous
-            contacter pour toutes vos questions.
+            {contactContent}
           </p>
 
           <span class="inline-flex rounded-md shadow-sm">
