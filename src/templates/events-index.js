@@ -4,10 +4,12 @@ import SectionWrapper from '../components/layout/sectionWrapper';
 import TopSection from '../components/sections/eventsIndex/topSection';
 import FilteringSection from '../components/sections/eventsIndex/filteringSection';
 import AboutFeatured from '../components/sections/eventsIndex/featuredAboutSection';
+import LocalPartners from '../components/sections/eventsIndex/localPartnersSection';
 
 const EventsIndex = ({ data }) => {
   const events = data.allSanityEvent.edges.map(({ node }) => node);
   const department = data.sanityDepartment.name;
+  const logos = data.logos.edges.map(({ node }) => node);
 
   return (
     <Layout>
@@ -15,6 +17,7 @@ const EventsIndex = ({ data }) => {
         <TopSection villages={data.villages.edges} department={department} />
         <FilteringSection events={events} department={department} />
         <AboutFeatured />
+        <LocalPartners logos={logos} />
       </SectionWrapper>
     </Layout>
   );
@@ -70,6 +73,24 @@ export const query = graphql`
     }
     sanityDepartment(id: { eq: $departmentId }) {
       name
+    }
+    logos: allSanityLogo(
+      filter: { partners: { elemMatch: { id: { eq: $departmentId } } } }
+    ) {
+      edges {
+        node {
+          id
+          name
+          image {
+            asset {
+              fluid(maxWidth: 500) {
+                ...GatsbySanityImageFluid
+              }
+              url
+            }
+          }
+        }
+      }
     }
     villages: allSanityEvent(
       filter: {

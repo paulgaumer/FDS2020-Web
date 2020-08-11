@@ -1,7 +1,7 @@
 import React from 'react';
 import Img from 'gatsby-image';
 
-const CustomGatsbyImage = ({ image }) => {
+const CustomGatsbyImage = ({ image, alt, customClasses }) => {
   const hotspot =
     image.hotspot != null
       ? `${image.hotspot.x * 100}% ${image.hotspot.y * 100}%`
@@ -12,8 +12,8 @@ const CustomGatsbyImage = ({ image }) => {
   return (
     <Img
       fluid={image.asset.fluid}
-      alt={image.alt}
-      className="object-cover h-full"
+      alt={alt || image.alt}
+      className={`object-cover h-full ${customClasses}`}
       imgStyle={style}
     />
   );
