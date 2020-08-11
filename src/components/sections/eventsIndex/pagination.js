@@ -23,8 +23,11 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
           currentPage === 1 ? 'invisible' : ''
         }`}
         onClick={() => paginate(currentPage - 1)}
+        onKeyDown={() => paginate(currentPage - 1)}
+        role="button"
+        tabindex="0"
       >
-        <a className="inline-flex items-center pt-4 pr-1 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400">
+        <button className="inline-flex items-center pt-4 pr-1 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400">
           <svg
             className="w-5 h-5 mr-3 text-gray-400"
             fill="currentColor"
@@ -37,12 +40,12 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
             />
           </svg>
           Précédent
-        </a>
+        </button>
       </div>
       <div className="hidden md:flex">
         {pageNumbers.map((number, i) => {
           return (
-            <a
+            <button
               key={`page-${i}`}
               onClick={() => paginate(number)}
               className={`cursor-pointer inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 transition duration-150 ease-in-out border-t-2 border-transparent focus:outline-none ${
@@ -52,7 +55,7 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
               }`}
             >
               {number}
-            </a>
+            </button>
           );
         })}
       </div>
@@ -61,8 +64,11 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
           currentPage === pageNumbers.slice(-1)[0] ? 'invisible' : ''
         }`}
         onClick={() => paginate(currentPage + 1)}
+        onKeyDown={() => paginate(currentPage - 1)}
+        role="button"
+        tabindex="0"
       >
-        <a className="inline-flex items-center pt-4 pl-1 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400">
+        <button className="inline-flex items-center pt-4 pl-1 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400">
           Suivant
           <svg
             className="w-5 h-5 ml-3 text-gray-400"
@@ -75,7 +81,7 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
               clipRule="evenodd"
             />
           </svg>
-        </a>
+        </button>
       </div>
     </nav>
   );
