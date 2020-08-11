@@ -10,7 +10,7 @@ const TopSection = () => {
       <SectionContainer customClasses="py-20">
         <SectionTitle text="La Fête de la Science 2020" />
         <div>
-          <p>
+          <p className="leading-7 tracking-wide text-gray-700">
             Tellus velit praesent tortor felis et tempus sed, ligula sapien
             bibendum commodo congue hendrerit augue, at etiam vivamus in varius
             per. Massa et donec nostra nisl vel tempor natoque, imperdiet
@@ -46,7 +46,7 @@ const TopSection = () => {
         </div>
         <div
           data-name="testimonials"
-          className="flex flex-col py-20 space-y-20"
+          className="flex flex-col py-20 space-y-24"
         >
           <Testimonial />
           <Testimonial reverse={true} />
