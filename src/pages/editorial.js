@@ -1,7 +1,13 @@
 import React from 'react';
+import Layout from '../components/layout/layout';
+import TopSection from '../components/sections/editoPage/topSection';
 
 const editorial = () => {
-  return <div>Hello</div>;
+  return (
+    <Layout>
+      <TopSection />
+    </Layout>
+  );
 };
 
 export default editorial;

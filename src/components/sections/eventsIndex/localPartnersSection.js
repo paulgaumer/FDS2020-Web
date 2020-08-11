@@ -5,7 +5,7 @@ import SectionContainer from '../../layout/sectionContainer';
 import SectionTitle from '../../global/sectionTitle';
 
 const LogoGrid = styled.div`
-  grid-template-columns: repeat(auto-fit, 150px);
+  grid-template-columns: repeat(auto-fit, minmax(10%, 150px));
   justify-content: center;
   & > div {
     /* background: black; */
