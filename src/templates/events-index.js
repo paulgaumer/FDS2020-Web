@@ -3,6 +3,7 @@ import Layout from '../components/layout/layout';
 import SectionWrapper from '../components/layout/sectionWrapper';
 import TopSection from '../components/sections/eventsIndex/topSection';
 import FilteringSection from '../components/sections/eventsIndex/filteringSection';
+import AboutFeatured from '../components/sections/eventsIndex/featuredAboutSection';
 
 const EventsIndex = ({ data }) => {
   const events = data.allSanityEvent.edges.map(({ node }) => node);
@@ -13,6 +14,7 @@ const EventsIndex = ({ data }) => {
       <SectionWrapper>
         <TopSection villages={data.villages.edges} department={department} />
         <FilteringSection events={events} department={department} />
+        <AboutFeatured />
       </SectionWrapper>
     </Layout>
   );
