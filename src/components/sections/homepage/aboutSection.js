@@ -8,8 +8,9 @@ import SectionTitle from '../../global/sectionTitle';
 const About = () => {
   return (
     <SectionWrapper>
+      <div id="aboutSection" style={{ position: 'relative', top: '-50px' }} />
       <SectionContainer customClasses="py-28">
-        <div className="flex flex-col items-center ">
+        <div className="flex flex-col items-center">
           <SectionTitle text="Qu'est ce que la Fête de la Science ?" />
           <div className="pb-10">
             <div className="flex flex-col items-center space-y-8 md:flex-row md:items-start md:space-y-0 md:space-x-8">

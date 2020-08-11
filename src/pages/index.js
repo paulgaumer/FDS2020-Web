@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import Layout from '../components/layout/layout';
 import SEO from '../components/layout/seo';
 import Header from '../components/header/header';
@@ -9,23 +9,12 @@ import RegionMapSection from '../components/sections/homepage/regionMapSection';
 import InstagramSection from '../components/sections/homepage/instagramSection';
 import { hasWindow } from '../utils/hasWindow';
 
-const HeaderContainer = styled.div`
-  &.headerVisibleTransition {
-    margin-top: 0px;
-    transition: all 0.3s ease-in;
-  }
-  &.headerHiddenTransition {
-    margin-top: -100px;
-    transition: all 0.3s ease-out;
-  }
-`;
-
 const IndexPage = () => {
   const [showHeader, setShowHeader] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [lastYPos, setLastYPos] = useState(0);
 
   const handleScroll = (e) => {
-    setScrollPosition(window.scrollY);
+    setLastYPos(window.scrollY);
   };
 
   useEffect(() => {
@@ -39,19 +28,23 @@ const IndexPage = () => {
   }, []);
 
   useEffect(() => {
-    scrollPosition >= 305 ? setShowHeader(true) : setShowHeader(false);
-  }, [scrollPosition]);
+    if (lastYPos >= 1414) {
+      setShowHeader(true);
+    } else if (lastYPos <= 300) {
+      setShowHeader(false);
+    }
+  }, [lastYPos]);
 
   return (
     <Layout headerHidden={true}>
-      <HeaderContainer
-        className={`${
-          showHeader ? 'headerVisibleTransition' : 'headerHiddenTransition'
-        }`}
+      <SEO title="Home" />
+      <motion.div
+        animate={{ opacity: showHeader ? 1 : 0 }}
+        initial={{ opacity: showHeader ? 0 : 1 }}
+        transition={{}}
       >
         <Header />
-      </HeaderContainer>
-      <SEO title="Home" />
+      </motion.div>
       <HeroSection />
       <AboutSection />
       <RegionMapSection />
