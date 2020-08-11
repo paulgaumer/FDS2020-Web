@@ -251,12 +251,12 @@ const HeroSection = () => {
                   </p>
                 </div>
                 <span className="inline-flex rounded-md shadow-sm">
-                  <Link
-                    to="/"
-                    className="inline-flex items-center px-6 py-6 text-3xl font-medium font-bold leading-6 text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-md bg-primary hover:bg-primary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                  <a
+                    href="#departmentsMap"
+                    className="inline-flex items-center px-6 py-6 text-3xl font-bold leading-6 text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-md bg-primary hover:bg-primary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
                   >
                     découvrir les évenements
-                  </Link>
+                  </a>
                 </span>
               </div>
             </ContentCenter>
@@ -266,7 +266,10 @@ const HeroSection = () => {
 
         <div className="z-40 grid grid-cols-12">
           <div className="flex items-center justify-center col-start-6 col-end-8">
-            <div className="px-1 pt-4 pb-2 border-2 border-white rounded-full">
+            <a
+              href="#aboutSection"
+              className="px-1 pt-4 pb-2 border-2 border-white rounded-full"
+            >
               <svg
                 className="w-6 h-6 text-white animate-bounce "
                 fill="none"
@@ -278,7 +281,7 @@ const HeroSection = () => {
               >
                 <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
               </svg>
-            </div>
+            </a>
           </div>
           <Timer className="relative col-start-10 col-end-13 px-12 py-5 text-white uppercase">
             <Countdown date={'2020-10-02T00:00:00'} renderer={renderer} />
