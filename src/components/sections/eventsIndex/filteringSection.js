@@ -6,6 +6,7 @@ import Filters from './filters';
 import EventsMap from './eventsMap';
 import { multiFilter } from '../../../utils/multiFilter';
 import { FaSearch } from 'react-icons/fa';
+import Pagination from './pagination';
 
 const OuterGrid = styled.div`
   grid-template-columns: minmax(150px, 25%) 1fr;
@@ -52,6 +53,27 @@ const ListSection = ({ events, department }) => {
     });
   }, [themeFilters, formatFilters, publicFilter, datesFilter]);
 
+  // *******************************
+  // PAGINATION LOGIC
+
+  const [eventsToPaginate, setEventsToPaginate] = useState(selectedEvents);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [eventsPerPage] = useState(6);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const indexOfLastEvent = currentPage * eventsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  const displayedEvents = eventsToPaginate.slice(
+    indexOfFirstEvent,
+    indexOfLastEvent
+  );
+
+  useEffect(() => {
+    setEventsToPaginate(selectedEvents);
+  }, [selectedEvents]);
+  // *******************************
+
   return (
     <SectionContainer customClasses="pt-16 pb-20">
       <div className="mb-16">
@@ -71,7 +93,7 @@ const ListSection = ({ events, department }) => {
           className="grid grid-cols-1 gap-10 lg:grid-cols-2"
         >
           {selectedEvents.length > 0 &&
-            selectedEvents.map((event) => {
+            displayedEvents.map((event, i) => {
               return (
                 <div className="col-span-1" key={event.id}>
                   <EventCard event={event} department={department} />
@@ -86,6 +108,14 @@ const ListSection = ({ events, department }) => {
               <p>Aucun évenement ne correspond à votre recherche.</p>
             </div>
           )}
+          <div data-name="pagination" className="col-span-2">
+            <Pagination
+              itemsPerPage={eventsPerPage}
+              totalItems={eventsToPaginate.length}
+              paginate={paginate}
+              currentPage={currentPage}
+            />
+          </div>
         </InnerEventGrid>
       </OuterGrid>
     </SectionContainer>
