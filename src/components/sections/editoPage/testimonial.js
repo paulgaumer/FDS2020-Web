@@ -1,31 +1,7 @@
 import React from 'react';
 import PortableText from '@sanity/block-content-to-react';
+import { serializers } from '../../../utils/portableTextSerializers';
 import CustomGatsbyImage from '../../global/customGatsbyImage';
-
-const serializers = {
-  types: {
-    block(props) {
-      switch (props.node.style) {
-        default:
-          return <p className="mb-6 text-lg leading-9">{props.children}</p>;
-      }
-    },
-  },
-  marks: {
-    link: ({ children, mark }) => (
-      <a
-        href={mark.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="border-b-2 border-primary hover:text-primary"
-      >
-        {children}
-      </a>
-    ),
-    strong: ({ children }) => <span className="font-bold">{children}</span>,
-    em: ({ children }) => <span className="italic">{children}</span>,
-  },
-};
 
 const Testimonial = ({ ambassador, reverse = false }) => {
   const { name, role, image, _rawTestimony } = ambassador;

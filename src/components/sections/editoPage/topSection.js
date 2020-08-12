@@ -1,4 +1,6 @@
 import React from 'react';
+import PortableText from '@sanity/block-content-to-react';
+import { serializers } from '../../../utils/portableTextSerializers';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 import SectionTitle from '../../global/sectionTitle';
@@ -9,8 +11,8 @@ const TopSection = ({ topTitle, topContent, ambassadors }) => {
     <SectionWrapper>
       <SectionContainer customClasses="py-20">
         <SectionTitle text={topTitle} />
-        <div>
-          <p className="leading-7 tracking-wide text-gray-700">{topContent}</p>
+        <div className="leading-7 tracking-wide text-gray-700">
+          <PortableText blocks={topContent} serializers={serializers} />
         </div>
         <div
           data-name="testimonials"

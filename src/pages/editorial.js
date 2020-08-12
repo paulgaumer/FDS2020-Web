@@ -9,16 +9,16 @@ const editorial = ({ data }) => {
   const ambassadors = data.allSanityAmbassador.edges.map(({ node }) => node);
   const {
     topTitle,
-    topContent,
     partnersTitle,
     contactContent,
   } = data.sanityPage.pageContent;
+  const { _rawPageContent } = data.sanityPage;
 
   return (
     <Layout>
       <TopSection
         topTitle={topTitle}
-        topContent={topContent}
+        topContent={_rawPageContent.topContent}
         ambassadors={ambassadors}
       />
       <PartnersSection logos={logos} partnersTitle={partnersTitle} />
@@ -48,9 +48,9 @@ export const query = graphql`
       }
     }
     sanityPage(pageName: { eq: "Editorial" }) {
+      _rawPageContent
       pageContent {
         topTitle
-        topContent
         partnersTitle
         contactContent
       }
