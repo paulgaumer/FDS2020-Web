@@ -62,7 +62,7 @@ const HeroSection = ({ event }) => {
       <SectionContainer customClasses="pt-20 pb-12">
         <HeroCard className="max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow">
           <div data-name="image" className="relative bg-red-200">
-            <CustomGatsbyImage image={image} />
+            <CustomGatsbyImage image={image} customClasses="h-full" />
             {featured && (
               <FeaturedLabel customClasses="absolute top-5 left-10 text-base" />
             )}

@@ -7,7 +7,7 @@ import VillageCard from './villageCard';
 const TopSection = ({ villages, department }) => {
   return (
     <SectionContainer customClasses="pt-20">
-      <SectionTitle text={`Programme du ${department}`} />
+      <SectionTitle text={`Programme en ${department}`} />
       <div className="text-gray-500">
         <h3 className="inline-flex items-center space-x-2 text-2xl font-bold tracking-tight text-gray-700 uppercase border-b-4 border-secondary">
           <span>
@@ -32,7 +32,11 @@ const TopSection = ({ villages, department }) => {
               );
             })}
         </div>
-        <hr className="mt-16 text-center text-gray-500 border-t-2 mx-36" />
+        <hr
+          className={`${
+            villages.length >= 1 ? 'mt-16' : ''
+          } text-center text-gray-500 border-t-2 mx-36`}
+        />
       </div>
     </SectionContainer>
   );

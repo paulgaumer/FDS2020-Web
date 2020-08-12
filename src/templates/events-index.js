@@ -17,7 +17,7 @@ const EventsIndex = ({ data }) => {
         <TopSection villages={data.villages.edges} department={department} />
         <FilteringSection events={events} department={department} />
         <AboutFeatured />
-        <LocalPartners logos={logos} />
+        {logos.length > 0 && <LocalPartners logos={logos} />}
       </SectionWrapper>
     </Layout>
   );
