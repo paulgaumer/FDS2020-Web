@@ -4,7 +4,7 @@ import SectionContainer from '../../layout/sectionContainer';
 import SectionTitle from '../../global/sectionTitle';
 import Testimonial from './testimonial';
 
-const TopSection = ({ topTitle, topContent }) => {
+const TopSection = ({ topTitle, topContent, ambassadors }) => {
   return (
     <SectionWrapper>
       <SectionContainer customClasses="py-20">
@@ -16,8 +16,15 @@ const TopSection = ({ topTitle, topContent }) => {
           data-name="testimonials"
           className="flex flex-col py-20 space-y-24"
         >
-          <Testimonial />
-          <Testimonial reverse={true} />
+          {ambassadors.map((ambassador, i) => {
+            return (
+              <Testimonial
+                ambassador={ambassador}
+                reverse={i % 2 === 0}
+                key={ambassador.id}
+              />
+            );
+          })}
         </div>
       </SectionContainer>
     </SectionWrapper>

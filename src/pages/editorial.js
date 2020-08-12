@@ -6,6 +6,7 @@ import ContactSection from '../components/sections/editoPage/contactSection';
 
 const editorial = ({ data }) => {
   const logos = data.allSanityLogo.edges.map(({ node }) => node);
+  const ambassadors = data.allSanityAmbassador.edges.map(({ node }) => node);
   const {
     topTitle,
     topContent,
@@ -15,7 +16,11 @@ const editorial = ({ data }) => {
 
   return (
     <Layout>
-      <TopSection topTitle={topTitle} topContent={topContent} />
+      <TopSection
+        topTitle={topTitle}
+        topContent={topContent}
+        ambassadors={ambassadors}
+      />
       <PartnersSection logos={logos} partnersTitle={partnersTitle} />
       <ContactSection contactContent={contactContent} />
     </Layout>
@@ -25,7 +30,7 @@ const editorial = ({ data }) => {
 export default editorial;
 
 export const query = graphql`
-  query AllLogos {
+  query EditoPage {
     allSanityLogo {
       edges {
         node {
@@ -48,6 +53,28 @@ export const query = graphql`
         topContent
         partnersTitle
         contactContent
+      }
+    }
+    allSanityAmbassador {
+      edges {
+        node {
+          id
+          name
+          role
+          _rawTestimony
+          image {
+            asset {
+              fluid(maxWidth: 500) {
+                ...GatsbySanityImageFluid
+              }
+              url
+            }
+            hotspot {
+              x
+              y
+            }
+          }
+        }
       }
     }
   }

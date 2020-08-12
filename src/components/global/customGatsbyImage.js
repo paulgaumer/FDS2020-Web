@@ -13,7 +13,7 @@ const CustomGatsbyImage = ({ image, alt, customClasses }) => {
     <Img
       fluid={image.asset.fluid}
       alt={alt || image.alt}
-      className={`object-cover h-full ${customClasses}`}
+      className={`object-cover ${customClasses}`}
       imgStyle={style}
     />
   );

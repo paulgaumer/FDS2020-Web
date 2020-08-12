@@ -1,6 +1,35 @@
 import React from 'react';
+import PortableText from '@sanity/block-content-to-react';
+import CustomGatsbyImage from '../../global/customGatsbyImage';
 
-const Testimonial = ({ reverse = false }) => {
+const serializers = {
+  types: {
+    block(props) {
+      switch (props.node.style) {
+        default:
+          return <p className="mb-6 text-lg leading-9">{props.children}</p>;
+      }
+    },
+  },
+  marks: {
+    link: ({ children, mark }) => (
+      <a
+        href={mark.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="border-b-2 border-primary hover:text-primary"
+      >
+        {children}
+      </a>
+    ),
+    strong: ({ children }) => <span className="font-bold">{children}</span>,
+    em: ({ children }) => <span className="italic">{children}</span>,
+  },
+};
+
+const Testimonial = ({ ambassador, reverse = false }) => {
+  const { name, role, image, _rawTestimony } = ambassador;
+
   return (
     <div
       data-name="testimonial"
@@ -10,10 +39,10 @@ const Testimonial = ({ reverse = false }) => {
     >
       <div className="relative flex-shrink-0 hidden lg:block">
         <div className="absolute z-0 w-full h-full right-5 bg-primary top-5" />
-        <img
-          src="https://placeimg.com/300/400/people"
-          alt="ambassadeur"
-          className="relative z-10 border border-black"
+        <CustomGatsbyImage
+          image={image}
+          alt={name}
+          customClasses={`relative z-10 border border-black w-64`}
         />
       </div>
 
@@ -32,32 +61,23 @@ const Testimonial = ({ reverse = false }) => {
           </svg>
           <blockquote className="relative">
             <div className="text-lg leading-9 text-gray-700">
-              <p>
-                Pharetra id facilisis nibh litora venenatis quam vivamus,
-                fringilla iaculis quis elementum pretium ac scelerisque,
-                sagittis elit sociis ornare vitae magna. Sollicitudin nam
-                iaculis aliquet tellus volutpat sodales, justo quis tortor odio
-                pellentesque, molestie consequat diam penatibus curabitur. Neque
-                vivamus praesent convallis accumsan pretium ligula lectus orci,
-                nam phasellus quam mollis posuere mus litora sem, magna facilisi
-                facilisis vulputate mi integer eros.
-              </p>
+              <PortableText blocks={_rawTestimony} serializers={serializers} />
             </div>
             <footer className="mt-8">
               <div className="flex">
                 <div className="flex-shrink-0 lg:hidden">
-                  <img
-                    className="w-12 h-12 rounded-full"
-                    src="https://placeimg.com/300/400/people"
-                    alt="ambassadeur"
+                  <CustomGatsbyImage
+                    image={image}
+                    alt={name}
+                    customClasses="w-12 h12 rounded-full"
                   />
                 </div>
                 <div className="ml-4 lg:ml-0">
                   <div className="text-base leading-6 text-gray-500">
-                    Jacob Jones
+                    {name}
                   </div>
                   <div className="text-base leading-6 text-gray-500">
-                    Président de la Région Pays de la Loire
+                    {role}
                   </div>
                 </div>
               </div>

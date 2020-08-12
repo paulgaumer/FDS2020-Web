@@ -16,7 +16,7 @@ const VillageCard = ({ village, department }) => {
           style={{ height: '160px' }}
           className="relative "
         >
-          <CustomGatsbyImage image={image} />
+          <CustomGatsbyImage image={image} customClasses="h-full" />
           <div
             data-name="title"
             className="absolute z-10 px-6 py-2 font-bold text-gray-700 bg-primary -left-4"
