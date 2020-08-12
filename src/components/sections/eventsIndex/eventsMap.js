@@ -2,14 +2,14 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { hasWindow } from '../../../utils/hasWindow';
-import { getLatLngCenter } from '../../../utils/getMapCenter';
+// import { getLatLngCenter } from '../../../utils/getMapCenter';
 
-const getCenter = (events) => {
-  const allCoordinates = events.map((e) => {
-    return { lat: e.map.lat, lng: e.map.lng };
-  });
-  return getLatLngCenter(allCoordinates);
-};
+// const getCenter = (events) => {
+//   const allCoordinates = events.map((e) => {
+//     return { lat: e.map.lat, lng: e.map.lng };
+//   });
+//   return getLatLngCenter(allCoordinates);
+// };
 
 const EventsMap = ({ selectedEvents }) => {
   // this ref holds the map DOM node so that we can pass it into Mapbox GL
@@ -18,7 +18,7 @@ const EventsMap = ({ selectedEvents }) => {
   const [mapInstance, setMapInstance] = useState();
   const [windowLoaded, setWindowLoaded] = useState(false);
   const [allMarkers, setAllMarkers] = useState([]);
-  const [allCenter] = useState(getCenter(selectedEvents));
+  // const [allCenter] = useState(getCenter(selectedEvents));
 
   const clearMarkers = (markers) => {
     markers.map((m) => m.remove());
@@ -34,8 +34,9 @@ const EventsMap = ({ selectedEvents }) => {
   // Init map instance when window is loaded
   useEffect(() => {
     if (windowLoaded && !mapInstance) {
-      let mapCenter = [allCenter.lng, allCenter.lat];
-      let mapZoom = 8;
+      // let mapCenter = [allCenter.lng, allCenter.lat];
+      let mapCenter = [-0.07553, 47.69815];
+      let mapZoom = selectedEvents > 0 ? 8 : 7;
 
       // Token must be set before constructing mapmap.
       mapboxgl.accessToken = mapboxToken;
