@@ -22,7 +22,7 @@ const TopSection = ({ topTitle, topContent, ambassadors }) => {
             return (
               <Testimonial
                 ambassador={ambassador}
-                reverse={i % 2 === 0}
+                reverse={i % 2 !== 0}
                 key={ambassador.id}
               />
             );
