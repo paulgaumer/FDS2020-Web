@@ -155,10 +155,10 @@ const Header = () => {
                 Multimedia
               </Link>
               <Link
-                to="/Contacts"
+                to="/contact"
                 className="text-base font-medium leading-6 text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
               >
-                Contacts
+                Contact
               </Link>
             </nav>
             <div className="items-center justify-end hidden space-x-8 md:flex md:flex-1 lg:w-0">

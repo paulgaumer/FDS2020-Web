@@ -18,15 +18,21 @@ const Layout = ({ children, headerHidden = false }) => {
   `);
 
   return (
-    <>
+    <div className="flex flex-col h-screen">
       <div className={`${headerHidden ? 'hidden' : 'block'}`}>
         <Header siteTitle={data.site.siteMetadata.title} />
       </div>
-      <div className={`${headerHidden ? '' : 'pt-24'}`}>
+      <div
+        className={`${
+          headerHidden ? '' : 'pt-24'
+        } flex-grow bg-sectionBackground`}
+      >
         <main>{children}</main>
       </div>
-      <Footer />
-    </>
+      <div>
+        <Footer />
+      </div>
+    </div>
   );
 };
 
