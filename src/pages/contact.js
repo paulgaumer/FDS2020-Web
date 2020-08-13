@@ -11,10 +11,10 @@ const ContactPage = ({ data }) => {
   return (
     <Layout>
       <SectionWrapper>
-        <SectionContainer customClasses="py-20">
+        <SectionContainer customClasses="pt-20 pb-40">
           <SectionTitle text="Contacter nos antennes départementales" />
 
-          <div className="flex flex-col space-y-24 md:space-y-0 md:max-w-none md:grid md:grid-cols-3 md:gap-8 md:row-gap-24">
+          <div className="flex flex-col space-y-24 md:space-y-0 md:max-w-none md:grid md:grid-cols-3 md:gap-8 md:row-gap-36">
             {departments.map((department) => {
               return (
                 <ContactSection

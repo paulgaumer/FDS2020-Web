@@ -5,22 +5,21 @@ const ContactSection = ({ department }) => {
   const contacts = department.edges.map(({ node }) => node);
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <h2 className="text-2xl font-extrabold leading-8 text-gray-700 uppercase sm:text-3xl sm:leading-9">
         {department.fieldValue}
       </h2>
-
       {contacts.map((contact) => {
         return (
-          <div className="mt-12">
-            <div className="mb-6">
+          <div className="flex flex-col items-center mt-16">
+            <div className="flex items-center mb-6 h-28">
               <Img
                 fluid={contact.logo.asset.fluid}
                 className="rounded-lg w-28"
               />
             </div>
 
-            <div className="text-xl leading-6 text-gray-500">
+            <div className="text-xl font-bold leading-6 text-gray-500">
               <h3>{contact.name}</h3>
             </div>
 
