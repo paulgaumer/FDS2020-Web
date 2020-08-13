@@ -43,7 +43,8 @@ const MapSection = ({ address, mapGps }) => {
             <span className="text-2xl text-primary">
               <FaMapMarkerAlt />
             </span>
-            <span className="pt-1 font-bold text-gray-500">{address}</span>
+            {/* <span className="pt-1 font-bold text-gray-500">{address}</span> */}
+            <span className="pt-1 font-bold text-gray-500">ADRESSE</span>
           </p>
           <div className="" style={{ height: '400px' }}>
             <div ref={mapNode} style={{ width: '100%', height: '100%' }} />

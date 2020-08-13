@@ -37,7 +37,6 @@ export const query = graphql`
       department {
         name
       }
-      address
       featured
       description
       bookingRequired
