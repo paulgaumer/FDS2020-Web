@@ -75,7 +75,7 @@ const EventsMap = ({ selectedEvents }) => {
         const bounds = new mapboxgl.LngLatBounds();
         markers.map((m) => {
           const coord = m.getLngLat();
-          bounds.extend(coord);
+          return bounds.extend(coord);
         });
         mapInstance.fitBounds(bounds, { padding: 80 });
       }

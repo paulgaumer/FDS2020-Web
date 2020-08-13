@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 const VectorMap = ({ background, backgroundHover, width }) => {
-  const textColor = `text-${background}`;
-  const hoverColor = `hover:text-${backgroundHover}`;
-  const backgroundColor = `${textColor} ${hoverColor}`;
+  const backgroundColor = `text-map hover:text-mapLink`;
 
   return (
     <svg

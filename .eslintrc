@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "exhaustive-deps": "off",
+    "label-has-for": "off"
+  }
+}
