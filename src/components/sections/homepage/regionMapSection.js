@@ -19,7 +19,7 @@ class RegionMap extends React.Component {
     this.vantaEffect = NET({
       el: this.vantaRef.current,
       THREE: THREE,
-      color: '#FF367F',
+      color: '#13F0BA',
       backgroundColor: '#23153D',
       points: 14,
       maxDistance: 20,
