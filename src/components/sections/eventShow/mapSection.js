@@ -6,7 +6,7 @@ import { hasWindow } from '../../../utils/hasWindow';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 
-const MapSection = ({ address, mapGps }) => {
+const MapSection = ({ mapGps }) => {
   // this ref holds the map DOM node so that we can pass it into Mapbox GL
   const mapNode = useRef(null);
   const mapboxToken = process.env.GATSBY_MAPBOX_API_KEY;
@@ -43,8 +43,9 @@ const MapSection = ({ address, mapGps }) => {
             <span className="text-2xl text-primary">
               <FaMapMarkerAlt />
             </span>
-            {/* <span className="pt-1 font-bold text-gray-500">{address}</span> */}
-            <span className="pt-1 font-bold text-gray-500">ADRESSE</span>
+            <span className="pt-1 font-bold text-gray-500">
+              {mapGps.address}
+            </span>
           </p>
           <div className="" style={{ height: '400px' }}>
             <div ref={mapNode} style={{ width: '100%', height: '100%' }} />

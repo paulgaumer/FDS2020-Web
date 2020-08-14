@@ -54,6 +54,7 @@ const HeroSection = ({ event }) => {
     startDate,
     image,
     featured,
+    map,
   } = event;
 
   return (
@@ -91,8 +92,7 @@ const HeroSection = ({ event }) => {
                 <span className="text-lg">
                   <FaMapMarkerAlt />
                 </span>
-                {/* <span>{address}</span> */}
-                <span>ADRESSE</span>
+                <span>{map.address}</span>
               </p>
             </div>
 

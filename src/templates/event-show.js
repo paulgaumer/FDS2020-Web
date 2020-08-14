@@ -23,7 +23,7 @@ const EventShow = ({ data }) => {
           bookingEmail={event.bookingEmail}
         />
       )}
-      <MapSection address={event.address} mapGps={event.map} />
+      <MapSection mapGps={event.map} />
     </Layout>
   );
 };
@@ -65,6 +65,7 @@ export const query = graphql`
         alt
       }
       map {
+        address
         lat
         lng
       }
