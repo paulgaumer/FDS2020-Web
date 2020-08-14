@@ -94,7 +94,7 @@ const HeroSection = () => {
             {/* NAVIGATION MENU START */}
             <div data-name="top-menu" className="flex-grow mt-10">
               <div className="flex justify-center">
-                <nav className="space-x-10 md:flex">
+                <nav className="items-center space-x-10 md:flex">
                   <Link
                     to="/"
                     className="text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900"
@@ -214,6 +214,12 @@ const HeroSection = () => {
                     className="text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900"
                   >
                     Contacts
+                  </Link>
+                  <Link
+                    to="/mesures-covid"
+                    className="px-3 py-2 text-base font-medium leading-4 text-white transition duration-150 ease-in-out border border-white rounded hover:bg-white hover:text-gray-700 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-white"
+                  >
+                    Info Covid
                   </Link>
                 </nav>
               </div>

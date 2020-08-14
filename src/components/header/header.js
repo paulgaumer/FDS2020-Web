@@ -39,7 +39,7 @@ const Header = () => {
                 </svg>
               </button>
             </div>
-            <nav className="hidden space-x-10 md:flex">
+            <nav className="items-center hidden space-x-10 md:flex">
               <Link
                 to="/"
                 className="text-base font-medium leading-6 text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
@@ -160,12 +160,18 @@ const Header = () => {
               >
                 Contact
               </Link>
+              <Link
+                to="/mesures-covid"
+                className="px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out border border-transparent rounded bg-mapBackground hover:bg-blue-900 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-mapBackground"
+              >
+                Info Covid
+              </Link>
             </nav>
             <div className="items-center justify-end hidden space-x-8 md:flex md:flex-1 lg:w-0">
               <span className="inline-flex rounded-md shadow-sm">
                 <Link
                   to="/scolaires"
-                  className="inline-flex items-center justify-center px-4 py-2 space-x-1 text-sm font-medium font-bold leading-6 text-gray-700 uppercase whitespace-no-wrap transition duration-150 ease-in-out border border-transparent rounded-md bg-edu hover:bg-eduLight focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                  className="inline-flex items-center justify-center px-4 py-2 space-x-1 text-sm font-bold leading-6 text-gray-700 uppercase whitespace-no-wrap transition duration-150 ease-in-out border border-transparent rounded-md bg-edu hover:bg-eduLight focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
                 >
                   <svg
                     className="w-7 h-7"
