@@ -31,7 +31,10 @@ const MapSection = ({ mapGps }) => {
         .setLngLat([mapGps.lng, mapGps.lat])
         .addTo(map);
 
-      map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+      map.addControl(
+        new mapboxgl.NavigationControl({ showCompass: false }),
+        'top-right'
+      );
     }
   }, [mapGps.lng, mapGps.lat, mapboxToken]);
 

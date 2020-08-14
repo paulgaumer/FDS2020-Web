@@ -37,7 +37,12 @@ export const query = graphql`
           }
           featured
           village
-          description
+          _rawDescription
+          description {
+            children {
+              text
+            }
+          }
           theme {
             id
             name
@@ -104,7 +109,12 @@ export const query = graphql`
           id
           title
           featured
-          description
+          _rawDescription
+          description {
+            children {
+              text
+            }
+          }
           slug {
             current
           }

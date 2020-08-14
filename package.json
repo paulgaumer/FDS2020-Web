@@ -25,6 +25,7 @@
     "gatsby-source-filesystem": "^2.3.14",
     "gatsby-source-sanity": "^6.0.3",
     "gatsby-transformer-sharp": "^2.5.7",
+    "get-youtube-id": "^1.0.1",
     "mapbox-gl": "^1.11.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",

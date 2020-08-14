@@ -13,7 +13,7 @@ const EventShow = ({ data }) => {
   return (
     <Layout>
       <HeroSection event={event} />
-      <DescriptionSection description={event.description} />
+      <DescriptionSection description={event._rawDescription} />
       {event.projectOwners.length > 0 && (
         <OrganizerSection organizer={event.projectOwners[0]} />
       )}
@@ -38,7 +38,7 @@ export const query = graphql`
         name
       }
       featured
-      description
+      _rawDescription
       bookingRequired
       bookingPhone
       bookingEmail

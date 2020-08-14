@@ -4,6 +4,8 @@ import InfoCard from './infoCard';
 import { FaExclamationTriangle } from 'react-icons/fa';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
+import PortableText from '@sanity/block-content-to-react';
+import { serializers } from '../../../utils/portableTextSerializers';
 
 const CovidButton = styled.div`
   button {
@@ -20,13 +22,15 @@ const DescriptionSection = ({ description }) => {
     <SectionWrapper>
       <SectionContainer customClasses="pb-12">
         <InfoCard title="description" customClasses="">
-          <div className="text-lg leading-relaxed">{description}</div>
+          <div className="text-lg leading-relaxed">
+            <PortableText blocks={description} serializers={serializers} />
+          </div>
           <a href="/mesures-covid" target="_blank" rel="noreferrer">
             <CovidButton className="mt-10">
               <span class="inline-flex rounded-md shadow-sm">
                 <button
                   type="button"
-                  class="uppercase inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs leading-4 font-medium rounded text-white transition ease-in-out duration-150 text-white flex space-x-2 items-center"
+                  class="uppercase inline-flex px-2.5 py-1.5 border border-transparent text-xs leading-4 font-medium rounded transition ease-in-out duration-150 text-white space-x-2 items-center"
                 >
                   <span className="text-sm">
                     <FaExclamationTriangle />

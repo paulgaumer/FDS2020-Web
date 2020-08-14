@@ -1,13 +1,82 @@
 import React from 'react';
+import urlBuilder from '@sanity/image-url';
+import getYoutubeId from 'get-youtube-id';
+import styled from 'styled-components';
+
+// Custom component styled to spread full width while retaining a correct height
+const YoutubeContainer = styled.div`
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+
+  & > .yVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+const urlFor = (source) =>
+  urlBuilder({ projectId: 'uql6kgt5', dataset: 'production' }).image(source);
 
 // Used to transcribe and style Sanity's Portable Text format
 export const serializers = {
   types: {
     block(props) {
       switch (props.node.style) {
+        case 'h2':
+          return (
+            <h2 className="mt-20 mb-10 text-3xl text-gray-700">
+              {props.children}
+            </h2>
+          );
+        case 'h3':
+          return (
+            <h3 className="my-10 text-2xl text-gray-700">{props.children}</h3>
+          );
+        case 'h4':
+          return (
+            <h4 className="mt-8 mb-6 text-xl text-gray-700">
+              {props.children}
+            </h4>
+          );
         default:
-          return <p className="mb-6">{props.children}</p>;
+          return (
+            <p className="mb-6 text-lg leading-relaxed tracking-wide">
+              {props.children}
+            </p>
+          );
       }
+    },
+    youtube(props) {
+      const id = getYoutubeId(props.node.url);
+      const url = `https://www.youtube.com/embed/${id}`;
+      return (
+        <YoutubeContainer className="flex justify-center my-20">
+          <iframe
+            title="Youtube Preview"
+            className="yVideo"
+            src={url}
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;"
+            allowFullScreen
+          />
+        </YoutubeContainer>
+      );
+    },
+    image(props) {
+      console.log(props.node.asset._ref);
+      return (
+        <figure className="flex justify-center">
+          <img
+            src={urlFor(props.node.asset).width(300).url()}
+            alt="blog"
+            className="rounded"
+          />
+        </figure>
+      );
     },
   },
   marks: {
@@ -16,12 +85,31 @@ export const serializers = {
         href={mark.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="border-b-2 border-primary hover:text-primary"
+        className="border-b-4 border-primary hover:text-primary"
       >
         {children}
       </a>
     ),
     strong: ({ children }) => <span className="font-bold">{children}</span>,
     em: ({ children }) => <span className="italic">{children}</span>,
+  },
+  listItem: (props) => {
+    switch (props.node.listItem) {
+      case 'bullet': {
+        return (
+          <li className="text-lg list-disc list-inside">{props.children}</li>
+        );
+      }
+      case 'number': {
+        return (
+          <li className="text-lg list-decimal list-inside">{props.children}</li>
+        );
+      }
+      default: {
+        return (
+          <li className="text-lg list-disc list-inside">{props.children}</li>
+        );
+      }
+    }
   },
 };

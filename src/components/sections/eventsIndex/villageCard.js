@@ -26,7 +26,7 @@ const VillageCard = ({ village, department }) => {
           </div>
         </div>
         <div data-name="content" className="px-4 pt-16 pb-6 bg-white">
-          <p>{excerpt(description)}</p>
+          <p>{excerpt(description[0].children[0].text)}</p>
           <div className="pt-6 text-sm">
             <span></span>
             <span>

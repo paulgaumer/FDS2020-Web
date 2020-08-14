@@ -37,7 +37,7 @@ const EventCard = ({ event, department }) => {
             - {theme[0].name}
           </p>
           {/* <p>{audience.name}</p> */}
-          <p className="pt-6">{excerpt(description)}</p>
+          <p className="pt-6">{excerpt(description[0].children[0].text)}</p>
           <div className="pt-6 text-sm">
             <span></span>
             <span>

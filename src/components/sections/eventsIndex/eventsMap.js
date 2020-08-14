@@ -47,7 +47,10 @@ const EventsMap = ({ selectedEvents }) => {
         center: mapCenter,
         zoom: mapZoom,
       });
-      map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+      map.addControl(
+        new mapboxgl.NavigationControl({ showCompass: false }),
+        'top-right'
+      );
 
       setMapInstance(map);
     }
