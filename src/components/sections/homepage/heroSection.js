@@ -216,7 +216,7 @@ const HeroSection = () => {
                     Contacts
                   </Link>
                   <Link
-                    to="/mesures-covid"
+                    to="/covid"
                     className="px-3 py-2 text-base font-medium leading-4 text-white transition duration-150 ease-in-out border border-white rounded hover:bg-white hover:text-gray-700 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-white"
                   >
                     Info Covid

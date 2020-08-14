@@ -11,7 +11,7 @@ const TopSection = ({ topTitle, topContent, ambassadors }) => {
     <SectionWrapper>
       <SectionContainer customClasses="py-20">
         <SectionTitle text={topTitle} />
-        <div className="leading-7 tracking-wide text-gray-700">
+        <div className="leading-7 tracking-wide text-gray-500">
           <PortableText blocks={topContent} serializers={serializers} />
         </div>
         <div

@@ -25,7 +25,7 @@ const DescriptionSection = ({ description }) => {
           <div className="text-lg leading-relaxed">
             <PortableText blocks={description} serializers={serializers} />
           </div>
-          <a href="/mesures-covid" target="_blank" rel="noreferrer">
+          <a href="/covid" target="_blank" rel="noreferrer">
             <CovidButton className="mt-10">
               <span class="inline-flex rounded-md shadow-sm">
                 <button

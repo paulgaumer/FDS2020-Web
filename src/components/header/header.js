@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { Link } from 'gatsby';
 import Transition from '../global/transition';
 import logo from '../../images/s_bleu.png';
+
+const CovidButton = styled.span`
+  background-color: rgba(42, 57, 81, 0.9);
+  &:active,
+  &:hover {
+    background-color: rgba(42, 57, 81, 1);
+  }
+`;
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -160,11 +169,10 @@ const Header = () => {
               >
                 Contact
               </Link>
-              <Link
-                to="/mesures-covid"
-                className="px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out border border-transparent rounded bg-mapBackground hover:bg-blue-900 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-mapBackground"
-              >
-                Info Covid
+              <Link to="/covid">
+                <CovidButton className="px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out border border-transparent rounded bg-mapBackground hover:bg-blue-900 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-mapBackground">
+                  Info Covid
+                </CovidButton>
               </Link>
             </nav>
             <div className="items-center justify-end hidden space-x-8 md:flex md:flex-1 lg:w-0">
