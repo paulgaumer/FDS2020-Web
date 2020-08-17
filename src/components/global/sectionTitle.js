@@ -15,7 +15,11 @@ const Title = styled.div`
   h1:after {
     content: '';
     border-top: 3px solid;
+    /* width: 200px; */
   }
+  /* h1:before {
+    justify-self: end;
+  } */
 `;
 
 const SectionTitle = ({ text, color = '#333' }) => {
