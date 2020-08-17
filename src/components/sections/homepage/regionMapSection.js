@@ -87,10 +87,9 @@ class RegionMap extends React.Component {
           <div id="links-carousel">
             <MapCarousel />
           </div>
-
-          {/* BACKGROUND FILTER */}
-          {/* ****************** */}
         </SectionContainer>
+        {/* BACKGROUND FILTER */}
+        {/* ****************** */}
         <div
           className="absolute inset-0 z-10"
           style={{ background: '#000D30', opacity: 0.2 }}

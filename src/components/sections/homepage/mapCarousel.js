@@ -31,10 +31,10 @@ const CarouselContainer = styled.div`
       border-left: 8px solid #23153d;
     }
     .slide {
-      ${tw`bg-white text-black h-24`}
+      ${tw`h-24 text-black bg-white`}
     }
     .dot {
-      ${tw`bg-mapBackground opacity-50 shadow-none w-3 h-3`}
+      ${tw`w-3 h-3 shadow-none opacity-50 bg-mapBackground`}
     }
     .dot.selected {
       ${tw`opacity-100`}
@@ -44,10 +44,13 @@ const CarouselContainer = styled.div`
 
 const MapCarousel = () => {
   return (
-    <CarouselContainer data-styled="carousel-container">
-      <Carousel autoPlay showStatus={false}>
-        <div className="myCarousel-item h-20">
-          <div className="item-text-content flex space-x-1 justify-center items-center">
+    <CarouselContainer
+      data-styled="carousel-container"
+      className="max-w-3xl mx-auto"
+    >
+      <Carousel autoPlay infiniteLoop interval={4000} showStatus={false}>
+        <div className="h-20 myCarousel-item">
+          <div className="flex items-center justify-center space-x-1 item-text-content">
             <svg
               className="w-7 h-7"
               viewBox="0 0 31 31"
@@ -74,8 +77,8 @@ const MapCarousel = () => {
             </span>
           </div>
         </div>
-        <div className="myCarousel-item h-20">
-          <div className="item-text-content flex space-x-2 justify-center items-center">
+        <div className="h-20 myCarousel-item">
+          <div className="flex items-center justify-center space-x-2 item-text-content">
             <MdFavorite className="text-mapLink" />
             <span>
               Retrouvez notre sélection de{' '}
