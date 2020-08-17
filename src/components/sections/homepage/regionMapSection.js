@@ -47,7 +47,6 @@ class RegionMap extends React.Component {
     const LinksList = styled.ul`
       background: rgba(255, 255, 255, 0.9);
       box-shadow: 6px 6px 15px rgba(255, 255, 255, 0.3);
-      ${tw`flex flex-col px-4 py-4 mt-16 space-y-3 rounded-md`}
     `;
 
     return (
@@ -64,25 +63,32 @@ class RegionMap extends React.Component {
           <div className="flex flex-col items-center">
             <SectionTitle text="Programme par département" color="white" />
           </div>
-          <div id="map" className="flex justify-center mr-20 space-x-20">
+          <div
+            id="map"
+            className="flex flex-col-reverse items-center justify-center space-x-20 lg:mr-20 lg:items-start lg:flex-row"
+          >
             {/* Display clickable map */}
-            <PdlMap background="map" backgroundHover="mapLink" width="w-2/3" />
+            <PdlMap
+              background="map"
+              backgroundHover="mapLink"
+              width="w-full md:w-3/4 lg:w-2/3"
+            />
             {/* Display departments list */}
-            <div className="flex flex-col ">
-              <LinksList>
-                {departments.map((department) => (
-                  <li key={department.name}>
-                    <Link
-                      to={department.link}
-                      className="inline-flex items-center px-4 py-2 space-x-1 text-white uppercase rounded-full bg-mapLink hover:bg-mapLinkHover"
-                    >
-                      <MdPlayArrow className="text-2xl" />
-                      <span>{department.name}</span>
-                    </Link>
-                  </li>
-                ))}
-              </LinksList>
-            </div>
+            <LinksList className="flex-wrap justify-center hidden px-2 py-4 space-x-6 rounded-md lg:px-4 lg:space-x-0 md:flex lg:mt-16 lg:space-y-6 lg:flex-col">
+              {departments.map((department) => (
+                <li key={department.name} className="py-3 lg:py-0">
+                  <Link
+                    to={department.link}
+                    className="inline-flex items-center px-4 py-2 space-x-1 text-white uppercase rounded-full bg-mapLink hover:bg-mapLinkHover"
+                  >
+                    <MdPlayArrow className="text-2xl" />
+                    <span className="md:text-sm xl:text-base">
+                      {department.name}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </LinksList>
           </div>
           <div id="links-carousel">
             <MapCarousel />
