@@ -5,13 +5,13 @@ import SectionTitle from '../../global/sectionTitle';
 import Villages from './villages';
 import VillageCard from './villageCard';
 
-const TopSection = ({ villages, department }) => {
+const TopSectionScolaires = ({ villages }) => {
   return (
     <SectionContainer customClasses="pt-20">
-      <SectionTitle text={`Programme en ${department}`} />
+      <SectionTitle text={`Programme Scolaires`} />
       <Villages villages={villages} />
     </SectionContainer>
   );
 };
 
-export default TopSection;
+export default TopSectionScolaires;

@@ -5,7 +5,7 @@ import FeaturedLabel from '../../global/featuredLabel';
 import { excerpt } from '../../../utils/excerpt';
 import { formatDepartmentName } from '../../../utils/formatDepartmentName';
 
-const EventCard = ({ event, department }) => {
+const EventCard = ({ event }) => {
   const {
     description,
     image,
@@ -15,9 +15,10 @@ const EventCard = ({ event, department }) => {
     title,
     theme,
     featured,
+    department,
     // audience,
   } = event;
-  const dpt = formatDepartmentName(department);
+  const dpt = formatDepartmentName(department.name);
 
   return (
     <Link to={`/${dpt}/${slug.current}`} className="max-w-1/3 ">

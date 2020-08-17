@@ -80,7 +80,7 @@ const EventsMap = ({ selectedEvents }) => {
           const coord = m.getLngLat();
           return bounds.extend(coord);
         });
-        mapInstance.fitBounds(bounds, { padding: 80 });
+        mapInstance.fitBounds(bounds, { padding: 80, maxZoom: 16 });
       }
     }
   }, [selectedEvents, mapInstance]);
