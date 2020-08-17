@@ -36,7 +36,7 @@ const BookingButton = ({ bookingRequired }) => {
   } else {
     return (
       <span className="inline-flex rounded-md shadow-sm">
-        <div className="inline-flex items-center px-4 py-2 text-base font-medium font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary ">
+        <div className="inline-flex items-center px-4 py-2 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary ">
           entrée libre
         </div>
       </span>
