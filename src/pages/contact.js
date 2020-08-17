@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/layout/seo';
 import Layout from '../components/layout/layout';
 import SectionWrapper from '../components/layout/sectionWrapper';
 import SectionContainer from '../components/layout/sectionContainer';
@@ -10,6 +11,7 @@ const ContactPage = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title="Contact" />
       <SectionWrapper>
         <SectionContainer customClasses="pt-32 pb-40">
           <SectionTitle text="Contacter nos antennes départementales" />

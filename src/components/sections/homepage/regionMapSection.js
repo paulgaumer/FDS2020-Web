@@ -64,9 +64,9 @@ class RegionMap extends React.Component {
           <div className="flex flex-col items-center">
             <SectionTitle text="Programme par département" color="white" />
           </div>
-          <div id="map" className="flex justify-center -mt-10 space-x-10">
+          <div id="map" className="flex justify-center mr-20 space-x-20">
             {/* Display clickable map */}
-            <PdlMap background="map" backgroundHover="mapLink" width="w-1/2" />
+            <PdlMap background="map" backgroundHover="mapLink" width="w-2/3" />
             {/* Display departments list */}
             <div className="flex flex-col ">
               <LinksList>

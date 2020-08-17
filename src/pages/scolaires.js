@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/layout/seo';
 import Layout from '../components/layout/layout';
 import SectionWrapper from '../components/layout/sectionWrapper';
 import TopSectionScolaires from '../components/sections/eventsIndex/topSectionScolaires';
@@ -12,6 +13,7 @@ const EventsEducation = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title="Scolaires" />
       <SectionWrapper>
         <TopSectionScolaires villages={data.villages.edges} scolaires={true} />
         <FilteringSection events={events} scolaires={true} />

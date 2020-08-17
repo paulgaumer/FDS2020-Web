@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/layout/seo';
 import Layout from '../components/layout/layout';
 import SectionWrapper from '../components/layout/sectionWrapper';
 import TopSection from '../components/sections/eventsIndex/topSection';
@@ -13,6 +14,7 @@ const EventsIndex = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title={department} />
       <SectionWrapper>
         <TopSection villages={data.villages.edges} department={department} />
         <FilteringSection events={events} />
