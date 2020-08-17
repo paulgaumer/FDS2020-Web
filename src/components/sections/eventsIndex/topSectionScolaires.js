@@ -1,15 +1,13 @@
 import React from 'react';
-import { FaCampground } from 'react-icons/fa';
 import SectionContainer from '../../layout/sectionContainer';
 import SectionTitle from '../../global/sectionTitle';
 import Villages from './villages';
-import VillageCard from './villageCard';
 
-const TopSectionScolaires = ({ villages }) => {
+const TopSectionScolaires = ({ villages, scolaires = false }) => {
   return (
-    <SectionContainer customClasses="pt-20">
+    <SectionContainer customClasses="pt-32">
       <SectionTitle text={`Programme Scolaires`} />
-      <Villages villages={villages} />
+      <Villages villages={villages} scolaires={scolaires} />
     </SectionContainer>
   );
 };

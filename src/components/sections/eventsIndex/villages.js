@@ -3,9 +3,9 @@ import { FaCampground } from 'react-icons/fa';
 import SectionContainer from '../../layout/sectionContainer';
 import VillageCard from './villageCard';
 
-const Villages = ({ villages }) => {
+const Villages = ({ villages, scolaires }) => {
   return (
-    <SectionContainer customClasses="pt-20">
+    <SectionContainer customClasses="pt-16">
       <div className="text-gray-500">
         <h3 className="inline-flex items-center space-x-2 text-2xl font-bold tracking-tight text-gray-700 uppercase border-b-4 border-secondary">
           <span>
@@ -28,6 +28,7 @@ const Villages = ({ villages }) => {
                   <VillageCard
                     village={node}
                     department={node.department.name}
+                    scolaires={scolaires}
                   />
                 </div>
               );

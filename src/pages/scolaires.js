@@ -13,7 +13,7 @@ const EventsEducation = ({ data }) => {
   return (
     <Layout>
       <SectionWrapper>
-        <TopSectionScolaires villages={data.villages.edges} />
+        <TopSectionScolaires villages={data.villages.edges} scolaires={true} />
         <FilteringSection events={events} scolaires={true} />
         <AboutFeatured />
         {logos.length > 0 && <LocalPartners logos={logos} />}

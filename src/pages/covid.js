@@ -19,7 +19,7 @@ const MesuresCovid = ({ data }) => {
   return (
     <Layout>
       <SectionWrapper>
-        <SectionContainer customClasses="pt-20 pb-40">
+        <SectionContainer customClasses="pt-32 pb-40">
           <SectionTitle text={topTitle} />
           <PortableContainer className="text-gray-500">
             <PortableText blocks={contentBlock} serializers={serializers} />

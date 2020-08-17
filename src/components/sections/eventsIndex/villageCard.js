@@ -4,7 +4,7 @@ import CustomGatsbyImage from '../../global/customGatsbyImage';
 import { excerpt } from '../../../utils/excerpt';
 import { formatDepartmentName } from '../../../utils/formatDepartmentName';
 
-const VillageCard = ({ village, department }) => {
+const VillageCard = ({ village, department, scolaires }) => {
   const { description, image, startDate, endDate, slug, title } = village;
   const dpt = formatDepartmentName(department);
 
@@ -19,7 +19,9 @@ const VillageCard = ({ village, department }) => {
           {image && <CustomGatsbyImage image={image} customClasses="h-full" />}
           <div
             data-name="title"
-            className="absolute z-10 px-6 py-2 font-bold text-gray-700 bg-primary -left-4"
+            className={`absolute z-10 px-6 py-2 font-bold text-gray-700 -left-4 ${
+              scolaires ? 'bg-edu' : 'bg-primary'
+            }`}
             style={{ bottom: '-23px' }}
           >
             <h4 className="text-xl">{title}</h4>
