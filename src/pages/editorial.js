@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/layout/seo';
 import Layout from '../components/layout/layout';
 import TopSection from '../components/sections/editoPage/topSection';
 import PartnersSection from '../components/sections/editoPage/partnersSection';
@@ -16,6 +17,7 @@ const editorial = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title="Editorial" />
       <TopSection
         topTitle={topTitle}
         topContent={topContent}

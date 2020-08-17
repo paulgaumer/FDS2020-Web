@@ -16,7 +16,7 @@ const InnerEventGrid = styled.div`
   grid-auto-rows: minmax(min-content, max-content);
 `;
 
-const ListSection = ({ events, department }) => {
+const FilteringSection = ({ events, scolaires = false }) => {
   // Initialize states
   const [allEvents] = useState(events);
   const [selectedEvents, setSelectedEvents] = useState(allEvents);
@@ -25,6 +25,7 @@ const ListSection = ({ events, department }) => {
   const [publicFilter, setPublicFilter] = useState(
     '-d4e31ef1-7615-5290-88e1-b85b940c521a'
   );
+  const [departmentFilter, setDepartmentFilter] = useState('all');
   const [datesFilter, setDatesFilter] = useState({
     startDate: new Date('2020-10-02T00:00:00.000Z'),
     endDate: new Date('2020-10-12T00:00:00.000Z'),
@@ -35,11 +36,12 @@ const ListSection = ({ events, department }) => {
     formats: formatFilters,
     public: publicFilter,
     dates: datesFilter,
+    department: departmentFilter,
   });
 
   // Update the list of selected events based on current filters
   useEffect(() => {
-    const sortedEvents = multiFilter(allEvents, allFilters);
+    const sortedEvents = multiFilter(allEvents, allFilters, scolaires);
     setSelectedEvents(sortedEvents);
   }, [allFilters, allEvents]);
 
@@ -50,8 +52,15 @@ const ListSection = ({ events, department }) => {
       formats: formatFilters,
       public: publicFilter,
       dates: datesFilter,
+      department: departmentFilter,
     });
-  }, [themeFilters, formatFilters, publicFilter, datesFilter]);
+  }, [
+    themeFilters,
+    formatFilters,
+    publicFilter,
+    datesFilter,
+    departmentFilter,
+  ]);
 
   // *******************************
   // PAGINATION LOGIC
@@ -86,6 +95,8 @@ const ListSection = ({ events, department }) => {
             setFormatFilters={setFormatFilters}
             setPublicFilter={setPublicFilter}
             setDatesFilter={setDatesFilter}
+            setDepartmentFilter={setDepartmentFilter}
+            scolaires={scolaires}
           />
         </div>
         <InnerEventGrid
@@ -96,7 +107,7 @@ const ListSection = ({ events, department }) => {
             displayedEvents.map((event, i) => {
               return (
                 <div className="col-span-1" key={event.id}>
-                  <EventCard event={event} department={department} />
+                  <EventCard event={event} />
                 </div>
               );
             })}
@@ -122,4 +133,4 @@ const ListSection = ({ events, department }) => {
   );
 };
 
-export default ListSection;
+export default FilteringSection;

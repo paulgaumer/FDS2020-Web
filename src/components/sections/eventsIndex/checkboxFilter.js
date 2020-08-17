@@ -22,7 +22,7 @@ const InputField = ({ item, handleChange }) => {
   );
 };
 
-const CheckboxFilter = ({ list, getValues }) => {
+const CheckboxFilter = ({ list, getValues, topic }) => {
   // Initialize the list of themes and states
   const itemsList = list.map(({ node }) => {
     return {
@@ -84,7 +84,7 @@ const CheckboxFilter = ({ list, getValues }) => {
     <div data-name="inputs" className="flex flex-col space-y-3">
       <div className="flex items-center">
         <input
-          id="tous"
+          id={`tous-${topic}`}
           type="checkbox"
           value="Tous"
           checked={resetItems}
@@ -93,7 +93,7 @@ const CheckboxFilter = ({ list, getValues }) => {
         />
         <label
           id="tous"
-          htmlFor="tous"
+          htmlFor={`tous-${topic}`}
           className="block ml-2 text-sm leading-5"
         >
           Tous

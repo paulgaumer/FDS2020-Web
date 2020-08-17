@@ -2,22 +2,21 @@ import React from 'react';
 import SEO from '../components/layout/seo';
 import Layout from '../components/layout/layout';
 import SectionWrapper from '../components/layout/sectionWrapper';
-import TopSection from '../components/sections/eventsIndex/topSection';
+import TopSectionScolaires from '../components/sections/eventsIndex/topSectionScolaires';
 import FilteringSection from '../components/sections/eventsIndex/filteringSection';
 import AboutFeatured from '../components/sections/eventsIndex/featuredAboutSection';
 import LocalPartners from '../components/sections/eventsIndex/localPartnersSection';
 
-const EventsIndex = ({ data }) => {
+const EventsEducation = ({ data }) => {
   const events = data.allSanityEvent.edges.map(({ node }) => node);
-  const department = data.sanityDepartment.name;
   const logos = data.logos.edges.map(({ node }) => node);
 
   return (
     <Layout>
-      <SEO title={department} />
+      <SEO title="Scolaires" />
       <SectionWrapper>
-        <TopSection villages={data.villages.edges} department={department} />
-        <FilteringSection events={events} />
+        <TopSectionScolaires villages={data.villages.edges} scolaires={true} />
+        <FilteringSection events={events} scolaires={true} />
         <AboutFeatured />
         {logos.length > 0 && <LocalPartners logos={logos} />}
       </SectionWrapper>
@@ -25,16 +24,11 @@ const EventsIndex = ({ data }) => {
   );
 };
 
-export default EventsIndex;
+export default EventsEducation;
 
 export const query = graphql`
-  query($departmentId: String!) {
-    allSanityEvent(
-      filter: {
-        department: { id: { eq: $departmentId } }
-        education: { eq: false }
-      }
-    ) {
+  query AllEducation {
+    allSanityEvent(filter: { education: { eq: true } }) {
       edges {
         node {
           id
@@ -44,6 +38,7 @@ export const query = graphql`
           }
           department {
             name
+            id
           }
           featured
           village
@@ -86,12 +81,7 @@ export const query = graphql`
         }
       }
     }
-    sanityDepartment(id: { eq: $departmentId }) {
-      name
-    }
-    logos: allSanityLogo(
-      filter: { partners: { elemMatch: { id: { eq: $departmentId } } } }
-    ) {
+    logos: allSanityLogo {
       edges {
         node {
           id

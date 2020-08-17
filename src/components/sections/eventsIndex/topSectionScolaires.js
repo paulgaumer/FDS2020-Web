@@ -3,13 +3,13 @@ import SectionContainer from '../../layout/sectionContainer';
 import SectionTitle from '../../global/sectionTitle';
 import Villages from './villages';
 
-const TopSection = ({ villages, department }) => {
+const TopSectionScolaires = ({ villages, scolaires = false }) => {
   return (
     <SectionContainer customClasses="pt-32">
-      <SectionTitle text={`Programme en ${department}`} />
-      <Villages villages={villages} />
+      <SectionTitle text={`Programme Scolaires`} />
+      <Villages villages={villages} scolaires={scolaires} />
     </SectionContainer>
   );
 };
 
-export default TopSection;
+export default TopSectionScolaires;

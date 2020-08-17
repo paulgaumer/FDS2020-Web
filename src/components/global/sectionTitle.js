@@ -4,10 +4,10 @@ import styled from 'styled-components';
 const Title = styled.div`
   h1 {
     display: grid;
-    grid-template-columns: minmax(130px, 1fr) auto minmax(130px, 1fr);
+    grid-template-columns: minmax(70px, 1fr) auto minmax(70px, 1fr);
     align-items: center;
     text-align: center;
-    grid-gap: 20px;
+    grid-gap: 30px;
     width: 100%;
   }
 
@@ -15,13 +15,20 @@ const Title = styled.div`
   h1:after {
     content: '';
     border-top: 3px solid;
+    /* width: 200px; */
   }
+  /* h1:before {
+    justify-self: end;
+  } */
 `;
 
 const SectionTitle = ({ text, color = '#333' }) => {
   return (
-    <Title>
-      <h1 className="pb-20 text-4xl tracking-normal" style={{ color }}>
+    <Title className="max-w-4xl mx-auto">
+      <h1
+        className="pb-20 text-3xl tracking-normal md:text-4xl"
+        style={{ color }}
+      >
         {text}
       </h1>
     </Title>

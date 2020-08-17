@@ -62,7 +62,6 @@ export const query = graphql`
             ...GatsbySanityImageFluid
           }
         }
-        alt
       }
       map {
         address

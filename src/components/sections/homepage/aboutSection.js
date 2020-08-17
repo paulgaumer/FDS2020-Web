@@ -12,15 +12,16 @@ const About = () => {
       <SectionContainer customClasses="py-28">
         <div className="flex flex-col items-center">
           <SectionTitle text="Qu'est ce que la Fête de la Science ?" />
-          <div className="pb-10">
+
+          <div className="flex flex-col pb-10 space-y-20">
             <div className="flex flex-col items-center space-y-8 md:flex-row md:items-start md:space-y-0 md:space-x-8">
               <img
-                src="https://placeimg.com/300/300/people"
+                src="https://placeimg.com/300/300/tech"
                 alt="fête de la science illustration"
                 className="flex-shrink-0 w-32 h-32 border-2 rounded-full border-secondary"
               />
               <p
-                className="pb-10 text-lg leading-relaxed"
+                className="text-lg leading-relaxed"
                 style={{ color: '#535863' }}
               >
                 Magna blandit dui dolor ipsum ac condimentum amet conubia urna,
@@ -37,7 +38,7 @@ const About = () => {
             </div>
             <div className="flex flex-col-reverse items-center space-y-8 space-y-reverse md:flex-row md:items-start md:space-y-0 md:space-x-8">
               <p
-                className="pb-10 text-lg leading-relaxed"
+                className="text-lg leading-relaxed"
                 style={{ color: '#535863' }}
               >
                 Magna blandit dui dolor ipsum ac condimentum amet conubia urna,
@@ -52,10 +53,32 @@ const About = () => {
                 porttitor adipiscing aliquet.
               </p>
               <img
-                src="https://placeimg.com/300/300/people"
+                src="https://placeimg.com/300/300/tech"
                 alt="fête de la science"
                 className="flex-shrink-0 w-32 h-32 border-2 rounded-full border-secondary"
               />
+            </div>
+            <div className="flex flex-col items-center space-y-8 md:flex-row md:items-start md:space-y-0 md:space-x-8">
+              <img
+                src="https://placeimg.com/300/300/tech"
+                alt="fête de la science illustration"
+                className="flex-shrink-0 w-32 h-32 border-2 rounded-full border-secondary"
+              />
+              <p
+                className="text-lg leading-relaxed"
+                style={{ color: '#535863' }}
+              >
+                Magna blandit dui dolor ipsum ac condimentum amet conubia urna,
+                turpis elit mauris sed dictum tellus elementum libero commodo,
+                dignissim nulla eget aenean tincidunt sociosqu quisque sociis.
+                Nunc auctor dapibus ligula ullamcorper integer facilisi, arcu in
+                rhoncus mauris hac accumsan tellus, platea penatibus id iaculis
+                justo. Sollicitudin dapibus gravida erat vestibulum diam est
+                laoreet consequat euismod habitasse massa sociis, luctus mi
+                proin potenti curabitur praesent cum eros nisi sed ornare,
+                commodo id ultricies leo penatibus ultrices accumsan tellus
+                porttitor adipiscing aliquet.
+              </p>
             </div>
           </div>
           <span className="inline-flex rounded-md shadow-sm">

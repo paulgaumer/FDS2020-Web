@@ -9,7 +9,7 @@ import Testimonial from './testimonial';
 const TopSection = ({ topTitle, topContent, ambassadors }) => {
   return (
     <SectionWrapper>
-      <SectionContainer customClasses="py-20">
+      <SectionContainer customClasses="py-32">
         <SectionTitle text={topTitle} />
         <div className="leading-7 tracking-wide text-gray-500">
           <PortableText blocks={topContent} serializers={serializers} />

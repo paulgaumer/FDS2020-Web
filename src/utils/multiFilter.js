@@ -1,4 +1,4 @@
-export const multiFilter = (arr, filters) => {
+export const multiFilter = (arr, filters, scolaires) => {
   const checkTheme = (item, filtersList) => {
     if (filtersList.themes.length === 0) {
       return true;
@@ -25,6 +25,12 @@ export const multiFilter = (arr, filters) => {
       filtersList.public === '-d4e31ef1-7615-5290-88e1-b85b940c521a'
     );
   };
+  const checkDepartment = (item, filtersList) => {
+    return (
+      filtersList.department === item.department.id ||
+      filtersList.department === 'all'
+    );
+  };
 
   const checkDates = (item, filterList) => {
     const itemStartDate = new Date(item.startDate).getTime();
@@ -43,18 +49,22 @@ export const multiFilter = (arr, filters) => {
     const matchesTheme = checkTheme(obj, filters);
     const matchesFormat = checkFormat(obj, filters);
     const matchesPublic = checkPublic(obj, filters);
+    const matchesDepartment = checkDepartment(obj, filters);
     const matchesDates = checkDates(obj, filters);
     const selected =
       matchesTheme && matchesFormat && matchesPublic && matchesDates;
+    const selectedScolaires =
+      matchesTheme && matchesFormat && matchesDepartment && matchesDates;
 
-    return selected;
+    return scolaires ? selectedScolaires : selected;
 
     // console.log(`*********************`);
     // console.log(`${obj.title}`);
-    // // console.log(`theme: ${matchesTheme}`);
-    // // console.log(`format: ${matchesFormat}`);
-    // // console.log(`public: ${matchesPublic}`);
-    // console.log(`selected: ${selected}`);
+    // console.log(`theme: ${matchesTheme}`);
+    // console.log(`format: ${matchesFormat}`);
+    // console.log(`public: ${matchesPublic}`);
+    // console.log(`department: ${matchesDepartment}`);
+    // console.log(`selected: ${selectedScolaires}`);
     // console.log(`*********************`);
   });
   return filtered;

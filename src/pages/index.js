@@ -37,7 +37,7 @@ const IndexPage = () => {
 
   return (
     <Layout headerHidden={true}>
-      <SEO title="Home" />
+      <SEO title="Accueil" />
       <motion.div
         animate={{ opacity: showHeader ? 1 : 0 }}
         initial={{ opacity: showHeader ? 0 : 1 }}

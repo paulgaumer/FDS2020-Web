@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/layout/seo';
 import Layout from '../components/layout/layout';
 import SectionWrapper from '../components/layout/sectionWrapper';
 import SectionContainer from '../components/layout/sectionContainer';
@@ -10,11 +11,12 @@ const ContactPage = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title="Contact" />
       <SectionWrapper>
-        <SectionContainer customClasses="pt-20 pb-40">
+        <SectionContainer customClasses="pt-32 pb-40">
           <SectionTitle text="Contacter nos antennes départementales" />
 
-          <div className="flex flex-col space-y-24 md:space-y-0 md:max-w-none md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:row-gap-36">
+          <div className="flex flex-col pt-16 space-y-24 md:space-y-0 md:max-w-none md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:row-gap-36">
             {departments.map((department) => {
               return (
                 <ContactSection

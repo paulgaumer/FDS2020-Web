@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/layout/seo';
 import styled from 'styled-components';
 import PortableText from '@sanity/block-content-to-react';
 import { serializers } from '../utils/portableTextSerializers';
@@ -18,8 +19,9 @@ const MesuresCovid = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title="Covid-19" />
       <SectionWrapper>
-        <SectionContainer customClasses="pt-20 pb-40">
+        <SectionContainer customClasses="pt-32 pb-40">
           <SectionTitle text={topTitle} />
           <PortableContainer className="text-gray-500">
             <PortableText blocks={contentBlock} serializers={serializers} />
