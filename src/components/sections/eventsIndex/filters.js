@@ -113,6 +113,7 @@ const EventsFilters = ({
             <CheckboxFilter
               list={data.allSanityTheme.edges}
               getValues={getCheckedThemes}
+              topic="theme"
             />
           </div>
         </div>
@@ -124,6 +125,7 @@ const EventsFilters = ({
             <CheckboxFilter
               list={data.allSanityFormat.edges}
               getValues={getCheckedFormats}
+              topic="format"
             />
           </div>
         </div>
