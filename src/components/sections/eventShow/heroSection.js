@@ -27,9 +27,9 @@ const BookingButton = ({ bookingRequired }) => {
       <a href="#booking-section" className="inline-flex rounded-md shadow-sm">
         <button
           type="button"
-          className="inline-flex items-center px-4 py-2 text-base font-medium font-bold leading-6 text-orange-900 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-secondary hover:bg-yellow-200 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+          className="inline-flex items-center px-4 py-2 text-base font-bold leading-6 text-orange-900 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-secondary hover:bg-yellow-200 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-secondary"
         >
-          réservation obligatoire
+          réserver maintenant
         </button>
       </a>
     );

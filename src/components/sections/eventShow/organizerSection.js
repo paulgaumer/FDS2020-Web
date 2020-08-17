@@ -25,7 +25,7 @@ const OrganizerSection = ({ organizer }) => {
                   href={organizer.website}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center space-x-2 text-base group"
+                  className="inline-flex items-center space-x-2 text-base group"
                 >
                   <span className="text-primary">
                     <FaGlobe />
