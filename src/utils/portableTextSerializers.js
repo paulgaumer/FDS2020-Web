@@ -66,15 +66,20 @@ export const serializers = {
         </YoutubeContainer>
       );
     },
-    image(props) {
+    mainImage(props) {
       console.log(props.node.asset._ref);
       return (
-        <figure className="flex justify-center">
+        <figure className="flex flex-col items-center justify-center my-10">
           <img
-            src={urlFor(props.node.asset).width(300).url()}
-            alt="blog"
-            className="rounded"
+            src={urlFor(props.node.asset).url()}
+            alt={`${props.node.alt ? props.node.alt : 'illustration'}`}
+            className="w-full rounded-sm md:w-1/2"
           />
+          {props.node.caption && (
+            <figcaption className="pt-4 text-sm italic text-gray-500">
+              - {props.node.caption} -
+            </figcaption>
+          )}
         </figure>
       );
     },
