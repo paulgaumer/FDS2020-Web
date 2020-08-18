@@ -9,11 +9,15 @@ import SectionContainer from '../../layout/sectionContainer';
 import PdlMap from './vectorMap';
 import SectionTitle from '../../global/sectionTitle';
 import MapCarousel from './mapCarousel';
+import { formatDepartmentName } from '../../../utils/formatDepartmentName';
 
 class RegionMap extends React.Component {
   constructor() {
     super();
     this.vantaRef = React.createRef();
+    this.state = {
+      hoveredDepartment: '',
+    };
   }
   componentDidMount() {
     this.vantaEffect = NET({
@@ -72,6 +76,7 @@ class RegionMap extends React.Component {
               background="map"
               backgroundHover="mapLink"
               width="w-full md:w-3/4 lg:w-2/3"
+              hoveredDepartment={this.state.hoveredDepartment}
             />
             {/* Display departments list */}
             <LinksList className="flex-wrap justify-center hidden px-2 py-4 space-x-6 rounded-md lg:px-4 lg:space-x-0 md:flex lg:mt-16 lg:space-y-6 lg:flex-col">
@@ -79,6 +84,13 @@ class RegionMap extends React.Component {
                 <li key={department.name} className="py-3 lg:py-0">
                   <Link
                     to={department.link}
+                    id={formatDepartmentName(department.name)}
+                    onMouseEnter={(e) => {
+                      this.setState({ hoveredDepartment: e.target.id });
+                    }}
+                    onMouseLeave={(e) => {
+                      this.setState({ hoveredDepartment: '' });
+                    }}
                     className="inline-flex items-center px-4 py-2 space-x-1 text-white uppercase rounded-full bg-mapLink hover:bg-mapLinkHover"
                   >
                     <MdPlayArrow className="text-2xl" />
