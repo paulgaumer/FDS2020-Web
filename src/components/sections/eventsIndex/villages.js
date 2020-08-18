@@ -5,10 +5,10 @@ import VillageCard from './villageCard';
 
 const Villages = ({ villages, scolaires }) => {
   return (
-    <SectionContainer customClasses="pt-16">
+    <SectionContainer customClasses="pt-6 md:pt-16">
       <div className="text-gray-500">
-        <h3 className="inline-flex items-center space-x-2 text-2xl font-bold tracking-tight text-gray-700 uppercase border-b-4 border-secondary">
-          <span>
+        <h3 className="inline-flex items-center space-x-2 text-xl font-bold tracking-tight text-gray-700 uppercase md:text-2xl md:border-b-4 md:border-secondary">
+          <span className="text-2xl">
             <FaCampground />
           </span>
           <span>- Village des Sciences</span>
@@ -20,7 +20,7 @@ const Villages = ({ villages, scolaires }) => {
           à votre rencontre ! Animations en continu, expositions et
           rencontres...
         </p>
-        <div className="grid grid-cols-3 gap-10 pt-16">
+        <div className="grid grid-cols-1 gap-10 pt-16 md:grid-cols-2 lg:grid-cols-3">
           {villages.length >= 1 &&
             villages.map(({ node }) => {
               return (
