@@ -59,13 +59,13 @@ class RegionMap extends React.Component {
           style={{ position: 'relative', top: '-50px' }}
           id="departmentsMap"
         />
-        <SectionContainer customClasses="z-20 py-28">
+        <SectionContainer customClasses="z-20 pt-16 pb-0 md:py-20 lg:py-28">
           <div className="flex flex-col items-center">
             <SectionTitle text="Programme par département" color="white" />
           </div>
           <div
             id="map"
-            className="flex flex-col-reverse items-center justify-center space-x-20 lg:mr-20 lg:items-start lg:flex-row"
+            className="flex flex-col-reverse items-center justify-center -mt-10 space-x-20 md:-mt-0 lg:mr-20 lg:items-start lg:flex-row"
           >
             {/* Display clickable map */}
             <PdlMap
@@ -90,7 +90,7 @@ class RegionMap extends React.Component {
               ))}
             </LinksList>
           </div>
-          <div id="links-carousel">
+          <div id="links-carousel" className="">
             <MapCarousel />
           </div>
         </SectionContainer>
