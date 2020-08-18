@@ -21,6 +21,7 @@ const HeroCard = styled.div`
     grid-template-columns: 70% 1fr;
     grid-template-rows: auto auto;
     grid-row-gap: 2.5em;
+    grid-column-gap: 1em;
   }
 `;
 
