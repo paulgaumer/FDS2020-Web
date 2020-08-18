@@ -11,7 +11,7 @@ const ContactSection = ({ department }) => {
       </h2>
       {contacts.map((contact) => {
         return (
-          <div className="flex flex-col items-center mt-16">
+          <div className="flex flex-col items-center mt-8 md:mt-16">
             <div className="flex items-center mb-6 h-28">
               <Img
                 fluid={contact.logo.asset.fluid}

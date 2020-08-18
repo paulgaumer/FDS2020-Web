@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const Title = styled.div`
   h1 {
-    display: grid;
     grid-template-columns: minmax(50px, 1fr) auto minmax(50px, 1fr);
     align-items: center;
     text-align: center;
@@ -11,22 +10,25 @@ const Title = styled.div`
     width: 100%;
   }
 
-  h1:before,
-  h1:after {
-    content: '';
-    border-top: 3px solid;
+  @media (min-width: 768px) {
+    h1:before,
+    h1:after {
+      content: '';
+      border-top: 3px solid;
+    }
   }
 `;
 
 const SectionTitle = ({ text, color = '#333' }) => {
   return (
-    <Title className="max-w-4xl mx-auto">
+    <Title className="flex-col justify-center pb-20 md:mx-auto md:max-w-4xl md:block">
       <h1
-        className="pb-20 text-3xl tracking-normal md:text-4xl"
+        className="text-3xl tracking-normalmd:text-4xl md:grid"
         style={{ color }}
       >
         {text}
       </h1>
+      <div className="w-auto h-1 mx-6 mt-4 rounded md:hidden bg-secondary" />
     </Title>
   );
 };
