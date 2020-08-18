@@ -177,7 +177,7 @@ const Header = () => {
               <span className="inline-flex rounded-md shadow-sm">
                 <Link
                   to="/scolaires"
-                  className="inline-flex items-center justify-center px-4 py-2 space-x-1 text-sm font-bold leading-6 text-gray-700 uppercase whitespace-no-wrap transition duration-150 ease-in-out border border-transparent rounded-md bg-edu hover:bg-eduLight focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                  className="inline-flex items-center justify-center px-4 py-2 space-x-1 text-sm font-bold leading-6 text-gray-700 uppercase whitespace-no-wrap transition duration-150 ease-in-out border border-transparent rounded-md bg-edu hover:bg-eduLight focus:outline-none focus:shadow-outline-indigo active:bg-bg-eduLight"
                 >
                   <svg
                     className="w-7 h-7"

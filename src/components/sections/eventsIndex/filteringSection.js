@@ -88,7 +88,7 @@ const FilteringSection = ({ events, scolaires = false }) => {
       <div className="mb-16">
         <EventsMap selectedEvents={selectedEvents} />
       </div>
-      <OuterGrid className="grid gap-20">
+      <OuterGrid className="gap-0 lg:gap-20 md:grid">
         <div data-name="filters" className="">
           <Filters
             setThemeFilters={setThemeFilters}

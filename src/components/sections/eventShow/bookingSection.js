@@ -23,7 +23,7 @@ const BookingSection = ({ bookingPhone, bookingEmail }) => {
               Attention, cet évenement est uniquement accessible sur
               réservation!
             </p>
-            <div className="flex justify-center pt-10 space-x-14">
+            <div className="inline-flex flex-col pt-10 pb-8 space-y-6 sm:space-y-0 sm:flex sm:items-start sm:justify-center sm:flex-row sm:space-x-14">
               <a
                 href={`mailto: ${bookingEmail}`}
                 className="flex items-center space-x-2"
