@@ -22,6 +22,9 @@ module.exports = {
         mapLinkHover: '#FE6BA1',
         mapBackground: '#23153D',
       },
+      fontSize: {
+        '7xl': '4.5rem',
+      },
       inset: {
         '-6': '-1.5rem',
         '-4': '-1rem',

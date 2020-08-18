@@ -16,9 +16,6 @@ const NavbarPlaceholder = styled.div`
 `;
 
 const ContentCenter = styled.div`
-  h3 {
-    font-size: 4.5rem;
-  }
   #logo-fds {
     width: 70em;
   }
@@ -89,15 +86,19 @@ const HeroSection = () => {
       {/* ABSOLUTE NAVBAR START */}
       <div className="absolute inset-x-0 top-0 z-40">
         <div className="flex items-start justify-between">
-          <img src={logoMinister} alt="ministère de l'enseignement supérieur" />
-          <div className="flex items-center justify-between flex-grow ">
+          <img
+            src={logoMinister}
+            alt="ministère de l'enseignement supérieur"
+            className="w-56 xl:w-auto"
+          />
+          <div className="flex items-center justify-between flex-grow">
             {/* NAVIGATION MENU START */}
             <div data-name="top-menu" className="flex-grow mt-10">
               <div className="flex justify-center">
-                <nav className="items-center space-x-10 md:flex">
+                <nav className="items-center hidden px-6 space-x-10 lg:flex">
                   <Link
                     to="/"
-                    className="text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900"
+                    className="hidden text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 xl:inline-block"
                   >
                     Accueil
                   </Link>
@@ -225,8 +226,35 @@ const HeroSection = () => {
               </div>
             </div>
             {/* NAVIGATION MENU END */}
-            <img src={logoPdl} alt="pays de la loire" className="mt-10 mr-8" />
+            <img
+              src={logoPdl}
+              alt="pays de la loire"
+              className="w-56 mt-10 mr-8 xl:w-auto"
+            />
           </div>
+        </div>
+        <div className="flex justify-center my-8 text-2xl lg:hidden">
+          {/* BURGER BUTTON FOR MOBILE MENU */}
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen(true)}
+            className="inline-flex items-center justify-center p-2 space-x-2 text-white transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <span>MENU</span>
+          </button>
         </div>
       </div>
       {/* ABSOLUTE NAVBAR END */}
@@ -238,7 +266,7 @@ const HeroSection = () => {
       {/* CENTER BLOCK */}
       <div className="z-30 flex flex-col justify-between flex-grow">
         <SectionContainer customClasses="flex-grow flex items-center">
-          <div className="flex flex-col">
+          <div className="flex flex-col px-4 md:px-0">
             <ContentCenter
               data-name="content-center"
               className="flex flex-col items-center"
@@ -250,16 +278,18 @@ const HeroSection = () => {
                   id="logo-fds"
                   className=""
                 />
-                <div className="my-20 text-white">
-                  <h3 className="font-bold tracking-tight">Pays de la Loire</h3>
-                  <p className="text-3xl uppercase">
+                <div className="my-10 text-white lg:my-20">
+                  <h3 className="text-4xl font-bold tracking-tight lg:text-7xl">
+                    Pays de la Loire
+                  </h3>
+                  <p className="text-lg uppercase lg:text-3xl">
                     02 Octobre - 12 Octobre 2020
                   </p>
                 </div>
                 <span className="inline-flex rounded-md shadow-sm">
                   <a
                     href="#departmentsMap"
-                    className="inline-flex items-center px-6 py-6 text-3xl font-bold leading-6 text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-md bg-primary hover:bg-primary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                    className="inline-flex items-center px-3 py-3 text-lg font-bold leading-6 text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-md lg:px-6 lg:py-6 lg:text-3xl bg-primary hover:bg-primary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
                   >
                     découvrir les évenements
                   </a>
@@ -271,7 +301,7 @@ const HeroSection = () => {
         {/* TIMER BLOCK */}
 
         <div className="z-40 grid grid-cols-12">
-          <div className="flex items-center justify-center col-start-6 col-end-8">
+          <div className="items-center justify-center hidden col-start-6 col-end-8 lg:flex">
             <a
               href="#aboutSection"
               className="px-1 pt-4 pb-2 border-2 border-white rounded-full"
@@ -289,7 +319,7 @@ const HeroSection = () => {
               </svg>
             </a>
           </div>
-          <Timer className="relative col-start-10 col-end-13 px-12 py-5 text-white uppercase">
+          <Timer className="relative hidden col-start-10 col-end-13 px-12 py-5 text-white uppercase lg:block">
             <Countdown date={'2020-10-02T00:00:00'} renderer={renderer} />
 
             {/* Top Triangle */}

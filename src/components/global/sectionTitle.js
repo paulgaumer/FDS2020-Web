@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Title = styled.div`
   h1 {
     display: grid;
-    grid-template-columns: minmax(70px, 1fr) auto minmax(70px, 1fr);
+    grid-template-columns: minmax(50px, 1fr) auto minmax(50px, 1fr);
     align-items: center;
     text-align: center;
     grid-gap: 30px;
@@ -15,11 +15,7 @@ const Title = styled.div`
   h1:after {
     content: '';
     border-top: 3px solid;
-    /* width: 200px; */
   }
-  /* h1:before {
-    justify-self: end;
-  } */
 `;
 
 const SectionTitle = ({ text, color = '#333' }) => {
