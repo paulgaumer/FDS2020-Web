@@ -9,8 +9,8 @@ const Testimonial = ({ ambassador, reverse = false }) => {
   return (
     <div
       data-name="testimonial"
-      className={`flex items-center justify-between space-x-20 ${
-        reverse ? 'flex-row-reverse space-x-reverse' : 'flex-row '
+      className={`flex items-center justify-between space-x-8 lg:space-x-20 ${
+        reverse ? 'lg:flex-row-reverse lg:space-x-reverse' : 'lg:flex-row '
       }`}
     >
       <div className="relative flex-shrink-0 hidden lg:block">
@@ -40,12 +40,12 @@ const Testimonial = ({ ambassador, reverse = false }) => {
               <PortableText blocks={_rawTestimony} serializers={serializers} />
             </div>
             <footer className="mt-8">
-              <div className="flex">
+              <div className="flex items-center">
                 <div className="flex-shrink-0 lg:hidden">
                   <CustomGatsbyImage
                     image={image}
                     alt={name}
-                    customClasses="w-12 h12 rounded-full"
+                    customClasses="w-24 h-24 rounded-full"
                   />
                 </div>
                 <div className="ml-4 lg:ml-0">

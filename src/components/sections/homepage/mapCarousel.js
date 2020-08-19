@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
@@ -43,14 +43,28 @@ const CarouselContainer = styled.div`
 `;
 
 const MapCarousel = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      setIsMobile(window.innerWidth <= 640);
+    }
+  }, []);
   return (
     <CarouselContainer
       data-styled="carousel-container"
       className="max-w-3xl mx-auto"
     >
-      <Carousel autoPlay infiniteLoop interval={4000} showStatus={false}>
+      <Carousel
+        autoPlay
+        infiniteLoop
+        interval={4000}
+        showStatus={false}
+        showArrows={!isMobile}
+        swipeable={true}
+      >
         <div className="h-20 myCarousel-item">
-          <div className="flex items-center justify-center space-x-1 item-text-content">
+          <div className="flex items-center justify-center space-x-1 text-sm item-text-content sm:text-base">
             <svg
               className="w-7 h-7"
               viewBox="0 0 31 31"
@@ -78,7 +92,7 @@ const MapCarousel = () => {
           </div>
         </div>
         <div className="h-20 myCarousel-item">
-          <div className="flex items-center justify-center space-x-2 item-text-content">
+          <div className="flex items-center justify-center space-x-2 text-sm item-text-content sm:text-base">
             <MdFavorite className="text-mapLink" />
             <span>
               Retrouvez notre sélection de{' '}

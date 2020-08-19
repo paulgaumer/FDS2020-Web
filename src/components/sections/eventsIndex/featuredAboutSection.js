@@ -4,7 +4,7 @@ import FeaturedLabel from '../../global/featuredLabel';
 
 const FeaturedAboutSection = () => {
   return (
-    <SectionContainer customClasses="pt-16 pb-20">
+    <SectionContainer customClasses="pt-0 pb-10 md:pt-16 md:pb-20">
       <div className="flex justify-center">
         <div className="max-w-screen-md">
           <hr className="mb-16 text-center border-t-2 border-featured" />

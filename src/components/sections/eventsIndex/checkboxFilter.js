@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { matchFormatIcon } from '../../../utils/matchFormatIcon';
 
 const InputField = ({ item, handleChange }) => {
   return (
@@ -11,6 +12,11 @@ const InputField = ({ item, handleChange }) => {
         onChange={() => handleChange(item.id)}
         className="w-4 h-4 transition duration-150 ease-in-out text-secondary form-checkbox"
       />
+      {item.iconFormat && (
+        <div className="p-2 ml-2 rounded-full bg-primary">
+          {matchFormatIcon(item.name)}
+        </div>
+      )}
       <label
         id={item.id}
         htmlFor={item.id}
@@ -29,6 +35,7 @@ const CheckboxFilter = ({ list, getValues, topic }) => {
       id: node.id,
       name: node.name,
       isChecked: false,
+      iconFormat: topic === 'format',
     };
   });
   const [items, setItems] = useState(itemsList);

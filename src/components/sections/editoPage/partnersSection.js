@@ -7,7 +7,7 @@ import LogosGrid from '../../global/logosGrid';
 const PartnersSection = ({ logos, partnersTitle }) => {
   return (
     <SectionWrapper backgroundColor="bg-white">
-      <SectionContainer customClasses="pt-20 pb-40">
+      <SectionContainer customClasses="pt-16 pb-16 md:py-20 lg:pb-40">
         <SectionTitle text={partnersTitle} />
         <div>
           <LogosGrid logos={logos} />

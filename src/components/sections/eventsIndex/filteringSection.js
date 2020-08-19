@@ -84,11 +84,11 @@ const FilteringSection = ({ events, scolaires = false }) => {
   // *******************************
 
   return (
-    <SectionContainer customClasses="pt-16 pb-20">
-      <div className="mb-16">
+    <SectionContainer customClasses="pt-16 pb-20 flex flex-col-reverse md:flex-col">
+      <div className="mt-16 md:mt-0 md:mb-16">
         <EventsMap selectedEvents={selectedEvents} />
       </div>
-      <OuterGrid className="grid gap-20">
+      <OuterGrid className="gap-0 lg:gap-20 md:grid">
         <div data-name="filters" className="">
           <Filters
             setThemeFilters={setThemeFilters}
@@ -101,7 +101,7 @@ const FilteringSection = ({ events, scolaires = false }) => {
         </div>
         <InnerEventGrid
           data-name="events"
-          className="grid grid-cols-1 gap-10 lg:grid-cols-2"
+          className="flex flex-col space-y-6 md:space-y-0 md:grid-cols-1 md:grid md:gap-10 lg:grid-cols-2"
         >
           {selectedEvents.length > 0 &&
             displayedEvents.map((event, i) => {

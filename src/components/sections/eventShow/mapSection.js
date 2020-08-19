@@ -41,8 +41,11 @@ const MapSection = ({ mapGps }) => {
   return (
     <SectionWrapper>
       <SectionContainer customClasses="pb-12">
-        <div className="max-w-5xl mx-auto overflow-hidden bg-white border-t-4 rounded-b-lg shadow border-primary">
-          <p className="flex items-center justify-center py-6 space-x-2">
+        <div
+          className="max-w-5xl mx-auto overflow-hidden bg-white border-t-4 rounded-b-lg shadow border-primary"
+          id="#eventMap"
+        >
+          <p className="flex items-center justify-center px-4 py-6 space-x-2">
             <span className="text-2xl text-primary">
               <FaMapMarkerAlt />
             </span>

@@ -6,9 +6,9 @@ import SectionContainer from '../../layout/sectionContainer';
 const ContactSection = ({ contactContent }) => {
   return (
     <SectionWrapper>
-      <SectionContainer customClasses="py-20">
+      <SectionContainer customClasses="py-16 md:py-20">
         <div className="flex flex-col items-center space-y-12">
-          <p className="px-40 text-lg text-center text-gray-700">
+          <p className="text-lg text-center text-gray-700 lg:px-40">
             {contactContent}
           </p>
 

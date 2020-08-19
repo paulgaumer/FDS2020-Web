@@ -21,7 +21,7 @@ const MesuresCovid = ({ data }) => {
     <Layout>
       <SEO title="Covid-19" />
       <SectionWrapper>
-        <SectionContainer customClasses="pt-32 pb-40">
+        <SectionContainer customClasses="py-16 md:py-20 lg:pt-32 lg:pb-40">
           <SectionTitle text={topTitle} />
           <PortableContainer className="text-gray-500">
             <PortableText blocks={contentBlock} serializers={serializers} />

@@ -25,7 +25,12 @@ const DescriptionSection = ({ description }) => {
           <div className="text-lg leading-relaxed">
             <PortableText blocks={description} serializers={serializers} />
           </div>
-          <a href="/covid" target="_blank" rel="noreferrer">
+          <a
+            href="/covid"
+            target="_blank"
+            rel="noreferrer"
+            className="text-center md:text-left"
+          >
             <CovidButton className="mt-10">
               <span class="inline-flex rounded-md shadow-sm">
                 <button
@@ -35,7 +40,7 @@ const DescriptionSection = ({ description }) => {
                   <span className="text-sm">
                     <FaExclamationTriangle />
                   </span>
-                  <span>Consultez nos consignes Covid-19</span>
+                  <span>Consulter nos consignes Covid-19</span>
                 </button>
               </span>
             </CovidButton>

@@ -19,7 +19,7 @@ const OrganizerSection = ({ organizer }) => {
               </span>
             </h3>
             <p>{organizer.description}</p>
-            <div className="pt-8">
+            <div className="pt-8 text-center sm:text-left">
               {organizer.website && (
                 <a
                   href={organizer.website}
@@ -27,12 +27,16 @@ const OrganizerSection = ({ organizer }) => {
                   rel="noreferrer"
                   className="inline-flex items-center space-x-2 text-base group"
                 >
-                  <span className="text-primary">
+                  <span className="text-lg text-primary">
                     <FaGlobe />
                   </span>
-                  <span className="group-hover:underline">
-                    {organizer.website}
-                  </span>
+                  <a
+                    href={organizer.website}
+                    target="_blank"
+                    className="underline md:no-underline group-hover:underline"
+                  >
+                    Visiter le site web
+                  </a>
                 </a>
               )}
               {organizer.facebook && (

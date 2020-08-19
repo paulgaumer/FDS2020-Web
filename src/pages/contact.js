@@ -13,7 +13,7 @@ const ContactPage = ({ data }) => {
     <Layout>
       <SEO title="Contact" />
       <SectionWrapper>
-        <SectionContainer customClasses="pt-32 pb-40">
+        <SectionContainer customClasses="pt-16 pb-20 md:py-20 lg:pt-32 lg:pb-40">
           <SectionTitle text="Contacter nos antennes départementales" />
 
           <div className="flex flex-col pt-16 space-y-24 md:space-y-0 md:max-w-none md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:row-gap-36">
