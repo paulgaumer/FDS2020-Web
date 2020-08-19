@@ -48,23 +48,25 @@ const DateFilter = ({ getValues, firstDate, lastDate }) => {
           Toutes les dates
         </label>
       </div>
-      <div>
-        <p className="text-sm text-gray-700">Date de début</p>
-        <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          locale="fr"
-          className="block w-full form-input sm:text-sm sm:leading-5"
-        />
-      </div>
-      <div>
-        <p className="text-sm text-gray-700">Date de fin</p>
-        <DatePicker
-          selected={endDate}
-          onChange={(date) => setEndDate(date)}
-          locale="fr"
-          className="block w-full form-input sm:text-sm sm:leading-5"
-        />
+      <div className="flex space-x-4 md:space-x-0 md:flex-col md:space-y-4">
+        <div>
+          <p className="text-sm text-gray-700">Date de début</p>
+          <DatePicker
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            locale="fr"
+            className="block w-full form-input sm:text-sm sm:leading-5"
+          />
+        </div>
+        <div>
+          <p className="text-sm text-gray-700">Date de fin</p>
+          <DatePicker
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
+            locale="fr"
+            className="block w-full form-input sm:text-sm sm:leading-5"
+          />
+        </div>
       </div>
     </div>
   );

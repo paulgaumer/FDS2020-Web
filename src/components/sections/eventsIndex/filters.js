@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemState,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
 import CheckboxFilter from './checkboxFilter';
 import SelectPublicFilter from './selectPublicFilter';
 import SelectDepartmentFilter from './selectDepartmentFilter';
@@ -75,19 +83,17 @@ const EventsFilters = ({
 
   const [selectedFormats, setSelectedFormats] = useState([]);
   const [selectedThemes, setSelectedThemes] = useState([]);
+  const [selectedDates, setSelectedDates] = useState({
+    startDate: new Date('2020-10-02T00:00:00.000Z'),
+    endDate: new Date('2020-10-12T00:00:00.000Z'),
+  });
 
-  const getCheckedThemes = (items) => {
-    setThemeFilters(items);
-  };
-  // const getCheckedFormats = (items) => {
-  //   setFormatFilters(items);
-  // };
   const getSelectedPublic = (item) => {
     setPublicFilter(item);
   };
-  const getSelectedDates = (item) => {
-    setDatesFilter(item);
-  };
+  // const getSelectedDates = (item) => {
+  //   setDatesFilter(item);
+  // };
   const getSelectedDepartment = (item) => {
     setDepartmentFilter(item);
   };
@@ -95,7 +101,8 @@ const EventsFilters = ({
   useEffect(() => {
     setFormatFilters(selectedFormats);
     setThemeFilters(selectedThemes);
-  }, [selectedFormats, selectedThemes]);
+    setDatesFilter(selectedDates);
+  }, [selectedFormats, selectedThemes, selectedDates]);
 
   const firstDate = data.firstDate.edges[0].node.startDate;
   const lastDate = data.lastDate.edges[0].node.endDate;
@@ -118,7 +125,152 @@ const EventsFilters = ({
           </span>
           <span>Filtrer les évènements</span>
         </div>
-        <div className="p-4 bg-white rounded">
+        <Accordion
+          allowZeroExpanded={true}
+          className="flex flex-col pt-4 pb-2 space-y-4 bg-white rounded"
+        >
+          <AccordionItem className="">
+            <AccordionItemHeading>
+              <AccordionItemButton className="flex text-gray-700">
+                <span className="text-gray-700">
+                  <AccordionItemState>
+                    {(state) => {
+                      return state.expanded ? (
+                        <svg
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          className="w-6 h-6 chevron-down"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                      ) : (
+                        <svg
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          className="w-6 h-6 chevron-right"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                      );
+                    }}
+                  </AccordionItemState>
+                </span>
+                <span>Thème</span>
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel className="px-6 pt-3">
+              <FilterToggles
+                list={data.allSanityTheme.edges}
+                getValues={setSelectedThemes}
+              />
+            </AccordionItemPanel>
+          </AccordionItem>
+          <AccordionItem className="">
+            <AccordionItemHeading>
+              <AccordionItemButton className="flex pb-2 text-gray-700">
+                <span className="text-gray-700">
+                  <AccordionItemState>
+                    {(state) => {
+                      return state.expanded ? (
+                        <svg
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          className="w-6 h-6 chevron-down"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                      ) : (
+                        <svg
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          className="w-6 h-6 chevron-right"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                      );
+                    }}
+                  </AccordionItemState>
+                </span>
+                <span>Formes</span>
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel className="px-6 pt-3">
+              <FilterToggles
+                list={data.allSanityFormat.edges}
+                getValues={setSelectedFormats}
+              />
+            </AccordionItemPanel>
+          </AccordionItem>
+          <AccordionItem className="">
+            <AccordionItemHeading>
+              <AccordionItemButton className="flex pb-2 text-gray-700">
+                <span className="text-gray-700">
+                  <AccordionItemState>
+                    {(state) => {
+                      return state.expanded ? (
+                        <svg
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          className="w-6 h-6 chevron-down"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                      ) : (
+                        <svg
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          className="w-6 h-6 chevron-right"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                      );
+                    }}
+                  </AccordionItemState>
+                </span>
+                <span>Dates</span>
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel className="px-6 pt-3 pb-4">
+              <DateFilter
+                getValues={setSelectedDates}
+                firstDate={firstDate}
+                lastDate={lastDate}
+              />
+            </AccordionItemPanel>
+          </AccordionItem>
+        </Accordion>
+        {/* <div className="flex flex-col p-4 space-y-6 bg-white rounded">
+          <div>
+            <p className="pb-2 text-gray-700">Thèmes</p>
+            <FilterToggles
+              list={data.allSanityTheme.edges}
+              getValues={setSelectedThemes}
+            />
+          </div>
           <div>
             <p className="pb-2 text-gray-700">Formes</p>
             <FilterToggles
@@ -126,7 +278,7 @@ const EventsFilters = ({
               getValues={setSelectedFormats}
             />
           </div>
-        </div>
+        </div> */}
       </div>
       {/* *************************** */}
       {/* FILTERS MOBILE STOP */}
@@ -195,7 +347,7 @@ const EventsFilters = ({
             <h4 className="pb-6 font-bold text-gray-700 uppercase">Dates</h4>
             <div data-name="dateFilter">
               <DateFilter
-                getValues={getSelectedDates}
+                getValues={setSelectedDates}
                 firstDate={firstDate}
                 lastDate={lastDate}
               />
