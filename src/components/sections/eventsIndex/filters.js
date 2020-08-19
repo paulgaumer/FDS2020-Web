@@ -113,172 +113,174 @@ const EventsFilters = ({
       {/* FILTERS MOBILE START */}
       {/* *************************** */}
       <div className="mb-10 md:hidden">
-        <div className="flex items-center space-x-2 text-gray-700">
-          <span>
-            <svg
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="w-6 h-6 adjustments"
-            >
-              <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path>
-            </svg>
-          </span>
-          <span>Filtrer les évènements</span>
-        </div>
-        <Accordion
-          allowZeroExpanded={true}
-          className="flex flex-col pt-4 pb-2 space-y-4 bg-white rounded"
-        >
+        <Accordion allowZeroExpanded={true}>
           <AccordionItem className="">
             <AccordionItemHeading>
-              <AccordionItemButton className="flex text-gray-700">
-                <span className="text-gray-700">
+              <AccordionItemButton className="flex justify-center text-gray-700 focus:outline-none">
+                <div className="flex items-center px-4 py-2 space-x-2 text-white uppercase rounded bg-secondary">
+                  <span>
+                    <svg
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="w-6 h-6 adjustments"
+                    >
+                      <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path>
+                    </svg>
+                  </span>
                   <AccordionItemState>
                     {(state) => {
                       return state.expanded ? (
-                        <svg
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          className="w-6 h-6 chevron-down"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
+                        <span>Fermer les options de filtre</span>
                       ) : (
-                        <svg
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          className="w-6 h-6 chevron-right"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
+                        <span>Filtrer les évènements</span>
                       );
                     }}
                   </AccordionItemState>
-                </span>
-                <span>Thème</span>
+                </div>
               </AccordionItemButton>
             </AccordionItemHeading>
-            <AccordionItemPanel className="px-6 pt-3">
-              <FilterToggles
-                list={data.allSanityTheme.edges}
-                getValues={setSelectedThemes}
-              />
-            </AccordionItemPanel>
-          </AccordionItem>
-          <AccordionItem className="">
-            <AccordionItemHeading>
-              <AccordionItemButton className="flex pb-2 text-gray-700">
-                <span className="text-gray-700">
-                  <AccordionItemState>
-                    {(state) => {
-                      return state.expanded ? (
-                        <svg
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          className="w-6 h-6 chevron-down"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
-                      ) : (
-                        <svg
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          className="w-6 h-6 chevron-right"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
-                      );
-                    }}
-                  </AccordionItemState>
-                </span>
-                <span>Formes</span>
-              </AccordionItemButton>
-            </AccordionItemHeading>
-            <AccordionItemPanel className="px-6 pt-3">
-              <FilterToggles
-                list={data.allSanityFormat.edges}
-                getValues={setSelectedFormats}
-              />
-            </AccordionItemPanel>
-          </AccordionItem>
-          <AccordionItem className="">
-            <AccordionItemHeading>
-              <AccordionItemButton className="flex pb-2 text-gray-700">
-                <span className="text-gray-700">
-                  <AccordionItemState>
-                    {(state) => {
-                      return state.expanded ? (
-                        <svg
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          className="w-6 h-6 chevron-down"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
-                      ) : (
-                        <svg
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          className="w-6 h-6 chevron-right"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
-                      );
-                    }}
-                  </AccordionItemState>
-                </span>
-                <span>Dates</span>
-              </AccordionItemButton>
-            </AccordionItemHeading>
-            <AccordionItemPanel className="px-6 pt-3 pb-4">
-              <DateFilter
-                getValues={setSelectedDates}
-                firstDate={firstDate}
-                lastDate={lastDate}
-              />
+            <AccordionItemPanel className="pt-3">
+              <Accordion
+                allowZeroExpanded={true}
+                className="flex flex-col pt-4 pb-2 space-y-4 bg-white rounded"
+              >
+                <AccordionItem className="">
+                  <AccordionItemHeading>
+                    <AccordionItemButton className="flex text-gray-700">
+                      <span className="text-gray-700">
+                        <AccordionItemState>
+                          {(state) => {
+                            return state.expanded ? (
+                              <svg
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                className="w-6 h-6 chevron-down"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                  clipRule="evenodd"
+                                ></path>
+                              </svg>
+                            ) : (
+                              <svg
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                className="w-6 h-6 chevron-right"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                  clipRule="evenodd"
+                                ></path>
+                              </svg>
+                            );
+                          }}
+                        </AccordionItemState>
+                      </span>
+                      <span>Thème</span>
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel className="px-6 pt-3">
+                    <FilterToggles
+                      list={data.allSanityTheme.edges}
+                      getValues={setSelectedThemes}
+                    />
+                  </AccordionItemPanel>
+                </AccordionItem>
+                <AccordionItem className="">
+                  <AccordionItemHeading>
+                    <AccordionItemButton className="flex pb-2 text-gray-700">
+                      <span className="text-gray-700">
+                        <AccordionItemState>
+                          {(state) => {
+                            return state.expanded ? (
+                              <svg
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                className="w-6 h-6 chevron-down"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                  clipRule="evenodd"
+                                ></path>
+                              </svg>
+                            ) : (
+                              <svg
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                className="w-6 h-6 chevron-right"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                  clipRule="evenodd"
+                                ></path>
+                              </svg>
+                            );
+                          }}
+                        </AccordionItemState>
+                      </span>
+                      <span>Formes</span>
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel className="px-6 pt-3">
+                    <FilterToggles
+                      list={data.allSanityFormat.edges}
+                      getValues={setSelectedFormats}
+                    />
+                  </AccordionItemPanel>
+                </AccordionItem>
+                <AccordionItem className="">
+                  <AccordionItemHeading>
+                    <AccordionItemButton className="flex pb-2 text-gray-700">
+                      <span className="text-gray-700">
+                        <AccordionItemState>
+                          {(state) => {
+                            return state.expanded ? (
+                              <svg
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                className="w-6 h-6 chevron-down"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                  clipRule="evenodd"
+                                ></path>
+                              </svg>
+                            ) : (
+                              <svg
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                className="w-6 h-6 chevron-right"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                  clipRule="evenodd"
+                                ></path>
+                              </svg>
+                            );
+                          }}
+                        </AccordionItemState>
+                      </span>
+                      <span>Dates</span>
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel className="px-6 pt-3 pb-4">
+                    <DateFilter
+                      getValues={setSelectedDates}
+                      firstDate={firstDate}
+                      lastDate={lastDate}
+                    />
+                  </AccordionItemPanel>
+                </AccordionItem>
+              </Accordion>
             </AccordionItemPanel>
           </AccordionItem>
         </Accordion>
-        {/* <div className="flex flex-col p-4 space-y-6 bg-white rounded">
-          <div>
-            <p className="pb-2 text-gray-700">Thèmes</p>
-            <FilterToggles
-              list={data.allSanityTheme.edges}
-              getValues={setSelectedThemes}
-            />
-          </div>
-          <div>
-            <p className="pb-2 text-gray-700">Formes</p>
-            <FilterToggles
-              list={data.allSanityFormat.edges}
-              getValues={setSelectedFormats}
-            />
-          </div>
-        </div> */}
       </div>
       {/* *************************** */}
       {/* FILTERS MOBILE STOP */}

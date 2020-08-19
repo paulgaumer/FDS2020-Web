@@ -50,7 +50,7 @@ const FilterToggles = ({ list, getValues }) => {
             className={`relative inline-flex items-center justify-center flex-shrink-0 px-3 py-1 mb-2 mr-3 transition-colors duration-200 ease-in-out border-2 border-transparent rounded-full cursor-pointer focus:outline-none text-sm ${
               item.isChecked
                 ? 'bg-secondary text-orange-900'
-                : 'bg-gray-100 text-gray-700'
+                : 'text-indigo-500 bg-indigo-100'
             }`}
             id={item.id}
             key={item.id}

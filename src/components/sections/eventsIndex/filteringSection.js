@@ -84,8 +84,8 @@ const FilteringSection = ({ events, scolaires = false }) => {
   // *******************************
 
   return (
-    <SectionContainer customClasses="pt-16 pb-20">
-      <div className="mb-16">
+    <SectionContainer customClasses="pt-16 pb-20 flex flex-col-reverse md:flex-col">
+      <div className="mt-16 md:mt-0 md:mb-16">
         <EventsMap selectedEvents={selectedEvents} />
       </div>
       <OuterGrid className="gap-0 lg:gap-20 md:grid">
