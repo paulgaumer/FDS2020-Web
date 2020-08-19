@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import logoFds from '../../images/s_bleu.png';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemState,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
 
 const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
   return (
@@ -10,8 +18,8 @@ const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
       <div className="rounded-lg shadow-lg">
         <div className="bg-white divide-y-2 rounded-lg shadow-xs divide-gray-50">
           <div className="px-5 pt-5 pb-6 space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
+            <div className="flex items-center justify-between pb-3 border-b border-gray-200">
+              <div className="ml-2">
                 <img
                   className="w-auto h-8"
                   src={logoFds}
@@ -76,61 +84,104 @@ const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
                     Editorial
                   </div>
                 </Link>
-                <Link
-                  to="/covid"
-                  className="flex items-center p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
-                >
-                  <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-full bg-secondary">
-                    <svg
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      class="map w-6 h-6"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.293A1 1 0 002 4v10a1 1 0 00.293.707L6 18.414V5.586L3.707 3.293zM17.707 5.293L14 1.586v12.828l2.293 2.293A1 1 0 0018 16V6a1 1 0 00-.293-.707z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div className="text-base font-medium leading-6 text-gray-900">
-                    Programme par département
-                  </div>
-                </Link>
-                <div className="px-5 py-2">
-                  <div className="flex flex-col space-y-6">
-                    <Link
-                      to="/loire-atlantique"
-                      className="text-base leading-6 text-gray-700 transition duration-150 ease-in-out hover:text-gray-700"
-                    >
-                      Loire Atlantique
-                    </Link>
-                    <Link
-                      to="/maine-et-loire"
-                      className="text-base leading-6 text-gray-700 transition duration-150 ease-in-out hover:text-gray-700"
-                    >
-                      Maine et Loire
-                    </Link>
-                    <Link
-                      to="/mayenne"
-                      className="text-base leading-6 text-gray-700 transition duration-150 ease-in-out hover:text-gray-700"
-                    >
-                      Mayenne
-                    </Link>
-                    <Link
-                      to="/sarthe"
-                      className="text-base leading-6 text-gray-700 transition duration-150 ease-in-out hover:text-gray-700"
-                    >
-                      Sarthe
-                    </Link>
-                    <Link
-                      to="/vendee"
-                      className="text-base leading-6 text-gray-700 transition duration-150 ease-in-out hover:text-gray-700"
-                    >
-                      Vendée
-                    </Link>
-                  </div>
-                </div>
+
+                <Accordion allowZeroExpanded={true}>
+                  <AccordionItem dangerouslySetExpanding={true}>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>
+                        <div className="flex items-center space-x-4 transition duration-150 ease-in-out">
+                          <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-full bg-secondary">
+                            <svg
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                              class="map w-6 h-6"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.293A1 1 0 002 4v10a1 1 0 00.293.707L6 18.414V5.586L3.707 3.293zM17.707 5.293L14 1.586v12.828l2.293 2.293A1 1 0 0018 16V6a1 1 0 00-.293-.707z"
+                                clip-rule="evenodd"
+                              ></path>
+                            </svg>
+                          </div>
+                          <div className="text-base font-medium leading-6 text-gray-900">
+                            Programme par département
+                          </div>
+                          <span className="text-gray-700">
+                            <AccordionItemState>
+                              {(state) => {
+                                return state.expanded ? (
+                                  <svg
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    className="w-6 h-6 chevron-down"
+                                  >
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                      clipRule="evenodd"
+                                    ></path>
+                                  </svg>
+                                ) : (
+                                  <svg
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    className="w-6 h-6 chevron-right"
+                                  >
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                      clipRule="evenodd"
+                                    ></path>
+                                  </svg>
+                                );
+                              }}
+                            </AccordionItemState>
+                          </span>
+                        </div>
+                      </AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel className="pt-6 pl-6">
+                      <Link
+                        to="/loire-atlantique"
+                        className="text-base leading-6 text-gray-700 transition duration-150 ease-in-out hover:text-gray-700"
+                      >
+                        Loire Atlantique
+                      </Link>
+                    </AccordionItemPanel>
+                    <AccordionItemPanel className="pt-6 pl-6">
+                      <Link
+                        to="/maine-et-loire"
+                        className="text-base leading-6 text-gray-700 transition duration-150 ease-in-out hover:text-gray-700"
+                      >
+                        Maine et Loire
+                      </Link>
+                    </AccordionItemPanel>
+                    <AccordionItemPanel className="pt-6 pl-6">
+                      <Link
+                        to="/mayenne"
+                        className="text-base leading-6 text-gray-700 transition duration-150 ease-in-out hover:text-gray-700"
+                      >
+                        Mayenne
+                      </Link>
+                    </AccordionItemPanel>
+                    <AccordionItemPanel className="pt-6 pl-6">
+                      <Link
+                        to="/sarthe"
+                        className="text-base leading-6 text-gray-700 transition duration-150 ease-in-out hover:text-gray-700"
+                      >
+                        Sarthe
+                      </Link>
+                    </AccordionItemPanel>
+                    <AccordionItemPanel className="pt-6 pl-6">
+                      <Link
+                        to="/vendee"
+                        className="text-base leading-6 text-gray-700 transition duration-150 ease-in-out hover:text-gray-700"
+                      >
+                        Vendée
+                      </Link>
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                </Accordion>
                 <Link
                   to="/scolaires"
                   className="flex items-center p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
@@ -193,17 +244,15 @@ const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
                 >
                   <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-full bg-secondary">
                     <svg
-                      className="w-6 h-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      class="information-circle w-6 h-6"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
+                        fill-rule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
                   </div>
                   <div className="text-base font-medium leading-6 text-gray-900">

@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Countdown from 'react-countdown';
 import Transition from '../../global/transition';
+import HeaderMobileContent from '../../header/headerMobileContent';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 import LogoFds from '../../../images/logo-fds-rouge-white.svg';
@@ -27,6 +28,7 @@ const Timer = styled.div`
 
 const HeroSection = () => {
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const Completionist = () => <p className="text-3xl">La Fête vous attend!</p>;
 
@@ -256,6 +258,17 @@ const HeroSection = () => {
             <span>MENU</span>
           </button>
         </div>
+        <Transition
+          show={isMobileMenuOpen}
+          enter="duration-200 ease-out"
+          enterFrom="opacity-0 scale-95"
+          enterTo="opacity-100 scale-100"
+          leave="duration-100 ease-in"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-95"
+        >
+          <HeaderMobileContent setIsMobileMenuOpen={setIsMobileMenuOpen} />
+        </Transition>
       </div>
       {/* ABSOLUTE NAVBAR END */}
       {/* ****************** */}
