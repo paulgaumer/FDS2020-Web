@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { matchFormatIcon } from '../../../utils/matchFormatIcon';
 
 const InputField = ({ item, handleChange }) => {
-  console.log(item);
   return (
     <div className="flex items-center">
       <input

@@ -101,7 +101,7 @@ const FilteringSection = ({ events, scolaires = false }) => {
         </div>
         <InnerEventGrid
           data-name="events"
-          className="grid grid-cols-1 gap-10 lg:grid-cols-2"
+          className="flex flex-col space-y-6 md:space-y-0 md:grid-cols-1 md:grid md:gap-10 lg:grid-cols-2"
         >
           {selectedEvents.length > 0 &&
             displayedEvents.map((event, i) => {
