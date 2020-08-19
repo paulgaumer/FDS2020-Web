@@ -58,7 +58,7 @@ const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
                     <svg
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      class="home w-6 h-6"
+                      className="w-6 h-6 home"
                     >
                       <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
                     </svg>
@@ -75,7 +75,7 @@ const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
                     <svg
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      class="pencil w-6 h-6"
+                      className="w-6 h-6 pencil"
                     >
                       <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
                     </svg>
@@ -94,7 +94,7 @@ const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
                             <svg
                               viewBox="0 0 20 20"
                               fill="currentColor"
-                              class="map w-6 h-6"
+                              className="w-6 h-6 map"
                             >
                               <path
                                 fill-rule="evenodd"
@@ -190,7 +190,7 @@ const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
                     <svg
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      class="academic-cap w-6 h-6"
+                      className="w-6 h-6 academic-cap"
                     >
                       <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
                     </svg>
@@ -207,12 +207,12 @@ const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
                     <svg
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      class="film w-6 h-6"
+                      className="w-6 h-6 film"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm3 2h6v4H7V5zm8 8v2h1v-2h-1zm-2-2H7v4h6v-4zm2 0h1V9h-1v2zm1-4V5h-1v2h1zM5 5v2H4V5h1zm0 4H4v2h1V9zm-1 4h1v2H4v-2z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
                   </div>
@@ -228,7 +228,7 @@ const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
                     <svg
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      class="mail w-6 h-6"
+                      className="w-6 h-6 mail"
                     >
                       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
@@ -246,12 +246,12 @@ const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
                     <svg
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      class="information-circle w-6 h-6"
+                      className="w-6 h-6 information-circle"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
                   </div>
