@@ -116,7 +116,7 @@ const EventsFilters = ({
         <Accordion allowZeroExpanded={true}>
           <AccordionItem className="">
             <AccordionItemHeading>
-              <AccordionItemButton className="flex justify-center text-gray-700 focus:outline-none">
+              <AccordionItemButton className="flex justify-center text-gray-700 focus:outline-none focus-visible:shadow-outline">
                 <div className="flex items-center px-4 py-2 space-x-2 text-white uppercase rounded bg-secondary">
                   <span>
                     <svg
@@ -146,7 +146,7 @@ const EventsFilters = ({
               >
                 <AccordionItem className="">
                   <AccordionItemHeading>
-                    <AccordionItemButton className="flex text-gray-700">
+                    <AccordionItemButton className="flex text-gray-700 focus:outline-none focus-visible:shadow-outline">
                       <span className="text-gray-700">
                         <AccordionItemState>
                           {(state) => {
@@ -190,7 +190,7 @@ const EventsFilters = ({
                 </AccordionItem>
                 <AccordionItem className="">
                   <AccordionItemHeading>
-                    <AccordionItemButton className="flex pb-2 text-gray-700">
+                    <AccordionItemButton className="flex pb-2 text-gray-700 focus:outline-none focus-visible:shadow-outline">
                       <span className="text-gray-700">
                         <AccordionItemState>
                           {(state) => {
@@ -234,7 +234,7 @@ const EventsFilters = ({
                 </AccordionItem>
                 <AccordionItem className="">
                   <AccordionItemHeading>
-                    <AccordionItemButton className="flex pb-2 text-gray-700">
+                    <AccordionItemButton className="flex pb-2 text-gray-700 focus:outline-none focus-visible:shadow-outline">
                       <span className="text-gray-700">
                         <AccordionItemState>
                           {(state) => {

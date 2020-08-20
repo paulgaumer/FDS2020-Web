@@ -61,7 +61,6 @@ const MapCarousel = () => {
         interval={4000}
         showStatus={false}
         showArrows={!isMobile}
-        swipeable={true}
       >
         <div className="h-20 myCarousel-item">
           <div className="flex items-center justify-center space-x-1 text-sm item-text-content sm:text-base">
@@ -93,7 +92,7 @@ const MapCarousel = () => {
         </div>
         <div className="h-20 myCarousel-item">
           <div className="flex items-center justify-center space-x-2 text-sm item-text-content sm:text-base">
-            <MdFavorite className="text-mapLink" />
+            <MdFavorite className="text-featured" />
             <span>
               Retrouvez notre sélection de{' '}
               <Link

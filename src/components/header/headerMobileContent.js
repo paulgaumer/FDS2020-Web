@@ -88,7 +88,7 @@ const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
                 <Accordion allowZeroExpanded={true}>
                   <AccordionItem dangerouslySetExpanding={true}>
                     <AccordionItemHeading>
-                      <AccordionItemButton>
+                      <AccordionItemButton className="focus:outline-none focus-visible:shadow-outline">
                         <div className="flex items-center space-x-4 transition duration-150 ease-in-out">
                           <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-full bg-secondary">
                             <svg
