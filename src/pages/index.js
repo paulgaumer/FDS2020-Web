@@ -9,7 +9,14 @@ import RegionMapSection from '../components/sections/homepage/regionMapSection';
 import InstagramSection from '../components/sections/homepage/instagramSection';
 import { hasWindow } from '../utils/hasWindow';
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
+  const {
+    features,
+    featuresButton,
+    featuresTitle,
+    instagramTitle,
+  } = data.sanityPage._rawPageContent[0];
+
   const [showHeader, setShowHeader] = useState(false);
   const [lastYPos, setLastYPos] = useState(0);
 
@@ -46,11 +53,23 @@ const IndexPage = () => {
         <Header />
       </motion.div>
       <HeroSection />
-      <AboutSection />
+      <AboutSection
+        features={features}
+        featuresButton={featuresButton}
+        featuresTitle={featuresTitle}
+      />
       <RegionMapSection />
-      <InstagramSection />
+      <InstagramSection instagramTitle={instagramTitle} />
     </Layout>
   );
 };
 
 export default IndexPage;
+
+export const query = graphql`
+  query HomePage {
+    sanityPage(pageName: { eq: "Homepage" }) {
+      _rawPageContent
+    }
+  }
+`;
