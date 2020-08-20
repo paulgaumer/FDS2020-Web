@@ -44,7 +44,7 @@ export const serializers = {
           );
         default:
           return (
-            <p className="mb-6 text-lg leading-relaxed tracking-wide">
+            <p className="mb-6 leading-relaxed tracking-wide">
               {props.children}
             </p>
           );

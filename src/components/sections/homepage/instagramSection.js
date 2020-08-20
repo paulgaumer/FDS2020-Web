@@ -75,7 +75,7 @@ const InstaGrid = styled.div`
   } */
 `;
 
-const InstagramSection = () => {
+const InstagramSection = ({ instagramTitle }) => {
   const picturesNumber = [
     1,
     2,
@@ -102,9 +102,7 @@ const InstagramSection = () => {
         <InstaGrid>
           <div className="flex flex-col items-center justify-center px-10 space-y-2 font-bold text-purple-900 item-text-content">
             <h2 className="text-4xl">#FDS2020</h2>
-            <p className="text-2xl text-center">
-              Partagez votre Fête de la Science sur notre communauté
-            </p>
+            <p className="text-2xl text-center">{instagramTitle}</p>
             <a href="https://instagram.com">
               <InstagramIcon customClasses="w-10 h-10 text-featured" />
             </a>
