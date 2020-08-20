@@ -62,6 +62,7 @@ const MapCarousel = () => {
         showStatus={false}
         showArrows={!isMobile}
         swipeable={true}
+        showThumbs={false}
       >
         <div className="h-20 myCarousel-item">
           <div className="flex items-center justify-center space-x-1 text-sm item-text-content sm:text-base">
