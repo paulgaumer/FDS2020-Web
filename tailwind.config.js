@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   purge: ['./src/**/*.js', './src/**/*.jsx', './src/**/*.ts', './src/**/*.tsx'],
   theme: {
@@ -40,9 +42,36 @@ module.exports = {
     },
   },
   variants: {
-    borderColor: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-    borderWidth: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-    scale: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+    borderColor: [
+      'responsive',
+      'hover',
+      'focus',
+      'focus-visible',
+      'group-hover',
+      'active',
+    ],
+    borderWidth: [
+      'responsive',
+      'hover',
+      'focus',
+      'focus-visible',
+      'group-hover',
+      'active',
+    ],
+    scale: ['responsive', 'hover', 'focus', 'group-hover', 'active'],
+    boxShadow: ['responsive', 'hover', 'focus', 'focus-visible', 'active'],
   },
-  plugins: [require('@tailwindcss/ui'), require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/ui'),
+    require('@tailwindcss/typography'),
+    plugin(function ({ addVariant, e }) {
+      addVariant('focus-visible', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.${e(
+            `focus-visible${separator}${className}`
+          )}[data-focus-visible-added]`;
+        });
+      });
+    }),
+  ],
 };
