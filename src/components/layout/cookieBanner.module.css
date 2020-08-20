@@ -1,5 +1,5 @@
 .container {
-  @apply bg-white px-6 py-8 justify-center items-center border-t-2 border-gray-300 !important;
+  @apply bg-white px-6 py-2 justify-center items-center border-t-2 border-gray-300 !important;
 }
 .content {
   @apply text-black flex-initial mx-12 !important;
