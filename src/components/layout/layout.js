@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import Header from '../header/header';
@@ -19,6 +20,9 @@ const Layout = ({ children, headerHidden = false }) => {
 
   return (
     <div className="flex flex-col h-screen">
+      <Helmet>
+        <script src="/node_modules/focus-visible/dist/focus-visible.min.js"></script>
+      </Helmet>
       <div style={{ display: headerHidden ? 'none' : 'block' }}>
         <Header siteTitle={data.site.siteMetadata.title} />
       </div>

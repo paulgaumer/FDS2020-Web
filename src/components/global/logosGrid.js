@@ -28,7 +28,7 @@ const LogosGrid = ({ logos }) => {
     <LogoGrid className="grid gap-20">
       {logos.map((logo) => {
         return (
-          <div className="">
+          <div className="" key={logo.id}>
             <Img
               fluid={logo.image.asset.fluid}
               imgStyle={{ objectFit: 'contain' }}

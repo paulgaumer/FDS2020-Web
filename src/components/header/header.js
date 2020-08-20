@@ -171,14 +171,14 @@ const Header = () => {
                 Contact
               </Link>
               <Link to="/covid">
-                <CovidButton className="px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out border border-transparent rounded bg-mapBackground hover:bg-blue-900 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-mapBackground">
+                <CovidButton className="px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out border border-transparent rounded bg-mapBackground hover:bg-blue-900 focus:outline-none focus-visible:border-indigo-300 focus-visible:shadow-outline-indigo active:bg-mapBackground">
                   Info Covid
                 </CovidButton>
               </Link>
               <span className="inline-flex rounded-md shadow-sm">
                 <Link
                   to="/scolaires"
-                  className="inline-flex items-center justify-center px-4 py-2 space-x-1 text-sm font-bold leading-6 text-gray-700 uppercase whitespace-no-wrap transition duration-150 ease-in-out border border-transparent rounded-md bg-edu hover:bg-eduLight focus:outline-none focus:shadow-outline-indigo active:bg-bg-eduLight"
+                  className="inline-flex items-center justify-center px-4 py-2 space-x-1 text-sm font-bold leading-6 text-gray-700 uppercase whitespace-no-wrap transition duration-150 ease-in-out border border-transparent rounded-md bg-edu hover:bg-eduLight focus:outline-none focus:shadow-outline-indigo active:bg-eduLight"
                 >
                   <svg
                     className="w-7 h-7"

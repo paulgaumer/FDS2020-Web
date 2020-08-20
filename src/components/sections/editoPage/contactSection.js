@@ -12,10 +12,10 @@ const ContactSection = ({ contactContent }) => {
             {contactContent}
           </p>
 
-          <span class="inline-flex rounded-md shadow-sm">
+          <span className="inline-flex rounded-md shadow-sm">
             <Link
               to="/contact"
-              class="inline-flex items-center px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-secondary hover:bg-secondary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 uppercase font-bold"
+              className="inline-flex items-center px-6 py-3 text-base font-medium font-bold leading-6 text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-md bg-secondary hover:bg-secondary focus:outline-none focus-visible:border-indigo-700 focus-visible:shadow-outline-indigo active:text-orange-900"
             >
               Nous Contacter
             </Link>
