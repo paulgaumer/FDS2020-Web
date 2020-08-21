@@ -6,19 +6,23 @@ export const processDate = (startDate, endDate) => {
 
   if (moment(startDate).month() !== moment(endDate).month()) {
     return `${
-      moment(startDate).format('DD MMMM, H[h]mm') -
+      'Du ' +
+      moment(startDate).format('DD MMMM, H[h]mm') +
+      ' au ' +
       moment(endDate).format('DD MMMM, H[h]mm')
     }`;
   }
 
   if (moment(startDate).date() !== moment(endDate).date()) {
     return (
+      'Du ' +
       moment(startDate).format('DD MMMM, H[h]mm') +
-      ' - ' +
+      ' au ' +
       moment(endDate).format('DD MMMM, H[h]mm')
     );
   } else {
     return (
+      'Le ' +
       moment(startDate).format('DD MMMM') +
       ', ' +
       'de ' +

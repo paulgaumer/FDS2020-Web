@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import SEO from '../components/layout/seo';
 import styled from 'styled-components';
 import PortableText from '@sanity/block-content-to-react';

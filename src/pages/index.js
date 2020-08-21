@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { graphql } from 'gatsby';
 import { motion } from 'framer-motion';
 import Layout from '../components/layout/layout';
 import SEO from '../components/layout/seo';
