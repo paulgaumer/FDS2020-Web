@@ -1,4 +1,5 @@
 import moment from 'moment';
+import 'moment/locale/fr';
 // Accepts date strings
 export const processDate = (startDate, endDate) => {
   moment.locale('fr');
@@ -10,7 +11,7 @@ export const processDate = (startDate, endDate) => {
     }`;
   }
 
-  if (moment(startDate).day() !== moment(endDate).day()) {
+  if (moment(startDate).date() !== moment(endDate).date()) {
     return (
       moment(startDate).format('DD MMMM, H[h]mm') +
       ' - ' +
