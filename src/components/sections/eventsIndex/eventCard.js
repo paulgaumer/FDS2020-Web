@@ -6,6 +6,7 @@ import CustomGatsbyImage from '../../global/customGatsbyImage';
 import FeaturedLabel from '../../global/featuredLabel';
 import { excerpt } from '../../../utils/excerpt';
 import { formatDepartmentName } from '../../../utils/formatDepartmentName';
+import { processDate } from '../../../utils/processDate';
 
 const EventCard = ({ event }) => {
   const {
@@ -46,10 +47,7 @@ const EventCard = ({ event }) => {
             <span className="text-base">
               <MdToday />
             </span>
-            <span>
-              Du {moment.utc(startDate.local).format('DD MMMM, H[h]mm')} au{' '}
-              {moment.utc(endDate.local).format('DD MMMM, H[h]mm')}
-            </span>
+            <span>{processDate(startDate.local, endDate.local)}</span>
           </div>
         </div>
       </div>

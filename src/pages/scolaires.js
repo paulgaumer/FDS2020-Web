@@ -120,10 +120,10 @@ export const query = graphql`
             name
           }
           startDate {
-            local(formatString: "DD MMMM", locale: "fr")
+            local
           }
           endDate {
-            local(formatString: "DD MMMM", locale: "fr")
+            local
           }
           theme {
             name

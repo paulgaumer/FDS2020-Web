@@ -42,10 +42,10 @@ export const query = graphql`
       bookingRequired
       bookingPhone
       bookingEmail
-      endDate {
+      startDate {
         local
       }
-      startDate {
+      endDate {
         local
       }
       projectOwners {

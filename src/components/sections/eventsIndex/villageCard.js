@@ -4,6 +4,7 @@ import CustomGatsbyImage from '../../global/customGatsbyImage';
 import { MdToday } from 'react-icons/md';
 import { excerpt } from '../../../utils/excerpt';
 import { formatDepartmentName } from '../../../utils/formatDepartmentName';
+import { processDate } from '../../../utils/processDate';
 
 const VillageCard = ({ village, department, scolaires }) => {
   const { description, image, startDate, endDate, slug, title } = village;
@@ -34,9 +35,7 @@ const VillageCard = ({ village, department, scolaires }) => {
             <span className="text-base">
               <MdToday />
             </span>
-            <span>
-              Du {startDate.local} au {endDate.local}
-            </span>
+            <span>{processDate(startDate.local, endDate.local)}</span>
           </div>
         </div>
       </div>

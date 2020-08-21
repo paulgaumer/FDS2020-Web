@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { MdToday, MdMic } from 'react-icons/md';
+import { FaMapMarkerAlt } from 'react-icons/fa';
+import { IoIosPeople } from 'react-icons/io';
 import CustomGatsbyImage from '../../global/customGatsbyImage';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 import FeaturedLabel from '../../global/featuredLabel';
-import { MdToday, MdMic, MdPhone } from 'react-icons/md';
-import { FaMapMarkerAlt } from 'react-icons/fa';
-import { IoIosPeople } from 'react-icons/io';
+import { processDate } from '../../../utils/processDate';
 
 const HeroCard = styled.div`
   [data-name='image'] {
@@ -109,7 +110,8 @@ const HeroSection = ({ event }) => {
                   <MdToday />
                 </span>
                 <span>
-                  {startDate.local} - {endDate.local}
+                  {/* {startDate.local} - {endDate.local} */}
+                  {processDate(startDate.local, endDate.local)}
                 </span>
               </p>
               <a href="#eventMap" className="flex items-center space-x-2">
