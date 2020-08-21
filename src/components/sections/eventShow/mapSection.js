@@ -6,7 +6,7 @@ import { hasWindow } from '../../../utils/hasWindow';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 
-const MapSection = ({ mapGps }) => {
+const MapSection = ({ mapGps, scolaires = false }) => {
   // this ref holds the map DOM node so that we can pass it into Mapbox GL
   const mapNode = useRef(null);
   const mapboxToken = process.env.GATSBY_MAPBOX_API_KEY;
@@ -42,11 +42,17 @@ const MapSection = ({ mapGps }) => {
     <SectionWrapper>
       <SectionContainer customClasses="pb-12">
         <div
-          className="max-w-5xl mx-auto overflow-hidden bg-white border-t-4 rounded-b-lg shadow border-primary"
+          className={`max-w-5xl mx-auto overflow-hidden bg-white border-t-4 rounded-b-lg shadow ${
+            scolaires ? 'border-eduDark' : 'border-primary'
+          }`}
           id="#eventMap"
         >
           <p className="flex items-center justify-center px-4 py-6 space-x-2">
-            <span className="text-2xl text-primary">
+            <span
+              className={`text-2xl ${
+                scolaires ? 'text-eduDark' : 'text-primary'
+              }`}
+            >
               <FaMapMarkerAlt />
             </span>
             <span className="pt-1 font-bold text-gray-500">

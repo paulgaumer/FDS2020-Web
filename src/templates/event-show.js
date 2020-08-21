@@ -9,21 +9,29 @@ import MapSection from '../components/sections/eventShow/mapSection';
 
 const EventShow = ({ data }) => {
   const event = data.sanityEvent;
+  const scolaires = event.education;
 
   return (
     <Layout>
-      <HeroSection event={event} />
-      <DescriptionSection description={event._rawDescription} />
+      <HeroSection event={event} scolaires={scolaires} />
+      <DescriptionSection
+        description={event._rawDescription}
+        scolaires={scolaires}
+      />
       {event.projectOwners.length > 0 && (
-        <OrganizerSection organizer={event.projectOwners[0]} />
+        <OrganizerSection
+          organizer={event.projectOwners[0]}
+          scolaires={scolaires}
+        />
       )}
       {event.bookingRequired && (
         <BookingSection
           bookingPhone={event.bookingPhone}
           bookingEmail={event.bookingEmail}
+          scolaires={scolaires}
         />
       )}
-      <MapSection mapGps={event.map} />
+      <MapSection mapGps={event.map} scolaires={scolaires} />
     </Layout>
   );
 };
@@ -37,7 +45,12 @@ export const query = graphql`
       department {
         name
       }
+      audience {
+        id
+        name
+      }
       featured
+      education
       _rawDescription
       bookingRequired
       bookingPhone
@@ -56,6 +69,13 @@ export const query = graphql`
       }
       format {
         name
+        formatIcon {
+          asset {
+            fluid(maxWidth: 500) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
       }
       theme {
         name

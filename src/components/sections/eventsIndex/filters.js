@@ -323,6 +323,7 @@ const EventsFilters = ({
                 list={data.allSanityFormat.edges}
                 getValues={setSelectedFormats}
                 topic="format"
+                scolaires={scolaires}
               />
             </div>
           </div>

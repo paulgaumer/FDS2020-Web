@@ -67,6 +67,13 @@ export const query = graphql`
           format {
             id
             name
+            formatIcon {
+              asset {
+                fluid(maxWidth: 500) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
           }
           image {
             asset {

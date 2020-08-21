@@ -4,11 +4,11 @@ import { FaWindowMinimize, FaGlobe, FaFacebook } from 'react-icons/fa';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 
-const OrganizerSection = ({ organizer }) => {
+const OrganizerSection = ({ organizer, scolaires }) => {
   return (
     <SectionWrapper>
       <SectionContainer customClasses="pb-12">
-        <InfoCard title="l'organisateur" customClasses="">
+        <InfoCard title="l'organisateur" customClasses="" scolaires={scolaires}>
           <div className="text-lg leading-relaxed">
             <h3 className="flex pb-4 space-x-3">
               <span className="pt-1 text-xl text-secondary">
@@ -27,7 +27,11 @@ const OrganizerSection = ({ organizer }) => {
                   rel="noreferrer"
                   className="inline-flex items-center space-x-2 text-base group"
                 >
-                  <span className="text-lg text-primary">
+                  <span
+                    className={`text-lg ${
+                      scolaires ? 'text-eduDark' : 'text-primary'
+                    }`}
+                  >
                     <FaGlobe />
                   </span>
                   <a
@@ -46,7 +50,9 @@ const OrganizerSection = ({ organizer }) => {
                   rel="noreferrer"
                   className="flex items-center pt-2 space-x-2 text-base group"
                 >
-                  <span className="text-primary">
+                  <span
+                    className={`${scolaires ? 'text-eduDark' : 'text-primary'}`}
+                  >
                     <FaFacebook />
                   </span>
                   <span className="group-hover:underline">Facebook</span>

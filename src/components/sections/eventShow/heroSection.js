@@ -1,6 +1,7 @@
 import React from 'react';
+import Img from 'gatsby-image';
 import styled from 'styled-components';
-import { MdToday, MdMic } from 'react-icons/md';
+import { MdToday } from 'react-icons/md';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { IoIosPeople } from 'react-icons/io';
 import CustomGatsbyImage from '../../global/customGatsbyImage';
@@ -26,7 +27,7 @@ const HeroCard = styled.div`
   }
 `;
 
-const BookingButton = ({ bookingRequired, isMobile = false }) => {
+const BookingButton = ({ bookingRequired, isMobile = false, scolaires }) => {
   if (bookingRequired) {
     return (
       <a href="#booking-section" className="inline-flex rounded-md shadow-sm">
@@ -58,7 +59,11 @@ const BookingButton = ({ bookingRequired, isMobile = false }) => {
   } else {
     return (
       <span className="inline-flex rounded-md shadow-sm">
-        <div className="inline-flex items-center px-4 py-2 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary ">
+        <div
+          className={`inline-flex items-center px-4 py-2 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full ${
+            scolaires ? 'bg-edu' : 'bg-primary'
+          }`}
+        >
           entrée libre
         </div>
       </span>
@@ -66,9 +71,10 @@ const BookingButton = ({ bookingRequired, isMobile = false }) => {
   }
 };
 
-const HeroSection = ({ event }) => {
+const HeroSection = ({ event, scolaires }) => {
   const {
     title,
+    audience,
     theme,
     format,
     bookingRequired,
@@ -99,7 +105,7 @@ const HeroSection = ({ event }) => {
               <h1 className="text-3xl font-bold text-gray-700 uppercase md:text-3xl">
                 {title}
               </h1>
-              <p className="text-base font-hairline md:text-lg">
+              <p className="text-base font-hairline text-purple-400 md:text-lg">
                 <span>- {theme[0].name}</span>
                 <span className="md:hidden"> -</span>
               </p>
@@ -109,10 +115,7 @@ const HeroSection = ({ event }) => {
                 <span className="text-xl">
                   <MdToday />
                 </span>
-                <span>
-                  {/* {startDate.local} - {endDate.local} */}
-                  {processDate(startDate.local, endDate.local)}
-                </span>
+                <span>{processDate(startDate.local, endDate.local)}</span>
               </p>
               <a href="#eventMap" className="flex items-center space-x-2">
                 <span className="text-lg">
@@ -126,20 +129,34 @@ const HeroSection = ({ event }) => {
             </div>
 
             <div className="items-center hidden col-span-1 col-start-2 md:flex">
-              <BookingButton bookingRequired={bookingRequired} />
+              <BookingButton
+                bookingRequired={bookingRequired}
+                scolaires={scolaires}
+              />
             </div>
             <div className="flex col-span-1 col-start-2 mt-6 space-x-6 md:mt-0 md:space-x-0 md:space-y-2 md:flex-col">
               <p className="flex items-center space-x-2">
-                <span className="p-1 text-2xl text-white rounded-full bg-primary">
-                  <MdMic />
+                <span
+                  className={`h-8 w-8 text-2xl text-white rounded-full p-2 flex items-center justify-center ${
+                    scolaires ? 'bg-eduDark' : 'bg-primary'
+                  }`}
+                >
+                  <Img
+                    fluid={format[0].formatIcon.asset.fluid}
+                    className="w-full"
+                  />
                 </span>
                 <span>{format[0].name}</span>
               </p>
               <p className="flex items-center space-x-2">
-                <span className="p-1 text-2xl text-white rounded-full bg-primary">
+                <span
+                  className={`h-8 w-8 p-1 flex items-center justify-center text-2xl text-white rounded-full ${
+                    scolaires ? 'bg-eduDark' : 'bg-primary'
+                  }`}
+                >
                   <IoIosPeople />
                 </span>
-                <span>Tout Public</span>
+                <span>{audience.name}</span>
               </p>
             </div>
           </div>

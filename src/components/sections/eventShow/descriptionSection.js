@@ -17,11 +17,11 @@ const CovidButton = styled.div`
   }
 `;
 
-const DescriptionSection = ({ description }) => {
+const DescriptionSection = ({ description, scolaires }) => {
   return (
     <SectionWrapper>
       <SectionContainer customClasses="pb-12">
-        <InfoCard title="description" customClasses="">
+        <InfoCard title="description" customClasses="" scolaires={scolaires}>
           <div className="text-lg leading-relaxed">
             <PortableText blocks={description} serializers={serializers} />
           </div>

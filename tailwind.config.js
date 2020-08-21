@@ -16,6 +16,7 @@ module.exports = {
         secondary: '#FDBF37',
         featured: '#EF4F5F',
         edu: '#EDEBFE',
+        eduDark: '#C8C2F7',
         eduLight: '#F6F5FF',
         sectionBackground: '#F5F5F5',
         mapLink: '#FE4B8D',

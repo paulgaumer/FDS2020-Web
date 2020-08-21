@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Img from 'gatsby-image';
 
-const InputField = ({ item, handleChange }) => {
+const InputField = ({ item, handleChange, scolaires }) => {
   return (
     <div className="flex items-center">
       <input
@@ -13,8 +13,12 @@ const InputField = ({ item, handleChange }) => {
         className="w-4 h-4 transition duration-150 ease-in-out text-secondary form-checkbox"
       />
       {item.icon && (
-        <div className="flex items-center justify-center p-2 ml-2 rounded-full bg-primary">
-          <Img fluid={item.icon} className="w-3" />
+        <div
+          className={`h-7 w-7 flex items-center justify-center p-2 ml-2 rounded-full ${
+            scolaires ? 'bg-eduDark' : 'bg-primary'
+          }`}
+        >
+          <Img fluid={item.icon} className="w-full" />
         </div>
       )}
       <label
@@ -28,7 +32,7 @@ const InputField = ({ item, handleChange }) => {
   );
 };
 
-const CheckboxFilter = ({ list, getValues, topic }) => {
+const CheckboxFilter = ({ list, getValues, topic, scolaires }) => {
   // Initialize the list of themes and states
   const itemsList = list.map(({ node }) => {
     return {
@@ -108,7 +112,12 @@ const CheckboxFilter = ({ list, getValues, topic }) => {
       </div>
       {items.map((item) => {
         return (
-          <InputField item={item} key={item.id} handleChange={handleChange} />
+          <InputField
+            item={item}
+            key={item.id}
+            handleChange={handleChange}
+            scolaires={scolaires}
+          />
         );
       })}
     </div>
