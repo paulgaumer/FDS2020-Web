@@ -86,6 +86,10 @@ export const query = graphql`
             ...GatsbySanityImageFluid
           }
         }
+        hotspot {
+          x
+          y
+        }
       }
       map {
         address
