@@ -30,6 +30,9 @@ module.exports = {
         '-6': '-1.5rem',
         '-4': '-1rem',
       },
+      width: {
+        fdsMax: '70rem',
+      },
       maxWidth: {
         '1/2': '50%',
         '1/3': '33%',
