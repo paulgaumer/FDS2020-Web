@@ -37,6 +37,13 @@ const EventsFilters = ({
           node {
             name
             id
+            formatIcon {
+              asset {
+                fluid(maxWidth: 500) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
           }
         }
       }
