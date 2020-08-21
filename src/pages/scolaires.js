@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import SEO from '../components/layout/seo';
 import Layout from '../components/layout/layout';
 import SectionWrapper from '../components/layout/sectionWrapper';
@@ -52,8 +53,12 @@ export const query = graphql`
             id
             name
           }
-          startDate
-          endDate
+          startDate {
+            local
+          }
+          endDate {
+            local
+          }
           format {
             id
             name
@@ -115,8 +120,12 @@ export const query = graphql`
           department {
             name
           }
-          startDate(formatString: "DD MMMM", locale: "fr")
-          endDate(formatString: "DD MMMM", locale: "fr")
+          startDate {
+            local
+          }
+          endDate {
+            local
+          }
           theme {
             name
           }

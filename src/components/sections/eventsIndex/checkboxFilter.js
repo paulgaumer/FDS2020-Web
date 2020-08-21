@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Img from 'gatsby-image';
 
 const InputField = ({ item, handleChange }) => {
-  console.log(item);
   return (
     <div className="flex items-center">
       <input

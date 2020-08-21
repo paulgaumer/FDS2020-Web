@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import moment from 'moment';
+import { MdToday } from 'react-icons/md';
 import CustomGatsbyImage from '../../global/customGatsbyImage';
 import FeaturedLabel from '../../global/featuredLabel';
 import { excerpt } from '../../../utils/excerpt';
 import { formatDepartmentName } from '../../../utils/formatDepartmentName';
+import { processDate } from '../../../utils/processDate';
 
 const EventCard = ({ event }) => {
   const {
@@ -19,6 +22,7 @@ const EventCard = ({ event }) => {
     // audience,
   } = event;
   const dpt = formatDepartmentName(department.name);
+  moment.locale('fr');
 
   return (
     <Link to={`/${dpt}/${slug.current}`} className="max-w-1/3 ">
@@ -39,11 +43,11 @@ const EventCard = ({ event }) => {
           </p>
           {/* <p>{audience.name}</p> */}
           <p className="pt-6">{excerpt(description[0].children[0].text)}</p>
-          <div className="pt-6 text-sm">
-            <span></span>
-            <span>
-              Du {startDate} au {endDate}
+          <div className="flex items-center pt-6 space-x-1 text-sm">
+            <span className="text-base">
+              <MdToday />
             </span>
+            <span>{processDate(startDate.local, endDate.local)}</span>
           </div>
         </div>
       </div>

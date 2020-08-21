@@ -55,6 +55,7 @@ const DateFilter = ({ getValues, firstDate, lastDate }) => {
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             locale="fr"
+            dateFormat="dd/MM/yyyy"
             className="block w-full form-input sm:text-sm sm:leading-5"
           />
         </div>
@@ -64,6 +65,7 @@ const DateFilter = ({ getValues, firstDate, lastDate }) => {
             selected={endDate}
             onChange={(date) => setEndDate(date)}
             locale="fr"
+            dateFormat="dd/MM/yyyy"
             className="block w-full form-input sm:text-sm sm:leading-5"
           />
         </div>

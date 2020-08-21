@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import CustomGatsbyImage from '../../global/customGatsbyImage';
+import { MdToday } from 'react-icons/md';
 import { excerpt } from '../../../utils/excerpt';
 import { formatDepartmentName } from '../../../utils/formatDepartmentName';
+import { processDate } from '../../../utils/processDate';
 
 const VillageCard = ({ village, department, scolaires }) => {
   const { description, image, startDate, endDate, slug, title } = village;
@@ -29,11 +31,11 @@ const VillageCard = ({ village, department, scolaires }) => {
         </div>
         <div data-name="content" className="px-4 pt-16 pb-6 bg-white">
           <p>{excerpt(description[0].children[0].text)}</p>
-          <div className="pt-6 text-sm">
-            <span></span>
-            <span>
-              Du {startDate} au {endDate}
+          <div className="flex items-center pt-6 space-x-1 text-sm">
+            <span className="text-base">
+              <MdToday />
             </span>
+            <span>{processDate(startDate.local, endDate.local)}</span>
           </div>
         </div>
       </div>
