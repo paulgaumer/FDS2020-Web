@@ -33,8 +33,8 @@ export const multiFilter = (arr, filters, scolaires) => {
   };
 
   const checkDates = (item, filterList) => {
-    const itemStartDate = new Date(item.startDate).getTime();
-    const itemEndDate = new Date(item.endDate).getTime();
+    const itemStartDate = new Date(item.startDate.local).getTime();
+    const itemEndDate = new Date(item.endDate.local).getTime();
     const filterStartDate = filterList.dates.startDate.getTime();
     const filterEndDate = filterList.dates.endDate.getTime();
 

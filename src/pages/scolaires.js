@@ -52,8 +52,12 @@ export const query = graphql`
             id
             name
           }
-          startDate
-          endDate
+          startDate {
+            local
+          }
+          endDate {
+            local
+          }
           format {
             id
             name
@@ -115,8 +119,12 @@ export const query = graphql`
           department {
             name
           }
-          startDate(formatString: "DD MMMM", locale: "fr")
-          endDate(formatString: "DD MMMM", locale: "fr")
+          startDate {
+            local(formatString: "DD MMMM", locale: "fr")
+          }
+          endDate {
+            local(formatString: "DD MMMM", locale: "fr")
+          }
           theme {
             name
           }

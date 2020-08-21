@@ -64,22 +64,26 @@ const EventsFilters = ({
         }
       }
       firstDate: allSanityEvent(
-        sort: { fields: startDate, order: ASC }
+        sort: { fields: startDate___local, order: ASC }
         limit: 1
       ) {
         edges {
           node {
-            startDate
+            startDate {
+              local
+            }
           }
         }
       }
       lastDate: allSanityEvent(
-        sort: { fields: endDate, order: DESC }
+        sort: { fields: endDate___local, order: DESC }
         limit: 1
       ) {
         edges {
           node {
-            endDate
+            endDate {
+              local
+            }
           }
         }
       }
@@ -111,8 +115,8 @@ const EventsFilters = ({
     setDatesFilter(selectedDates);
   }, [selectedFormats, selectedThemes, selectedDates]);
 
-  const firstDate = data.firstDate.edges[0].node.startDate;
-  const lastDate = data.lastDate.edges[0].node.endDate;
+  const firstDate = data.firstDate.edges[0].node.startDate.local;
+  const lastDate = data.lastDate.edges[0].node.endDate.local;
 
   return (
     <>

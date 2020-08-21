@@ -109,7 +109,7 @@ const HeroSection = ({ event }) => {
                   <MdToday />
                 </span>
                 <span>
-                  {startDate} - {endDate}
+                  {startDate.local} - {endDate.local}
                 </span>
               </p>
               <a href="#eventMap" className="flex items-center space-x-2">
