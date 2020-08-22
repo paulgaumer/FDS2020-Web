@@ -33,19 +33,19 @@ const HeroSection = () => {
         <div className="flex justify-center">
           <div className="flex space-x-6">
             <div className="text-center">
-              <p className="text-4xl">45</p>
+              <p className="text-2xl 2xl:text-4xl">45</p>
               <p>jours</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl">{hours}</p>
+              <p className="text-2xl 2xl:text-4xl">{hours}</p>
               <p>heures</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl">{minutes}</p>
+              <p className="text-2xl 2xl:text-4xl">{minutes}</p>
               <p>minutes</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl">{seconds}</p>
+              <p className="text-2xl 2xl:text-4xl">{seconds}</p>
               <p>secondes</p>
             </div>
           </div>
@@ -91,7 +91,7 @@ const HeroSection = () => {
             alt="ministère de l'enseignement supérieur"
             className="absolute top-0 left-0 w-56 xl:w-auto"
           />
-          <div className="flex items-center justify-between flex-grow mb-20">
+          <div className="flex items-center justify-between flex-grow mb-12 xl:mb-20">
             {/* NAVIGATION MENU START */}
             <div data-name="top-menu" className="flex-grow mt-10">
               <div
@@ -276,10 +276,10 @@ const HeroSection = () => {
       {/* CENTER BLOCK */}
       <div className="z-30 flex flex-col justify-between flex-auto">
         {/* CTA BLOCK START */}
-        <section className="flex self-center justify-center flex-grow w-full max-w-4xl px-6 pb-20 3xl:max-w-7xl md:px-14 sm:px-6 lg:px-8">
+        <section className="flex self-center justify-center flex-grow w-full max-w-3xl px-6 pb-20 md:pb-10 2xl:max-w-4xl 2xl:pb-20 3xl:max-w-7xl md:px-14 sm:px-6 lg:px-8">
           <ContentCenter
             data-name="content-center"
-            className="flex flex-col items-center flex-grow 2xl:items-start"
+            className="flex flex-col items-center flex-grow lg:items-start"
           >
             <img
               src={LogoFds}
@@ -288,19 +288,19 @@ const HeroSection = () => {
               className="h-full"
             />
 
-            <div className="mt-2 mb-10 text-white md:mb-12 lg:mb-20 2xl:mt-8">
-              <h3 className="text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
+            <div className="mt-2 mb-10 text-white md:mb-12 2xl:mb-20">
+              <h3 className="text-4xl font-bold tracking-tight md:text-5xl 2xl:text-7xl">
                 Pays de la Loire
               </h3>
 
-              <p className="text-lg uppercase md:text-2xl lg:text-3xl">
+              <p className="text-lg uppercase md:text-2xl 2xl:text-3xl">
                 02 Octobre - 12 Octobre 2020
               </p>
             </div>
             <span className="inline-flex rounded-md shadow-sm">
               <a
                 href="#departmentsMap"
-                className="inline-flex items-center px-3 py-3 text-lg font-bold leading-6 text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-md lg:px-6 lg:py-6 lg:text-3xl bg-primary hover:bg-primary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                className="inline-flex items-center px-3 py-3 text-lg font-bold leading-6 text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-md xl:text-2xl xl:px-4 xl:py-4 2xl:px-6 2xl:py-6 2xl:text-3xl bg-primary hover:bg-primary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
               >
                 découvrir les évenements
               </a>
@@ -329,7 +329,7 @@ const HeroSection = () => {
               </svg>
             </a>
           </div>
-          <Timer className="relative block col-start-8 col-end-13 px-12 py-5 text-white uppercase 2xl:col-start-10">
+          <Timer className="relative block col-start-8 col-end-13 py-2 text-sm text-white uppercase xl:col-start-9 2xl:text-base 2xl:px-12 2xl:py-5 2xl:col-start-10">
             <Countdown date={'2020-10-02T00:00:00'} renderer={renderer} />
 
             {/* Top Triangle */}
