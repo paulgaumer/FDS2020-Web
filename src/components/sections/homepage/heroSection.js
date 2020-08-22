@@ -276,10 +276,10 @@ const HeroSection = () => {
       {/* CENTER BLOCK */}
       <div className="z-30 flex flex-col justify-between flex-auto">
         {/* CTA BLOCK START */}
-        <section className="flex justify-center flex-grow px-6 pb-20 md:px-14 sm:px-6 lg:px-8">
+        <section className="flex self-center justify-center flex-grow w-full max-w-4xl px-6 pb-20 3xl:max-w-7xl md:px-14 sm:px-6 lg:px-8">
           <ContentCenter
             data-name="content-center"
-            className="flex flex-col items-center flex-grow 2xl:items-start max-w-7xl"
+            className="flex flex-col items-center flex-grow 2xl:items-start"
           >
             <img
               src={LogoFds}
