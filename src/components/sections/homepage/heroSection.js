@@ -275,25 +275,25 @@ const HeroSection = () => {
 
       {/* CENTER BLOCK */}
       <div className="z-30 flex flex-col justify-between flex-auto">
-        <section className="grid flex-grow grid-cols-12 px-4 pb-20 sm:px-6 lg:px-8">
+        {/* CTA BLOCK START */}
+        <section className="flex justify-center flex-grow px-6 pb-20 md:px-14 sm:px-6 lg:px-8">
           <ContentCenter
             data-name="content-center"
-            className="flex flex-col items-start justify-center flex-grow col-span-8 col-start-3"
+            className="flex flex-col items-center flex-grow 2xl:items-start max-w-7xl"
           >
-            {/* <div className=""> */}
             <img
               src={LogoFds}
               alt="fête de la science"
               id="logo-fds"
-              className="w-full"
+              className="h-full"
             />
 
-            <div className="my-20 text-white">
-              <h3 className="text-4xl font-bold tracking-tight lg:text-7xl">
+            <div className="mt-2 mb-10 text-white md:mb-12 lg:mb-20 2xl:mt-8">
+              <h3 className="text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
                 Pays de la Loire
               </h3>
 
-              <p className="text-lg uppercase lg:text-3xl">
+              <p className="text-lg uppercase md:text-2xl lg:text-3xl">
                 02 Octobre - 12 Octobre 2020
               </p>
             </div>
@@ -305,9 +305,9 @@ const HeroSection = () => {
                 découvrir les évenements
               </a>
             </span>
-            {/* </div> */}
           </ContentCenter>
         </section>
+        {/* CTA BLOCK END */}
 
         {/* TIMER BLOCK START */}
         <div className="z-40 hidden grid-cols-12 lg:grid">
@@ -329,7 +329,7 @@ const HeroSection = () => {
               </svg>
             </a>
           </div>
-          <Timer className="relative block col-start-10 col-end-13 px-12 py-5 text-white uppercase">
+          <Timer className="relative block col-start-8 col-end-13 px-12 py-5 text-white uppercase 2xl:col-start-10">
             <Countdown date={'2020-10-02T00:00:00'} renderer={renderer} />
 
             {/* Top Triangle */}
