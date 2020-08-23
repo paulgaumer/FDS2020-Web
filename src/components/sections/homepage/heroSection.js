@@ -101,22 +101,20 @@ const HeroSection = () => {
                 <nav className="flex items-center px-6 space-x-10">
                   <Link
                     to="/editorial"
-                    className="text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900"
+                    className="text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-white focus:shadow-outline-indigo"
                   >
                     Editorial
                   </Link>
 
                   <div className="relative">
-                    {/* Item active: "text-gray-900", Item inactive: "text-white" */}
                     <button
                       type="button"
                       onClick={() => setIsDepartmentActive(!isDepartmentActive)}
                       className={`${
                         isDepartmentActive ? 'text-white' : 'text-white'
-                      } group inline-flex items-center space-x-2 text-xl leading-6 font-medium hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900 transition ease-in-out duration-150`}
+                      } group inline-flex items-center space-x-2 text-xl leading-6 font-medium hover:border-b-2 hover:border-white focus:outline-none focus:shadow-outline-indigo focus:text-white transition ease-in-out duration-150`}
                     >
                       <span>Départements</span>
-                      {/* Item active: "text-gray-600", Item inactive: "text-gray-400" */}
                       <svg
                         className={`${
                           isDepartmentActive ? 'text-white' : 'text-white'
@@ -131,16 +129,7 @@ const HeroSection = () => {
                         />
                       </svg>
                     </button>
-                    {/* <!--
-          'More' flyout menu, show/hide based on flyout menu state.
 
-          Entering: "transition ease-out duration-200"
-            From: "opacity-0 translate-y-1"
-            To: "opacity-100 translate-y-0"
-          Leaving: "transition ease-in duration-150"
-            From: "opacity-100 translate-y-0"
-            To: "opacity-0 translate-y-1"
-        --> */}
                     <Transition
                       show={isDepartmentActive}
                       enter="transition ease-out duration-200"
@@ -202,13 +191,13 @@ const HeroSection = () => {
                   </div>
                   <Link
                     to="/multimedia"
-                    className="text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900"
+                    className="text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-white focus:shadow-outline-indigo"
                   >
                     Multimedia
                   </Link>
                   <Link
                     to="/contact"
-                    className="text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-gray-900"
+                    className="text-xl font-medium leading-6 text-white transition duration-150 ease-in-out hover:border-b-2 hover:border-white focus:outline-none focus:text-white focus:shadow-outline-indigo"
                   >
                     Contact
                   </Link>

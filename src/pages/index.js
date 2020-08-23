@@ -19,24 +19,33 @@ const IndexPage = ({ data }) => {
   } = data.sanityPage._rawPageContent[0];
 
   const [showHeader, setShowHeader] = useState(false);
+  const [windowHeight, setWindowHeight] = useState(1414);
   const [lastYPos, setLastYPos] = useState(0);
 
   const handleScroll = (e) => {
     setLastYPos(window.scrollY);
   };
 
+  // Define the height of the browsing window
+  useEffect(() => {
+    if (hasWindow) {
+      setWindowHeight(window.innerHeight - 90);
+    }
+  }, []);
+
+  // Define event listener on scroll
   useEffect(() => {
     if (hasWindow) {
       window.addEventListener('scroll', handleScroll);
-      // Clean up the event listener
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
     }
   }, []);
 
+  // Define when the nav should appear on screen
   useEffect(() => {
-    if (lastYPos >= 1414) {
+    if (lastYPos >= windowHeight) {
       setShowHeader(true);
     } else if (lastYPos <= 300) {
       setShowHeader(false);
@@ -48,7 +57,7 @@ const IndexPage = ({ data }) => {
       <SEO title="Accueil" />
       <motion.div
         animate={{ opacity: showHeader ? 1 : 0 }}
-        initial={{ opacity: showHeader ? 0 : 1 }}
+        initial={{ opacity: 0 }}
         transition={{}}
       >
         <Header />

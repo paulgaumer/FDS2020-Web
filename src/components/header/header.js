@@ -23,9 +23,9 @@ const Header = () => {
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-6 lg:justify-start">
             <div className="lg:w-0 lg:flex-1">
-              <a href="/" className="flex">
+              <Link to="/" className="flex">
                 <img className="w-auto h-8 sm:h-12" src={logo} alt="Workflow" />
-              </a>
+              </Link>
             </div>
             <div className="-my-2 -mr-2 lg:hidden">
               {/* BURGER BUTTON FOR MOBILE MENU */}
@@ -65,7 +65,6 @@ const Header = () => {
               </Link>
 
               <div className="relative">
-                {/* Item active: "text-gray-900", Item inactive: "text-gray-500" */}
                 <button
                   type="button"
                   onClick={() => setIsDepartmentActive(!isDepartmentActive)}
@@ -74,7 +73,6 @@ const Header = () => {
                   } group inline-flex items-center space-x-2 text-base leading-6 font-medium hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150`}
                 >
                   <span>Départements</span>
-                  {/* Item active: "text-gray-600", Item inactive: "text-gray-400" */}
                   <svg
                     className={`${
                       isDepartmentActive ? 'text-gray-600' : 'text-gray-400'
@@ -89,16 +87,6 @@ const Header = () => {
                     />
                   </svg>
                 </button>
-                {/* <!--
-          'More' flyout menu, show/hide based on flyout menu state.
-
-          Entering: "transition ease-out duration-200"
-            From: "opacity-0 translate-y-1"
-            To: "opacity-100 translate-y-0"
-          Leaving: "transition ease-in duration-150"
-            From: "opacity-100 translate-y-0"
-            To: "opacity-0 translate-y-1"
-        --> */}
                 <Transition
                   show={isDepartmentActive}
                   enter="transition ease-out duration-200"
@@ -201,17 +189,6 @@ const Header = () => {
             </nav>
           </div>
         </div>
-
-        {/* <!--
-    Mobile menu, show/hide based on mobile menu state.
-
-    Entering: "duration-200 ease-out"
-      From: "opacity-0 scale-95"
-      To: "opacity-100 scale-100"
-    Leaving: "duration-100 ease-in"
-      From: "opacity-100 scale-100"
-      To: "opacity-0 scale-95"
-  --> */}
         <Transition
           show={isMobileMenuOpen}
           enter="duration-200 ease-out"
