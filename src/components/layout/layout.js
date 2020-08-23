@@ -6,7 +6,7 @@ import Footer from '../footer/footer';
 import CookieBanner from './cookieBanner';
 import './layout.css';
 
-const Layout = ({ children, headerHidden = false }) => {
+const Layout = ({ children, headerHidden }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -19,9 +19,6 @@ const Layout = ({ children, headerHidden = false }) => {
 
   return (
     <div className="flex flex-col h-screen">
-      {/* <div style={{ display: headerHidden ? 'none' : 'block' }}>
-        <Header siteTitle={data.site.siteMetadata.title} />
-      </div> */}
       {!headerHidden && <Header siteTitle={data.site.siteMetadata.title} />}
       <div
         className={`flex-grow bg-sectionBackground

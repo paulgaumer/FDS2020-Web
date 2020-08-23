@@ -112,7 +112,7 @@ const FilteringSection = ({ events, scolaires = false }) => {
               );
             })}
           {selectedEvents.length === 0 && (
-            <div className="flex flex-col items-center justify-center col-span-2 p-10 space-y-6 text-xl text-gray-500 border border-dotted rounded-md shadow-inner">
+            <div className="flex flex-col items-center justify-center col-span-2 p-10 space-y-6 text-xl text-center text-gray-500 border border-dotted rounded-md shadow-inner">
               <p className="text-3xl">
                 <FaSearch />
               </p>

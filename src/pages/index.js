@@ -26,22 +26,24 @@ const IndexPage = ({ data }) => {
     setLastYPos(window.scrollY);
   };
 
+  // Define the height of the browsing window
   useEffect(() => {
     if (hasWindow) {
       setWindowHeight(window.innerHeight - 90);
     }
   }, []);
 
+  // Define event listener on scroll
   useEffect(() => {
     if (hasWindow) {
       window.addEventListener('scroll', handleScroll);
-      // Clean up the event listener
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
     }
   }, []);
 
+  // Define when the nav should appear on screen
   useEffect(() => {
     if (lastYPos >= windowHeight) {
       setShowHeader(true);
