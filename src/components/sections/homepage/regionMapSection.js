@@ -63,7 +63,7 @@ class RegionMap extends React.Component {
           style={{ position: 'relative', top: '-50px' }}
           id="departmentsMap"
         />
-        <SectionContainer customClasses="z-20 pt-16 pb-0 md:py-20 lg:py-28">
+        <SectionContainer customClasses="z-20 py-16 md:py-20 lg:py-28">
           <div className="flex flex-col items-center">
             <SectionTitle text="Programme par département" color="white" />
           </div>

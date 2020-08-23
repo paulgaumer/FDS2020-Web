@@ -30,6 +30,9 @@ module.exports = {
         '-6': '-1.5rem',
         '-4': '-1rem',
       },
+      width: {
+        fdsMax: '70rem',
+      },
       maxWidth: {
         '1/2': '50%',
         '1/3': '33%',
@@ -37,6 +40,10 @@ module.exports = {
       },
       zIndex: {
         '100': '100',
+      },
+      screens: {
+        '2xl': '1920px',
+        '3xl': '2560px',
       },
     },
   },
