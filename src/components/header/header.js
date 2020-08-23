@@ -23,9 +23,9 @@ const Header = () => {
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-6 lg:justify-start">
             <div className="lg:w-0 lg:flex-1">
-              <a href="/" className="flex">
+              <Link to="/" className="flex">
                 <img className="w-auto h-8 sm:h-12" src={logo} alt="Workflow" />
-              </a>
+              </Link>
             </div>
             <div className="-my-2 -mr-2 lg:hidden">
               {/* BURGER BUTTON FOR MOBILE MENU */}

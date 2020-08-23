@@ -57,7 +57,7 @@ const IndexPage = ({ data }) => {
       <SEO title="Accueil" />
       <motion.div
         animate={{ opacity: showHeader ? 1 : 0 }}
-        initial={{ opacity: showHeader ? 0 : 1 }}
+        initial={{ opacity: 0 }}
         transition={{}}
       >
         <Header />
