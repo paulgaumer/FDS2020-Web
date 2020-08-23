@@ -19,9 +19,10 @@ const Layout = ({ children, headerHidden = false }) => {
 
   return (
     <div className="flex flex-col h-screen">
-      <div style={{ display: headerHidden ? 'none' : 'block' }}>
+      {/* <div style={{ display: headerHidden ? 'none' : 'block' }}>
         <Header siteTitle={data.site.siteMetadata.title} />
-      </div>
+      </div> */}
+      {!headerHidden && <Header siteTitle={data.site.siteMetadata.title} />}
       <div
         className={`flex-grow bg-sectionBackground
         ${headerHidden ? '' : 'pt-24'}`}
