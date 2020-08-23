@@ -89,7 +89,7 @@ const HeroSection = () => {
             data-name="logo-ministere"
             src={logoMinister}
             alt="ministère de l'enseignement supérieur"
-            className="w-56 md:w-5/12 lg:w-56 xl:w-3/12"
+            className="w-auto max-w-1/2 sm:w-56 md:w-4/12 lg:w-56 xl:w-2/12"
           />
           <div className="flex items-center justify-between flex-grow ">
             {/* NAVIGATION MENU START */}
@@ -254,7 +254,7 @@ const HeroSection = () => {
             <img
               src={logoPdl}
               alt="pays de la loire"
-              className="self-end w-56 mt-10 ml-4 mr-2 md:w-4/6 lg:w-56 md:ml-0 md:mr-8 xl:w-auto"
+              className="self-end w-auto mt-10 ml-4 mr-2 max-w-3/4 sm:w-56 md:w-3/6 lg:w-56 md:ml-0 md:mr-8 xl:w-auto"
             />
           </div>
         </div>
@@ -277,10 +277,10 @@ const HeroSection = () => {
       {/* CENTER BLOCK */}
       <div className="z-30 flex flex-col justify-between flex-auto">
         {/* NAV PADDING START */}
-        <div className="h-40" />
+        <div className="h-40 md:h-52 lg:h-40 2xl:h-52" />
         {/* NAV PADDING END */}
         {/* CTA BLOCK START */}
-        <section className="flex self-center justify-center flex-grow w-full max-w-3xl px-6 pb-20 md:pb-10 2xl:max-w-4xl 2xl:pb-20 3xl:max-w-7xl md:px-14 sm:px-6 lg:px-8">
+        <section className="flex self-center justify-center flex-grow w-full max-w-3xl px-6 pb-20 xl:pb-10 2xl:max-w-5xl 2xl:pb-20 3xl:max-w-7xl md:px-14 sm:px-6 lg:px-8">
           <ContentCenter
             data-name="content-center"
             className="flex flex-col items-center flex-grow lg:items-start"
