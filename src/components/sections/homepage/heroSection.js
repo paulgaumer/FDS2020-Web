@@ -83,17 +83,17 @@ const HeroSection = () => {
       {/* Video Background filter End */}
 
       {/* NAVBAR START */}
-      <div className="z-40">
+      <div className="absolute top-0 left-0 right-0 z-40">
         <div className="relative flex items-start justify-between">
           <img
             data-name="logo-ministere"
             src={logoMinister}
             alt="ministère de l'enseignement supérieur"
-            className="absolute top-0 left-0 w-56 xl:w-auto"
+            className="w-56 md:w-5/12 lg:w-56 xl:w-3/12"
           />
-          <div className="flex items-center justify-between flex-grow mb-12 xl:mb-20">
+          <div className="flex items-center justify-between flex-grow ">
             {/* NAVIGATION MENU START */}
-            <div data-name="top-menu" className="flex-grow mt-10">
+            <div data-name="top-menu" className="flex-grow lg:mt-10">
               <div
                 data-name="nav-desktop"
                 className="justify-center hidden lg:flex"
@@ -216,13 +216,14 @@ const HeroSection = () => {
                     to="/covid"
                     className="hidden px-3 py-2 text-base font-medium leading-4 text-center text-white transition duration-150 ease-in-out border border-white rounded hover:bg-white hover:text-gray-700 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-white xl:inline-block"
                   >
-                    <span className="">Info</span> <span>Covid</span>
+                    <span className="hidden 2xl:inline-block">Info</span>{' '}
+                    <span>Covid</span>
                   </Link>
                 </nav>
               </div>
 
               {/* BURGER BUTTON FOR MOBILE MENU START */}
-              <div
+              {/* <div
                 data-name="nav-mobile"
                 className="flex justify-center my-8 text-2xl lg:hidden"
               >
@@ -246,14 +247,14 @@ const HeroSection = () => {
                   </svg>
                   <span>MENU</span>
                 </button>
-              </div>
+              </div> */}
               {/* BURGER BUTTON FOR MOBILE MENU END */}
             </div>
             {/* NAVIGATION MENU END */}
             <img
               src={logoPdl}
               alt="pays de la loire"
-              className="w-56 mt-10 mr-8 xl:w-auto"
+              className="self-end w-56 mt-10 ml-4 mr-2 md:w-4/6 lg:w-56 md:ml-0 md:mr-8 xl:w-auto"
             />
           </div>
         </div>
@@ -275,6 +276,9 @@ const HeroSection = () => {
 
       {/* CENTER BLOCK */}
       <div className="z-30 flex flex-col justify-between flex-auto">
+        {/* NAV PADDING START */}
+        <div className="h-40" />
+        {/* NAV PADDING END */}
         {/* CTA BLOCK START */}
         <section className="flex self-center justify-center flex-grow w-full max-w-3xl px-6 pb-20 md:pb-10 2xl:max-w-4xl 2xl:pb-20 3xl:max-w-7xl md:px-14 sm:px-6 lg:px-8">
           <ContentCenter
