@@ -11,17 +11,15 @@ const cache = {
 };
 
 async function getPosts() {
-  // first see if we have a cache in 30 min
-  // const timeSinceLastFetch = Date.now() - cache.lastFetch;
-  // if (timeSinceLastFetch <= 600000) {
-  //   return cache.posts;
-  // }
-  console.log('YOO FROM GETPOSTS');
-  console.log(url);
+  first see if we have a cache in 30 min
+  const timeSinceLastFetch = Date.now() - cache.lastFetch;
+  if (timeSinceLastFetch <= 600000) {
+    return cache.posts;
+  }
   const data = await fetch(url).then((res) => res.json());
   const posts = slimUpPosts(data);
-  // cache.lastFetch = Date.now();
-  // cache.posts = posts;
+  cache.lastFetch = Date.now();
+  cache.posts = posts;
   return posts;
 }
 

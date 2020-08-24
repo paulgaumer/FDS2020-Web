@@ -4,7 +4,7 @@ import SectionContainer from '../../layout/sectionContainer';
 import InstagramIcon from '../../icons/instagram';
 
 // Hook fetch instagram pics from netlify serverless function
-const url = `/.netlify/functions/instagramByHashtag`;
+const url = `/.netlify/functions/instagramById`;
 function useInstagram() {
   const [posts, setPosts] = useState([]);
 
