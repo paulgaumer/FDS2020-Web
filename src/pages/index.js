@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
-import { motion } from 'framer-motion';
 import Layout from '../components/layout/layout';
 import SEO from '../components/layout/seo';
 import Header from '../components/header/header';
@@ -55,13 +54,9 @@ const IndexPage = ({ data }) => {
   return (
     <Layout headerHidden={true}>
       <SEO title="Accueil" />
-      <motion.div
-        animate={{ opacity: showHeader ? 1 : 0 }}
-        initial={{ opacity: 0 }}
-        transition={{}}
-      >
+      <div className={`${showHeader ? 'block' : 'hidden'}`}>
         <Header />
-      </motion.div>
+      </div>
       <HeroSection />
       <AboutSection
         features={features}
@@ -69,7 +64,7 @@ const IndexPage = ({ data }) => {
         featuresTitle={featuresTitle}
       />
       <RegionMapSection />
-      <InstagramSection instagramTitle={instagramTitle} />
+      {/* <InstagramSection instagramTitle={instagramTitle} /> */}
     </Layout>
   );
 };
