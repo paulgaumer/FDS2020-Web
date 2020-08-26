@@ -73,7 +73,11 @@ const InstagramSection = ({ instagramTitle }) => {
                       key={pic.id}
                       className="col-span-1"
                     >
-                      <img src={pic.thumbnail} alt={pic.caption} />
+                      <img
+                        src={pic.thumbnail}
+                        alt={pic.caption}
+                        className="rounded-lg"
+                      />
                     </a>
                   );
                 })}

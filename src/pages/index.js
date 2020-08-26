@@ -61,13 +61,13 @@ const IndexPage = ({ data }) => {
         </div>
       </div>
       <HeroSection />
-      {/* <AboutSection
+      <AboutSection
         features={features}
         featuresButton={featuresButton}
         featuresTitle={featuresTitle}
-      /> */}
-      {/* <RegionMapSection /> */}
-      {/* <InstagramSection instagramTitle={instagramTitle} /> */}
+      />
+      <RegionMapSection />
+      <InstagramSection instagramTitle={instagramTitle} />
     </Layout>
   );
 };
