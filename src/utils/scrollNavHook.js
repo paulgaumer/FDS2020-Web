@@ -26,9 +26,9 @@ const ScrollNavHook = () => {
   useEffect(() => {
     // Scroll direction: 0 - initial, 1 - up, 2 - down
     setPrevScroll(curScroll);
-    if (curScroll > prevScroll) {
+    if (curScroll > prevScroll + 15) {
       setDirection(2);
-    } else if (curScroll < prevScroll) {
+    } else if (curScroll < prevScroll - 15) {
       setDirection(1);
     }
 

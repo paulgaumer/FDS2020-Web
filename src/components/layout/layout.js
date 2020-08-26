@@ -4,13 +4,13 @@ import './layout.css';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import CookieBanner from './cookieBanner';
-import ScrollNavHook from '../../utils/scrollNavHook';
+import HideNavOnScrollHook from '../../utils/scrollNavHook';
 
 const Layout = ({ children, headerHidden }) => {
   return (
     <div className="flex flex-col h-screen">
       {!headerHidden && (
-        <div className={`${ScrollNavHook() ? 'hidden' : 'block'}`}>
+        <div className={`${HideNavOnScrollHook() ? 'hidden' : 'block'}`}>
           <Header />
         </div>
       )}
