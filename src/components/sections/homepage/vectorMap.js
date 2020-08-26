@@ -46,7 +46,7 @@ const VectorMap = ({
             stroke-width="5"
             stroke-miterlimit="10"
             className={
-              hoveredDepartment === 'vendée' ? 'text-mapLink' : backgroundColor
+              hoveredDepartment === 'vendee' ? 'text-mapLink' : backgroundColor
             }
           />
           <path
