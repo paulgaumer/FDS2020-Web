@@ -18,7 +18,7 @@ const EventsIndex = ({ data }) => {
       <SEO title={department} />
       <SectionWrapper>
         <TopSection villages={data.villages.edges} department={department} />
-        <FilteringSection events={events} />
+        <FilteringSection events={events} department={department} />
         <AboutFeatured />
         {logos.length > 0 && <LocalPartners logos={logos} />}
       </SectionWrapper>
