@@ -89,7 +89,7 @@ const HeroSection = () => {
             data-name="logo-ministere"
             src={logoMinister}
             alt="ministère de l'enseignement supérieur"
-            className="w-auto max-w-1/2 sm:w-56 md:w-4/12 lg:w-56 xl:w-2/12"
+            className="w-auto pr-4 max-w-1/2 sm:w-56 md:w-4/12 lg:w-56 xl:w-2/12"
           />
           <div className="flex items-center justify-between flex-grow ">
             {/* NAVIGATION MENU START */}
@@ -243,7 +243,7 @@ const HeroSection = () => {
             <img
               src={logoPdl}
               alt="pays de la loire"
-              className="self-end w-auto mt-10 ml-4 mr-2 max-w-3/4 sm:w-56 md:w-3/6 lg:w-56 md:ml-0 md:mr-8 xl:w-auto"
+              className="self-end w-auto pl-4 pr-2 mt-10 max-w-3/4 sm:w-56 md:w-3/6 lg:w-56 md:ml-0 md:mr-8 xl:w-auto"
             />
           </div>
         </div>
