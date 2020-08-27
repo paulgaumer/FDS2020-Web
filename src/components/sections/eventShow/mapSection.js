@@ -45,7 +45,7 @@ const MapSection = ({ mapGps, scolaires = false }) => {
           className={`max-w-5xl mx-auto overflow-hidden bg-white border-t-4 rounded-b-lg shadow ${
             scolaires ? 'border-eduDark' : 'border-primary'
           }`}
-          id="#eventMap"
+          id="carte-evenement"
         >
           <p className="flex items-center justify-center px-4 py-6 space-x-2">
             <span

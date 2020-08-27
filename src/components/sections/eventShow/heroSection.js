@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { MdToday } from 'react-icons/md';
@@ -30,7 +31,7 @@ const HeroCard = styled.div`
 const BookingButton = ({ bookingRequired, isMobile = false, scolaires }) => {
   if (bookingRequired) {
     return (
-      <a href="#booking-section" className="inline-flex rounded-md shadow-sm">
+      <Link to="#reservation" className="inline-flex rounded-md shadow-sm">
         <button
           type="button"
           className={`inline-flex items-center text-base px-4 font-bold leading-6 text-orange-900 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-secondary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-secondary space-x-2 ${
@@ -54,7 +55,7 @@ const BookingButton = ({ bookingRequired, isMobile = false, scolaires }) => {
           </span>
           <span>réserver maintenant</span>
         </button>
-      </a>
+      </Link>
     );
   } else {
     return (
@@ -117,7 +118,10 @@ const HeroSection = ({ event, scolaires }) => {
                 </span>
                 <span>{processDate(startDate.local, endDate.local)}</span>
               </p>
-              <a href="#eventMap" className="flex items-center space-x-2">
+              <Link
+                to="#carte-evenement"
+                className="flex items-center space-x-2"
+              >
                 <span className="text-lg">
                   <FaMapMarkerAlt />
                 </span>
@@ -125,7 +129,7 @@ const HeroSection = ({ event, scolaires }) => {
                   {map.address}{' '}
                   <span className="underline">(Voir la carte)</span>
                 </span>
-              </a>
+              </Link>
             </div>
 
             <div className="items-center hidden col-span-1 col-start-2 md:flex">

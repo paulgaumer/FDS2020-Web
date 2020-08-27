@@ -83,10 +83,7 @@ const MapCarousel = () => {
             </svg>
             <span>
               Les scolaires ont une page dédiée,{' '}
-              <Link
-                to="/programme-scolaires"
-                className="border-b-4 border-secondary"
-              >
+              <Link to="/scolaires" className="border-b-4 border-secondary">
                 c’est par ici
               </Link>{' '}
             </span>

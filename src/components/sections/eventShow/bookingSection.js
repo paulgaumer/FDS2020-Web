@@ -15,10 +15,7 @@ const BookingSection = ({ bookingPhone, bookingEmail }) => {
     <SectionWrapper>
       <SectionContainer customClasses="pb-12">
         <InfoCard title="réservation" customClasses="">
-          <div
-            className="text-lg leading-relaxed text-center"
-            id="booking-section"
-          >
+          <div className="text-lg leading-relaxed text-center" id="reservation">
             <p>
               Attention, cet évenement est uniquement accessible sur
               réservation!

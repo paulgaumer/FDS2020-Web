@@ -61,7 +61,7 @@ class RegionMap extends React.Component {
       >
         <div
           style={{ position: 'relative', top: '-50px' }}
-          id="departmentsMap"
+          id="carte-accueil"
         />
         <SectionContainer customClasses="z-20 py-16 md:py-20 lg:py-28">
           <div className="flex flex-col items-center">

@@ -16,7 +16,7 @@ const urlFor = (source) =>
 const About = ({ features, featuresButton, featuresTitle }) => {
   return (
     <SectionWrapper>
-      <div id="aboutSection" style={{ position: 'relative', top: '-50px' }} />
+      <div id="a-propos" style={{ position: 'relative', top: '-50px' }} />
       <SectionContainer customClasses="py-28">
         <div className="flex flex-col items-center">
           <SectionTitle text={featuresTitle} />

@@ -291,12 +291,12 @@ const HeroSection = () => {
               </p>
             </div>
             <span className="inline-flex rounded-md shadow-sm">
-              <a
-                href="#departmentsMap"
-                className="inline-flex items-center px-3 py-3 text-lg font-bold leading-6 text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-md xl:text-2xl xl:px-4 xl:py-4 2xl:px-6 2xl:py-6 2xl:text-3xl bg-primary hover:bg-primary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+              <Link
+                to="/#carte-accueil"
+                className="inline-flex items-center px-3 py-3 text-lg font-bold leading-6 text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-md xl:text-2xl xl:px-4 xl:py-4 2xl:px-6 2xl:py-6 2xl:text-3xl bg-primary hover:bg-primary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-primary"
               >
                 découvrir les évenements
-              </a>
+              </Link>
             </span>
           </ContentCenter>
         </section>
@@ -305,8 +305,8 @@ const HeroSection = () => {
         {/* TIMER BLOCK START */}
         <div className="z-40 hidden grid-cols-12 lg:grid">
           <div className="flex items-center justify-center col-start-6 col-end-8">
-            <a
-              href="#aboutSection"
+            <Link
+              to="/#a-propos"
               className="px-1 pt-4 pb-2 border-2 border-white rounded-full"
             >
               <svg
@@ -320,7 +320,7 @@ const HeroSection = () => {
               >
                 <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
               </svg>
-            </a>
+            </Link>
           </div>
           <Timer className="relative block col-start-8 col-end-13 py-2 text-sm text-white uppercase xl:col-start-9 2xl:text-base 2xl:px-12 2xl:py-5 2xl:col-start-10">
             <Countdown date={'2020-10-02T00:00:00'} renderer={renderer} />

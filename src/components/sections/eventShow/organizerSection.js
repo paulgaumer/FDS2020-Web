@@ -39,7 +39,7 @@ const OrganizerSection = ({ organizer, scolaires }) => {
                     target="_blank"
                     className="underline md:no-underline group-hover:underline"
                   >
-                    Visiter le site web
+                    Visiter leur site web
                   </a>
                 </a>
               )}
