@@ -5,28 +5,28 @@ const InputField = ({ item, handleChange, scolaires }) => {
   return (
     <div className="flex items-center">
       <input
-        id={item.id}
+        id={`inp-${item.id}`}
         type="checkbox"
         value={item.name}
         checked={item.isChecked}
         onChange={() => handleChange(item.id)}
         className="w-4 h-4 transition duration-150 ease-in-out text-secondary form-checkbox"
       />
-      {item.icon && (
-        <div
-          className={`h-7 w-7 flex items-center justify-center p-2 ml-2 rounded-full ${
-            scolaires ? 'bg-eduDark' : 'bg-primary'
-          }`}
-        >
-          <Img fluid={item.icon} className="w-full" />
-        </div>
-      )}
       <label
         id={item.id}
-        htmlFor={item.id}
-        className="block ml-2 text-sm leading-5"
+        htmlFor={`inp-${item.id}`}
+        className="flex items-center ml-2 space-x-2 text-sm leading-5"
       >
-        {item.name}
+        {item.icon && (
+          <div
+            className={`h-7 w-7 flex items-center justify-center p-2 rounded-full ${
+              scolaires ? 'bg-eduDark' : 'bg-primary'
+            }`}
+          >
+            <Img fluid={item.icon} className="w-full" />
+          </div>
+        )}
+        <span>{item.name}</span>
       </label>
     </div>
   );
