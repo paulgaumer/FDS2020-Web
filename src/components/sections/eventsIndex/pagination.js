@@ -25,7 +25,7 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
         onClick={() => paginate(currentPage - 1)}
         onKeyDown={() => paginate(currentPage - 1)}
         role="button"
-        tabindex="0"
+        tabIndex="0"
       >
         <button className="inline-flex items-center pt-4 pr-1 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400">
           <svg
