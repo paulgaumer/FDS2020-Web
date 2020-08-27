@@ -59,6 +59,7 @@ const HeroSection = () => {
     <SectionWrapper backgroundColor="bg-teal-500 h-screen relative flex flex-col">
       <video
         autoPlay
+        playsInline
         loop
         muted
         poster={poster}
