@@ -92,12 +92,12 @@ const Footer = () => {
             </h4>
             <ul className="mt-4">
               <li>
-                <a
-                  href="/"
+                <Link
+                  to="/legal/mentions-legales"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
                 >
                   Mentions Légales
-                </a>
+                </Link>
               </li>
               <li className="mt-4">
                 <Link
