@@ -61,6 +61,7 @@ class RegionMap extends React.Component {
       >
         <div
           style={{ position: 'relative', top: '-50px' }}
+          className="md:hidden"
           id="carte-accueil"
         />
         <SectionContainer customClasses="z-20 py-16 md:py-20 lg:py-28">
@@ -73,8 +74,6 @@ class RegionMap extends React.Component {
           >
             {/* Display clickable map */}
             <PdlMap
-              background="map"
-              backgroundHover="mapLink"
               width="w-full md:w-3/4 lg:w-2/3"
               hoveredDepartment={this.state.hoveredDepartment}
             />

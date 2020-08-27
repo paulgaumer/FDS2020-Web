@@ -1,18 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-const VectorMap = ({
-  background,
-  backgroundHover,
-  width,
-  hoveredDepartment,
-}) => {
+const VectorMap = ({ width, hoveredDepartment }) => {
   const backgroundColor = `text-map hover:text-mapLink`;
 
   return (
     <svg
-      // width="724"
-      // height="711"
       viewBox="0 0 724 711"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
