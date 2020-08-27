@@ -62,6 +62,27 @@ const convToGeoJson = (arr) => {
   }
 };
 
+// Updates the zoom level and map bounds to be able to see all markers at once
+const defineMapBounds = (geoJson, map) => {
+  if (geoJson.features.length > 0) {
+    let bounds = geoJson.features.reduce(function (bounds, feature) {
+      if (!Array.isArray(feature.geometry.coordinates[0])) {
+        // point feature
+        return bounds.extend(feature.geometry.coordinates);
+      } else {
+        return feature.geometry.coordinates.reduce(function (bounds, coord) {
+          return bounds.extend(coord);
+        }, bounds);
+      }
+    }, new mapboxgl.LngLatBounds());
+
+    map.fitBounds(bounds, {
+      maxZoom: 16,
+      padding: 80, // in px, to make markers on the top edge visible
+    });
+  }
+};
+
 // MAIN COMPONENT
 const EventsMap = ({ selectedEvents, department = '' }) => {
   const dep = formatDepartmentName(department);
@@ -104,10 +125,16 @@ const EventsMap = ({ selectedEvents, department = '' }) => {
     }
   }, [geoData]);
 
+  // Updates the zoom level and map bounds after changes to the geoJson object
+  useEffect(() => {
+    if (mapInstance) {
+      defineMapBounds(geoData, mapInstance);
+    }
+  }, [geoData]);
+
   // Init map instance when window is loaded with markers layers
   useEffect(() => {
     if (windowLoaded && !mapInstance) {
-      // let mapCenter = [allCenter.lng, allCenter.lat];
       let mapCenter = [-0.07553, 47.69815];
       let mapZoom = selectedEvents > 0 ? 8 : 7;
 
@@ -127,6 +154,7 @@ const EventsMap = ({ selectedEvents, department = '' }) => {
       setMapInstance(map);
 
       map.on('load', function () {
+        // Add the geojson as data source for the clusters
         map.addSource('fdsevents', {
           type: 'geojson',
           data: geoData,
@@ -197,99 +225,11 @@ const EventsMap = ({ selectedEvents, department = '' }) => {
             .addTo(map);
         });
 
-        // // Update map center & zoom level based on new markers
-        // // const bounds = new mapboxgl.LngLatBounds();
-        // if (map.getSource('fdsevents')) {
-        //   // const feats = map.getSource('fdsevents')._data.features;
-        //   // feats.map((f) => {
-        //   //   const coord = {
-        //   //     lng: f.geometry.coordinates[0],
-        //   //     lat: f.geometry.coordinates[1],
-        //   //   };
-        //   //   return bounds.extend(coord);
-        //   // });
-        //   // map.fitBounds(bounds, { padding: 80, maxZoom: 16 });
-        //   map.fitBounds(geojsonExtent('fdsevents'));
-        // }
+        // Update map center & zoom level based on new markers
+        defineMapBounds(geoData, map);
       });
     }
   }, [windowLoaded]);
-
-  // Display markers based on the current state of selected events
-  useEffect(() => {
-    if (mapInstance) {
-      // clearMarkers(allMarkers);
-      // let markers = [];
-      // if (selectedEvents.length > 0) {
-      //   let geo = { type: 'FeatureCollection', features: [] };
-      //   selectedEvents.map((e) => {
-      //     const coor = {
-      //       type: 'Feature',
-      //       geometry: {
-      //         type: 'Point',
-      //         properties: {},
-      //         coordinates: [[e.map.lng, e.map.lat]],
-      //       },
-      //     };
-      //     geo.features = [...geo.features, coor];
-      //   });
-      // mapInstance.addLayer({
-      //   id: 'clusters',
-      //   type: 'circle',
-      //   source: 'fdsevents',
-      //   filter: ['has', 'point_count'],
-      //   paint: {
-      //     // Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
-      //     // with three steps to implement three types of circles:
-      //     //   * Blue, 20px circles when point count is less than 100
-      //     //   * Yellow, 30px circles when point count is between 100 and 750
-      //     //   * Pink, 40px circles when point count is greater than or equal to 750
-      //     'circle-color': [
-      //       'step',
-      //       ['get', 'point_count'],
-      //       '#51bbd6',
-      //       100,
-      //       '#f1f075',
-      //       750,
-      //       '#f28cb1',
-      //     ],
-      //     'circle-radius': [
-      //       'step',
-      //       ['get', 'point_count'],
-      //       20,
-      //       100,
-      //       30,
-      //       750,
-      //       40,
-      //     ],
-      //   },
-      // });
-      // selectedEvents.map((e) => {
-      //   const popupContent = createPopupContent(e, dep);
-      //   const popup = new mapboxgl.Popup({ closeButton: false }).setHTML(
-      //     popupContent
-      //   );
-      //   const m = new mapboxgl.Marker({
-      //     color: '#FDBF37',
-      //     scale: 1,
-      //   })
-      //     .setLngLat([e.map.lng, e.map.lat])
-      //     .setPopup(popup)
-      //     .addTo(mapInstance);
-      //   markers.push(m);
-      //   return markers;
-      // });
-      // setAllMarkers(markers);
-      // // Update map center & zoom level based on new markers
-      // const bounds = new mapboxgl.LngLatBounds();
-      // markers.map((m) => {
-      //   const coord = m.getLngLat();
-      //   return bounds.extend(coord);
-      // });
-      // mapInstance.fitBounds(bounds, { padding: 80, maxZoom: 16 });
-      // }
-    }
-  }, [selectedEvents, mapInstance]);
 
   return (
     <div>
