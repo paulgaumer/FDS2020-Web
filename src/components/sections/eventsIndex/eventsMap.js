@@ -3,6 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { hasWindow } from '../../../utils/hasWindow';
 import { formatDepartmentName } from '../../../utils/formatDepartmentName';
+import markerIcon from '../../../images/marker.png';
 
 // Content for Marker Popup
 const featuredLabel = `
@@ -151,58 +152,63 @@ const EventsMap = ({ selectedEvents, department = '' }) => {
         new mapboxgl.NavigationControl({ showCompass: false }),
         'top-right'
       );
+
+      // Save map instance in state for later use in useEffect
       setMapInstance(map);
 
+      // Apply various actions on map load
       map.on('load', function () {
-        // Add the geojson as data source for the clusters
-        map.addSource('fdsevents', {
-          type: 'geojson',
-          data: geoData,
-          cluster: true,
-          clusterMaxZoom: 14, // Max zoom to cluster points on
-          clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
-        });
+        map.loadImage(markerIcon, function (error, image) {
+          if (error) throw error;
+          map.addImage('markerIcon', image);
+          // Add the geojson as data source for the clusters
+          map.addSource('fdsevents', {
+            type: 'geojson',
+            data: geoData,
+            cluster: true,
+            clusterMaxZoom: 14, // Max zoom to cluster points on
+            clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
+          });
 
-        // Layer for the colored clusters
-        map.addLayer({
-          id: 'clusters',
-          type: 'circle',
-          source: 'fdsevents',
-          filter: ['has', 'point_count'],
-          paint: {
-            'circle-color': '#FDBF37',
-            'circle-radius': 40,
-            'circle-stroke-color': '#fff',
-            'circle-stroke-width': 2,
-          },
-        });
+          // Layer for the colored clusters
+          map.addLayer({
+            id: 'clusters',
+            type: 'circle',
+            source: 'fdsevents',
+            filter: ['has', 'point_count'],
+            paint: {
+              'circle-color': '#FDBF37',
+              'circle-radius': 30,
+              'circle-stroke-color': '#fff',
+              'circle-stroke-width': 4,
+            },
+          });
 
-        // Layer for the clusters numbers
-        map.addLayer({
-          id: 'cluster-count',
-          type: 'symbol',
-          source: 'fdsevents',
-          filter: ['has', 'point_count'],
-          layout: {
-            'text-field': '{point_count_abbreviated}',
-            'text-font': ['Arial Unicode MS Bold'],
-            'text-size': 12,
-            'text-allow-overlap': true,
-          },
-        });
+          // Layer for the clusters numbers
+          map.addLayer({
+            id: 'cluster-count',
+            type: 'symbol',
+            source: 'fdsevents',
+            filter: ['has', 'point_count'],
+            layout: {
+              'text-field': '{point_count_abbreviated}',
+              'text-font': ['Arial Unicode MS Bold'],
+              'text-size': 15,
+              'text-allow-overlap': true,
+            },
+          });
 
-        // Layer for the individual markers
-        map.addLayer({
-          id: 'unclustered-point',
-          type: 'circle',
-          source: 'fdsevents',
-          filter: ['!', ['has', 'point_count']],
-          paint: {
-            'circle-color': '#51bbd6',
-            'circle-radius': 8,
-            'circle-stroke-width': 1,
-            'circle-stroke-color': '#fff',
-          },
+          // Layer for single markers
+          map.addLayer({
+            id: 'unclustered-point',
+            type: 'symbol',
+            source: 'fdsevents',
+            filter: ['!', ['has', 'point_count']],
+            layout: {
+              'icon-image': 'markerIcon',
+              'icon-size': 0.35,
+            },
+          });
         });
 
         map.on('click', 'unclustered-point', function (e) {
