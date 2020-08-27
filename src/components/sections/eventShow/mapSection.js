@@ -40,12 +40,11 @@ const MapSection = ({ mapGps, scolaires = false }) => {
 
   return (
     <SectionWrapper>
-      <SectionContainer customClasses="pb-12">
+      <SectionContainer customClasses="pb-12" id="carte-evenement">
         <div
           className={`max-w-5xl mx-auto overflow-hidden bg-white border-t-4 rounded-b-lg shadow ${
             scolaires ? 'border-eduDark' : 'border-primary'
           }`}
-          id="carte-evenement"
         >
           <p className="flex items-center justify-center px-4 py-6 space-x-2">
             <span

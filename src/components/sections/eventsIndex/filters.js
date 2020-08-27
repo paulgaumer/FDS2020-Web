@@ -141,7 +141,7 @@ const EventsFilters = ({
                   <AccordionItemState>
                     {(state) => {
                       return state.expanded ? (
-                        <span>Fermer les options de filtre</span>
+                        <span>Fermer les options</span>
                       ) : (
                         <span>Filtrer les évènements</span>
                       );
@@ -155,9 +155,9 @@ const EventsFilters = ({
                 allowZeroExpanded={true}
                 className="flex flex-col pt-4 pb-2 space-y-4 bg-white rounded"
               >
-                <AccordionItem className="">
+                <AccordionItem className="border-b border-gray-100">
                   <AccordionItemHeading>
-                    <AccordionItemButton className="flex text-gray-700">
+                    <AccordionItemButton className="flex justify-center pb-2 text-gray-700 focus:outline-none">
                       <span className="text-gray-700">
                         <AccordionItemState>
                           {(state) => {
@@ -189,7 +189,7 @@ const EventsFilters = ({
                           }}
                         </AccordionItemState>
                       </span>
-                      <span>Thème</span>
+                      <span>Filter par Thème</span>
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel className="px-6 pt-3">
@@ -199,9 +199,9 @@ const EventsFilters = ({
                     />
                   </AccordionItemPanel>
                 </AccordionItem>
-                <AccordionItem className="">
+                <AccordionItem className="border-b border-gray-100">
                   <AccordionItemHeading>
-                    <AccordionItemButton className="flex pb-2 text-gray-700">
+                    <AccordionItemButton className="flex justify-center pb-2 text-gray-700 focus:outline-none">
                       <span className="text-gray-700">
                         <AccordionItemState>
                           {(state) => {
@@ -233,7 +233,7 @@ const EventsFilters = ({
                           }}
                         </AccordionItemState>
                       </span>
-                      <span>Formes</span>
+                      <span>Filtrer par Formes</span>
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel className="px-6 pt-3">
@@ -245,7 +245,7 @@ const EventsFilters = ({
                 </AccordionItem>
                 <AccordionItem className="">
                   <AccordionItemHeading>
-                    <AccordionItemButton className="flex pb-2 text-gray-700">
+                    <AccordionItemButton className="flex justify-center pb-2 text-gray-700 focus:outline-none">
                       <span className="text-gray-700">
                         <AccordionItemState>
                           {(state) => {
@@ -277,7 +277,7 @@ const EventsFilters = ({
                           }}
                         </AccordionItemState>
                       </span>
-                      <span>Dates</span>
+                      <span>Filtrer par Dates</span>
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel className="px-6 pt-3 pb-4">

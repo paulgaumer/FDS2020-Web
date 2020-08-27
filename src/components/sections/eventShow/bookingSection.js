@@ -13,9 +13,9 @@ const RoundIcon = ({ children }) => {
 const BookingSection = ({ bookingPhone, bookingEmail }) => {
   return (
     <SectionWrapper>
-      <SectionContainer customClasses="pb-12">
+      <SectionContainer customClasses="pb-12" id="reservation">
         <InfoCard title="réservation" customClasses="">
-          <div className="text-lg leading-relaxed text-center" id="reservation">
+          <div className="text-lg leading-relaxed text-center">
             <p>
               Attention, cet évenement est uniquement accessible sur
               réservation!
