@@ -5,6 +5,14 @@ html {
   scroll-behavior: smooth;
 }
 
+.mapboxgl-popup-content {
+  padding: 0 !important;
+  width: max-content;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  border-radius: 0.25rem;
+}
+
 @tailwind components;
 /* purgecss end ignore */
 

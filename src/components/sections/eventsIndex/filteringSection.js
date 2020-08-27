@@ -16,7 +16,7 @@ const InnerEventGrid = styled.div`
   grid-auto-rows: minmax(min-content, max-content);
 `;
 
-const FilteringSection = ({ events, scolaires = false }) => {
+const FilteringSection = ({ department, events, scolaires = false }) => {
   // Initialize states
   const [allEvents] = useState(events);
   const [selectedEvents, setSelectedEvents] = useState(allEvents);
@@ -86,7 +86,7 @@ const FilteringSection = ({ events, scolaires = false }) => {
   return (
     <SectionContainer customClasses="pt-16 pb-20 flex flex-col-reverse md:flex-col">
       <div className="mt-16 md:mt-0 md:mb-16">
-        <EventsMap selectedEvents={selectedEvents} />
+        <EventsMap selectedEvents={selectedEvents} department={department} />
       </div>
       <OuterGrid className="gap-0 lg:gap-20 md:grid">
         <div data-name="filters" className="">
