@@ -19,7 +19,10 @@ const YoutubeContainer = styled.div`
 `;
 
 const urlFor = (source) =>
-  urlBuilder({ projectId: 'uql6kgt5', dataset: 'production' }).image(source);
+  urlBuilder({
+    projectId: process.env.GATSBY_SANITY_PROJECT_ID,
+    dataset: 'production',
+  }).image(source);
 
 // Used to transcribe and style Sanity's Portable Text format
 export const serializers = {

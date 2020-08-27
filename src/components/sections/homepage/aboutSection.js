@@ -9,7 +9,7 @@ import SectionTitle from '../../global/sectionTitle';
 
 const urlFor = (source) =>
   urlBuilder({
-    projectId: 'uql6kgt5',
+    projectId: process.env.GATSBY_SANITY_PROJECT_ID,
     dataset: 'production',
   }).image(source);
 

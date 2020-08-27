@@ -5,7 +5,7 @@ import InstagramIcon from '../icons/instagram';
 
 const Footer = () => {
   return (
-    <footer className="bg-white max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 ">
+    <footer className="max-w-screen-xl px-4 py-12 mx-auto bg-white sm:px-6 lg:py-16 lg:px-8 ">
       <div className="flex flex-col items-center lg:items-start space-y-14 lg:flex-row lg:space-y-0">
         <div data-name="fds-logo" className="flex items-center">
           <Link to="/">
@@ -17,68 +17,68 @@ const Footer = () => {
           className="flex flex-grow space-x-6 lg:justify-center lg:space-x-10"
         >
           <div>
-            <h4 className="text-sm leading-5 font-semibold tracking-wider text-cool-gray-400 uppercase">
+            <h4 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
               Départements
             </h4>
             <ul className="mt-4">
               <li>
-                <a
-                  href="/"
+                <Link
+                  to="/loire-atlantique"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
                 >
                   Loire Atlantique
-                </a>
+                </Link>
               </li>
               <li className="mt-4">
-                <a
-                  href="/"
+                <Link
+                  to="/maine-et-loire"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
                 >
                   Maine et Loire
-                </a>
+                </Link>
               </li>
               <li className="mt-4">
-                <a
-                  href="/"
+                <Link
+                  to="/mayenne"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
                 >
                   Mayenne
-                </a>
+                </Link>
               </li>
               <li className="mt-4">
-                <a
-                  href="/"
+                <Link
+                  to="/sarthe"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
                 >
                   Sarthe
-                </a>
+                </Link>
               </li>
               <li className="mt-4">
-                <a
-                  href="/"
+                <Link
+                  to="/vendee"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
                 >
                   Vendée
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
           <div className="">
-            <h4 className="text-sm leading-5 font-semibold tracking-wider text-cool-gray-400 uppercase">
+            <h4 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
               a propos
             </h4>
             <ul className="mt-4">
               <li>
-                <a
-                  href="/"
+                <Link
+                  to="/editorial"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
                 >
-                  Partenaires
-                </a>
+                  Éditorial
+                </Link>
               </li>
               <li className="mt-4">
                 <a
-                  href="/"
+                  href="https://www.fetedelascience.fr/"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
                 >
                   Site National
@@ -87,7 +87,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="">
-            <h4 className="text-sm leading-5 font-semibold tracking-wider text-cool-gray-400 uppercase">
+            <h4 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
               Légal
             </h4>
             <ul className="mt-4">
@@ -100,12 +100,12 @@ const Footer = () => {
                 </a>
               </li>
               <li className="mt-4">
-                <a
-                  href="/"
+                <Link
+                  to="/contact"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
                 >
                   Nous contacter
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -123,7 +123,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="mt-12 border-t border-gray-200 pt-8 flex justify-between items-center">
+      <div className="flex items-center justify-between pt-8 mt-12 border-t border-gray-200">
         <p className="text-base leading-6 text-cool-gray-400 xl:text-center">
           &copy; 2020 Fête de la Science Pays de la Loire
         </p>
