@@ -59,12 +59,15 @@ class RegionMap extends React.Component {
         style={{ height: '100%' }}
         ref={this.vantaRef}
       >
-        <div
+        {/* <div
           style={{ position: 'relative', top: '-50px' }}
           className="md:hidden"
           id="carte-accueil"
-        />
-        <SectionContainer customClasses="z-20 py-16 md:py-20 lg:py-28">
+        /> */}
+        <SectionContainer
+          customClasses="z-20 py-16 md:py-20 lg:py-28"
+          id="carte-accueil"
+        >
           <div className="flex flex-col items-center">
             <SectionTitle text="Programme par département" color="white" />
           </div>
