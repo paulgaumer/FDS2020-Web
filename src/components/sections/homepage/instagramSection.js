@@ -22,7 +22,7 @@ function useInstagram() {
 // InstaPic Component
 const InstaPic = ({ pic }) => {
   return (
-    <a href={pic.url} target="_blank">
+    <a href={pic.url} target="_blank" rel="noopener noreferrer">
       <img src={pic.thumbnail} alt={pic.caption} className="rounded-lg" />
     </a>
   );
@@ -58,7 +58,10 @@ const InstagramSection = ({ instagramTitle }) => {
               <div className="flex flex-col items-center justify-center col-span-2 mb-6 space-y-2 font-bold text-purple-900 item-text-content">
                 <div className="flex items-center justify-center space-x-3">
                   <h2 className="text-4xl">#FDS2020</h2>
-                  <a href="https://instagram.com">
+                  <a
+                    href="https://instagram.com"
+                    aria-label="Visiter Instagram"
+                  >
                     <InstagramIcon customClasses="w-10 h-10 text-featured" />
                   </a>
                 </div>
@@ -72,6 +75,7 @@ const InstagramSection = ({ instagramTitle }) => {
                       target="_blank"
                       key={pic.id}
                       className="col-span-1"
+                      rel="noopener noreferrer"
                     >
                       <img
                         src={pic.thumbnail}

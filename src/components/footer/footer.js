@@ -17,9 +17,9 @@ const Footer = () => {
           className="flex flex-grow space-x-6 lg:justify-center lg:space-x-10"
         >
           <div>
-            <h4 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
+            <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
               Départements
-            </h4>
+            </h5>
             <ul className="mt-4">
               <li>
                 <Link
@@ -64,9 +64,9 @@ const Footer = () => {
             </ul>
           </div>
           <div className="">
-            <h4 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
+            <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
               a propos
-            </h4>
+            </h5>
             <ul className="mt-4">
               <li>
                 <Link
@@ -87,9 +87,9 @@ const Footer = () => {
             </ul>
           </div>
           <div className="">
-            <h4 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
+            <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
               Légal
-            </h4>
+            </h5>
             <ul className="mt-4">
               <li>
                 <Link
@@ -127,7 +127,7 @@ const Footer = () => {
         <p className="text-base leading-6 text-cool-gray-400 xl:text-center">
           &copy; 2020 Fête de la Science Pays de la Loire
         </p>
-        <a href="https://instagram.com">
+        <a href="https://instagram.com" aria-label="Visiter Instagram">
           <InstagramIcon customClasses="w-8 h-8 text-cool-gray-400 hover:text-featured" />
         </a>
       </div>
