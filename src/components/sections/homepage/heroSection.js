@@ -23,7 +23,7 @@ const HeroSection = () => {
 
   // **** Settings for Timer Start ****
   const Completionist = () => <p className="text-3xl">La Fête vous attend!</p>;
-  const renderer = ({ hours, minutes, seconds, completed }) => {
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
       return <Completionist />;
@@ -33,7 +33,7 @@ const HeroSection = () => {
         <div className="flex justify-center">
           <div className="flex space-x-6">
             <div className="text-center">
-              <p className="text-2xl 2xl:text-4xl">45</p>
+              <p className="text-2xl 2xl:text-4xl">{days}</p>
               <p>jours</p>
             </div>
             <div className="text-center">
@@ -325,6 +325,7 @@ const HeroSection = () => {
             </Link>
           </div>
           <Timer className="relative block col-start-8 col-end-13 py-2 text-sm text-white uppercase xl:col-start-9 2xl:text-base 2xl:px-12 2xl:py-5 2xl:col-start-10">
+            {/* <Countdown date={'2020-10-02T00:00:00'} renderer={renderer} /> */}
             <Countdown date={'2020-10-02T00:00:00'} renderer={renderer} />
 
             {/* Top Triangle */}
