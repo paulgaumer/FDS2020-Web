@@ -9,14 +9,14 @@ import ContactSection from '../components/sections/contactPage/contactSection';
 
 const ContactPage = ({ data }) => {
   const departments = data.allSanityContactDepartment.group;
+  const pressKits = data.allSanityPressKit.edges;
 
   return (
     <Layout>
       <SEO title="Contact" />
       <SectionWrapper>
-        <SectionContainer customClasses="pt-16 pb-20 md:py-20 lg:pt-32 lg:pb-40">
+        <SectionContainer customClasses="pt-16 pb-20 md:py-20 lg:pt-32 lg:pb-20">
           <SectionTitle text="Contacter nos antennes départementales" />
-
           <div className="flex flex-col pt-16 space-y-24 md:space-y-0 md:max-w-none md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:row-gap-36">
             {departments.map((department) => {
               return (
@@ -28,6 +28,27 @@ const ContactPage = ({ data }) => {
             })}
           </div>
         </SectionContainer>
+        {pressKits.length > 0 && (
+          <SectionContainer customClasses="pt-16 pb-20 md:py-20 lg:pt-20 lg:pb-40">
+            <SectionTitle text="Resources Presse" />
+            <ul className="flex flex-col space-y-6 text-gray-700 list-disc list-inside">
+              {pressKits.map(({ node }) => {
+                return (
+                  <li className="text-2xl" key={node.id}>
+                    <a
+                      href={node.file.asset.url}
+                      className="underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {node.name}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </SectionContainer>
+        )}
       </SectionWrapper>
     </Layout>
   );
@@ -52,6 +73,19 @@ export const query = graphql`
                   ...GatsbySanityImageFluid
                 }
               }
+            }
+          }
+        }
+      }
+    }
+    allSanityPressKit {
+      edges {
+        node {
+          id
+          name
+          file {
+            asset {
+              url
             }
           }
         }

@@ -11,7 +11,6 @@ const ContactSection = ({ contactContent }) => {
           <p className="text-lg text-center text-gray-700 lg:px-40">
             {contactContent}
           </p>
-
           <span class="inline-flex rounded-md shadow-sm">
             <Link
               to="/contact"
