@@ -72,6 +72,7 @@ const InstagramSection = ({ instagramTitle }) => {
                       target="_blank"
                       key={pic.id}
                       className="col-span-1"
+                      rel="noopener noreferrer"
                     >
                       <img
                         src={pic.thumbnail}

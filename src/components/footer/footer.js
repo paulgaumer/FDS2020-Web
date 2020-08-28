@@ -17,9 +17,9 @@ const Footer = () => {
           className="flex flex-grow space-x-6 lg:justify-center lg:space-x-10"
         >
           <div>
-            <h4 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
+            <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
               Départements
-            </h4>
+            </h5>
             <ul className="mt-4">
               <li>
                 <Link
@@ -64,9 +64,9 @@ const Footer = () => {
             </ul>
           </div>
           <div className="">
-            <h4 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
+            <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
               a propos
-            </h4>
+            </h5>
             <ul className="mt-4">
               <li>
                 <Link
@@ -87,9 +87,9 @@ const Footer = () => {
             </ul>
           </div>
           <div className="">
-            <h4 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
+            <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
               Légal
-            </h4>
+            </h5>
             <ul className="mt-4">
               <li>
                 <Link
