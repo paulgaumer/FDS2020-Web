@@ -309,6 +309,7 @@ const HeroSection = () => {
             <Link
               to="/#a-propos"
               className="px-1 pt-4 pb-2 border-2 border-white rounded-full"
+              aria-label="Section A propos"
             >
               <svg
                 className="w-6 h-6 text-white animate-bounce "

@@ -127,7 +127,7 @@ const Footer = () => {
         <p className="text-base leading-6 text-cool-gray-400 xl:text-center">
           &copy; 2020 Fête de la Science Pays de la Loire
         </p>
-        <a href="https://instagram.com">
+        <a href="https://instagram.com" aria-label="Visiter Instagram">
           <InstagramIcon customClasses="w-8 h-8 text-cool-gray-400 hover:text-featured" />
         </a>
       </div>
