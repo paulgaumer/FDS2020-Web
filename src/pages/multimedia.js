@@ -11,7 +11,7 @@ const Multimedia = () => {
       <SEO title="Multimedia" />
       <SectionWrapper>
         <SectionContainer customClasses="pt-16 pb-20 md:py-20 lg:pt-32 lg:pb-40">
-          <SectionTitle text="Multimedia" />
+          <SectionTitle text="Contenu Multimedia" />
           <div></div>
         </SectionContainer>
       </SectionWrapper>
