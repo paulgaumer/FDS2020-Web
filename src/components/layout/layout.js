@@ -17,7 +17,7 @@ const Layout = ({ children, headerHidden }) => {
       )}
       <div
         className={`flex-grow bg-sectionBackground
-        ${headerHidden ? '' : 'pt-24'}`}
+        ${headerHidden ? ' ' : 'pt-24'}`}
       >
         <main>{children}</main>
       </div>
