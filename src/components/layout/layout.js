@@ -4,6 +4,7 @@ import './layout.css';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import CookieBanner from './cookieBanner';
+import PwaPrompt from './pwaPrompt';
 import HideNavOnScrollHook from '../../utils/scrollNavHook';
 
 const Layout = ({ children, headerHidden }) => {
@@ -16,7 +17,7 @@ const Layout = ({ children, headerHidden }) => {
       )}
       <div
         className={`flex-grow bg-sectionBackground
-        ${headerHidden ? '' : 'pt-24'}`}
+        ${headerHidden ? ' ' : 'pt-24'}`}
       >
         <main>{children}</main>
       </div>
@@ -24,6 +25,7 @@ const Layout = ({ children, headerHidden }) => {
         <Footer />
       </div>
       <CookieBanner />
+      <PwaPrompt />
     </div>
   );
 };

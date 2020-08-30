@@ -18,8 +18,7 @@ const CookieBanner = () => {
       // disableStyles={true}
     >
       Nous utilisons des cookies pour nous permettre de mieux comprendre comment
-      le site est utilisé et enrichir votre expérience. En cliquant "Accepter",
-      vous acceptez cette démarche.
+      le site est utilisé et enrichir votre expérience.
     </CookieConsent>
   );
 };
