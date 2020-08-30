@@ -11,7 +11,7 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+  const { site, allSanitySiteSettings } = useStaticQuery(
     graphql`
       query {
         site {
@@ -49,7 +49,6 @@ function SEO({ description, lang, meta, title }) {
   const ogKeywords = openGraph.keywords;
   const ogImage = openGraph.image.asset.url;
   const metaDescription = description || ogDescription;
-  const metaTitle = title || ogTitle;
 
   return (
     <Helmet
