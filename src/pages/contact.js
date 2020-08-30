@@ -31,17 +31,33 @@ const ContactPage = ({ data }) => {
         {pressKits.length > 0 && (
           <SectionContainer customClasses="pt-16 pb-20 md:py-20 lg:pt-20 lg:pb-40">
             <SectionTitle text="Resources Presse" />
-            <ul className="flex flex-col space-y-6 text-gray-700 list-disc list-inside">
+            <ul className="flex flex-col space-y-6 text-gray-700 list-inside">
               {pressKits.map(({ node }) => {
                 return (
-                  <li className="text-2xl" key={node.id}>
+                  <li className="text-xl" key={node.id}>
                     <a
                       href={node.file.asset.url}
-                      className="underline"
+                      className="flex items-center space-x-2"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {node.name}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        className="w-8 h-8"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+                        />
+                      </svg>
+                      <span className="border-b-2 border-secondary">
+                        {node.name}
+                      </span>
                     </a>
                   </li>
                 );
