@@ -23,7 +23,7 @@ const SectionTitle = ({ text, color = '#333' }) => {
   return (
     <Title className="flex-col justify-center pb-20 md:mx-auto md:max-w-4xl md:block">
       <h1
-        className="text-3xl tracking-normalmd:text-4xl md:grid"
+        className="text-3xl tracking-normal md:text-4xl md:grid"
         style={{ color }}
       >
         {text}

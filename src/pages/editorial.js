@@ -7,14 +7,17 @@ import PartnersSection from '../components/sections/editoPage/partnersSection';
 import ContactSection from '../components/sections/editoPage/contactSection';
 
 const editorial = ({ data }) => {
-  const logos = data.allSanityLogo.edges.map(({ node }) => node);
   const ambassadors = data.allSanityAmbassador.edges.map(({ node }) => node);
   const {
     topTitle,
     partnersTitle,
+    organizersTitle,
+    logosOrganizers,
+    coordinationTitle,
+    logosCoordination,
     contactContent,
     topContent,
-  } = data.sanityPage._rawPageContent[0];
+  } = data.sanityPage.pageContent[0];
 
   return (
     <Layout>
@@ -24,7 +27,13 @@ const editorial = ({ data }) => {
         topContent={topContent}
         ambassadors={ambassadors}
       />
-      <PartnersSection logos={logos} partnersTitle={partnersTitle} />
+      <PartnersSection
+        logosOrganizers={logosOrganizers}
+        organizersTitle={organizersTitle}
+        coordinationTitle={coordinationTitle}
+        logosCoordination={logosCoordination}
+        partnersTitle={partnersTitle}
+      />
       <ContactSection contactContent={contactContent} />
     </Layout>
   );
@@ -34,24 +43,40 @@ export default editorial;
 
 export const query = graphql`
   query EditoPage {
-    allSanityLogo {
-      edges {
-        node {
-          id
-          name
-          image {
-            asset {
-              fluid(maxWidth: 500) {
-                ...GatsbySanityImageFluid
+    sanityPage(pageName: { eq: "Editorial" }) {
+      pageContent {
+        ... on SanityEditorialPageBlock {
+          _key
+          _type
+          logosOrganizers {
+            image {
+              asset {
+                fluid {
+                  src
+                }
+                id
               }
-              url
             }
+            name
+          }
+          topTitle
+          partnersTitle
+          organizersTitle
+          coordinationTitle
+          contactContent
+          logosCoordination {
+            image {
+              asset {
+                fluid(maxWidth: 500) {
+                  ...GatsbySanityImageFluid
+                }
+                id
+              }
+            }
+            name
           }
         }
       }
-    }
-    sanityPage(pageName: { eq: "Editorial" }) {
-      _rawPageContent
     }
     allSanityAmbassador {
       edges {
