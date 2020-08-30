@@ -5,6 +5,7 @@ import Layout from '../components/layout/layout';
 import TopSection from '../components/sections/editoPage/topSection';
 import PartnersSection from '../components/sections/editoPage/partnersSection';
 import ContactSection from '../components/sections/editoPage/contactSection';
+import CarouselSection from '../components/sections/editoPage/carouselSection';
 
 const editorial = ({ data }) => {
   const ambassadors = data.allSanityAmbassador.edges.map(({ node }) => node);
@@ -17,6 +18,7 @@ const editorial = ({ data }) => {
     logosCoordination,
     contactContent,
     topContent,
+    previousEditions,
   } = data.sanityPage.pageContent[0];
 
   return (
@@ -35,6 +37,7 @@ const editorial = ({ data }) => {
         partnersTitle={partnersTitle}
       />
       <ContactSection contactContent={contactContent} />
+      <CarouselSection previousEditions={previousEditions} />
     </Layout>
   );
 };
@@ -46,15 +49,13 @@ export const query = graphql`
     sanityPage(pageName: { eq: "Editorial" }) {
       pageContent {
         ... on SanityEditorialPageBlock {
-          _key
-          _type
           logosOrganizers {
             image {
               asset {
-                fluid {
-                  src
-                }
                 id
+                fluid(maxWidth: 500) {
+                  ...GatsbySanityImageFluid
+                }
               }
             }
             name
@@ -67,13 +68,21 @@ export const query = graphql`
           logosCoordination {
             image {
               asset {
+                id
                 fluid(maxWidth: 500) {
                   ...GatsbySanityImageFluid
                 }
-                id
               }
             }
             name
+          }
+          previousEditions {
+            asset {
+              id
+              url
+            }
+            caption
+            alt
           }
         }
       }
