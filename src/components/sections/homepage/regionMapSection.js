@@ -6,7 +6,7 @@ import NET from 'vanta/dist/vanta.net.min';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import SectionContainer from '../../layout/sectionContainer';
-import PdlMap from './vectorMap';
+import VectorMap from './vectorMap';
 import SectionTitle from '../../global/sectionTitle';
 import MapCarousel from './mapCarousel';
 import { formatDepartmentName } from '../../../utils/formatDepartmentName';
@@ -76,7 +76,7 @@ class RegionMap extends React.Component {
             className="flex flex-col-reverse items-center justify-center -mt-10 space-x-20 md:-mt-0 lg:mr-20 lg:items-start lg:flex-row"
           >
             {/* Display clickable map */}
-            <PdlMap
+            <VectorMap
               width="w-full md:w-3/4 lg:w-2/3"
               hoveredDepartment={this.state.hoveredDepartment}
             />
@@ -88,7 +88,7 @@ class RegionMap extends React.Component {
                     to={department.link}
                     id={formatDepartmentName(department.name)}
                     onMouseEnter={(e) => {
-                      this.setState({ hoveredDepartment: e.target.id });
+                      this.setState({ hoveredDepartment: e.currentTarget.id });
                     }}
                     onMouseLeave={(e) => {
                       this.setState({ hoveredDepartment: '' });
