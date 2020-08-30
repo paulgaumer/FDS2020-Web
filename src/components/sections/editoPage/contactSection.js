@@ -14,7 +14,7 @@ const ContactSection = ({ contactContent }) => {
           <span class="inline-flex rounded-md shadow-sm">
             <Link
               to="/contact"
-              class="inline-flex items-center px-6 py-3 border border-transparent text-base leading-6 rounded-md text-white bg-secondary hover:bg-secondary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 uppercase font-bold"
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base leading-6 rounded-md text-white bg-secondary hover:bg-secondary focus:outline-none focus:shadow-outline-indigo active:bg-secondary transition ease-in-out duration-150 uppercase font-bold"
             >
               Nous Contacter
             </Link>
