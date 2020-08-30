@@ -24,7 +24,7 @@ const Header = () => {
           <div className="flex items-center justify-between py-6 lg:justify-start">
             <div className="lg:w-0 lg:flex-1">
               <Link to="/" className="flex">
-                <img className="w-auto h-8 sm:h-12" src={logo} alt="Workflow" />
+                <img className="w-auto h-8 sm:h-12" src={logo} alt="homepage" />
               </Link>
             </div>
             <div className="-my-2 -mr-2 lg:hidden">

@@ -15,7 +15,7 @@ module.exports = {
     title: `Fête de la Science`,
     description: `Fête de la Science 2020 des Pays de la Loire`,
     siteUrl: siteUrl,
-    author: `@paulgaumer`,
+    author: `@Terredessciences`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

@@ -19,13 +19,37 @@ function SEO({ description, lang, meta, title }) {
             title
             description
             author
+            siteUrl
+          }
+        }
+        allSanitySiteSettings {
+          edges {
+            node {
+              title
+              openGraph {
+                title
+                keywords
+                description
+                image {
+                  asset {
+                    url
+                  }
+                }
+              }
+            }
           }
         }
       }
     `
   );
 
-  const metaDescription = description || site.siteMetadata.description;
+  const openGraph = allSanitySiteSettings.edges[0].node.openGraph;
+  const ogTitle = openGraph.title;
+  const ogDescription = openGraph.description;
+  const ogKeywords = openGraph.keywords;
+  const ogImage = openGraph.image.asset.url;
+  const metaDescription = description || ogDescription;
+  const metaTitle = title || ogTitle;
 
   return (
     <Helmet
@@ -33,7 +57,7 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${ogTitle}`}
       meta={[
         {
           name: `description`,
@@ -48,12 +72,28 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
         {
+          property: `og:image`,
+          content: ogImage,
+        },
+        {
+          property: `og:image:width`,
+          content: `2400`,
+        },
+        {
+          property: `og:image:height`,
+          content: `1260`,
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
         {
+          property: `og:url`,
+          content: site.siteMetadata.siteUrl,
+        },
+        {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:creator`,
@@ -68,9 +108,12 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
         {
+          property: `twitter:image`,
+          content: ogImage,
+        },
+        {
           name: 'keywords',
-          content:
-            'science, Pays de la Loire, événement, conférence, éducation, ateliers',
+          content: ogKeywords,
         },
       ].concat(meta)}
     />
