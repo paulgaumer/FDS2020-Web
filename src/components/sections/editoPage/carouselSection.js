@@ -33,7 +33,7 @@ const PicsContainer = styled.div`
 
 const CarouselSection = ({ previousEditions }) => {
   return (
-    <SectionWrapper>
+    <SectionWrapper backgroundColor="bg-white">
       <SectionContainer customClasses="py-16 md:py-20">
         <SectionTitle text="Editions Précedentes" />
         <PicsContainer>
