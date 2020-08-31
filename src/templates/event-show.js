@@ -29,6 +29,15 @@ const EventShow = ({ data }) => {
           bookingPhone={event.bookingPhone}
           bookingEmail={event.bookingEmail}
           scolaires={scolaires}
+          bookingText="Attention, cet évenement est uniquement accessible sur réservation!"
+        />
+      )}
+      {event.bookingRecommanded && (
+        <BookingSection
+          bookingPhone={event.bookingPhone}
+          bookingEmail={event.bookingEmail}
+          scolaires={scolaires}
+          bookingText="Attention, il est recommandé de réserver à l'avance pour cet évenement!"
         />
       )}
       <MapSection mapGps={event.map} scolaires={scolaires} />
@@ -53,6 +62,7 @@ export const query = graphql`
       education
       _rawDescription
       bookingRequired
+      bookingRecommanded
       bookingPhone
       bookingEmail
       startDate {

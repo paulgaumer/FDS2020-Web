@@ -10,16 +10,13 @@ const RoundIcon = ({ children }) => {
   );
 };
 
-const BookingSection = ({ bookingPhone, bookingEmail }) => {
+const BookingSection = ({ bookingPhone, bookingEmail, bookingText }) => {
   return (
     <SectionWrapper>
       <SectionContainer customClasses="pb-12" id="reservation">
         <InfoCard title="réservation" customClasses="">
           <div className="text-lg leading-relaxed text-center">
-            <p>
-              Attention, cet évenement est uniquement accessible sur
-              réservation!
-            </p>
+            <p>{bookingText}</p>
             <div className="inline-flex flex-col pt-10 pb-8 space-y-6 sm:space-y-0 sm:flex sm:items-start sm:justify-center sm:flex-row sm:space-x-14">
               <a
                 href={`mailto: ${bookingEmail}`}

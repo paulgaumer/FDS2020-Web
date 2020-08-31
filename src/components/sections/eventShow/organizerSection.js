@@ -24,7 +24,7 @@ const OrganizerSection = ({ organizer, scolaires }) => {
                 <a
                   href={organizer.website}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center space-x-2 text-base group"
                 >
                   <span
@@ -34,13 +34,9 @@ const OrganizerSection = ({ organizer, scolaires }) => {
                   >
                     <FaGlobe />
                   </span>
-                  <a
-                    href={organizer.website}
-                    target="_blank"
-                    className="underline md:no-underline group-hover:underline"
-                  >
-                    Visiter leur site web
-                  </a>
+                  <span className="underline md:no-underline group-hover:underline">
+                    Visiter le site web
+                  </span>
                 </a>
               )}
               {organizer.facebook && (
