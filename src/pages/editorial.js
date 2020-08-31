@@ -17,7 +17,7 @@ const editorial = ({ data }) => {
     coordinationTitle,
     logosCoordination,
     contactContent,
-    topContent,
+    _rawTopContent,
     previousEditions,
   } = data.sanityPage.pageContent[0];
 
@@ -26,7 +26,7 @@ const editorial = ({ data }) => {
       <SEO title="Editorial" />
       <TopSection
         topTitle={topTitle}
-        topContent={topContent}
+        topContent={_rawTopContent}
         ambassadors={ambassadors}
       />
       <PartnersSection
@@ -61,6 +61,7 @@ export const query = graphql`
             name
           }
           topTitle
+          _rawTopContent
           partnersTitle
           organizersTitle
           coordinationTitle
