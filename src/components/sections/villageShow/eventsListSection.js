@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'gatsby';
 import InfoCard from '../eventShow/infoCard';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
@@ -26,18 +27,30 @@ const EventsListSection = ({ villageId, department }) => {
 
   return (
     <SectionWrapper>
-      <SectionContainer customClasses="pb-12">
+      <SectionContainer customClasses="pb-12" id="village-events">
         <InfoCard title="Les évenements du Village" customClasses="">
           <div className="text-lg leading-relaxed">
-            <ul>
-              {events.map((event) => {
-                return (
-                  <li key={event._id}>
-                    <p>{event.title}</p>
-                  </li>
-                );
-              })}
-            </ul>
+            {events.length > 0 && (
+              <ul className="list-disc">
+                {events.map((event) => {
+                  return (
+                    <li key={event._id}>
+                      <Link
+                        to={`/${department}/${event.slug.current}`}
+                        className="inline-block underline"
+                      >
+                        <p>{event.title}</p>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+            {events.length <= 0 && (
+              <div className="py-10 text-center">
+                <p>Aucun évenement enregistré pour le moment...</p>
+              </div>
+            )}
           </div>
         </InfoCard>
       </SectionContainer>

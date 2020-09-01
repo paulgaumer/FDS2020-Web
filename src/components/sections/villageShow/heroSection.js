@@ -31,11 +31,12 @@ const HeroCard = styled.div`
 const BookingButton = ({}) => {
   return (
     <span className="inline-flex rounded-md shadow-sm">
-      <div
+      <Link
+        to="#village-events"
         className={`inline-flex items-center px-4 py-2 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary`}
       >
-        Liste des évenements
-      </div>
+        Voir les évenements
+      </Link>
     </span>
   );
 };
@@ -89,27 +90,7 @@ const HeroSection = ({ village }) => {
             <div className="items-center hidden col-span-1 col-start-2 md:flex">
               <BookingButton />
             </div>
-            <div className="flex col-span-1 col-start-2 mt-6 space-x-6 md:mt-0 md:space-x-0 md:space-y-2 md:flex-col">
-              <div className="flex items-center space-x-2">
-                <span
-                  className={`h-8 w-8 text-2xl text-white rounded-full p-2 flex items-center justify-center bg-primary`}
-                >
-                  {/* <Img
-                    fluid={format[0].formatIcon.asset.fluid}
-                    className="w-full"
-                  /> */}
-                </span>
-                <span>{}</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span
-                  className={`h-8 w-8 p-1 flex items-center justify-center text-2xl text-white rounded-full bg-primary`}
-                >
-                  <IoIosPeople />
-                </span>
-                <span>{}</span>
-              </div>
-            </div>
+            <div className="flex col-span-1 col-start-2 mt-6 space-x-6 md:mt-0 md:space-x-0 md:space-y-2 md:flex-col"></div>
           </div>
           <div
             className={`flex items-center justify-center w-full mt-6 md:hidden bg-primary`}
