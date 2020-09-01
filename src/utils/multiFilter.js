@@ -57,7 +57,11 @@ export const multiFilter = (arr, filters, scolaires) => {
     const selected =
       matchesTheme && matchesFormat && matchesAudience && matchesDates;
     const selectedScolaires =
-      matchesTheme && matchesFormat && matchesDepartment && matchesDates;
+      matchesTheme &&
+      matchesFormat &&
+      matchesDepartment &&
+      matchesDates &&
+      matchesAudience;
 
     return scolaires ? selectedScolaires : selected;
 
