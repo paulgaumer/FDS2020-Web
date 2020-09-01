@@ -65,7 +65,7 @@ const convToGeoJson = (arr) => {
 
 // Updates the zoom level and map bounds to be able to see all markers at once
 const defineMapBounds = (geoJson, map) => {
-  if (geoJson.features.length > 0) {
+  if (geoJson && geoJson.features.length > 0) {
     let bounds = geoJson.features.reduce(function (bounds, feature) {
       if (!Array.isArray(feature.geometry.coordinates[0])) {
         // point feature
