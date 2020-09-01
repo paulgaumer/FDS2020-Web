@@ -35,6 +35,7 @@ export const query = graphql`
         department: { id: { eq: $departmentId } }
         education: { eq: false }
       }
+      sort: { fields: startDate___local, order: ASC }
     ) {
       edges {
         node {
@@ -123,6 +124,7 @@ export const query = graphql`
     }
     villages: allSanityVillage(
       filter: { department: { id: { eq: $departmentId } } }
+      sort: { fields: startDate___local, order: ASC }
     ) {
       edges {
         node {
