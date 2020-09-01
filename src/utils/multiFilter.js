@@ -19,11 +19,14 @@ export const multiFilter = (arr, filters, scolaires) => {
     }
   };
 
-  const checkPublic = (item, filtersList) => {
-    return (
-      filtersList.public === item.audience.id ||
-      filtersList.public === '-d4e31ef1-7615-5290-88e1-b85b940c521a'
-    );
+  const checkAudience = (item, filtersList) => {
+    if (filtersList.audiences.length === 0) {
+      return true;
+    } else if (filtersList.audiences.includes(item.audience[0].id)) {
+      return true;
+    } else {
+      return false;
+    }
   };
   const checkDepartment = (item, filtersList) => {
     return (
@@ -48,11 +51,11 @@ export const multiFilter = (arr, filters, scolaires) => {
     // console.log('FILTERIIIIIIIIIIING');
     const matchesTheme = checkTheme(obj, filters);
     const matchesFormat = checkFormat(obj, filters);
-    const matchesPublic = checkPublic(obj, filters);
+    const matchesAudience = checkAudience(obj, filters);
     const matchesDepartment = checkDepartment(obj, filters);
     const matchesDates = checkDates(obj, filters);
     const selected =
-      matchesTheme && matchesFormat && matchesPublic && matchesDates;
+      matchesTheme && matchesFormat && matchesAudience && matchesDates;
     const selectedScolaires =
       matchesTheme && matchesFormat && matchesDepartment && matchesDates;
 
@@ -62,7 +65,7 @@ export const multiFilter = (arr, filters, scolaires) => {
     // console.log(`${obj.title}`);
     // console.log(`theme: ${matchesTheme}`);
     // console.log(`format: ${matchesFormat}`);
-    // console.log(`public: ${matchesPublic}`);
+    // console.log(`audience: ${matchesAudience}`);
     // console.log(`department: ${matchesDepartment}`);
     // console.log(`selected: ${selectedScolaires}`);
     // console.log(`*********************`);

@@ -9,7 +9,6 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 import CheckboxFilter from './checkboxFilter';
-import SelectPublicFilter from './selectPublicFilter';
 import SelectDepartmentFilter from './selectDepartmentFilter';
 import DateFilter from './dateFilter';
 import FilterToggles from './filterToggles';
@@ -17,7 +16,7 @@ import FilterToggles from './filterToggles';
 const EventsFilters = ({
   setThemeFilters,
   setFormatFilters,
-  setPublicFilter,
+  setAudienceFilters,
   setDatesFilter,
   setDepartmentFilter,
   scolaires,
@@ -94,14 +93,15 @@ const EventsFilters = ({
 
   const [selectedFormats, setSelectedFormats] = useState([]);
   const [selectedThemes, setSelectedThemes] = useState([]);
+  const [selectedAudiences, setSelectedAudiences] = useState([]);
   const [selectedDates, setSelectedDates] = useState({
     startDate: new Date('2020-10-02T00:00:00.000Z'),
     endDate: new Date('2020-10-12T00:00:00.000Z'),
   });
 
-  const getSelectedPublic = (item) => {
-    setPublicFilter(item);
-  };
+  // const getSelectedPublic = (item) => {
+  //   setPublicFilter(item);
+  // };
   // const getSelectedDates = (item) => {
   //   setDatesFilter(item);
   // };
@@ -112,8 +112,9 @@ const EventsFilters = ({
   useEffect(() => {
     setFormatFilters(selectedFormats);
     setThemeFilters(selectedThemes);
+    setAudienceFilters(selectedAudiences);
     setDatesFilter(selectedDates);
-  }, [selectedFormats, selectedThemes, selectedDates]);
+  }, [selectedFormats, selectedThemes, selectedDates, selectedAudiences]);
 
   const firstDate = data.firstDate.edges[0].node.startDate.local;
   const lastDate = data.lastDate.edges[0].node.endDate.local;
@@ -347,10 +348,17 @@ const EventsFilters = ({
               <h4 className="pb-6 font-bold text-gray-700 uppercase">
                 Quel Public ?
               </h4>
-              <div data-name="publicFilter">
+              {/* <div data-name="publicFilter">
                 <SelectPublicFilter
                   list={data.allSanityAudience.edges}
                   getValue={getSelectedPublic}
+                />
+              </div> */}
+              <div data-name="audienceFilter">
+                <CheckboxFilter
+                  list={data.allSanityAudience.edges}
+                  getValues={setSelectedAudiences}
+                  topic="audience"
                 />
               </div>
             </div>
