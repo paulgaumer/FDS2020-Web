@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout/layout';
 import HeroSection from '../components/sections/eventShow/heroSection';
+import VillageLinkSection from '../components/sections/eventShow/villageLinkSection';
 import DescriptionSection from '../components/sections/eventShow/descriptionSection';
 import OrganizerSection from '../components/sections/eventShow/organizerSection';
 import BookingSection from '../components/sections/eventShow/bookingSection';
@@ -14,6 +15,7 @@ const EventShow = ({ data }) => {
   return (
     <Layout>
       <HeroSection event={event} scolaires={scolaires} />
+      {event.village && <VillageLinkSection event={event} />}
       <DescriptionSection
         description={event._rawDescription}
         scolaires={scolaires}
@@ -59,6 +61,16 @@ export const query = graphql`
         name
       }
       featured
+      village {
+        id
+        title
+        slug {
+          current
+        }
+        department {
+          name
+        }
+      }
       education
       _rawDescription
       bookingRequired

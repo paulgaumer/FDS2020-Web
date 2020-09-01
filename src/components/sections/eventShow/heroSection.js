@@ -9,6 +9,7 @@ import CustomGatsbyImage from '../../global/customGatsbyImage';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 import FeaturedLabel from '../../global/featuredLabel';
+import VillageLabel from '../../global/villageLabel';
 import { processDate } from '../../../utils/processDate';
 
 const HeroCard = styled.div`
@@ -84,6 +85,7 @@ const HeroSection = ({ event, scolaires }) => {
     startDate,
     image,
     featured,
+    village,
     map,
   } = event;
 
@@ -99,9 +101,10 @@ const HeroSection = ({ event, scolaires }) => {
             {image && (
               <CustomGatsbyImage image={image} customClasses="h-full" />
             )}
-            {featured && (
-              <FeaturedLabel customClasses="absolute top-5 left-4 md:left-10 text-base" />
-            )}
+            <div className="absolute flex space-x-2 top-5 left-4 md:left-10">
+              {/* {village && <VillageLabel customClasses="text-base" />} */}
+              {featured && <FeaturedLabel customClasses="text-base" />}
+            </div>
           </div>
           <div
             data-name="grid-info"
@@ -131,8 +134,7 @@ const HeroSection = ({ event, scolaires }) => {
                   <FaMapMarkerAlt />
                 </span>
                 <span>
-                  {map.address}{' '}
-                  <span className="underline">(Voir la carte)</span>
+                  {map.address} (<span className="underline">carte</span>)
                 </span>
               </Link>
             </div>
@@ -174,7 +176,7 @@ const HeroSection = ({ event, scolaires }) => {
               bookingRequired ? 'bg-secondary' : 'bg-primary'
             }`}
           >
-            <BookingButton bookingRequired={bookingRequired} isMobile={true} />
+            <BookingButton isBookingNeeded={isBookingNeeded} isMobile={true} />
           </div>
         </HeroCard>
       </SectionContainer>

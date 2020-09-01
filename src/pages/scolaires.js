@@ -15,7 +15,6 @@ const EventsEducation = ({ data }) => {
     ...data.villagesLoireAtlantique.edges,
     ...data.villagesVendee.edges,
   ];
-  console.log(villages);
 
   return (
     <Layout>
