@@ -43,11 +43,13 @@ export const query = graphql`
           slug {
             current
           }
+          village {
+            id
+          }
           department {
             name
           }
           featured
-          village
           _rawDescription
           description {
             children {
@@ -119,32 +121,30 @@ export const query = graphql`
         }
       }
     }
-    villages: allSanityEvent(filter: { village: { eq: true } }) {
+    villages: allSanityVillage(
+      filter: { department: { id: { eq: $departmentId } } }
+    ) {
       edges {
         node {
           id
           title
-          featured
           _rawDescription
           description {
             children {
               text
             }
           }
-          slug {
-            current
-          }
           department {
             name
+          }
+          slug {
+            current
           }
           startDate {
             local
           }
           endDate {
             local
-          }
-          theme {
-            name
           }
           image {
             asset {

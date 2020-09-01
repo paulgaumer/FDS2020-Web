@@ -3,7 +3,7 @@ import { FaCampground } from 'react-icons/fa';
 import SectionContainer from '../../layout/sectionContainer';
 import VillageCard from './villageCard';
 
-const Villages = ({ villages, scolaires }) => {
+const Villages = ({ villages = [], scolaires }) => {
   return (
     <SectionContainer customClasses="pt-6 md:pt-16">
       <div className="text-gray-500">

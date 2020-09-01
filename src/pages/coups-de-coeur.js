@@ -62,7 +62,9 @@ export const query = graphql`
             name
           }
           featured
-          village
+          village {
+            id
+          }
           _rawDescription
           description {
             children {
