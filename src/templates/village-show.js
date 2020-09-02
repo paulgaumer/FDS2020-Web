@@ -6,6 +6,7 @@ import DescriptionSection from '../components/sections/eventShow/descriptionSect
 import EventsListSection from '../components/sections/villageShow/eventsListSection';
 // import OrganizerSection from '../components/sections/eventShow/organizerSection';
 // import BookingSection from '../components/sections/eventShow/bookingSection';
+import OpeningHours from '../components/sections/eventShow/openingHours';
 import MapSection from '../components/sections/eventShow/mapSection';
 import { formatDepartmentName } from '../utils/formatDepartmentName';
 
@@ -18,6 +19,9 @@ const VillageShow = ({ data }) => {
       <HeroSection village={village} />
       <DescriptionSection description={village._rawDescription} />
       <EventsListSection villageId={village._id} department={department} />
+      {village.timeSlots.length > 1 && (
+        <OpeningHours timeSlots={village.timeSlots} />
+      )}
       <MapSection mapGps={village.map} />
     </Layout>
   );

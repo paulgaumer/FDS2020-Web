@@ -28,7 +28,7 @@ const EventsListSection = ({ villageId, department }) => {
   return (
     <SectionWrapper>
       <SectionContainer customClasses="pb-12" id="village-events">
-        <InfoCard title="Les évenements du Village" customClasses="">
+        <InfoCard title="Les événements du Village" customClasses="">
           <div className="text-lg leading-relaxed">
             {events.length > 0 && (
               <ul className="list-disc">

@@ -9,7 +9,6 @@ import CustomGatsbyImage from '../../global/customGatsbyImage';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 import FeaturedLabel from '../../global/featuredLabel';
-// import VillageLabel from '../../global/villageLabel';
 import { processDate } from '../../../utils/processDate';
 
 const HeroCard = styled.div`
@@ -132,11 +131,16 @@ const HeroSection = ({ event, scolaires }) => {
                 <span className="text-xl">
                   <MdToday />
                 </span>
-                <div>
-                  {timeSlots.map((slot) => {
-                    return <span>{processDate(slot)}</span>;
-                  })}
-                </div>
+                {timeSlots.length > 1 && (
+                  <Link to="#opening-hours" className="underline">
+                    <p>Voir tous les horaires</p>
+                  </Link>
+                )}
+                {timeSlots.length === 1 && (
+                  <div>
+                    <p>{processDate(timeSlots[0])}</p>
+                  </div>
+                )}
               </div>
             </div>
 

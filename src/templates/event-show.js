@@ -7,6 +7,7 @@ import DescriptionSection from '../components/sections/eventShow/descriptionSect
 import OrganizerSection from '../components/sections/eventShow/organizerSection';
 import BookingSection from '../components/sections/eventShow/bookingSection';
 import MapSection from '../components/sections/eventShow/mapSection';
+import OpeningHours from '../components/sections/eventShow/openingHours';
 
 const EventShow = ({ data }) => {
   const event = data.sanityEvent;
@@ -25,6 +26,9 @@ const EventShow = ({ data }) => {
           organizer={event.projectOwners[0]}
           scolaires={scolaires}
         />
+      )}
+      {event.timeSlots.length > 1 && (
+        <OpeningHours timeSlots={event.timeSlots} />
       )}
       {event.bookingRequired && (
         <BookingSection

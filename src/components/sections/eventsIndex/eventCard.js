@@ -49,11 +49,12 @@ const EventCard = ({ event }) => {
             <span className="text-base">
               <MdToday />
             </span>
-            <div>
-              {timeSlots.map((slot) => {
-                return <span>{processDate(slot)}</span>;
-              })}
-            </div>
+            {timeSlots.length > 1 && <span>Horaires Multiples</span>}
+            {timeSlots.length === 1 && (
+              <div>
+                <span>{processDate(timeSlots[0])}</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
