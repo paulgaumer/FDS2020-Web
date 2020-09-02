@@ -14,8 +14,7 @@ const EventCard = ({ event }) => {
     description,
     village,
     image,
-    startDate,
-    endDate,
+    timeSlots,
     slug,
     title,
     theme,
@@ -50,7 +49,11 @@ const EventCard = ({ event }) => {
             <span className="text-base">
               <MdToday />
             </span>
-            <span>{processDate(startDate.local, endDate.local)}</span>
+            <div>
+              {timeSlots.map((slot) => {
+                return <span>{processDate(slot)}</span>;
+              })}
+            </div>
           </div>
         </div>
       </div>

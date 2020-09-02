@@ -47,11 +47,11 @@ export const query = graphql`
     slug {
       current
     }
-    startDate {
-      local
-    }
-    endDate {
-      local
+    timeSlots {
+      endDate
+      endTime
+      startDate
+      startTime
     }
     image {
       asset {
@@ -93,11 +93,11 @@ export const query = graphql`
             id
             name
           }
-          startDate {
-            local
-          }
-          endDate {
-            local
+          timeSlots {
+            endDate
+            endTime
+            startDate
+            startTime
           }
           format {
             id

@@ -77,11 +77,11 @@ export const query = graphql`
       bookingRecommanded
       bookingPhone
       bookingEmail
-      startDate {
-        local
-      }
-      endDate {
-        local
+      timeSlots {
+        endDate
+        endTime
+        startDate
+        startTime
       }
       projectOwners {
         name

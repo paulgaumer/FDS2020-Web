@@ -34,11 +34,11 @@ export const query = graphql`
         name
       }
       _rawDescription
-      startDate {
-        local
-      }
-      endDate {
-        local
+      timeSlots {
+        endDate
+        endTime
+        startDate
+        startTime
       }
       image {
         asset {

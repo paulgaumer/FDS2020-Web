@@ -49,8 +49,8 @@ export const query = graphql`
   query FeaturedPage {
     allSanityEvent(
       filter: { featured: { eq: true } }
-      sort: { fields: startDate___local, order: ASC }
-    ) {
+    ) # sort: { fields: startDate___local, order: ASC }
+    {
       edges {
         node {
           id
@@ -75,11 +75,11 @@ export const query = graphql`
             id
             name
           }
-          startDate {
-            local
-          }
-          endDate {
-            local
+          timeSlots {
+            endDate
+            endTime
+            startDate
+            startTime
           }
           format {
             id

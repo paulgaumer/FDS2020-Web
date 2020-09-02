@@ -9,7 +9,7 @@ import CustomGatsbyImage from '../../global/customGatsbyImage';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 import FeaturedLabel from '../../global/featuredLabel';
-import VillageLabel from '../../global/villageLabel';
+// import VillageLabel from '../../global/villageLabel';
 import { processDate } from '../../../utils/processDate';
 
 const HeroCard = styled.div`
@@ -81,11 +81,9 @@ const HeroSection = ({ event, scolaires }) => {
     format,
     bookingRequired,
     bookingRecommanded,
-    endDate,
-    startDate,
+    timeSlots,
     image,
     featured,
-    village,
     map,
   } = event;
 
@@ -102,7 +100,6 @@ const HeroSection = ({ event, scolaires }) => {
               <CustomGatsbyImage image={image} customClasses="h-full" />
             )}
             <div className="absolute flex space-x-2 top-5 left-4 md:left-10">
-              {/* {village && <VillageLabel customClasses="text-base" />} */}
               {featured && <FeaturedLabel customClasses="text-base" />}
             </div>
           </div>
@@ -120,12 +117,6 @@ const HeroSection = ({ event, scolaires }) => {
               </p>
             </div>
             <div className="flex flex-col col-span-1 row-start-2 mt-8 space-y-4 md:mt-0">
-              <p className="flex items-center space-x-2">
-                <span className="text-xl">
-                  <MdToday />
-                </span>
-                <span>{processDate(startDate.local, endDate.local)}</span>
-              </p>
               <Link
                 to="#carte-evenement"
                 className="flex items-center space-x-2"
@@ -137,6 +128,16 @@ const HeroSection = ({ event, scolaires }) => {
                   {map.address} (<span className="underline">carte</span>)
                 </span>
               </Link>
+              <div className="flex items-center space-x-2">
+                <span className="text-xl">
+                  <MdToday />
+                </span>
+                <div>
+                  {timeSlots.map((slot) => {
+                    return <span>{processDate(slot)}</span>;
+                  })}
+                </div>
+              </div>
             </div>
 
             <div className="items-center hidden col-span-1 col-start-2 md:flex">

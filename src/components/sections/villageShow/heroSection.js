@@ -42,7 +42,7 @@ const BookingButton = ({}) => {
 };
 
 const HeroSection = ({ village }) => {
-  const { title, endDate, startDate, image, map } = village;
+  const { title, timeSlots, image, map } = village;
 
   return (
     <SectionWrapper>
@@ -67,12 +67,6 @@ const HeroSection = ({ village }) => {
               </p>
             </div>
             <div className="flex flex-col col-span-1 row-start-2 mt-8 space-y-4 md:mt-0">
-              <p className="flex items-center space-x-2">
-                <span className="text-xl">
-                  <MdToday />
-                </span>
-                <span>{processDate(startDate.local, endDate.local)}</span>
-              </p>
               <Link
                 to="#carte-evenement"
                 className="flex items-center space-x-2"
@@ -85,6 +79,16 @@ const HeroSection = ({ village }) => {
                   <span className="underline">(Voir la carte)</span>
                 </span>
               </Link>
+              <div className="flex items-center space-x-2">
+                <span className="text-xl">
+                  <MdToday />
+                </span>
+                <div>
+                  {timeSlots.map((slot) => {
+                    return <span>{processDate(slot)}</span>;
+                  })}
+                </div>
+              </div>
             </div>
 
             <div className="items-center hidden col-span-1 col-start-2 md:flex">

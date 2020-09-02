@@ -7,7 +7,7 @@ import { formatDepartmentName } from '../../../utils/formatDepartmentName';
 import { processDate } from '../../../utils/processDate';
 
 const VillageCard = ({ village, department, scolaires }) => {
-  const { description, image, startDate, endDate, slug, title } = village;
+  const { description, image, timeSlots, slug, title } = village;
   const dpt = formatDepartmentName(department);
 
   return (
@@ -35,7 +35,11 @@ const VillageCard = ({ village, department, scolaires }) => {
             <span className="text-base">
               <MdToday />
             </span>
-            <span>{processDate(startDate.local, endDate.local)}</span>
+            <div>
+              {timeSlots.map((slot) => {
+                return <span>{processDate(slot)}</span>;
+              })}
+            </div>
           </div>
         </div>
       </div>

@@ -63,25 +63,27 @@ const EventsFilters = ({
         }
       }
       firstDate: allSanityEvent(
-        sort: { fields: startDate___local, order: ASC }
         limit: 1
+        sort: { fields: timeSlots___startDate, order: ASC }
       ) {
         edges {
           node {
-            startDate {
-              local
+            timeSlots {
+              startDate
+              startTime
             }
           }
         }
       }
       lastDate: allSanityEvent(
-        sort: { fields: endDate___local, order: DESC }
+        sort: { fields: timeSlots___endDate, order: DESC }
         limit: 1
       ) {
         edges {
           node {
-            endDate {
-              local
+            timeSlots {
+              endDate
+              endTime
             }
           }
         }
@@ -98,10 +100,7 @@ const EventsFilters = ({
     startDate: new Date('2020-10-02T00:00:00.000Z'),
     endDate: new Date('2020-10-12T00:00:00.000Z'),
   });
-
-  // const getSelectedPublic = (item) => {
-  //   setPublicFilter(item);
-  // };
+  // const [firstDate, setFirstDate] = useState()
   // const getSelectedDates = (item) => {
   //   setDatesFilter(item);
   // };
@@ -116,8 +115,11 @@ const EventsFilters = ({
     setDatesFilter(selectedDates);
   }, [selectedFormats, selectedThemes, selectedDates, selectedAudiences]);
 
-  const firstDate = data.firstDate.edges[0].node.startDate.local;
-  const lastDate = data.lastDate.edges[0].node.endDate.local;
+  const { startDate, startTime } = data.firstDate.edges[0].node.timeSlots[0];
+  // console.log(data);
+  const { endDate, endTime } = data.lastDate.edges[0].node.timeSlots[0];
+  const firstDate = `${startDate}T${startTime}:00.000`;
+  const lastDate = `${endDate}T${endTime}:00.000`;
 
   return (
     <>
