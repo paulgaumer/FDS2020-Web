@@ -4,9 +4,6 @@ import fr from 'date-fns/locale/fr';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const DateFilter = ({ getValues, firstDate, lastDate }) => {
-  console.log(firstDate);
-  console.log(lastDate);
-
   registerLocale('fr', fr);
   const defaultStart = new Date(firstDate);
   const defaultEnd = new Date(lastDate);

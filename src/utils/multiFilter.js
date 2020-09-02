@@ -1,8 +1,9 @@
 export const multiFilter = (arr, filters, scolaires) => {
   const checkTheme = (item, filtersList) => {
+    const itemThemes = item.theme.map((a) => a.id);
     if (filtersList.themes.length === 0) {
       return true;
-    } else if (filtersList.themes.includes(item.theme[0].id)) {
+    } else if (filtersList.themes.some((theme) => itemThemes.includes(theme))) {
       return true;
     } else {
       return false;
@@ -10,9 +11,12 @@ export const multiFilter = (arr, filters, scolaires) => {
   };
 
   const checkFormat = (item, filtersList) => {
+    const itemFormats = item.format.map((a) => a.id);
     if (filtersList.formats.length === 0) {
       return true;
-    } else if (filtersList.formats.includes(item.format[0].id)) {
+    } else if (
+      filtersList.formats.some((format) => itemFormats.includes(format))
+    ) {
       return true;
     } else {
       return false;
@@ -20,9 +24,12 @@ export const multiFilter = (arr, filters, scolaires) => {
   };
 
   const checkAudience = (item, filtersList) => {
+    const itemAudiences = item.audience.map((a) => a.id);
     if (filtersList.audiences.length === 0) {
       return true;
-    } else if (filtersList.audiences.includes(item.audience[0].id)) {
+    } else if (
+      filtersList.audiences.some((audience) => itemAudiences.includes(audience))
+    ) {
       return true;
     } else {
       return false;

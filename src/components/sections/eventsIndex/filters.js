@@ -46,7 +46,21 @@ const EventsFilters = ({
           }
         }
       }
-      allSanityAudience(sort: { fields: name, order: DESC }) {
+      regularAudience: allSanityAudience(
+        sort: { fields: name, order: DESC }
+        filter: { audienceEducation: { eq: false } }
+      ) {
+        edges {
+          node {
+            name
+            id
+          }
+        }
+      }
+      scolairesAudience: allSanityAudience(
+        sort: { fields: name, order: DESC }
+        filter: { audienceEducation: { eq: true } }
+      ) {
         edges {
           node {
             name
@@ -100,10 +114,6 @@ const EventsFilters = ({
     startDate: new Date('2020-10-02T00:00:00.000Z'),
     endDate: new Date('2020-10-12T00:00:00.000Z'),
   });
-  // const [firstDate, setFirstDate] = useState()
-  // const getSelectedDates = (item) => {
-  //   setDatesFilter(item);
-  // };
   const getSelectedDepartment = (item) => {
     setDepartmentFilter(item);
   };
@@ -326,7 +336,7 @@ const EventsFilters = ({
               </h4>
               <div data-name="audienceFilter">
                 <CheckboxFilter
-                  list={data.allSanityAudience.edges}
+                  list={data.scolairesAudience.edges}
                   getValues={setSelectedAudiences}
                   topic="audience"
                 />
@@ -368,7 +378,7 @@ const EventsFilters = ({
               </h4>
               <div data-name="audienceFilter">
                 <CheckboxFilter
-                  list={data.allSanityAudience.edges}
+                  list={data.regularAudience.edges}
                   getValues={setSelectedAudiences}
                   topic="audience"
                 />
