@@ -4,6 +4,7 @@ import moment from 'moment';
 import { MdToday } from 'react-icons/md';
 import CustomGatsbyImage from '../../global/customGatsbyImage';
 import FeaturedLabel from '../../global/featuredLabel';
+import VillageLabel from '../../global/villageLabel';
 import { excerpt } from '../../../utils/excerpt';
 import { formatDepartmentName } from '../../../utils/formatDepartmentName';
 import { processDate } from '../../../utils/processDate';
@@ -11,9 +12,9 @@ import { processDate } from '../../../utils/processDate';
 const EventCard = ({ event }) => {
   const {
     description,
+    village,
     image,
-    startDate,
-    endDate,
+    timeSlots,
     slug,
     title,
     theme,
@@ -29,9 +30,10 @@ const EventCard = ({ event }) => {
       <div className="overflow-hidden rounded-md shadow ">
         <div data-name="image" style={{ height: '160px' }} className="relative">
           {image && <CustomGatsbyImage image={image} customClasses="h-full" />}
-          {featured && (
-            <FeaturedLabel customClasses="absolute top-5 left-5 text-sm" />
-          )}
+          <div className="absolute flex space-x-2 top-5 left-5">
+            {village && <VillageLabel customClasses="text-sm" />}
+            {featured && <FeaturedLabel customClasses="text-sm" />}
+          </div>
         </div>
         <div
           data-name="content"
@@ -47,7 +49,12 @@ const EventCard = ({ event }) => {
             <span className="text-base">
               <MdToday />
             </span>
-            <span>{processDate(startDate.local, endDate.local)}</span>
+            {timeSlots.length > 1 && <span>Horaires Multiples</span>}
+            {timeSlots.length === 1 && (
+              <div>
+                <span>{processDate(timeSlots[0])}</span>
+              </div>
+            )}
           </div>
         </div>
       </div>

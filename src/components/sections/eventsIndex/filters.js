@@ -9,7 +9,6 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 import CheckboxFilter from './checkboxFilter';
-import SelectPublicFilter from './selectPublicFilter';
 import SelectDepartmentFilter from './selectDepartmentFilter';
 import DateFilter from './dateFilter';
 import FilterToggles from './filterToggles';
@@ -17,7 +16,7 @@ import FilterToggles from './filterToggles';
 const EventsFilters = ({
   setThemeFilters,
   setFormatFilters,
-  setPublicFilter,
+  setAudienceFilters,
   setDatesFilter,
   setDepartmentFilter,
   scolaires,
@@ -47,7 +46,21 @@ const EventsFilters = ({
           }
         }
       }
-      allSanityAudience(sort: { fields: name, order: DESC }) {
+      regularAudience: allSanityAudience(
+        sort: { fields: name, order: DESC }
+        filter: { audienceEducation: { eq: false } }
+      ) {
+        edges {
+          node {
+            name
+            id
+          }
+        }
+      }
+      scolairesAudience: allSanityAudience(
+        sort: { fields: name, order: DESC }
+        filter: { audienceEducation: { eq: true } }
+      ) {
         edges {
           node {
             name
@@ -64,25 +77,27 @@ const EventsFilters = ({
         }
       }
       firstDate: allSanityEvent(
-        sort: { fields: startDate___local, order: ASC }
         limit: 1
+        sort: { fields: timeSlots___startDate, order: ASC }
       ) {
         edges {
           node {
-            startDate {
-              local
+            timeSlots {
+              startDate
+              startTime
             }
           }
         }
       }
       lastDate: allSanityEvent(
-        sort: { fields: endDate___local, order: DESC }
+        sort: { fields: timeSlots___endDate, order: DESC }
         limit: 1
       ) {
         edges {
           node {
-            endDate {
-              local
+            timeSlots {
+              endDate
+              endTime
             }
           }
         }
@@ -94,17 +109,11 @@ const EventsFilters = ({
 
   const [selectedFormats, setSelectedFormats] = useState([]);
   const [selectedThemes, setSelectedThemes] = useState([]);
+  const [selectedAudiences, setSelectedAudiences] = useState([]);
   const [selectedDates, setSelectedDates] = useState({
     startDate: new Date('2020-10-02T00:00:00.000Z'),
     endDate: new Date('2020-10-12T00:00:00.000Z'),
   });
-
-  const getSelectedPublic = (item) => {
-    setPublicFilter(item);
-  };
-  // const getSelectedDates = (item) => {
-  //   setDatesFilter(item);
-  // };
   const getSelectedDepartment = (item) => {
     setDepartmentFilter(item);
   };
@@ -112,11 +121,15 @@ const EventsFilters = ({
   useEffect(() => {
     setFormatFilters(selectedFormats);
     setThemeFilters(selectedThemes);
+    setAudienceFilters(selectedAudiences);
     setDatesFilter(selectedDates);
-  }, [selectedFormats, selectedThemes, selectedDates]);
+  }, [selectedFormats, selectedThemes, selectedDates, selectedAudiences]);
 
-  const firstDate = data.firstDate.edges[0].node.startDate.local;
-  const lastDate = data.lastDate.edges[0].node.endDate.local;
+  const { startDate, startTime } = data.firstDate.edges[0].node.timeSlots[0];
+  // console.log(data);
+  const { endDate, endTime } = data.lastDate.edges[0].node.timeSlots[0];
+  const firstDate = `${startDate}T${startTime}:00.000`;
+  const lastDate = `${endDate}T${endTime}:00.000`;
 
   return (
     <>
@@ -315,6 +328,22 @@ const EventsFilters = ({
             </div>
           </div>
         )}
+        {scolaires && (
+          <div className="overflow-hidden text-gray-500 bg-white rounded-lg">
+            <div className="px-4 py-5 sm:p-6">
+              <h4 className="pb-6 font-bold text-gray-700 uppercase">
+                Quel Public ?
+              </h4>
+              <div data-name="audienceFilter">
+                <CheckboxFilter
+                  list={data.scolairesAudience.edges}
+                  getValues={setSelectedAudiences}
+                  topic="audience"
+                />
+              </div>
+            </div>
+          </div>
+        )}
         <div className="overflow-hidden text-gray-500 bg-white rounded-lg">
           <div className="px-4 py-5 sm:p-6">
             <h4 className="pb-6 font-bold text-gray-700 uppercase">Formes</h4>
@@ -347,10 +376,11 @@ const EventsFilters = ({
               <h4 className="pb-6 font-bold text-gray-700 uppercase">
                 Quel Public ?
               </h4>
-              <div data-name="publicFilter">
-                <SelectPublicFilter
-                  list={data.allSanityAudience.edges}
-                  getValue={getSelectedPublic}
+              <div data-name="audienceFilter">
+                <CheckboxFilter
+                  list={data.regularAudience.edges}
+                  getValues={setSelectedAudiences}
+                  topic="audience"
                 />
               </div>
             </div>

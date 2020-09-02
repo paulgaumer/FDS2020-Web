@@ -5,6 +5,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   const eventsIndexTemplate = path.resolve(`src/templates/events-index.js`);
   const eventShowTemplate = path.resolve(`src/templates/event-show.js`);
+  const villageShowTemplate = path.resolve(`src/templates/village-show.js`);
   return graphql(
     `
       {
@@ -27,6 +28,19 @@ exports.createPages = ({ graphql, actions }) => {
               }
               department {
                 name
+              }
+            }
+          }
+        }
+        allSanityVillage {
+          edges {
+            node {
+              id
+              department {
+                name
+              }
+              slug {
+                current
               }
             }
           }
@@ -60,6 +74,18 @@ exports.createPages = ({ graphql, actions }) => {
         path: `/${department}/${edge.node.slug.current}`,
         component: eventShowTemplate,
         context: { eventId: edge.node.id },
+      });
+    });
+
+    // CREATE INDIVIDUAL VILLAGE PAGES
+    result.data.allSanityVillage.edges.forEach((edge) => {
+      // Format department's name for url
+      const department = formatDepartmentName(edge.node.department.name);
+
+      createPage({
+        path: `/${department}/${edge.node.slug.current}`,
+        component: villageShowTemplate,
+        context: { villageId: edge.node.id },
       });
     });
   });

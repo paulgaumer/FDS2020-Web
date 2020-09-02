@@ -70,7 +70,6 @@ export const serializers = {
       );
     },
     mainImage(props) {
-      console.log(props.node.asset._ref);
       return (
         <figure className="flex flex-col items-center justify-center my-10">
           <img

@@ -37,14 +37,14 @@ const DateFilter = ({ getValues, firstDate, lastDate }) => {
     <div className="flex flex-col space-y-4">
       <div className="flex items-center">
         <input
-          id="all"
+          id="tous-dates"
           type="checkbox"
-          value="all"
+          value="tous"
           checked={allDates}
           onChange={() => setAllDates(!allDates)}
           className="w-4 h-4 transition duration-150 ease-in-out text-secondary form-checkbox"
         />
-        <label id="all" htmlFor="all" className="block ml-2 text-sm leading-5">
+        <label htmlFor="tous-dates" className="block ml-2 text-sm leading-5">
           Toutes les dates
         </label>
       </div>

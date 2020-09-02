@@ -3,6 +3,8 @@ import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 import SectionTitle from '../../global/sectionTitle';
 import LogosGrid from '../../global/logosGrid';
+import PortableText from '@sanity/block-content-to-react';
+import { serializers } from '../../../utils/portableTextSerializers';
 
 const PartnersGrid = ({ title, images }) => {
   return (
@@ -17,16 +19,20 @@ const PartnersGrid = ({ title, images }) => {
 
 const PartnersSection = ({
   partnersTitle,
+  partnersContent,
   organizersTitle,
   logosOrganizers,
   coordinationTitle,
   logosCoordination,
 }) => {
   return (
-    <SectionWrapper backgroundColor="bg-white">
-      <SectionContainer customClasses="pt-16 pb-16 md:py-20 lg:pb-40">
+    <SectionWrapper>
+      <SectionContainer customClasses="pt-16 pb-16 md:py-20">
         <SectionTitle text={partnersTitle} />
-        <div className="flex flex-col space-y-28">
+        <div className="text-lg leading-7 tracking-wide text-gray-500">
+          <PortableText blocks={partnersContent} serializers={serializers} />
+        </div>
+        <div className="flex flex-col pt-20 space-y-28">
           <PartnersGrid title={organizersTitle} images={logosOrganizers} />
           <PartnersGrid title={coordinationTitle} images={logosCoordination} />
         </div>

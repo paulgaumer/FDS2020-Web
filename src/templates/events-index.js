@@ -34,7 +34,7 @@ export const query = graphql`
       filter: {
         department: { id: { eq: $departmentId } }
         education: { eq: false }
-      }
+      } # sort: { fields: startDate___local, order: ASC }
     ) {
       edges {
         node {
@@ -43,11 +43,13 @@ export const query = graphql`
           slug {
             current
           }
+          village {
+            id
+          }
           department {
             name
           }
           featured
-          village
           _rawDescription
           description {
             children {
@@ -58,11 +60,11 @@ export const query = graphql`
             id
             name
           }
-          startDate {
-            local
-          }
-          endDate {
-            local
+          timeSlots {
+            endDate
+            endTime
+            startDate
+            startTime
           }
           format {
             id
@@ -119,32 +121,31 @@ export const query = graphql`
         }
       }
     }
-    villages: allSanityEvent(filter: { village: { eq: true } }) {
+    villages: allSanityVillage(
+      filter: { department: { id: { eq: $departmentId } } }
+    ) # sort: { fields: startDate___local, order: ASC }
+    {
       edges {
         node {
           id
           title
-          featured
           _rawDescription
           description {
             children {
               text
             }
           }
-          slug {
-            current
-          }
           department {
             name
           }
-          startDate {
-            local
+          slug {
+            current
           }
-          endDate {
-            local
-          }
-          theme {
-            name
+          timeSlots {
+            endDate
+            endTime
+            startDate
+            startTime
           }
           image {
             asset {

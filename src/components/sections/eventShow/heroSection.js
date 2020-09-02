@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
@@ -28,8 +28,8 @@ const HeroCard = styled.div`
   }
 `;
 
-const BookingButton = ({ bookingRequired, isMobile = false, scolaires }) => {
-  if (bookingRequired) {
+const BookingButton = ({ isBookingNeeded, isMobile = false, scolaires }) => {
+  if (isBookingNeeded) {
     return (
       <Link to="#reservation" className="inline-flex rounded-md shadow-sm">
         <button
@@ -79,12 +79,16 @@ const HeroSection = ({ event, scolaires }) => {
     theme,
     format,
     bookingRequired,
-    endDate,
-    startDate,
+    bookingRecommanded,
+    timeSlots,
     image,
     featured,
     map,
   } = event;
+
+  const [isBookingNeeded, setIsBookingNeeded] = useState(
+    bookingRequired || bookingRecommanded
+  );
 
   return (
     <SectionWrapper>
@@ -94,9 +98,9 @@ const HeroSection = ({ event, scolaires }) => {
             {image && (
               <CustomGatsbyImage image={image} customClasses="h-full" />
             )}
-            {featured && (
-              <FeaturedLabel customClasses="absolute top-5 left-4 md:left-10 text-base" />
-            )}
+            <div className="absolute flex space-x-2 top-5 left-4 md:left-10">
+              {featured && <FeaturedLabel customClasses="text-base" />}
+            </div>
           </div>
           <div
             data-name="grid-info"
@@ -112,12 +116,6 @@ const HeroSection = ({ event, scolaires }) => {
               </p>
             </div>
             <div className="flex flex-col col-span-1 row-start-2 mt-8 space-y-4 md:mt-0">
-              <p className="flex items-center space-x-2">
-                <span className="text-xl">
-                  <MdToday />
-                </span>
-                <span>{processDate(startDate.local, endDate.local)}</span>
-              </p>
               <Link
                 to="#carte-evenement"
                 className="flex items-center space-x-2"
@@ -126,20 +124,34 @@ const HeroSection = ({ event, scolaires }) => {
                   <FaMapMarkerAlt />
                 </span>
                 <span>
-                  {map.address}{' '}
-                  <span className="underline">(Voir la carte)</span>
+                  {map.address} (<span className="underline">carte</span>)
                 </span>
               </Link>
+              <div className="flex items-center space-x-2">
+                <span className="text-xl">
+                  <MdToday />
+                </span>
+                {timeSlots.length > 1 && (
+                  <Link to="#opening-hours" className="underline">
+                    <p>Voir tous les horaires</p>
+                  </Link>
+                )}
+                {timeSlots.length === 1 && (
+                  <div>
+                    <p>{processDate(timeSlots[0])}</p>
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="items-center hidden col-span-1 col-start-2 md:flex">
               <BookingButton
-                bookingRequired={bookingRequired}
+                isBookingNeeded={isBookingNeeded}
                 scolaires={scolaires}
               />
             </div>
             <div className="flex col-span-1 col-start-2 mt-6 space-x-6 md:mt-0 md:space-x-0 md:space-y-2 md:flex-col">
-              <p className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2">
                 <span
                   className={`h-8 w-8 text-2xl text-white rounded-full p-2 flex items-center justify-center ${
                     scolaires ? 'bg-eduDark' : 'bg-primary'
@@ -151,8 +163,8 @@ const HeroSection = ({ event, scolaires }) => {
                   />
                 </span>
                 <span>{format[0].name}</span>
-              </p>
-              <p className="flex items-center space-x-2">
+              </div>
+              <div className="flex items-center space-x-2">
                 <span
                   className={`h-8 w-8 p-1 flex items-center justify-center text-2xl text-white rounded-full ${
                     scolaires ? 'bg-eduDark' : 'bg-primary'
@@ -160,8 +172,8 @@ const HeroSection = ({ event, scolaires }) => {
                 >
                   <IoIosPeople />
                 </span>
-                <span>{audience.name}</span>
-              </p>
+                <span>{audience[0].name}</span>
+              </div>
             </div>
           </div>
           <div
@@ -169,7 +181,7 @@ const HeroSection = ({ event, scolaires }) => {
               bookingRequired ? 'bg-secondary' : 'bg-primary'
             }`}
           >
-            <BookingButton bookingRequired={bookingRequired} isMobile={true} />
+            <BookingButton isBookingNeeded={isBookingNeeded} isMobile={true} />
           </div>
         </HeroCard>
       </SectionContainer>

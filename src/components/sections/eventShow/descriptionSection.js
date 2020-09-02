@@ -32,10 +32,10 @@ const DescriptionSection = ({ description, scolaires }) => {
             className="text-center md:text-left"
           >
             <CovidButton className="mt-10">
-              <span class="inline-flex rounded-md shadow-sm">
+              <span className="inline-flex rounded-md shadow-sm">
                 <button
                   type="button"
-                  class="uppercase inline-flex px-2.5 py-1.5 border border-transparent text-xs leading-4 font-medium rounded transition ease-in-out duration-150 text-white space-x-2 items-center"
+                  className="uppercase inline-flex px-2.5 py-1.5 border border-transparent text-xs leading-4 font-medium rounded transition ease-in-out duration-150 text-white space-x-2 items-center"
                 >
                   <span className="text-sm">
                     <FaExclamationTriangle />

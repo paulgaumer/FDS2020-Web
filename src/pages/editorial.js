@@ -12,13 +12,16 @@ const editorial = ({ data }) => {
   const {
     topTitle,
     partnersTitle,
+    _rawPartnersContent,
     organizersTitle,
     logosOrganizers,
     coordinationTitle,
     logosCoordination,
     contactContent,
-    topContent,
+    contactButton,
+    _rawTopContent,
     previousEditions,
+    previousEditionsTitle,
   } = data.sanityPage.pageContent[0];
 
   return (
@@ -26,8 +29,12 @@ const editorial = ({ data }) => {
       <SEO title="Editorial" />
       <TopSection
         topTitle={topTitle}
-        topContent={topContent}
+        topContent={_rawTopContent}
         ambassadors={ambassadors}
+      />
+      <CarouselSection
+        previousEditions={previousEditions}
+        previousEditionsTitle={previousEditionsTitle}
       />
       <PartnersSection
         logosOrganizers={logosOrganizers}
@@ -35,9 +42,12 @@ const editorial = ({ data }) => {
         coordinationTitle={coordinationTitle}
         logosCoordination={logosCoordination}
         partnersTitle={partnersTitle}
+        partnersContent={_rawPartnersContent}
       />
-      <ContactSection contactContent={contactContent} />
-      <CarouselSection previousEditions={previousEditions} />
+      <ContactSection
+        contactContent={contactContent}
+        contactButton={contactButton}
+      />
     </Layout>
   );
 };
@@ -61,10 +71,13 @@ export const query = graphql`
             name
           }
           topTitle
+          _rawTopContent
           partnersTitle
+          _rawPartnersContent
           organizersTitle
           coordinationTitle
           contactContent
+          contactButton
           logosCoordination {
             image {
               asset {
@@ -76,6 +89,7 @@ export const query = graphql`
             }
             name
           }
+          previousEditionsTitle
           previousEditions {
             asset {
               id

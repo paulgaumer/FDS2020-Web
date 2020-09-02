@@ -1,8 +1,9 @@
 export const multiFilter = (arr, filters, scolaires) => {
   const checkTheme = (item, filtersList) => {
+    const itemThemes = item.theme.map((a) => a.id);
     if (filtersList.themes.length === 0) {
       return true;
-    } else if (filtersList.themes.includes(item.theme[0].id)) {
+    } else if (filtersList.themes.some((theme) => itemThemes.includes(theme))) {
       return true;
     } else {
       return false;
@@ -10,20 +11,29 @@ export const multiFilter = (arr, filters, scolaires) => {
   };
 
   const checkFormat = (item, filtersList) => {
+    const itemFormats = item.format.map((a) => a.id);
     if (filtersList.formats.length === 0) {
       return true;
-    } else if (filtersList.formats.includes(item.format[0].id)) {
+    } else if (
+      filtersList.formats.some((format) => itemFormats.includes(format))
+    ) {
       return true;
     } else {
       return false;
     }
   };
 
-  const checkPublic = (item, filtersList) => {
-    return (
-      filtersList.public === item.audience.id ||
-      filtersList.public === '-d4e31ef1-7615-5290-88e1-b85b940c521a'
-    );
+  const checkAudience = (item, filtersList) => {
+    const itemAudiences = item.audience.map((a) => a.id);
+    if (filtersList.audiences.length === 0) {
+      return true;
+    } else if (
+      filtersList.audiences.some((audience) => itemAudiences.includes(audience))
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   };
   const checkDepartment = (item, filtersList) => {
     return (
@@ -33,8 +43,12 @@ export const multiFilter = (arr, filters, scolaires) => {
   };
 
   const checkDates = (item, filterList) => {
-    const itemStartDate = new Date(item.startDate.local).getTime();
-    const itemEndDate = new Date(item.endDate.local).getTime();
+    const itemStartDate = new Date(
+      `${item.timeSlots[0].startDate}T${item.timeSlots[0].startTime}:00.000`
+    ).getTime();
+    const itemEndDate = new Date(
+      `${item.timeSlots[0].endDate}T${item.timeSlots[0].endTime}:00.000`
+    ).getTime();
     const filterStartDate = filterList.dates.startDate.getTime();
     const filterEndDate = filterList.dates.endDate.getTime();
 
@@ -48,13 +62,17 @@ export const multiFilter = (arr, filters, scolaires) => {
     // console.log('FILTERIIIIIIIIIIING');
     const matchesTheme = checkTheme(obj, filters);
     const matchesFormat = checkFormat(obj, filters);
-    const matchesPublic = checkPublic(obj, filters);
+    const matchesAudience = checkAudience(obj, filters);
     const matchesDepartment = checkDepartment(obj, filters);
     const matchesDates = checkDates(obj, filters);
     const selected =
-      matchesTheme && matchesFormat && matchesPublic && matchesDates;
+      matchesTheme && matchesFormat && matchesAudience && matchesDates;
     const selectedScolaires =
-      matchesTheme && matchesFormat && matchesDepartment && matchesDates;
+      matchesTheme &&
+      matchesFormat &&
+      matchesDepartment &&
+      matchesDates &&
+      matchesAudience;
 
     return scolaires ? selectedScolaires : selected;
 
@@ -62,7 +80,7 @@ export const multiFilter = (arr, filters, scolaires) => {
     // console.log(`${obj.title}`);
     // console.log(`theme: ${matchesTheme}`);
     // console.log(`format: ${matchesFormat}`);
-    // console.log(`public: ${matchesPublic}`);
+    // console.log(`audience: ${matchesAudience}`);
     // console.log(`department: ${matchesDepartment}`);
     // console.log(`selected: ${selectedScolaires}`);
     // console.log(`*********************`);
