@@ -1,26 +1,61 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import logoFDSRouge from '../../images/logo-fds-rouge.svg';
 import InstagramIcon from '../icons/instagram';
 
 const Footer = () => {
+  const data = useStaticQuery(graphql`
+    query FooterBlock {
+      footer: sanityPage(pageName: { eq: "Footer" }) {
+        pageContent {
+          ... on SanityFooterBlock {
+            logosRankBottom {
+              id
+              name
+              image {
+                asset {
+                  fluid(maxWidth: 300) {
+                    ...GatsbySanityImageFluid
+                  }
+                }
+              }
+            }
+            logosRankTop {
+              id
+              name
+              image {
+                asset {
+                  fluid(maxWidth: 300) {
+                    ...GatsbySanityImageFluid
+                  }
+                }
+              }
+            }
+            instagramLinkFooter
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <footer className="max-w-screen-xl px-4 py-12 mx-auto bg-white sm:px-6 lg:py-16 lg:px-8 ">
-      <div className="flex flex-col items-center lg:items-start space-y-14 lg:flex-row lg:space-y-0">
+      <div className="flex flex-col items-center lg:items-start space-y-14 lg:flex-row lg:space-y-0 lg:space-x-10">
         <div data-name="fds-logo" className="flex items-center">
           <Link to="/">
-            <img src={logoFDSRouge} alt="fête de la science" className="w-64" />
+            <img src={logoFDSRouge} alt="fête de la science" className="w-72" />
           </Link>
         </div>
         <div
           data-name="links"
-          className="flex flex-grow space-x-6 lg:justify-center lg:space-x-10"
+          className="grid grid-cols-2 gap-10 sm:flex sm:space-x-6 lg:justify-center lg:space-x-10"
         >
           <div>
             <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
               Départements
             </h5>
-            <ul className="mt-4">
+            <ul className="flex flex-col mt-4 space-y-4">
               <li>
                 <Link
                   to="/loire-atlantique"
@@ -29,7 +64,7 @@ const Footer = () => {
                   Loire Atlantique
                 </Link>
               </li>
-              <li className="mt-4">
+              <li>
                 <Link
                   to="/maine-et-loire"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
@@ -37,7 +72,7 @@ const Footer = () => {
                   Maine et Loire
                 </Link>
               </li>
-              <li className="mt-4">
+              <li>
                 <Link
                   to="/mayenne"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
@@ -45,7 +80,7 @@ const Footer = () => {
                   Mayenne
                 </Link>
               </li>
-              <li className="mt-4">
+              <li>
                 <Link
                   to="/sarthe"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
@@ -53,7 +88,7 @@ const Footer = () => {
                   Sarthe
                 </Link>
               </li>
-              <li className="mt-4">
+              <li>
                 <Link
                   to="/vendee"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
@@ -67,7 +102,7 @@ const Footer = () => {
             <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
               a propos
             </h5>
-            <ul className="mt-4">
+            <ul className="flex flex-col mt-4 space-y-4">
               <li>
                 <Link
                   to="/editorial"
@@ -76,7 +111,23 @@ const Footer = () => {
                   Éditorial
                 </Link>
               </li>
-              <li className="mt-4">
+              <li>
+                <Link
+                  to="/scolaires"
+                  className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                >
+                  Scolaires
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/covid"
+                  className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                >
+                  Info Covid
+                </Link>
+              </li>
+              <li>
                 <a
                   href="https://www.fetedelascience.fr/"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
@@ -90,7 +141,7 @@ const Footer = () => {
             <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
               Légal
             </h5>
-            <ul className="mt-4">
+            <ul className="flex flex-col mt-4 space-y-4">
               <li>
                 <Link
                   to="/legal/mentions-legales"
@@ -99,7 +150,7 @@ const Footer = () => {
                   Mentions Légales
                 </Link>
               </li>
-              <li className="mt-4">
+              <li>
                 <Link
                   to="/contact"
                   className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
@@ -110,25 +161,52 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div data-name="logos" className="flex flex-col space-y-10">
-          <div className="flex space-x-6">
+        <div data-name="logos" className="flex flex-col w-4/5 space-y-10">
+          <div className="flex space-x-4 sm:space-x-6">
+            {/* <img src={logoFDSRouge} alt="fête de la science" className="w-20" />
             <img src={logoFDSRouge} alt="fête de la science" className="w-20" />
-            <img src={logoFDSRouge} alt="fête de la science" className="w-20" />
-            <img src={logoFDSRouge} alt="fête de la science" className="w-20" />
+            <img src={logoFDSRouge} alt="fête de la science" className="w-20" /> */}
+            {data.footer.pageContent[0].logosRankTop.map((logo) => {
+              return (
+                <Img
+                  key={logo.id}
+                  fluid={logo.image.asset.fluid}
+                  alt={logo.name}
+                  className="flex-auto max-h-24"
+                  imgStyle={{ objectFit: 'contain' }}
+                />
+              );
+            })}
           </div>
-          <div className="flex space-x-6">
+          <div className="flex space-x-4">
+            {/* <img src={logoFDSRouge} alt="fête de la science" className="w-20" />
             <img src={logoFDSRouge} alt="fête de la science" className="w-20" />
-            <img src={logoFDSRouge} alt="fête de la science" className="w-20" />
-            <img src={logoFDSRouge} alt="fête de la science" className="w-20" />
+            <img src={logoFDSRouge} alt="fête de la science" className="w-20" /> */}
+            {data.footer.pageContent[0].logosRankBottom.map((logo) => {
+              return (
+                <Img
+                  key={logo.id}
+                  fluid={logo.image.asset.fluid}
+                  alt={logo.name}
+                  className="flex-auto max-h-20"
+                  imgStyle={{ objectFit: 'contain' }}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
       <div className="flex items-center justify-between pt-8 mt-12 border-t border-gray-200">
         <p className="text-base leading-6 text-cool-gray-400 xl:text-center">
-          &copy; 2020 Fête de la Science Pays de la Loire
+          &copy; {new Date().getFullYear()} Fête de la Science Pays de la Loire
         </p>
-        <a href="https://instagram.com" aria-label="Visiter Instagram">
-          <InstagramIcon customClasses="w-8 h-8 text-cool-gray-400 hover:text-featured" />
+        <a
+          href={data.footer.pageContent[0].instagramLinkFooter}
+          aria-label="Visiter Instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <InstagramIcon customClasses="w-6 h-6 sm:w-8 sm:h-8 text-cool-gray-400 hover:text-featured" />
         </a>
       </div>
     </footer>
