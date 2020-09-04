@@ -21,7 +21,7 @@ const IosPwaPrompt = () => {
       <PWAPrompt
         delay={20000}
         copyTitle="Télécharger l'app"
-        copyBody="Ce site peut être utilisé comme une app. Ajoutez le à votre écran d'accueil pour l'utiliser en mode plein écran et hors-ligne."
+        copyBody="Ce site peut être utilisé comme une app. Ajoutez le à votre écran d'accueil pour l'utiliser en mode plein écran."
         copyShareButtonLabel="1) Appuyez sur l'icône 'Partager'"
         copyAddHomeButtonLabel="2) Appuyez sur 'Sur l'écran d'accueil'"
         copyClosePrompt="Fermer"
