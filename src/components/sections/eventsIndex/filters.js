@@ -125,9 +125,22 @@ const EventsFilters = ({
     setDatesFilter(selectedDates);
   }, [selectedFormats, selectedThemes, selectedDates, selectedAudiences]);
 
-  const { startDate, startTime } = data.firstDate.edges[0].node.timeSlots[0];
-  // console.log(data);
-  const { endDate, endTime } = data.lastDate.edges[0].node.timeSlots[0];
+  const startDate =
+    data.firstDate.edges.length > 0
+      ? data.firstDate.edges[0].node.timeSlots[0].startDate
+      : '2020-09-02';
+  const startTime =
+    data.firstDate.edges.length > 0
+      ? data.firstDate.edges[0].node.timeSlots[0].startTime
+      : '10:00';
+  const endDate =
+    data.lastDate.edges.length > 0
+      ? data.lastDate.edges[0].node.timeSlots[0].endDate
+      : '2020-09-02';
+  const endTime =
+    data.lastDate.edges.length > 0
+      ? data.lastDate.edges[0].node.timeSlots[0].endTime
+      : '10:00';
   const firstDate = `${startDate}T${startTime}:00.000`;
   const lastDate = `${endDate}T${endTime}:00.000`;
 
