@@ -67,7 +67,10 @@ const IndexPage = ({ data }) => {
         featuresTitle={featuresTitle}
       />
       <RegionMapSection />
-      <InstagramSection instagramTitle={instagramTitle} />
+      <InstagramSection
+        instagramTitle={instagramTitle}
+        instagramSettings={data.instagram}
+      />
     </Layout>
   );
 };
@@ -78,6 +81,10 @@ export const query = graphql`
   query HomePage {
     sanityPage(pageName: { eq: "Homepage" }) {
       _rawPageContent
+    }
+    instagram: sanitySiteSettings {
+      instagramLink
+      instagramHashtag
     }
   }
 `;
