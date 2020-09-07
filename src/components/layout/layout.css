@@ -13,6 +13,11 @@ html {
   border-radius: 0.25rem;
 }
 
+.ReactModal__Overlay--after-open {
+  z-index: 200;
+  background-color: rgba(6, 45, 34, 0.75) !important;
+}
+
 @tailwind components;
 /* purgecss end ignore */
 
