@@ -1,6 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
+import PortableText from '@sanity/block-content-to-react';
+import { serializers } from '../utils/portableTextSerializers';
 import SEO from '../components/layout/seo';
 import Layout from '../components/layout/layout';
 import SectionWrapper from '../components/layout/sectionWrapper';
@@ -14,12 +16,22 @@ const EventGrid = styled.div`
 
 const Multimedia = ({ data }) => {
   const events = data.allSanityOnlineEvent.edges;
+  const { _rawContentBlock, topTitle } = data.sanityPage.pageContent[0];
+
   return (
     <Layout>
-      <SEO title="Multimedia" />
+      <SEO title={topTitle} />
       <SectionWrapper>
         <SectionContainer customClasses="pt-16 pb-20 md:py-20 lg:pt-32 lg:pb-40">
-          <SectionTitle text="Multimedia" />
+          <SectionTitle text={topTitle} />
+          {_rawContentBlock && (
+            <div className="pb-10 text-lg leading-7 tracking-wide text-gray-500 md:pb-16">
+              <PortableText
+                blocks={_rawContentBlock}
+                serializers={serializers}
+              />
+            </div>
+          )}
           <EventGrid
             data-name="events"
             className="flex flex-col space-y-6 md:space-y-0 md:grid-cols-1 md:grid md:gap-10 lg:grid-cols-2"
@@ -51,6 +63,14 @@ export default Multimedia;
 
 export const query = graphql`
   query OnlineEvents {
+    sanityPage(pageName: { eq: "Multimedia" }) {
+      pageContent {
+        ... on SanityMultimediaPageBlock {
+          topTitle
+          _rawContentBlock
+        }
+      }
+    }
     allSanityOnlineEvent {
       edges {
         node {
