@@ -37,7 +37,7 @@ export default MentionsLegales;
 
 export const query = graphql`
   query MentionsLegalesPage {
-    sanityPage(pageName: { eq: "MentionsLegales" }) {
+    sanityPage(pageName: { eq: "Mentions Légales" }) {
       _rawPageContent
     }
   }

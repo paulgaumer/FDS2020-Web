@@ -16,6 +16,7 @@ const IndexPage = ({ data }) => {
     featuresButton,
     featuresTitle,
     instagramTitle,
+    heroButton,
   } = data.sanityPage._rawPageContent[0];
 
   const [showHeader, setShowHeader] = useState(false);
@@ -60,7 +61,7 @@ const IndexPage = ({ data }) => {
           <Header />
         </div>
       </div>
-      <HeroSection />
+      <HeroSection heroButton={heroButton} />
       <AboutSection
         features={features}
         featuresButton={featuresButton}

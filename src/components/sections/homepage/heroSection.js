@@ -17,7 +17,7 @@ const Timer = styled.div`
   background: rgba(239, 79, 95, 0.9);
 `;
 
-const HeroSection = () => {
+const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -291,12 +291,12 @@ const HeroSection = () => {
                 02 Octobre - 12 Octobre 2020
               </p>
             </div>
-            <span className="inline-flex rounded-md shadow-sm">
+            <span className="inline-flex flex-shrink-0 rounded-md shadow-sm">
               <Link
                 to="/#carte-accueil"
                 className="inline-flex items-center px-3 py-3 text-lg font-bold leading-6 text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-md xl:text-2xl xl:px-4 xl:py-4 2xl:px-6 2xl:py-6 2xl:text-3xl bg-primary hover:bg-primary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-primary"
               >
-                découvrir les évenements
+                {heroButton}
               </Link>
             </span>
           </ContentCenter>
