@@ -3,7 +3,12 @@ import { FaCampground } from 'react-icons/fa';
 import SectionContainer from '../../layout/sectionContainer';
 import VillageCard from './villageCard';
 
-const Villages = ({ villages = [], scolaires }) => {
+const Villages = ({
+  villages = [],
+  scolaires,
+  villageTitle = 'Village des Sciences',
+  villageContent,
+}) => {
   return (
     <SectionContainer customClasses="pt-6 md:pt-16">
       <div className="text-gray-500">
@@ -11,15 +16,9 @@ const Villages = ({ villages = [], scolaires }) => {
           <span className="text-2xl">
             <FaCampground />
           </span>
-          <span>- Village des Sciences</span>
+          <span>- {villageTitle}</span>
         </h3>
-        <p className="pt-6">
-          Aux Villages des Sciences vous attendent de multiples espaces
-          d’animations, de démonstrations et d’expositions ! Vous pourrez
-          tester, échanger, expérimenter et questionner les scientifiques venus
-          à votre rencontre ! Animations en continu, expositions et
-          rencontres...
-        </p>
+        {villageContent && <p className="pt-6">{villageContent}</p>}
         <div className="grid grid-cols-1 gap-10 pt-16 md:grid-cols-2 lg:grid-cols-3">
           {villages.length >= 1 &&
             villages.map(({ node }) => {

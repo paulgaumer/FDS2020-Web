@@ -5,22 +5,36 @@ import Layout from '../components/layout/layout';
 import SectionWrapper from '../components/layout/sectionWrapper';
 import TopSection from '../components/sections/eventsIndex/topSection';
 import FilteringSection from '../components/sections/eventsIndex/filteringSection';
-import AboutFeatured from '../components/sections/eventsIndex/featuredAboutSection';
+import FeaturedAboutFeatured from '../components/sections/eventsIndex/featuredAboutSection';
 import LocalPartners from '../components/sections/eventsIndex/localPartnersSection';
 
 const EventsIndex = ({ data }) => {
   const events = data.allSanityEvent.edges.map(({ node }) => node);
   const department = data.sanityDepartment.name;
   const logos = data.logos.edges.map(({ node }) => node);
+  const { topTitle, partnersTitle } = data.sanityPage.pageContent[0];
+  const { featuredTitle, featuredContent } = data.featured.pageContent[0];
+  const { villageTitle, villageContent } = data.village.pageContent[0];
 
   return (
     <Layout>
       <SEO title={department} />
       <SectionWrapper>
-        <TopSection villages={data.villages.edges} department={department} />
+        <TopSection
+          villages={data.villages.edges}
+          villageTitle={villageTitle}
+          villageContent={villageContent}
+          department={department}
+          topTitle={topTitle}
+        />
         <FilteringSection events={events} department={department} />
-        <AboutFeatured />
-        {logos.length > 0 && <LocalPartners logos={logos} />}
+        <FeaturedAboutFeatured
+          featuredTitle={featuredTitle}
+          featuredContent={featuredContent}
+        />
+        {logos.length > 0 && (
+          <LocalPartners logos={logos} partnersTitle={partnersTitle} />
+        )}
       </SectionWrapper>
     </Layout>
   );
@@ -103,6 +117,30 @@ export const query = graphql`
     sanityDepartment(id: { eq: $departmentId }) {
       name
     }
+    sanityPage(pageName: { eq: "Evénements par région" }) {
+      pageContent {
+        ... on SanityEventsIndexPageBlock {
+          topTitle
+          partnersTitle
+        }
+      }
+    }
+    featured: sanityPage(pageName: { eq: "Coups de Coeur" }) {
+      pageContent {
+        ... on SanityFeaturedBlock {
+          featuredTitle
+          featuredContent
+        }
+      }
+    }
+    village: sanityPage(pageName: { eq: "Village des Sciences" }) {
+      pageContent {
+        ... on SanityVillageBlock {
+          villageContent
+          villageTitle
+        }
+      }
+    }
     logos: allSanityLogo(
       filter: { partners: { elemMatch: { id: { eq: $departmentId } } } }
     ) {
@@ -122,9 +160,8 @@ export const query = graphql`
       }
     }
     villages: allSanityVillage(
-      filter: { department: { id: { eq: $departmentId } } }
-    ) # sort: { fields: startDate___local, order: ASC }
-    {
+      filter: { department: { id: { eq: $departmentId } } } # sort: { fields: startDate___local, order: ASC }
+    ) {
       edges {
         node {
           id
