@@ -31,11 +31,14 @@ const HeroCard = styled.div`
 const BookingButton = ({ isBookingNeeded, isMobile = false, scolaires }) => {
   if (isBookingNeeded) {
     return (
-      <Link to="#reservation" className="inline-flex rounded-md shadow-sm">
+      <Link
+        to="#reservation"
+        className="inline-flex transform rounded-md shadow-sm hover:scale-105"
+      >
         <button
           type="button"
-          className={`inline-flex items-center text-base px-4 font-bold leading-6 text-orange-900 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-secondary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-secondary space-x-2 ${
-            isMobile ? 'py-3' : 'py-2 hover:bg-yellow-200'
+          className={` inline-flex items-center text-base px-4 font-bold leading-6 text-orange-900 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-secondary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-secondary space-x-2 ${
+            isMobile ? 'py-3' : 'py-2'
           }`}
         >
           <span className="text-xl">

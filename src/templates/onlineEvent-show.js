@@ -53,6 +53,7 @@ export const query = graphql`
         id
         name
       }
+      mediaUrl
       image {
         asset {
           fluid(maxWidth: 1000) {

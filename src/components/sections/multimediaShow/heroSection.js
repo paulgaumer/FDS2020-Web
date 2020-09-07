@@ -25,9 +25,14 @@ const HeroCard = styled.div`
   }
 `;
 
-const BookingButton = ({}) => {
+const BookingButton = ({ mediaUrl }) => {
   return (
-    <span className="inline-flex rounded-md shadow-sm">
+    <a
+      href={mediaUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex transform rounded-md shadow-sm md:hover:scale-105"
+    >
       <div
         className={`inline-flex items-center px-4 py-4 md:py-2 space-x-2 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary`}
       >
@@ -47,12 +52,12 @@ const BookingButton = ({}) => {
         </svg>
         <span>Accéder au contenu</span>
       </div>
-    </span>
+    </a>
   );
 };
 
 const HeroSection = ({ event }) => {
-  const { title, audience, theme, timeSlots, image } = event;
+  const { title, audience, theme, timeSlots, image, mediaUrl } = event;
 
   return (
     <SectionWrapper>
@@ -77,10 +82,20 @@ const HeroSection = ({ event }) => {
               </p>
             </div>
             <div className="flex flex-col col-span-1 row-start-2 mt-8 space-y-4 md:mt-0">
-              <div className="flex items-center space-x-2">
-                <span className="text-xl">
+              <div className="flex items-center ml-1 space-x-4 md:space-x-2 md:ml-0">
+                <span
+                  className={`text-xl ${
+                    timeSlots.length > 0
+                      ? 'inline-block'
+                      : 'hidden md:inline-block'
+                  }`}
+                >
                   <MdToday />
                 </span>
+
+                {timeSlots.length === 0 && (
+                  <p className="hidden md:block">En ligne</p>
+                )}
                 {timeSlots.length > 1 && (
                   <Link to="#opening-hours" className="underline">
                     <p>Voir tous les horaires</p>
@@ -95,12 +110,16 @@ const HeroSection = ({ event }) => {
             </div>
 
             <div className="items-center hidden col-span-1 col-start-2 md:flex">
-              <BookingButton />
+              <BookingButton mediaUrl={mediaUrl} />
             </div>
-            <div className="flex col-span-1 col-start-2 mt-6 space-x-6 md:mt-0 md:space-x-0 md:space-y-2 md:flex-col">
+            <div
+              className={`flex col-span-1 col-start-2 space-x-6 md:mt-0 md:space-x-0 md:space-y-2 md:flex-col ${
+                timeSlots.length === 0 ? 'justify-center mt-0' : 'mt-2'
+              }`}
+            >
               <div className="flex items-center space-x-2">
                 <span
-                  className={`h-8 w-8 p-1 flex items-center justify-center text-2xl text-white rounded-full bg-primary`}
+                  className={`h-8 w-8 flex items-center justify-center text-2xl text-gray-500 rounded-full `}
                 >
                   <IoIosPeople />
                 </span>
@@ -109,9 +128,9 @@ const HeroSection = ({ event }) => {
             </div>
           </div>
           <div
-            className={`flex items-center justify-center w-full mt-6 md:hidden bg-primary`}
+            className={`flex items-center justify-center w-full mt-2 md:hidden bg-primary`}
           >
-            <BookingButton />
+            <BookingButton mediaUrl={mediaUrl} />
           </div>
         </HeroCard>
       </SectionContainer>
