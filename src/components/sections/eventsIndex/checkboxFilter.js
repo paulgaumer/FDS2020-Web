@@ -1,4 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemState,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
 import Img from 'gatsby-image';
 
 const InputField = ({ item, handleChange, scolaires }) => {
@@ -107,19 +115,63 @@ const CheckboxFilter = ({ list, getValues, topic, scolaires }) => {
           htmlFor={`tous-${topic}`}
           className="block ml-2 text-sm leading-5"
         >
-          Tous
+          {topic === 'format' ? 'Toutes' : 'Tous'}
         </label>
       </div>
-      {items.map((item) => {
-        return (
-          <InputField
-            item={item}
-            key={item.id}
-            handleChange={handleChange}
-            scolaires={scolaires}
-          />
-        );
-      })}
+      <Accordion allowZeroExpanded={true}>
+        <AccordionItem className="">
+          <AccordionItemHeading>
+            <AccordionItemButton className="flex items-center -ml-1 text-sm text-gray-500">
+              <span className="">
+                <AccordionItemState>
+                  {(state) => {
+                    return state.expanded ? (
+                      <svg
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-5 h-5 chevron-down"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    ) : (
+                      <svg
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-5 h-5 chevron-right"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    );
+                  }}
+                </AccordionItemState>
+              </span>
+              <span>Plus d'Options</span>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel className="pt-3">
+            <div className="flex flex-col space-y-3">
+              {items.map((item) => {
+                return (
+                  <InputField
+                    item={item}
+                    key={item.id}
+                    handleChange={handleChange}
+                    scolaires={scolaires}
+                  />
+                );
+              })}
+            </div>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 };
