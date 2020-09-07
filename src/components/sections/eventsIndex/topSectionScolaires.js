@@ -3,10 +3,14 @@ import SectionContainer from '../../layout/sectionContainer';
 import SectionTitle from '../../global/sectionTitle';
 import Villages from './villages';
 
-const TopSectionScolaires = ({ villages, scolaires = false }) => {
+const TopSectionScolaires = ({
+  villages,
+  scolaires = false,
+  topTitle = '',
+}) => {
   return (
     <SectionContainer customClasses="pt-32">
-      <SectionTitle text={`Programme Scolaires`} />
+      <SectionTitle text={topTitle} />
       <Villages villages={villages} scolaires={scolaires} />
     </SectionContainer>
   );

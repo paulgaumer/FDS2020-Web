@@ -5,6 +5,9 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   const eventsIndexTemplate = path.resolve(`src/templates/events-index.js`);
   const eventShowTemplate = path.resolve(`src/templates/event-show.js`);
+  const onlineEventShowTemplate = path.resolve(
+    `src/templates/onlineEvent-show.js`
+  );
   const villageShowTemplate = path.resolve(`src/templates/village-show.js`);
   return graphql(
     `
@@ -28,6 +31,18 @@ exports.createPages = ({ graphql, actions }) => {
               }
               department {
                 name
+              }
+            }
+          }
+        }
+        allSanityOnlineEvent {
+          edges {
+            node {
+              id
+              title
+              _createdAt
+              slug {
+                current
               }
             }
           }
@@ -73,6 +88,15 @@ exports.createPages = ({ graphql, actions }) => {
       createPage({
         path: `/${department}/${edge.node.slug.current}`,
         component: eventShowTemplate,
+        context: { eventId: edge.node.id },
+      });
+    });
+
+    // CREATE INDIVIDUAL ONLINE EVENT PAGES
+    result.data.allSanityOnlineEvent.edges.forEach((edge) => {
+      createPage({
+        path: `/multimedia/${edge.node.slug.current}`,
+        component: onlineEventShowTemplate,
         context: { eventId: edge.node.id },
       });
     });

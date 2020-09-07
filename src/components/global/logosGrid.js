@@ -3,7 +3,7 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 
 const LogoGrid = styled.div`
-  grid-template-columns: repeat(auto-fit, minmax(10%, 150px));
+  grid-template-columns: repeat(auto-fit, minmax(10%, 100px));
   justify-content: center;
   & > div {
     /* background: black; */
@@ -20,6 +20,10 @@ const LogoGrid = styled.div`
   & > div > .gatsby-image-wrapper {
     width: 100%;
     height: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(10%, 150px));
   }
 `;
 

@@ -10,20 +10,29 @@ import LocalPartners from '../components/sections/eventsIndex/localPartnersSecti
 
 const EventsEducation = ({ data }) => {
   const events = data.allSanityEvent.edges.map(({ node }) => node);
-  const logos = data.logos.edges.map(({ node }) => node);
+  const page = data.sanityPage.pageContent[0];
+  const logos = page.logosList;
   const villages = [
     ...data.villagesLoireAtlantique.edges,
     ...data.villagesVendee.edges,
   ];
 
+  console.log(data);
+
   return (
     <Layout>
       <SEO title="Scolaires" />
       <SectionWrapper>
-        <TopSectionScolaires villages={villages} scolaires={true} />
+        <TopSectionScolaires
+          villages={villages}
+          scolaires={true}
+          topTitle={page.topTitle}
+        />
         <FilteringSection events={events} scolaires={true} />
         <AboutFeatured />
-        {logos.length > 0 && <LocalPartners logos={logos} />}
+        {logos.length > 0 && (
+          <LocalPartners logos={logos} partnersTitle={page.partnersTitle} />
+        )}
       </SectionWrapper>
     </Layout>
   );
@@ -126,17 +135,18 @@ export const query = graphql`
         }
       }
     }
-    logos: allSanityLogo {
-      edges {
-        node {
-          id
-          name
-          image {
-            asset {
-              fluid(maxWidth: 500) {
-                ...GatsbySanityImageFluid
+    sanityPage(pageName: { eq: "Scolaires" }) {
+      pageContent {
+        ... on SanityScolairesPageBlock {
+          topTitle
+          partnersTitle
+          logosList {
+            image {
+              asset {
+                fluid(maxWidth: 300) {
+                  ...GatsbySanityImageFluid
+                }
               }
-              url
             }
           }
         }
