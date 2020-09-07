@@ -114,7 +114,7 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
               <p className="text-3xl">
                 <FaSearch />
               </p>
-              <p>Aucun évenement ne correspond à votre recherche.</p>
+              <p>Aucun événement ne correspond à votre recherche.</p>
             </div>
           )}
           <div data-name="pagination" className="col-span-2">
