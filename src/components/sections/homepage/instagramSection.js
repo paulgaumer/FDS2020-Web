@@ -36,8 +36,6 @@ function useInstagram(hashtag) {
       .then((res) => res.json())
       .then((data) => {
         setPosts(data);
-        console.log('From useInstagram');
-        console.log(data);
       });
   }, []);
   return posts;
@@ -96,13 +94,17 @@ const InstagramSection = ({ instagramTitle, instagramSettings }) => {
             {/* Mobile Grid Start */}
             <div className="md:hidden">
               <div className="flex flex-col items-center justify-center col-span-2 mb-6 space-y-2 font-bold text-purple-900 item-text-content">
-                <div className="flex items-center justify-center space-x-3">
-                  <h2 className="text-4xl uppercase">#{instagramHashtag}</h2>
+                <div className="flex items-center justify-center px-2 space-x-3">
+                  <h2 className="text-2xl uppercase md:text-4xl">
+                    #{instagramHashtag}
+                  </h2>
                   <a href={instagramLink} aria-label="Visiter Instagram">
-                    <InstagramIcon customClasses="w-10 h-10 text-featured" />
+                    <InstagramIcon customClasses="w-8 h-8 md:w-10 md:h-10 text-featured" />
                   </a>
                 </div>
-                <p className="text-2xl text-center">{instagramTitle}</p>
+                <p className="text-xl text-center md:text-2xl">
+                  {instagramTitle}
+                </p>
               </div>
               <InstaGrid className="grid grid-cols-2 gap-2">
                 {instaPics.slice(0, 6).map((pic) => {
@@ -115,7 +117,6 @@ const InstagramSection = ({ instagramTitle, instagramSettings }) => {
             {/* Desktop Grid Start */}
             <InstaGrid className="hidden gap-5 md:grid md:grid-cols-4">
               {gridPics[0].map((pic) => {
-                console.log(gridPics);
                 return <InstaPic pic={pic} key={pic.id} />;
               })}
               <InstaPic pic={gridPics[1][0]} />
