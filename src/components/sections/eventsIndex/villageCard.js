@@ -11,13 +11,9 @@ const VillageCard = ({ village, department, scolaires }) => {
   const dpt = formatDepartmentName(department);
 
   return (
-    <Link to={`/${dpt}/${slug.current}`}>
+    <Link to={`/${dpt}/${slug.current}`} className="col-span-1">
       <div className="shadow">
-        <div
-          data-name="image"
-          style={{ height: '160px' }}
-          className="relative "
-        >
+        <div data-name="image" style={{ height: '160px' }} className="relative">
           {image && <CustomGatsbyImage image={image} customClasses="h-full" />}
           <div
             data-name="title"

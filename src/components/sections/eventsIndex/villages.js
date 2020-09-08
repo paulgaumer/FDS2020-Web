@@ -23,13 +23,12 @@ const Villages = ({
           {villages.length >= 1 &&
             villages.map(({ node }) => {
               return (
-                <div className="col-span-1" key={node.id}>
-                  <VillageCard
-                    village={node}
-                    department={node.department.name}
-                    scolaires={scolaires}
-                  />
-                </div>
+                <VillageCard
+                  village={node}
+                  department={node.department.name}
+                  scolaires={scolaires}
+                  key={node.id}
+                />
               );
             })}
         </div>

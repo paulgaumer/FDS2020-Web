@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
+import urlBuilder from '@sanity/image-url';
+import { MdToday } from 'react-icons/md';
+import { processDate } from '../../../utils/processDate';
 import InfoCard from '../eventShow/infoCard';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 const sanityClient = require('@sanity/client');
 
-// INit Sanity JS client to enable groq requests
+// Init Sanity JS client to enable groq requests
 const client = sanityClient({
   projectId: process.env.GATSBY_SANITY_PROJECT_ID,
   dataset: 'production',
@@ -13,10 +16,51 @@ const client = sanityClient({
   useCdn: false, // `false` if you want to ensure fresh data
 });
 
+const urlFor = (source) =>
+  urlBuilder({
+    projectId: process.env.GATSBY_SANITY_PROJECT_ID,
+    dataset: 'production',
+  }).image(source);
+
+const EventMiniCard = ({ event, department }) => {
+  console.log(event);
+  return (
+    <Link to={`/${department}/${event.slug.current}`}>
+      <div className="relative flex items-center border border-gray-200 rounded-lg">
+        <div
+          style={{ backgroundImage: `url(${urlFor(event.image.asset._ref)})` }}
+          className="w-full bg-center bg-cover rounded-lg h-28"
+        />
+        <div
+          className="absolute inset-0 rounded-lg group"
+          style={{ backgroundColor: 'rgba(0,0,0,.5)' }}
+        >
+          <div className="flex flex-col items-center justify-center h-full">
+            <h4 className="px-2 text-xl text-white transform group-hover:scale-105">
+              {event.title}
+            </h4>
+            <span className="text-white ">---</span>
+            <div className="flex items-center space-x-2 text-sm text-white">
+              <span className="text-base">
+                <MdToday />
+              </span>
+              {event.timeSlots.length > 1 && <p>Horaires multiples</p>}
+              {event.timeSlots.length === 1 && (
+                <p>{processDate(timeSlots[0])}</p>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+};
+
 const EventsListSection = ({ villageId, department }) => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
+    // Get all events linked to a specific village
     const query = `*[_type == 'village' && _id == $villageId ]{"events": *[_type == 'event' && references(^._id)]}`;
     const params = { villageId: villageId };
 
@@ -31,20 +75,13 @@ const EventsListSection = ({ villageId, department }) => {
         <InfoCard title="Les événements du Village" customClasses="">
           <div className="text-lg leading-relaxed">
             {events.length > 0 && (
-              <ul className="list-disc">
+              <div className="grid grid-cols-1 gap-4 mt-4 sm:mt-0 md:grid-cols-2 lg:grid-cols-3">
                 {events.map((event) => {
                   return (
-                    <li key={event._id}>
-                      <Link
-                        to={`/${department}/${event.slug.current}`}
-                        className="inline-block underline"
-                      >
-                        <p>{event.title}</p>
-                      </Link>
-                    </li>
+                    <EventMiniCard event={event} department={department} />
                   );
                 })}
-              </ul>
+              </div>
             )}
             {events.length <= 0 && (
               <div className="py-10 text-center">
