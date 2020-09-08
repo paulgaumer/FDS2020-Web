@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import Modal from 'react-modal';
 import { hasWindow } from '../../utils/hasWindow';
 
@@ -15,39 +16,80 @@ const customStyles = {
 };
 
 const QuizModal = () => {
-  const [modalIsOpen, setIsOpen] = useState(true);
+  const data = useStaticQuery(graphql`
+    query QuizQuery {
+      allSanityQuizByDepartment {
+        edges {
+          node {
+            id
+            department {
+              name
+            }
+            answers
+            question
+          }
+        }
+      }
+    }
+  `);
+
+  const [quizzes] = useState(
+    data.allSanityQuizByDepartment.edges.map(({ node }) => node)
+  );
+  const [quizId, setQuizId] = useState(null);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  // Record the quiz answers in Airtable
+  const url = `/.netlify/functions/sendQuizToSheet`;
+  const sendtoSheet = async () => {
+    const res = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        department: selectedDepartment.department.name,
+        answer: selectedAnswer,
+        date: new Date(),
+      }),
+    });
+    const data = await res.status;
+    return data;
+  };
 
   useEffect(() => {
     if (hasWindow) {
-      // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+      // Attach the modal to the DOM for accessibility reasons
       Modal.setAppElement('#site-layout');
+      // Check if the user already answered/closed the quiz before
+      const quizCookie = window.localStorage.getItem('showQuiz');
+      quizCookie !== 'false' ? setIsOpen(true) : setIsOpen(false);
     }
   }, []);
 
+  // Find the corresponding quiz object based on department id
+  useEffect(() => {
+    if (quizId !== null)
+      setSelectedDepartment(quizzes.find((q) => q.id === quizId));
+  }, [quizId]);
+
+  // Handle user actions
   const handleDepartmentSelect = (e) => {
-    setSelectedDepartment(e.currentTarget.value);
+    setQuizId(e.currentTarget.value);
   };
   const handleAnswerSelect = (e) => {
     setSelectedAnswer(e.currentTarget.value);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(selectedAnswer);
+    const res = await sendtoSheet();
+    // The quiz won't show up again if the answer has correctly been recorded
+    res === 200 ? window.localStorage.setItem('showQuiz', 'false') : null;
     closeModal();
   };
 
-  // function openModal() {
-  //   setIsOpen(true);
-  // }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
-
   function closeModal() {
+    // Always hide the quiz if the user already exited the modal once
+    window.localStorage.setItem('showQuiz', 'false');
     setIsOpen(false);
   }
 
@@ -55,13 +97,13 @@ const QuizModal = () => {
     <div>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="Quiz Modal"
       >
         <div className="relative flex flex-col items-center justify-between p-12 text-gray-700">
           <form className="flex flex-col w-full" onSubmit={handleSubmit}>
+            {/* Display the list of departments */}
             {!selectedDepartment && (
               <div className="flex flex-col space-y-4">
                 <h2 className="text-center">
@@ -75,73 +117,50 @@ const QuizModal = () => {
                     onChange={handleDepartmentSelect}
                   >
                     <option value={null}>-- Liste des départements --</option>
-                    <option value="44">Loire Atlantique</option>
-                    <option value="49">Maine et Loire</option>
-                    <option value="53">Mayenne</option>
-                    <option value="72">Sarthe</option>
-                    <option value="85">Vendée</option>
+                    {quizzes.map((quiz) => {
+                      return (
+                        <option value={quiz.id}>{quiz.department.name}</option>
+                      );
+                    })}
                   </select>
                 </div>
               </div>
             )}
 
+            {/* Display the list of possible answers */}
             {selectedDepartment && (
               <div
                 data-name="answers-list"
                 className="flex-col w-full space-y-8 flex-"
               >
-                <h3 className="text-sm">
-                  Comment avez-vous connu la Fête de la Science 2020 ?
-                </h3>
+                <h3 className="text-sm">{selectedDepartment.question}</h3>
                 <div className="flex flex-col space-y-6">
-                  <div className="flex items-center">
-                    <input
-                      id="q1"
-                      value="q1"
-                      name="answer"
-                      type="radio"
-                      className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
-                      checked={selectedAnswer === 'q1'}
-                      onChange={handleAnswerSelect}
-                    />
-                    <label htmlFor="q1" className="ml-3">
-                      <span className="block text-sm font-medium leading-5 text-gray-700">
-                        Answer 1
-                      </span>
-                    </label>
-                  </div>
-                  <div className="flex items-center">
-                    <input
-                      id="q2"
-                      value="q2"
-                      name="answer"
-                      type="radio"
-                      className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
-                      checked={selectedAnswer === 'q2'}
-                      onChange={handleAnswerSelect}
-                    />
-                    <label htmlFor="q2" className="ml-3">
-                      <span className="block text-sm font-medium leading-5 text-gray-700">
-                        Answer 2
-                      </span>
-                    </label>
-                  </div>
-                  <div className="flex items-center">
-                    <input
-                      id="q3"
-                      value="q3"
-                      name="answer"
-                      type="radio"
-                      className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
-                      checked={selectedAnswer === 'q3'}
-                      onChange={handleAnswerSelect}
-                    />
-                    <label htmlFor="q3" className="ml-3">
-                      <span className="block text-sm font-medium leading-5 text-gray-700">
-                        Answer 3
-                      </span>
-                    </label>
-                  </div>
+                  {selectedDepartment.answers.map((answer, i) => {
+                    return (
+                      <div
+                        className="flex items-center"
+                        key={`${answer}-index-${i}`}
+                      >
+                        <input
+                          id={`${answer}-index-${i}`}
+                          value={answer}
+                          name="answer"
+                          type="radio"
+                          className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
+                          checked={selectedAnswer === answer}
+                          onChange={handleAnswerSelect}
+                        />
+                        <label
+                          htmlFor={`${answer}-index-${i}`}
+                          className="ml-3"
+                        >
+                          <span className="block text-sm font-medium leading-5 text-gray-700">
+                            {answer}
+                          </span>
+                        </label>
+                      </div>
+                    );
+                  })}
                 </div>
                 <button
                   type="submit"
