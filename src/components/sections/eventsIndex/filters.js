@@ -46,10 +46,7 @@ const EventsFilters = ({
           }
         }
       }
-      regularAudience: allSanityAudience(
-        sort: { fields: name, order: DESC }
-        filter: { audienceEducation: { eq: false } }
-      ) {
+      regularAudience: allSanityAudience(sort: { fields: name, order: ASC }) {
         edges {
           node {
             name

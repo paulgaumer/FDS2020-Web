@@ -18,6 +18,10 @@ html {
   background-color: rgba(6, 45, 34, 0.75) !important;
 }
 
+.ReactModal__Content {
+  @apply shadow-2xl !important;
+}
+
 @tailwind components;
 /* purgecss end ignore */
 

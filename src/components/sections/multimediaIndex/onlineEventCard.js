@@ -42,21 +42,20 @@ const OnlineEventCard = ({ event }) => {
           </div>
 
           <p className="pt-6">{excerpt(description[0].children[0].text)}</p>
-          {timeSlots.length > 0 && (
-            <div className="pt-6">
-              <div className="flex items-center space-x-1 text-sm">
-                <span className="text-base">
-                  <MdToday />
-                </span>
-                {timeSlots.length > 1 && <span>Horaires Multiples</span>}
-                {timeSlots.length === 1 && (
-                  <div>
-                    <span>{processDate(timeSlots[0])}</span>
-                  </div>
-                )}
-              </div>
+          <div className="pt-6">
+            <div className="flex items-center space-x-1 text-sm">
+              <span className="text-base">
+                <MdToday />
+              </span>
+              {timeSlots.length > 1 && <span>Horaires Multiples</span>}
+              {timeSlots.length === 0 && <span>En ligne</span>}
+              {timeSlots.length === 1 && (
+                <div>
+                  <span>{processDate(timeSlots[0])}</span>
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </Link>

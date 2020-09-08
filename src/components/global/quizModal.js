@@ -101,12 +101,12 @@ const QuizModal = () => {
         style={customStyles}
         contentLabel="Quiz Modal"
       >
-        <div className="relative flex flex-col items-center justify-between p-12 text-gray-700">
+        <div className="relative flex flex-col items-center justify-between p-12 pt-16 text-gray-700">
           <form className="flex flex-col w-full" onSubmit={handleSubmit}>
             {/* Display the list of departments */}
             {!selectedDepartment && (
               <div className="flex flex-col space-y-4">
-                <h2 className="text-center">
+                <h2 className="text-xl text-center">
                   Dans quel département êtes-vous ?
                 </h2>
                 <div>
@@ -133,7 +133,7 @@ const QuizModal = () => {
                 data-name="answers-list"
                 className="flex-col w-full space-y-8 flex-"
               >
-                <h3 className="text-sm">{selectedDepartment.question}</h3>
+                <h3 className="text-xl">{selectedDepartment.question}</h3>
                 <div className="flex flex-col space-y-6">
                   {selectedDepartment.answers.map((answer, i) => {
                     return (
@@ -154,7 +154,7 @@ const QuizModal = () => {
                           htmlFor={`${answer}-index-${i}`}
                           className="ml-3"
                         >
-                          <span className="block text-sm font-medium leading-5 text-gray-700">
+                          <span className="block text-base font-medium leading-5 text-gray-700">
                             {answer}
                           </span>
                         </label>
@@ -164,18 +164,37 @@ const QuizModal = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full px-3 py-2 text-sm font-bold text-center text-gray-900 uppercase rounded focus:outline-none focus:shadow-outline-blue focus:border-blue-300 bg-primary"
+                  className="w-full px-3 py-2 text-sm font-bold text-center text-gray-700 uppercase rounded focus:outline-none focus:shadow-outline-blue focus:border-blue-300 bg-primary"
                 >
                   Valider
                 </button>
               </div>
             )}
           </form>
-          <button
+          {/* <button
             onClick={closeModal}
             className="absolute text-sm top-1 right-5 focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
           >
             Fermer
+          </button> */}
+          <button
+            type="button"
+            className="absolute text-gray-400 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none focus:text-gray-500 top-1 right-5"
+            aria-label="Close"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeWnejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
           </button>
         </div>
       </Modal>

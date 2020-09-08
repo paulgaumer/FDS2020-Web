@@ -152,6 +152,7 @@ export const query = graphql`
             name
             phone
             email
+            url
             logo {
               asset {
                 fluid(maxWidth: 500) {
