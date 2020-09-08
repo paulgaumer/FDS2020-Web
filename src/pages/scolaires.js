@@ -19,8 +19,6 @@ const EventsEducation = ({ data }) => {
   const { featuredTitle, featuredContent } = data.featured.pageContent[0];
   const { villageTitle, villageContent } = data.village.pageContent[0];
 
-  console.log(data);
-
   return (
     <Layout>
       <SEO title="Scolaires" />

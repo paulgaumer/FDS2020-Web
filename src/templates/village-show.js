@@ -39,6 +39,7 @@ export const query = graphql`
       }
       _rawDescription
       timeSlots {
+        _key
         endDate
         endTime
         startDate

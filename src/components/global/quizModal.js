@@ -119,7 +119,9 @@ const QuizModal = () => {
                     <option value={null}>-- Liste des départements --</option>
                     {quizzes.map((quiz) => {
                       return (
-                        <option value={quiz.id}>{quiz.department.name}</option>
+                        <option value={quiz.id} key={quiz.id}>
+                          {quiz.department.name}
+                        </option>
                       );
                     })}
                   </select>
