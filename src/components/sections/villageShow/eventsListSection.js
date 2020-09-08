@@ -23,7 +23,6 @@ const urlFor = (source) =>
   }).image(source);
 
 const EventMiniCard = ({ event, department }) => {
-  console.log(event);
   return (
     <Link to={`/${department}/${event.slug.current}`}>
       <div className="relative flex items-center border border-gray-200 rounded-lg">
@@ -40,13 +39,13 @@ const EventMiniCard = ({ event, department }) => {
               {event.title}
             </h4>
             <span className="text-white ">---</span>
-            <div className="flex items-center space-x-2 text-sm text-white">
+            <div className="flex items-center px-2 space-x-2 text-sm text-white">
               <span className="text-base">
                 <MdToday />
               </span>
               {event.timeSlots.length > 1 && <p>Horaires multiples</p>}
               {event.timeSlots.length === 1 && (
-                <p>{processDate(timeSlots[0])}</p>
+                <p>{processDate(event.timeSlots[0], 'short')}</p>
               )}
             </div>
           </div>
@@ -78,7 +77,11 @@ const EventsListSection = ({ villageId, department }) => {
               <div className="grid grid-cols-1 gap-4 mt-4 sm:mt-0 md:grid-cols-2 lg:grid-cols-3">
                 {events.map((event) => {
                   return (
-                    <EventMiniCard event={event} department={department} />
+                    <EventMiniCard
+                      event={event}
+                      department={department}
+                      key={event._id}
+                    />
                   );
                 })}
               </div>

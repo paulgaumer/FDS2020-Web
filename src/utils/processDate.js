@@ -2,7 +2,7 @@ import moment from 'moment';
 import 'moment/locale/fr';
 
 // Accepts date strings
-export const processDate = (timeSlot) => {
+export const processDate = (timeSlot, size = null) => {
   // Structure:
   // timeSlot = {
   //   startDate: "2020-10-02",
@@ -10,6 +10,8 @@ export const processDate = (timeSlot) => {
   //   endDate: "2020-10-02",
   //   endTime: "09:00",
   // }
+
+  const formatDisplay = size === 'short' ? 'DD MMMM' : 'DD MMMM, H[h]mm';
   moment.locale('fr');
   const { startDate, startTime, endDate, endTime } = timeSlot;
   const start = `${startDate}T${startTime}:00.000`;
@@ -18,18 +20,18 @@ export const processDate = (timeSlot) => {
   if (moment(start).month() !== moment(end).month()) {
     return `${
       'Du ' +
-      moment(start).format('DD MMMM, H[h]mm') +
+      moment(start).format(formatDisplay) +
       ' au ' +
-      moment(end).format('DD MMMM, H[h]mm')
+      moment(end).format(formatDisplay)
     }`;
   }
 
   if (moment(start).date() !== moment(end).date()) {
     return (
       'Du ' +
-      moment(start).format('DD MMMM, H[h]mm') +
+      moment(start).format(formatDisplay) +
       ' au ' +
-      moment(end).format('DD MMMM, H[h]mm')
+      moment(end).format(formatDisplay)
     );
   } else {
     return (

@@ -85,7 +85,7 @@ const HeroSection = ({ village }) => {
                 </span>
                 <div>
                   {timeSlots.map((slot) => {
-                    return <span>{processDate(slot)}</span>;
+                    return <span key={slot._key}>{processDate(slot)}</span>;
                   })}
                 </div>
               </div>

@@ -179,6 +179,7 @@ export const query = graphql`
             current
           }
           timeSlots {
+            _key
             endDate
             endTime
             startDate
