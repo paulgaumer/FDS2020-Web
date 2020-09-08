@@ -61,7 +61,7 @@ const MapCarousel = () => {
         interval={4000}
         showStatus={false}
         showArrows={!isMobile}
-        swipeable={true}
+        swipeable={false}
         showThumbs={false}
       >
         <div className="h-20 myCarousel-item">

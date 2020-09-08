@@ -16,6 +16,8 @@ const EventsEducation = ({ data }) => {
     ...data.villagesLoireAtlantique.edges,
     ...data.villagesVendee.edges,
   ];
+  const { featuredTitle, featuredContent } = data.featured.pageContent[0];
+  const { villageTitle, villageContent } = data.village.pageContent[0];
 
   console.log(data);
 
@@ -27,9 +29,14 @@ const EventsEducation = ({ data }) => {
           villages={villages}
           scolaires={true}
           topTitle={page.topTitle}
+          villageTitle={villageTitle}
+          villageContent={villageContent}
         />
         <FilteringSection events={events} scolaires={true} />
-        <AboutFeatured />
+        <AboutFeatured
+          featuredTitle={featuredTitle}
+          featuredContent={featuredContent}
+        />
         {logos.length > 0 && (
           <LocalPartners logos={logos} partnersTitle={page.partnersTitle} />
         )}
@@ -149,6 +156,22 @@ export const query = graphql`
               }
             }
           }
+        }
+      }
+    }
+    featured: sanityPage(pageName: { eq: "Coups de Coeur" }) {
+      pageContent {
+        ... on SanityFeaturedBlock {
+          featuredTitle
+          featuredContent
+        }
+      }
+    }
+    village: sanityPage(pageName: { eq: "Village des Sciences" }) {
+      pageContent {
+        ... on SanityVillageBlock {
+          villageContent
+          villageTitle
         }
       }
     }

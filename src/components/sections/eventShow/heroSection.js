@@ -119,6 +119,7 @@ const HeroSection = ({ event, scolaires }) => {
               </p>
             </div>
             <div className="flex flex-col col-span-1 row-start-2 mt-8 space-y-4 md:mt-0">
+              {/* ADDRESS & MAP */}
               <Link
                 to="#carte-evenement"
                 className="flex items-center space-x-2"
@@ -130,6 +131,7 @@ const HeroSection = ({ event, scolaires }) => {
                   {map.address} (<span className="underline">carte</span>)
                 </span>
               </Link>
+              {/* TIMESLOTS */}
               <div className="flex items-center space-x-2">
                 <span className="text-xl">
                   <MdToday />
@@ -153,7 +155,8 @@ const HeroSection = ({ event, scolaires }) => {
                 scolaires={scolaires}
               />
             </div>
-            <div className="flex col-span-1 col-start-2 mt-6 space-x-6 md:mt-0 md:space-x-0 md:space-y-2 md:flex-col">
+            <div className="flex-col col-span-1 col-start-2 mt-6 space-y-3 md:space-y-2 md:mt-0">
+              {/* FORMAT */}
               <div className="flex items-center space-x-2">
                 <span
                   className={`h-8 w-8 text-2xl text-white rounded-full p-2 flex items-center justify-center ${
@@ -167,6 +170,7 @@ const HeroSection = ({ event, scolaires }) => {
                 </span>
                 <span>{format[0].name}</span>
               </div>
+              {/* AUDIENCE */}
               <div className="flex items-center space-x-2">
                 <span
                   className={`h-8 w-8 p-1 flex items-center justify-center text-2xl text-white rounded-full ${
@@ -175,7 +179,11 @@ const HeroSection = ({ event, scolaires }) => {
                 >
                   <IoIosPeople />
                 </span>
-                <span>{audience[0].name}</span>
+
+                <span>
+                  {audience[0].name}
+                  {audience.length > 1 && ' et plus'}
+                </span>
               </div>
             </div>
           </div>

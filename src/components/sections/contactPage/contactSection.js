@@ -13,10 +13,14 @@ const ContactSection = ({ department }) => {
         return (
           <div className="flex flex-col items-center mt-8 md:mt-16">
             <div className="flex items-center mb-6 h-28">
-              <Img
-                fluid={contact.logo.asset.fluid}
-                className="rounded-lg w-28"
-              />
+              {contact.url && (
+                <a href={contact.url} target="_blank" rel="noopener noreferrer">
+                  <Img fluid={contact.logo.asset.fluid} className="w-28" />
+                </a>
+              )}
+              {!contact.url && (
+                <Img fluid={contact.logo.asset.fluid} className="w-28" />
+              )}
             </div>
 
             <div className="text-2xl font-bold leading-6 text-gray-500">

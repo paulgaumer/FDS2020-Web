@@ -18,7 +18,7 @@ const OrganizerSection = ({ organizer, scolaires }) => {
                 {organizer.name}
               </span>
             </h3>
-            <p>{organizer.description}</p>
+            {organizer.description && <p>{organizer.description}</p>}
             <div className="pt-8 text-center sm:text-left">
               {organizer.website && (
                 <a

@@ -30,10 +30,10 @@ const HeroCard = styled.div`
 
 const BookingButton = ({}) => {
   return (
-    <span className="inline-flex rounded-md shadow-sm">
+    <span className="inline-flex transform rounded-md shadow-sm hover:scale-105">
       <Link
         to="#village-events"
-        className={`inline-flex items-center px-4 py-2 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary`}
+        className={`inline-flex items-center px-4 py-2 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary `}
       >
         Voir les évenements
       </Link>
