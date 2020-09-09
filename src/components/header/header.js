@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import HeaderMobileContent from '../header/headerMobileContent';
 import Transition from '../global/transition';
 import logo from '../../images/s_bleu.png';
+import { hasWindow } from '../../utils/hasWindow';
 
 const CovidButton = styled.span`
   background-color: rgba(42, 57, 81, 0.9);
@@ -16,6 +17,15 @@ const CovidButton = styled.span`
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
+
+  // Block background scrolling when the mobile menu is open
+  // useEffect(() => {
+  //   if (hasWindow) {
+  //     isMobileMenuOpen
+  //       ? (document.body.style.overflow = 'hidden')
+  //       : (document.body.style.overflow = 'auto');
+  //   }
+  // }, [isMobileMenuOpen]);
 
   return (
     <header className="fixed z-50 w-full shadow-sm">
