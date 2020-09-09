@@ -10,6 +10,7 @@ import { formatDepartmentName } from '../../../utils/formatDepartmentName';
 import { processDate } from '../../../utils/processDate';
 
 const EventCard = ({ event }) => {
+  console.log(event.village);
   const {
     description,
     village,
@@ -31,7 +32,9 @@ const EventCard = ({ event }) => {
         <div data-name="image" style={{ height: '160px' }} className="relative">
           {image && <CustomGatsbyImage image={image} customClasses="h-full" />}
           <div className="absolute flex space-x-2 top-5 left-5">
-            {village && <VillageLabel customClasses="text-sm" />}
+            {village && (
+              <VillageLabel customClasses="text-sm" title={village.title} />
+            )}
             {featured && <FeaturedLabel customClasses="text-sm" />}
           </div>
         </div>

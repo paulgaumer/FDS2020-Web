@@ -17,7 +17,7 @@ const IndexPage = ({ data }) => {
     featuresTitle,
     instagramTitle,
     heroButton,
-  } = data.sanityPage._rawPageContent[0];
+  } = data.sanityPage.pageContent[0];
 
   const [showHeader, setShowHeader] = useState(false);
   const [windowHeight, setWindowHeight] = useState(1414);
@@ -81,7 +81,29 @@ export default IndexPage;
 export const query = graphql`
   query HomePage {
     sanityPage(pageName: { eq: "Homepage" }) {
-      _rawPageContent
+      pageContent {
+        ... on SanityHomePageBlock {
+          features {
+            image {
+              asset {
+                fluid(maxWidth: 500) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+              hotspot {
+                x
+                y
+              }
+            }
+            _rawFeature
+            _key
+          }
+          featuresButton
+          featuresTitle
+          instagramTitle
+          heroButton
+        }
+      }
     }
     instagram: sanitySiteSettings {
       instagramLink

@@ -81,10 +81,10 @@ const QuizModal = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    closeModal();
     const res = await sendtoSheet();
     // The quiz won't show up again if the answer has correctly been recorded
     res === 200 ? window.localStorage.setItem('showQuiz', 'false') : null;
-    closeModal();
   };
 
   function closeModal() {
@@ -173,16 +173,11 @@ const QuizModal = () => {
               </div>
             )}
           </form>
-          {/* <button
-            onClick={closeModal}
-            className="absolute text-sm top-1 right-5 focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
-          >
-            Fermer
-          </button> */}
           <button
             type="button"
             className="absolute text-gray-400 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none focus:text-gray-500 top-1 right-5"
             aria-label="Close"
+            onClick={closeModal}
           >
             <svg
               className="w-6 h-6"
