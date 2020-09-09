@@ -59,6 +59,7 @@ export const query = graphql`
           }
           village {
             id
+            title
           }
           department {
             name

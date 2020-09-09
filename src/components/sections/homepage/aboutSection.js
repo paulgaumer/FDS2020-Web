@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import CustomGatsbyImage from '../../global/customGatsbyImage';
 import PortableText from '@sanity/block-content-to-react';
 import { serializers } from '../../../utils/portableTextSerializers';
 import urlBuilder from '@sanity/image-url';
@@ -25,23 +26,31 @@ const About = ({ features, featuresButton, featuresTitle }) => {
             {features.map((f, i) => {
               return (
                 <div
-                  className={`flex flex-col items-center space-y-8 md:items-start md:space-y-0 md:space-x-8 ${
+                  className={`flex flex-col items-center space-y-8  md:space-y-0 md:space-x-8 ${
                     i % 2 === 0
                       ? 'md:flex-row'
                       : 'md:flex-row-reverse md:space-x-reverse'
                   }`}
                   key={f._key}
                 >
-                  <img
-                    src={
-                      f.image
-                        ? urlFor(f.image.asset._ref)
-                        : 'https://placeimg.com/300/300/tech'
-                    }
-                    alt="fête de la science illustration"
-                    className="flex-shrink-0 w-32 h-32 border-2 rounded-full border-secondary"
+                  {f.image && (
+                    <CustomGatsbyImage
+                      image={f.image}
+                      alt="fête de la science illustration"
+                      customClasses="flex-shrink-0 w-32 h-32 border-2 rounded-full border-secondary"
+                    />
+                  )}
+                  {!f.image && (
+                    <img
+                      src="http://placeimg.com/300/300/tech"
+                      alt="fête de la science illustration"
+                      customClasses="flex-shrink-0 w-32 h-32 border-2 rounded-full border-secondary"
+                    />
+                  )}
+                  <PortableText
+                    blocks={f._rawFeature}
+                    serializers={serializers}
                   />
-                  <PortableText blocks={f.feature} serializers={serializers} />
                 </div>
               );
             })}
