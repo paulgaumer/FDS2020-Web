@@ -30,7 +30,7 @@ const EventCard = ({ event }) => {
       <div className="overflow-hidden rounded-md shadow ">
         <div data-name="image" style={{ height: '160px' }} className="relative">
           {image && <CustomGatsbyImage image={image} customClasses="h-full" />}
-          <div className="absolute flex space-x-2 top-5 left-5">
+          <div className="absolute flex flex-col items-start space-y-2 sm:space-y-0 sm:flex-row sm:space-x-2 top-5 left-5 lg:flex-col lg:space-y-2 lg:space-x-0 xl:flex-row xl:space-y-0 xl:space-x-2">
             {village && (
               <VillageLabel customClasses="text-sm" title={village.title} />
             )}
