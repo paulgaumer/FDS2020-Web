@@ -86,7 +86,7 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
       <div className="mt-16 md:mt-0 md:mb-16">
         <EventsMap selectedEvents={selectedEvents} department={department} />
       </div>
-      <OuterGrid className="gap-0 lg:gap-20 md:grid">
+      <OuterGrid className="gap-0 lg:gap-10 md:grid">
         <div data-name="filters" className="">
           <Filters
             setThemeFilters={setThemeFilters}
@@ -99,7 +99,7 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
         </div>
         <InnerEventGrid
           data-name="events"
-          className="flex flex-col space-y-6 md:space-y-0 md:grid-cols-1 md:grid md:gap-10 lg:grid-cols-2"
+          className="flex flex-col space-y-6 md:ml-10 lg:ml-0 lg:space-y-0 lg:grid lg:gap-10 lg:grid-cols-2"
         >
           {selectedEvents.length > 0 &&
             displayedEvents.map((event, i) => {
