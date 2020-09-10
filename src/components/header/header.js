@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import HeaderMobileContent from '../header/headerMobileContent';
 import Transition from '../global/transition';
 import logo from '../../images/s_bleu.png';
-import { hasWindow } from '../../utils/hasWindow';
+import { GlobalDispatchContext } from '../../context/global-context-provider';
 
 const CovidButton = styled.span`
   background-color: rgba(42, 57, 81, 0.9);
@@ -18,14 +18,14 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
 
-  // Block background scrolling when the mobile menu is open
-  // useEffect(() => {
-  //   if (hasWindow) {
-  //     isMobileMenuOpen
-  //       ? (document.body.style.overflow = 'hidden')
-  //       : (document.body.style.overflow = 'auto');
-  //   }
-  // }, [isMobileMenuOpen]);
+  const dispatch = useContext(GlobalDispatchContext);
+
+  // Register to global state if the mobile menu is open or not, to stop hidding the navbar if necessary (=> scrollNavHook component)
+  useEffect(() => {
+    isMobileMenuOpen
+      ? dispatch({ type: 'mobileMenuOpen' })
+      : dispatch({ type: 'mobileMenuClosed' });
+  }, [isMobileMenuOpen]);
 
   return (
     <header className="fixed z-50 w-full shadow-sm">
