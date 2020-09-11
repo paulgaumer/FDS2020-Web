@@ -48,7 +48,7 @@ function SEO({ description, lang, meta, title }) {
   const ogDescription = openGraph.description;
   const ogKeywords = openGraph.keywords;
   const ogImage = openGraph.image.asset.url;
-  const metaDescription = description || ogDescription;
+  const metaDescription = description.length > 1 ? description : ogDescription;
 
   return (
     <Helmet

@@ -155,7 +155,7 @@ export const query = graphql`
             url
             logo {
               asset {
-                fluid(maxWidth: 500) {
+                fluid(maxWidth: 150) {
                   ...GatsbySanityImageFluid
                 }
               }
