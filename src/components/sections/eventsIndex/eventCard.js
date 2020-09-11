@@ -10,7 +10,6 @@ import { formatDepartmentName } from '../../../utils/formatDepartmentName';
 import { processDate } from '../../../utils/processDate';
 
 const EventCard = ({ event }) => {
-  console.log(event.village);
   const {
     description,
     village,

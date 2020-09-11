@@ -10,7 +10,7 @@ const ScrollNavHook = () => {
   const [prevDirection, setPrevDirection] = useState(0);
 
   // Check if the mobile menu is open via global state
-  const isMobileMenuOpen = useContext(GlobalStateContext);
+  const { isMobileMenuOpen } = useContext(GlobalStateContext);
 
   const toggleHeader = (direction, curScroll) => {
     // height of your header in px

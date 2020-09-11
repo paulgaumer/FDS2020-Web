@@ -4,7 +4,10 @@ import { Link } from 'gatsby';
 import HeaderMobileContent from '../header/headerMobileContent';
 import Transition from '../global/transition';
 import logo from '../../images/s_bleu.png';
-import { GlobalDispatchContext } from '../../context/global-context-provider';
+import {
+  GlobalDispatchContext,
+  GlobalStateContext,
+} from '../../context/global-context-provider';
 
 const CovidButton = styled.span`
   background-color: rgba(42, 57, 81, 0.9);
@@ -18,6 +21,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
 
+  const showCovid = useContext(GlobalStateContext).showCovid;
   const dispatch = useContext(GlobalDispatchContext);
 
   // Register to global state if the mobile menu is open or not, to stop hidding the navbar if necessary (=> scrollNavHook component)
@@ -168,11 +172,13 @@ const Header = () => {
               >
                 Contact
               </Link>
-              <Link to="/covid">
-                <CovidButton className="px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out border border-transparent rounded bg-mapBackground hover:bg-blue-900 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-mapBackground">
-                  Info Covid
-                </CovidButton>
-              </Link>
+              {showCovid && (
+                <Link to="/covid">
+                  <CovidButton className="px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out border border-transparent rounded bg-mapBackground hover:bg-blue-900 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-mapBackground">
+                    Info Covid
+                  </CovidButton>
+                </Link>
+              )}
               <span className="inline-flex rounded-md shadow-sm">
                 <Link
                   to="/scolaires"

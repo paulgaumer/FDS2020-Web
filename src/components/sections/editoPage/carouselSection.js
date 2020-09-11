@@ -43,7 +43,7 @@ const CarouselSection = ({ previousEditions }) => {
             interval={3000}
             showStatus={false}
             swipeable={true}
-            showThumbs={true}
+            showThumbs={false}
             // dynamicHeight={true}
             className="carousel-wrapper"
           >

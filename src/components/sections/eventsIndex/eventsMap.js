@@ -28,7 +28,7 @@ const createPopupContent = (item, dep) => {
               } ${
     item.hotspotY !== null ? item.hotspotY * 100 + '%' : 'center'
   }"/>
-              <p class="text-base text-center p-3 text-gray-700">${
+              <p class="text-sm font-bold text-center p-3 text-gray-700">${
                 item.title
               }</p>
               ${item.featured ? featuredLabel : ''}

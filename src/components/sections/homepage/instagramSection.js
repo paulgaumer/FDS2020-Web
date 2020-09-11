@@ -98,7 +98,12 @@ const InstagramSection = ({ instagramTitle, instagramSettings }) => {
                   <h2 className="text-2xl uppercase md:text-4xl">
                     #{instagramHashtag}
                   </h2>
-                  <a href={instagramLink} aria-label="Visiter Instagram">
+                  <a
+                    href={instagramLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visiter Instagram"
+                  >
                     <InstagramIcon customClasses="w-8 h-8 md:w-10 md:h-10 text-featured" />
                   </a>
                 </div>

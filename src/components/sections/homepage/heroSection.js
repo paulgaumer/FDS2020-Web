@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Countdown from 'react-countdown';
@@ -10,6 +10,7 @@ import logoPdl from '../../../images/logo-pdl-white.svg';
 import logoMinister from '../../../images/hero-pastille-minister.svg';
 import poster from '../../../images/teaser-poster.png';
 import teaser from '../../../../static/video/teaser.mp4';
+import { GlobalStateContext } from '../../../context/global-context-provider';
 
 const ContentCenter = styled.div``;
 
@@ -20,6 +21,7 @@ const Timer = styled.div`
 const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const showCovid = useContext(GlobalStateContext).showCovid;
 
   // **** Settings for Timer Start ****
   const Completionist = () => <p className="text-3xl">La Fête vous attend!</p>;
@@ -202,13 +204,15 @@ const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
                   >
                     Contact
                   </Link>
-                  <Link
-                    to="/covid"
-                    className="hidden px-3 py-2 text-base font-medium leading-4 text-center text-white transition duration-150 ease-in-out border border-white rounded hover:bg-white hover:text-gray-700 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-white xl:inline-block"
-                  >
-                    <span className="hidden 2xl:inline-block">Info</span>{' '}
-                    <span>Covid</span>
-                  </Link>
+                  {showCovid && (
+                    <Link
+                      to="/covid"
+                      className="hidden px-3 py-2 text-base font-medium leading-4 text-center text-white transition duration-150 ease-in-out border border-white rounded hover:bg-white hover:text-gray-700 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-white xl:inline-block"
+                    >
+                      <span className="hidden 2xl:inline-block">Info</span>{' '}
+                      <span>Covid</span>
+                    </Link>
+                  )}
                 </nav>
               </div>
 

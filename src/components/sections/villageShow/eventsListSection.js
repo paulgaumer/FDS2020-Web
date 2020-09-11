@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import urlBuilder from '@sanity/image-url';
 import { MdToday } from 'react-icons/md';
 import { processDate } from '../../../utils/processDate';
+import { excerpt } from '../../../utils/excerpt';
 import InfoCard from '../eventShow/infoCard';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
@@ -26,19 +27,26 @@ const EventMiniCard = ({ event, department }) => {
   return (
     <Link to={`/${department}/${event.slug.current}`}>
       <div className="relative flex items-center border border-gray-200 rounded-lg">
-        <div
-          style={{ backgroundImage: `url(${urlFor(event.image.asset._ref)})` }}
-          className="w-full bg-center bg-cover rounded-lg h-28"
-        />
+        {event.image && (
+          <div
+            style={{
+              backgroundImage: `url(${urlFor(event.image.asset._ref)})`,
+            }}
+            className="w-full bg-center bg-cover rounded-lg h-28"
+          />
+        )}
+        {!event.image && (
+          <div className="w-full bg-gray-800 bg-center bg-cover rounded-lg h-28" />
+        )}
         <div
           className="absolute inset-0 rounded-lg group"
           style={{ backgroundColor: 'rgba(0,0,0,.5)' }}
         >
-          <div className="flex flex-col items-center justify-center h-full">
-            <h4 className="px-2 text-xl text-white transform group-hover:scale-105">
-              {event.title}
+          <div className="flex flex-col items-center justify-center h-full p-3">
+            <h4 className="text-base text-center text-white transform group-hover:scale-105">
+              {excerpt(event.title, 55)}
             </h4>
-            <span className="text-white ">---</span>
+            <span className="text-white">---</span>
             <div className="flex items-center px-2 space-x-2 text-sm text-white">
               <span className="text-base">
                 <MdToday />

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
-// import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { MdToday } from 'react-icons/md';
 import { FaMapMarkerAlt } from 'react-icons/fa';
@@ -8,7 +7,6 @@ import { IoIosPeople } from 'react-icons/io';
 import CustomGatsbyImage from '../../global/customGatsbyImage';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
-// import FeaturedLabel from '../../global/featuredLabel';
 import { processDate } from '../../../utils/processDate';
 
 const HeroCard = styled.div`
@@ -75,8 +73,7 @@ const HeroSection = ({ village }) => {
                   <FaMapMarkerAlt />
                 </span>
                 <span>
-                  {map.address}{' '}
-                  <span className="underline">(Voir la carte)</span>
+                  {map.address} <span className="underline">(carte)</span>
                 </span>
               </Link>
               <div className="flex items-center space-x-2">

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
+import { GlobalStateContext } from '../../context/global-context-provider';
 import logoFds from '../../images/s_bleu.png';
 import {
   Accordion,
@@ -11,6 +12,7 @@ import {
 } from 'react-accessible-accordion';
 
 const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
+  const showCovid = useContext(GlobalStateContext).showCovid;
   return (
     <>
       <div
@@ -246,27 +248,29 @@ const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
                         Contact
                       </div>
                     </Link>
-                    <Link
-                      to="/covid"
-                      className="flex items-center p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
-                    >
-                      <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-full bg-secondary">
-                        <svg
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          className="w-6 h-6 information-circle"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
-                      </div>
-                      <div className="text-base font-medium leading-6 text-gray-900">
-                        Info Covid
-                      </div>
-                    </Link>
+                    {showCovid && (
+                      <Link
+                        to="/covid"
+                        className="flex items-center p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
+                      >
+                        <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white rounded-full bg-secondary">
+                          <svg
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            className="w-6 h-6 information-circle"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                              clipRule="evenodd"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div className="text-base font-medium leading-6 text-gray-900">
+                          Info Covid
+                        </div>
+                      </Link>
+                    )}
                   </nav>
                 </div>
               </div>
