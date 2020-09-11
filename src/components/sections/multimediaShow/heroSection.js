@@ -123,7 +123,10 @@ const HeroSection = ({ event }) => {
                 >
                   <IoIosPeople />
                 </span>
-                <span>{audience[0].name}</span>
+                <span>
+                  {audience[0].name}
+                  {audience.length > 1 && ' et plus'}
+                </span>
               </div>
             </div>
           </div>
