@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import InfoCard from './infoCard';
 import { FaExclamationTriangle } from 'react-icons/fa';
@@ -6,6 +6,7 @@ import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 import PortableText from '@sanity/block-content-to-react';
 import { serializers } from '../../../utils/portableTextSerializers';
+import { GlobalStateContext } from '../../../context/global-context-provider';
 
 const CovidButton = styled.div`
   button {
@@ -22,6 +23,7 @@ const DescriptionSection = ({
   scolaires,
   showCovidButton = true,
 }) => {
+  const showCovid = useContext(GlobalStateContext).showCovid;
   return (
     <SectionWrapper>
       <SectionContainer customClasses="pb-12">
@@ -29,7 +31,7 @@ const DescriptionSection = ({
           <div className="text-lg leading-relaxed">
             <PortableText blocks={description} serializers={serializers} />
           </div>
-          {showCovidButton && (
+          {showCovid && showCovidButton && (
             <a
               href="/covid"
               target="_blank"

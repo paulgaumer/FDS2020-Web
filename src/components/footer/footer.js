@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import logoFDSRouge from '../../images/logo-fds-rouge.svg';
 import InstagramIcon from '../icons/instagram';
+import { GlobalStateContext } from '../../context/global-context-provider';
 
 const Footer = () => {
   const data = useStaticQuery(graphql`
@@ -38,6 +39,8 @@ const Footer = () => {
       }
     }
   `);
+
+  const showCovid = useContext(GlobalStateContext).showCovid;
 
   return (
     <footer className="max-w-screen-xl px-4 py-12 mx-auto bg-white sm:px-6 lg:py-16 lg:px-8 ">
@@ -119,14 +122,16 @@ const Footer = () => {
                   Scolaires
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/covid"
-                  className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
-                >
-                  Info Covid
-                </Link>
-              </li>
+              {showCovid && (
+                <li>
+                  <Link
+                    to="/covid"
+                    className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                  >
+                    Info Covid
+                  </Link>
+                </li>
+              )}
               <li>
                 <a
                   href="https://www.fetedelascience.fr/"
