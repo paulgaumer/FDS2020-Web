@@ -8,7 +8,7 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
   }
 
   const activeNumber =
-    'text-red-400 border-red-400 focus:text-indigo-800 focus:border-indigo-700';
+    'text-red-400 border-red-400 focus:text-secondary focus:border-secondary';
   const passiveNumber =
     'hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-400 text-gray-500';
 

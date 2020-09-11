@@ -75,8 +75,7 @@ const HeroSection = ({ village }) => {
                   <FaMapMarkerAlt />
                 </span>
                 <span>
-                  {map.address}{' '}
-                  <span className="underline">(Voir la carte)</span>
+                  {map.address} <span className="underline">(carte)</span>
                 </span>
               </Link>
               <div className="flex items-center space-x-2">
