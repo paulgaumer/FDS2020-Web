@@ -80,11 +80,16 @@ const HeroSection = ({ village }) => {
                 <span className="text-xl">
                   <MdToday />
                 </span>
-                <div>
-                  {timeSlots.map((slot) => {
-                    return <span key={slot._key}>{processDate(slot)}</span>;
-                  })}
-                </div>
+                {timeSlots.length > 1 && (
+                  <Link to="#opening-hours" className="underline">
+                    <p>Voir tous les horaires</p>
+                  </Link>
+                )}
+                {timeSlots.length === 1 && (
+                  <div>
+                    <p>{processDate(timeSlots[0])}</p>
+                  </div>
+                )}
               </div>
             </div>
 
