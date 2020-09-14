@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 import InstagramIcon from '../../icons/instagram';
-import Spinner from '../../global/spinner';
 
 // To force square format on pictures while keeping responsive grid
 const InstaGrid = styled.div`
@@ -40,6 +39,12 @@ function useInstagram(hashtag) {
   }, []);
   return posts;
 }
+
+const PicSkeleton = () => {
+  return (
+    <div className="w-full h-full bg-yellow-400 rounded shadow-inner animate-pulse" />
+  );
+};
 
 // InstaPic Component
 const InstaPic = ({ pic }) => {
@@ -88,38 +93,70 @@ const InstagramSection = ({ instagramTitle, instagramSettings }) => {
   return instagramHashtag ? (
     <SectionWrapper backgroundColor="bg-secondary">
       <SectionContainer customClasses="pt-10 pb-20 md:py-28">
-        {isLoading && <Spinner />}
-        {!isLoading && instaPics.length > 0 && (
-          <>
-            {/* Mobile Grid Start */}
-            <div className="md:hidden">
-              <div className="flex flex-col items-center justify-center col-span-2 mb-6 space-y-2 font-bold text-purple-900 item-text-content">
-                <div className="flex items-center justify-center px-2 space-x-3">
-                  <h2 className="text-2xl uppercase md:text-4xl">
-                    #{instagramHashtag}
-                  </h2>
-                  <a
-                    href={instagramLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Visiter Instagram"
-                  >
-                    <InstagramIcon customClasses="w-8 h-8 md:w-10 md:h-10 text-featured" />
-                  </a>
-                </div>
-                <p className="text-xl text-center md:text-2xl">
-                  {instagramTitle}
-                </p>
+        {/* {isLoading && <Spinner />} */}
+        {/* {!isLoading && instaPics.length > 0 && ( */}
+        <>
+          {/* Mobile Grid Start */}
+          <div className="md:hidden">
+            <div className="flex flex-col items-center justify-center col-span-2 mb-6 space-y-2 font-bold text-purple-900 item-text-content">
+              <div className="flex items-center justify-center px-2 space-x-3">
+                <h2 className="text-2xl uppercase md:text-4xl">
+                  #{instagramHashtag}
+                </h2>
+                <a
+                  href={instagramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visiter Instagram"
+                >
+                  <InstagramIcon customClasses="w-8 h-8 md:w-10 md:h-10 text-featured" />
+                </a>
               </div>
-              <InstaGrid className="grid grid-cols-2 gap-2">
-                {instaPics.slice(0, 6).map((pic) => {
-                  return <InstaPic pic={pic} key={pic.id} />;
-                })}
-              </InstaGrid>
+              <p className="text-xl text-center md:text-2xl">
+                {instagramTitle}
+              </p>
             </div>
-            {/* Mobile Grid End */}
+            <InstaGrid className="grid grid-cols-2 gap-2">
+              {isLoading && (
+                <>
+                  <PicSkeleton />
+                  <PicSkeleton />
+                  <PicSkeleton />
+                  <PicSkeleton />
+                  <PicSkeleton />
+                  <PicSkeleton />
+                </>
+              )}
+              {instaPics.slice(0, 6).map((pic) => {
+                return <InstaPic pic={pic} key={pic.id} />;
+              })}
+            </InstaGrid>
+          </div>
+          {/* Mobile Grid End */}
 
-            {/* Desktop Grid Start */}
+          {/* Desktop Grid Start */}
+          {isLoading && (
+            <InstaGrid className="hidden gap-5 md:grid md:grid-cols-4">
+              <PicSkeleton />
+              <PicSkeleton />
+              <PicSkeleton />
+              <PicSkeleton />
+              <PicSkeleton />
+              <div className="flex-col items-center justify-center hidden col-span-2 px-10 space-y-2 font-bold text-purple-900 md:flex item-text-content">
+                <h2 className="text-4xl uppercase">#{instagramHashtag}</h2>
+                <p className="text-2xl text-center">{instagramTitle}</p>
+                <a href={instagramLink}>
+                  <InstagramIcon customClasses="w-10 h-10 text-featured transform hover:scale-105" />
+                </a>
+              </div>
+              <PicSkeleton />
+              <PicSkeleton />
+              <PicSkeleton />
+              <PicSkeleton />
+              <PicSkeleton />
+            </InstaGrid>
+          )}
+          {!isLoading && instaPics.length > 0 && (
             <InstaGrid className="hidden gap-5 md:grid md:grid-cols-4">
               {gridPics[0].map((pic) => {
                 return <InstaPic pic={pic} key={pic.id} />;
@@ -137,9 +174,10 @@ const InstagramSection = ({ instagramTitle, instagramSettings }) => {
                 <InstaPic pic={pic} key={pic.id} />
               ))}
             </InstaGrid>
-            {/* Desktop Grid End */}
-          </>
-        )}
+          )}
+          {/* Desktop Grid End */}
+        </>
+        {/* )} */}
       </SectionContainer>
     </SectionWrapper>
   ) : null;

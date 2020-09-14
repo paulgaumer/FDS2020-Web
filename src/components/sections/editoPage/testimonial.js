@@ -49,10 +49,10 @@ const Testimonial = ({ ambassador, reverse = false }) => {
                   />
                 </div>
                 <div className="ml-4 lg:ml-0">
-                  <div className="text-base leading-6 text-gray-500">
+                  <div className="text-base leading-6 text-gray-600">
                     {name}
                   </div>
-                  <div className="text-base leading-6 text-gray-500">
+                  <div className="text-base leading-6 text-gray-600">
                     {role}
                   </div>
                 </div>

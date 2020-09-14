@@ -43,7 +43,7 @@ const ContactSection = ({ department }) => {
                   />
                 </svg>
               </div>
-              <div className="ml-3 text-base leading-6 text-gray-500">
+              <div className="ml-3 text-base leading-6 text-gray-600">
                 <a
                   href={`tel:${contact.phone}`}
                   className="hover:border-b-2 hover:border-secondary"
@@ -68,7 +68,7 @@ const ContactSection = ({ department }) => {
                   />
                 </svg>
               </div>
-              <div className="ml-3 text-base leading-6 text-gray-500">
+              <div className="ml-3 text-base leading-6 text-gray-600">
                 <a
                   href={`mailto:${contact.email}`}
                   className="hover:border-b-2 hover:border-secondary"

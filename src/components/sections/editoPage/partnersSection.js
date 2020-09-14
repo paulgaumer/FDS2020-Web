@@ -9,7 +9,7 @@ import { serializers } from '../../../utils/portableTextSerializers';
 const PartnersGrid = ({ title, images }) => {
   return (
     <div className="md:grid" style={{ gridTemplateColumns: 'auto 1fr' }}>
-      <h2 className="mb-10 text-xl text-center text-gray-500 underline uppercase md:no-underline md:border-t-2 md:text-left border-secondary">
+      <h2 className="mb-10 text-xl text-center text-gray-600 underline uppercase md:no-underline md:border-t-2 md:text-left border-secondary">
         {`${title}`}
       </h2>
       <LogosGrid logos={images} />
@@ -29,7 +29,7 @@ const PartnersSection = ({
     <SectionWrapper>
       <SectionContainer customClasses="pt-16 pb-16 md:py-20">
         <SectionTitle text={partnersTitle} />
-        <div className="text-lg leading-7 tracking-wide text-gray-500">
+        <div className="text-lg leading-7 tracking-wide text-gray-600">
           <PortableText blocks={partnersContent} serializers={serializers} />
         </div>
         <div className="flex flex-col pt-20 space-y-28">
