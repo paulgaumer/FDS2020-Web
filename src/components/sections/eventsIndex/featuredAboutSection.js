@@ -20,7 +20,7 @@ const FeaturedAboutSection = ({
             </h3>
           </div>
           {featuredContent && (
-            <p className="pt-6 text-gray-500">{featuredContent}</p>
+            <p className="pt-6 text-gray-600">{featuredContent}</p>
           )}
 
           <hr className="mt-16 text-center border-t-2 border-featured" />
