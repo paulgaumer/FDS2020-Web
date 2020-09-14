@@ -8,13 +8,13 @@ const ContactSection = ({ contactContent, contactButton }) => {
     <SectionWrapper>
       <SectionContainer customClasses="py-16 md:py-20">
         <div className="flex flex-col items-center space-y-12">
-          <p className="text-lg text-center text-gray-700 lg:px-40">
+          <p className="text-lg text-center text-gray-600 lg:px-40">
             {contactContent}
           </p>
           <span class="inline-flex rounded-md shadow-sm">
             <Link
               to="/contact"
-              class="inline-flex items-center px-6 py-3 border border-transparent text-base leading-6 rounded-md text-white bg-secondary hover:bg-secondary focus:outline-none focus:shadow-outline-indigo active:bg-secondary transition ease-in-out duration-150 uppercase font-bold"
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base leading-6 rounded-md text-orange-900 bg-secondary hover:bg-secondary focus:outline-none focus:shadow-outline-indigo active:bg-secondary transition ease-in-out duration-150 uppercase font-bold"
             >
               {contactButton}
             </Link>

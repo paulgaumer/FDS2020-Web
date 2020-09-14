@@ -55,14 +55,14 @@ const Footer = () => {
           className="grid grid-cols-2 gap-10 sm:flex sm:space-x-6 lg:justify-center lg:space-x-10"
         >
           <div>
-            <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
+            <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-500">
               Départements
             </h5>
             <ul className="flex flex-col mt-4 space-y-4">
               <li>
                 <Link
                   to="/loire-atlantique"
-                  className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                  className="text-base leading-6 text-cool-gray-600 hover:text-cool-gray-900"
                 >
                   Loire Atlantique
                 </Link>
@@ -70,7 +70,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/maine-et-loire"
-                  className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                  className="text-base leading-6 text-cool-gray-600 hover:text-cool-gray-900"
                 >
                   Maine et Loire
                 </Link>
@@ -78,7 +78,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/mayenne"
-                  className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                  className="text-base leading-6 text-cool-gray-600 hover:text-cool-gray-900"
                 >
                   Mayenne
                 </Link>
@@ -86,7 +86,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/sarthe"
-                  className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                  className="text-base leading-6 text-cool-gray-600 hover:text-cool-gray-900"
                 >
                   Sarthe
                 </Link>
@@ -94,7 +94,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/vendee"
-                  className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                  className="text-base leading-6 text-cool-gray-600 hover:text-cool-gray-900"
                 >
                   Vendée
                 </Link>
@@ -102,14 +102,14 @@ const Footer = () => {
             </ul>
           </div>
           <div className="">
-            <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
-              a propos
+            <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-500">
+              Info
             </h5>
             <ul className="flex flex-col mt-4 space-y-4">
               <li>
                 <Link
                   to="/editorial"
-                  className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                  className="text-base leading-6 text-cool-gray-600 hover:text-cool-gray-900"
                 >
                   Éditorial
                 </Link>
@@ -117,7 +117,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/scolaires"
-                  className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                  className="text-base leading-6 text-cool-gray-600 hover:text-cool-gray-900"
                 >
                   Scolaires
                 </Link>
@@ -126,7 +126,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/covid"
-                    className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                    className="text-base leading-6 text-cool-gray-600 hover:text-cool-gray-900"
                   >
                     Info Covid
                   </Link>
@@ -135,7 +135,7 @@ const Footer = () => {
               <li>
                 <a
                   href="https://www.fetedelascience.fr/"
-                  className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                  className="text-base leading-6 text-cool-gray-600 hover:text-cool-gray-900"
                 >
                   Site National
                 </a>
@@ -143,14 +143,14 @@ const Footer = () => {
             </ul>
           </div>
           <div className="">
-            <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-400">
+            <h5 className="text-sm font-semibold leading-5 tracking-wider uppercase text-cool-gray-500">
               Légal
             </h5>
             <ul className="flex flex-col mt-4 space-y-4">
               <li>
                 <Link
                   to="/legal/mentions-legales"
-                  className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                  className="text-base leading-6 text-cool-gray-600 hover:text-cool-gray-900"
                 >
                   Mentions Légales
                 </Link>
@@ -158,7 +158,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/contact"
-                  className="text-base leading-6 text-cool-gray-500 hover:text-cool-gray-900"
+                  className="text-base leading-6 text-cool-gray-600 hover:text-cool-gray-900"
                 >
                   Nous contacter
                 </Link>
@@ -202,7 +202,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex items-center justify-between pt-8 mt-12 border-t border-gray-200">
-        <p className="text-base leading-6 text-cool-gray-400 xl:text-center">
+        <p className="text-base leading-6 text-cool-gray-500 xl:text-center">
           &copy; {new Date().getFullYear()} Fête de la Science Pays de la Loire
         </p>
         <a
@@ -211,7 +211,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <InstagramIcon customClasses="w-6 h-6 sm:w-8 sm:h-8 text-cool-gray-400 hover:text-featured" />
+          <InstagramIcon customClasses="w-6 h-6 sm:w-8 sm:h-8 text-cool-gray-500 hover:text-featured" />
         </a>
       </div>
     </footer>
