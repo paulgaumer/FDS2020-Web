@@ -20,7 +20,7 @@ const ContactPage = ({ data }) => {
       <SectionWrapper>
         <SectionContainer customClasses="pt-16 pb-20 md:py-20 lg:pt-32 lg:pb-20">
           <SectionTitle text={page.topTitle} />
-          <div className="text-lg leading-7 tracking-wide text-gray-500">
+          <div className="text-lg leading-7 tracking-wide text-gray-600">
             <PortableText
               blocks={page._rawTopContent}
               serializers={serializers}
