@@ -10,3 +10,5 @@ const React = require('react');
 export const wrapRootElement = ({ element }) => {
   return <GlobalContextProvider>{element}</GlobalContextProvider>;
 };
+
+export const onServiceWorkerUpdateReady = () => window.location.reload;
