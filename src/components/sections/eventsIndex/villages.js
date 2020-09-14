@@ -52,7 +52,7 @@ const Villages = ({
 }) => {
   return (
     <SectionContainer customClasses="pt-6 md:pt-16">
-      <div className="text-gray-500">
+      <div className="text-gray-600">
         <h3 className="inline-flex items-center space-x-2 text-xl font-bold tracking-tight text-gray-700 uppercase md:text-2xl md:border-b-4 md:border-secondary">
           <span className="text-2xl">
             <FaCampground />

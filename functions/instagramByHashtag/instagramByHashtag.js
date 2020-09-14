@@ -8,6 +8,10 @@ const baseUrl = `https://graph.facebook.com/v8.0/`;
 // Instagram request content
 const fields = `id,media_url,media_type,permalink`;
 
+// CloudImage config
+const cloudImageBaseUrl = 'https://aaydrhlsgp.cloudimg.io/v7/';
+const cloudImageParams = '&width=300';
+
 // Netlify cache
 const cache = {
   // Initial values
@@ -45,7 +49,17 @@ async function getTopMedia(hashtagId) {
 }
 
 const sortPosts = (posts) => {
-  return posts.filter((p) => p.media_type === 'IMAGE').slice(0, 10);
+  const images = posts.filter((p) => p.media_type === 'IMAGE').slice(0, 10);
+  // Run the images through cloudimage.io to resize them down
+  const finalPosts = images.map((i) => {
+    return {
+      id: i.id,
+      media_url: `${cloudImageBaseUrl}${i.media_url}${cloudImageParams}`,
+      media_type: i.media_type,
+      permalink: i.permalink,
+    };
+  });
+  return finalPosts;
 };
 
 async function getPosts(hashtag) {

@@ -10,7 +10,7 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
   const activeNumber =
     'text-red-400 border-red-400 focus:text-secondary focus:border-secondary';
   const passiveNumber =
-    'hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-400 text-gray-500';
+    'hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-400 text-gray-600';
 
   return (
     <nav
@@ -27,9 +27,9 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
         role="button"
         tabIndex="0"
       >
-        <button className="inline-flex items-center pt-4 pr-1 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400">
+        <button className="inline-flex items-center pt-4 pr-1 -mt-px text-sm font-medium leading-5 text-gray-600 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400">
           <svg
-            className="w-5 h-5 mr-3 text-gray-400"
+            className="w-5 h-5 mr-3 text-gray-500"
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -68,10 +68,10 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
         role="button"
         tabIndex="0"
       >
-        <button className="inline-flex items-center pt-4 pl-1 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400">
+        <button className="inline-flex items-center pt-4 pl-1 -mt-px text-sm font-medium leading-5 text-gray-600 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400">
           Suivant
           <svg
-            className="w-5 h-5 ml-3 text-gray-400"
+            className="w-5 h-5 ml-3 text-gray-500"
             fill="currentColor"
             viewBox="0 0 20 20"
           >

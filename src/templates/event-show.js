@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout/layout';
+import SEO from '../components/layout/seo';
 import HeroSection from '../components/sections/eventShow/heroSection';
 import VillageLinkSection from '../components/sections/eventShow/villageLinkSection';
 import DescriptionSection from '../components/sections/eventShow/descriptionSection';
@@ -15,6 +16,7 @@ const EventShow = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title={event.title} description={event.description} />
       <HeroSection event={event} scolaires={scolaires} />
       {event.village && <VillageLinkSection event={event} />}
       <DescriptionSection
@@ -28,7 +30,7 @@ const EventShow = ({ data }) => {
         />
       )}
       {event.timeSlots.length > 1 && (
-        <OpeningHours timeSlots={event.timeSlots} />
+        <OpeningHours timeSlots={event.timeSlots} scolaires={scolaires} />
       )}
       {event.bookingRequired && (
         <BookingSection

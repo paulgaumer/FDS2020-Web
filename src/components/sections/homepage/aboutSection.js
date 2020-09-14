@@ -22,7 +22,7 @@ const About = ({ features, featuresButton, featuresTitle }) => {
         <div className="flex flex-col items-center">
           <SectionTitle text={featuresTitle} />
 
-          <div className="flex flex-col pb-10 space-y-20 text-base leading-relaxed text-gray-500 md:text-lg">
+          <div className="flex flex-col pb-10 space-y-20 text-base leading-relaxed text-gray-600 md:text-lg">
             {features.map((f, i) => {
               return (
                 <div

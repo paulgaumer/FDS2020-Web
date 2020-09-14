@@ -78,7 +78,7 @@ export const serializers = {
             className="w-full rounded-sm md:w-1/2"
           />
           {props.node.caption && (
-            <figcaption className="pt-4 text-sm italic text-gray-500">
+            <figcaption className="pt-4 text-sm italic text-gray-600">
               - {props.node.caption} -
             </figcaption>
           )}
