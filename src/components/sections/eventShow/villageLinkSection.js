@@ -20,7 +20,7 @@ const VillageLinkSection = ({ event }) => {
             </span>
             <span className="flex space-x-1">
               <span className="hidden md:inline-block">
-                {`Cet évenement sera présent sur le `}
+                {`Cet événement sera présent sur le `}
               </span>
               <Link
                 to={`/${department}/${event.village.slug.current}`}

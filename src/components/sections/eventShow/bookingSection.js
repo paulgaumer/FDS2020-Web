@@ -1,6 +1,7 @@
 import React from 'react';
 import InfoCard from './infoCard';
 import { MdPhone, MdDrafts } from 'react-icons/md';
+import { FaGlobe } from 'react-icons/fa';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 
@@ -14,6 +15,7 @@ const BookingSection = ({
   bookingPhone,
   bookingEmail,
   bookingText,
+  bookingWebsite,
   scolaires,
 }) => {
   return (
@@ -22,7 +24,7 @@ const BookingSection = ({
         <InfoCard title="réservation" customClasses="" scolaires={scolaires}>
           <div className="text-lg leading-relaxed text-center">
             <p>{bookingText}</p>
-            <div className="inline-flex flex-col pt-10 pb-8 space-y-6 sm:space-y-0 sm:flex sm:items-start sm:justify-center sm:flex-row sm:space-x-14">
+            <div className="inline-flex flex-col pt-10 pb-8 space-y-6 md:space-y-0 md:flex md:items-start md:justify-center md:flex-row md:space-x-14">
               {bookingEmail && (
                 <a
                   href={`mailto: ${bookingEmail}`}
@@ -43,6 +45,21 @@ const BookingSection = ({
                     <MdPhone />
                   </RoundIcon>
                   <span>{bookingPhone}</span>
+                </a>
+              )}
+              {bookingWebsite && (
+                <a
+                  href={`${bookingWebsite}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2"
+                >
+                  <RoundIcon>
+                    <FaGlobe />
+                  </RoundIcon>
+                  <span className="border-b border-gray-500 hover:border-secondary">
+                    Site Web
+                  </span>
                 </a>
               )}
             </div>
