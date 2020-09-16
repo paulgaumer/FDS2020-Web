@@ -25,7 +25,7 @@ const EventShow = ({ data }) => {
       />
       {event.projectOwners.length > 0 && (
         <OrganizerSection
-          organizer={event.projectOwners[0]}
+          organizers={event.projectOwners}
           scolaires={scolaires}
         />
       )}
@@ -90,6 +90,7 @@ export const query = graphql`
         startTime
       }
       projectOwners {
+        id
         name
         description
         website
