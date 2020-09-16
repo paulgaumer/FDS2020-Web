@@ -163,6 +163,14 @@ const Footer = () => {
                   Nous contacter
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/legal/credits"
+                  className="text-base leading-6 text-cool-gray-600 hover:text-cool-gray-900"
+                >
+                  Crédits
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
