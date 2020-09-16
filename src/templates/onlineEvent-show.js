@@ -17,7 +17,7 @@ const EventShow = ({ data }) => {
         showCovidButton={false}
       />
       {event.projectOwners.length > 0 && (
-        <OrganizerSection organizer={event.projectOwners[0]} />
+        <OrganizerSection organizers={event.projectOwners} />
       )}
       {event.timeSlots.length > 1 && (
         <OpeningHours timeSlots={event.timeSlots} />
