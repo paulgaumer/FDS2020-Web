@@ -65,6 +65,7 @@ export const query = graphql`
             name
           }
           featured
+          eventCanceled
           _rawDescription
           description {
             children {

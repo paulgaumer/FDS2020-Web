@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { MdToday } from 'react-icons/md';
-import { FaMapMarkerAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaBan } from 'react-icons/fa';
 import { IoIosPeople } from 'react-icons/io';
 import CustomGatsbyImage from '../../global/customGatsbyImage';
 import SectionWrapper from '../../layout/sectionWrapper';
@@ -28,8 +28,28 @@ const HeroCard = styled.div`
   }
 `;
 
-const BookingButton = ({ isBookingNeeded, isMobile = false, scolaires }) => {
-  if (isBookingNeeded) {
+const BookingButton = ({
+  isBookingNeeded,
+  isMobile = false,
+  scolaires,
+  eventCanceled,
+}) => {
+  if (eventCanceled) {
+    return (
+      <span className="inline-flex rounded-md shadow-sm">
+        <div
+          className={`inline-flex items-center px-4 py-2 space-x-2 text-base font-bold leading-6 uppercase transition duration-150 ease-in-out rounded-full border-4 border-red-600 ${
+            isMobile ? 'text-white' : 'text-red-600'
+          }`}
+        >
+          <span>
+            <FaBan />
+          </span>
+          <span>événement annulé</span>
+        </div>
+      </span>
+    );
+  } else if (isBookingNeeded) {
     return (
       <Link
         to="#reservation"
@@ -86,12 +106,23 @@ const HeroSection = ({ event, scolaires }) => {
     timeSlots,
     image,
     featured,
+    eventCanceled,
     map,
   } = event;
 
   const [isBookingNeeded, setIsBookingNeeded] = useState(
     bookingRequired || bookingRecommanded
   );
+
+  const getBackgroundColor = () => {
+    if (eventCanceled) {
+      return 'bg-red-600';
+    } else if (isBookingNeeded) {
+      return 'bg-secondary';
+    } else {
+      return 'bg-primary';
+    }
+  };
 
   return (
     <SectionWrapper>
@@ -153,6 +184,7 @@ const HeroSection = ({ event, scolaires }) => {
               <BookingButton
                 isBookingNeeded={isBookingNeeded}
                 scolaires={scolaires}
+                eventCanceled={eventCanceled}
               />
             </div>
             <div className="flex-col col-span-1 col-start-2 mt-6 space-y-3 md:space-y-2 md:mt-0">
@@ -188,11 +220,13 @@ const HeroSection = ({ event, scolaires }) => {
             </div>
           </div>
           <div
-            className={`flex items-center justify-center w-full mt-6 md:hidden ${
-              bookingRequired ? 'bg-secondary' : 'bg-primary'
-            }`}
+            className={`flex items-center justify-center w-full mt-6 md:hidden ${getBackgroundColor()}`}
           >
-            <BookingButton isBookingNeeded={isBookingNeeded} isMobile={true} />
+            <BookingButton
+              isBookingNeeded={isBookingNeeded}
+              isMobile={true}
+              eventCanceled={eventCanceled}
+            />
           </div>
         </HeroCard>
       </SectionContainer>

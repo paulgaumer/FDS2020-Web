@@ -5,6 +5,7 @@ import { MdToday } from 'react-icons/md';
 import CustomGatsbyImage from '../../global/customGatsbyImage';
 import FeaturedLabel from '../../global/featuredLabel';
 import VillageLabel from '../../global/villageLabel';
+import CanceledLabel from '../../global/canceledLabel';
 import { excerpt } from '../../../utils/excerpt';
 import { formatDepartmentName } from '../../../utils/formatDepartmentName';
 import { processDate } from '../../../utils/processDate';
@@ -19,6 +20,7 @@ const EventCard = ({ event }) => {
     title,
     theme,
     featured,
+    eventCanceled,
     department,
     // audience,
   } = event;
@@ -36,6 +38,11 @@ const EventCard = ({ event }) => {
             )}
             {featured && <FeaturedLabel customClasses="text-sm" />}
           </div>
+          {eventCanceled && (
+            <div className="absolute flex w-full bottom-5 left-5">
+              <CanceledLabel customClasses="uppercase font-bold" />
+            </div>
+          )}
         </div>
         <div
           data-name="content"

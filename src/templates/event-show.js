@@ -25,25 +25,31 @@ const EventShow = ({ data }) => {
       />
       {event.projectOwners.length > 0 && (
         <OrganizerSection
-          organizer={event.projectOwners[0]}
+          organizers={event.projectOwners}
           scolaires={scolaires}
         />
       )}
       {event.timeSlots.length > 1 && (
-        <OpeningHours timeSlots={event.timeSlots} scolaires={scolaires} />
+        <OpeningHours
+          timeSlots={event.timeSlots}
+          scolaires={scolaires}
+          eventCanceled={event.eventCanceled}
+        />
       )}
-      {event.bookingRequired && (
+      {event.bookingRequired && !event.eventCanceled && (
         <BookingSection
           bookingPhone={event.bookingPhone}
           bookingEmail={event.bookingEmail}
+          bookingWebsite={event.bookingWebsite}
           scolaires={scolaires}
           bookingText="Attention, cet évenement est uniquement accessible sur réservation!"
         />
       )}
-      {event.bookingRecommanded && (
+      {event.bookingRecommanded && !event.eventCanceled && (
         <BookingSection
           bookingPhone={event.bookingPhone}
           bookingEmail={event.bookingEmail}
+          bookingWebsite={event.bookingWebsite}
           scolaires={scolaires}
           bookingText="Attention, il est recommandé de réserver à l'avance pour cet évenement!"
         />
@@ -67,6 +73,7 @@ export const query = graphql`
         name
       }
       featured
+      eventCanceled
       village {
         id
         title
@@ -83,6 +90,7 @@ export const query = graphql`
       bookingRecommanded
       bookingPhone
       bookingEmail
+      bookingWebsite
       timeSlots {
         endDate
         endTime
@@ -90,6 +98,7 @@ export const query = graphql`
         startTime
       }
       projectOwners {
+        id
         name
         description
         website

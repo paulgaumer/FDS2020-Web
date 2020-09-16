@@ -96,6 +96,7 @@ export const query = graphql`
           featured
           village {
             id
+            title
           }
           _rawDescription
           description {
