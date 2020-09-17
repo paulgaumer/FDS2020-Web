@@ -9,6 +9,7 @@ import FeaturedAboutFeatured from '../components/sections/eventsIndex/featuredAb
 import LocalPartners from '../components/sections/eventsIndex/localPartnersSection';
 
 const EventsIndex = ({ data }) => {
+  console.log(data.allSanityEvent);
   const events = data.allSanityEvent.edges.map(({ node }) => node);
   const department = data.sanityDepartment.name;
   const logos = data.logos.edges.map(({ node }) => node);
