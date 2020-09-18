@@ -16,7 +16,7 @@ const ServiceWorkerUpdatedNotif = () => {
 
   return (
     <motion.div
-      class={`absolute bottom-0 w-full rounded-md bg-blue-50 p-4 ${
+      class={`fixed bottom-0 w-full rounded-md bg-blue-50 p-4 ${
         visible ? 'block' : 'hidden'
       }`}
       style={{ zIndex: '900' }}
