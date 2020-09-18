@@ -7,9 +7,11 @@ import TopSectionScolaires from '../components/sections/eventsIndex/topSectionSc
 import FilteringSection from '../components/sections/eventsIndex/filteringSection';
 import AboutFeatured from '../components/sections/eventsIndex/featuredAboutSection';
 import LocalPartners from '../components/sections/eventsIndex/localPartnersSection';
+import { sortEventsByDate } from '../utils/processDate';
 
 const EventsEducation = ({ data }) => {
-  const events = data.allSanityEvent.edges.map(({ node }) => node);
+  const rawEvents = data.allSanityEvent.edges.map(({ node }) => node);
+  const events = sortEventsByDate(rawEvents);
   const page = data.sanityPage.pageContent[0];
   const logos = page.logosList;
   const villages = [
