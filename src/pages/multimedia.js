@@ -9,13 +9,15 @@ import SectionWrapper from '../components/layout/sectionWrapper';
 import SectionContainer from '../components/layout/sectionContainer';
 import SectionTitle from '../components/global/sectionTitle';
 import OnlineEventCard from '../components/sections/multimediaIndex/onlineEventCard';
+import { sortEventsByDate } from '../utils/processDate';
 
 const EventGrid = styled.div`
   grid-auto-rows: minmax(min-content, max-content);
 `;
 
 const Multimedia = ({ data }) => {
-  const events = data.allSanityOnlineEvent.edges;
+  const rawEvents = data.allSanityOnlineEvent.edges.map(({ node }) => node);
+  const events = sortEventsByDate(rawEvents);
   const { _rawContentBlock, topTitle } = data.sanityPage.pageContent[0];
 
   return (
@@ -37,10 +39,10 @@ const Multimedia = ({ data }) => {
             className="flex flex-col space-y-6 md:space-y-0 md:grid-cols-1 md:grid md:gap-10 lg:grid-cols-2"
           >
             {events.length > 0 &&
-              events.map(({ node }) => {
+              events.map((event) => {
                 return (
-                  <div className="col-span-1" key={node.id}>
-                    <OnlineEventCard event={node} />
+                  <div className="col-span-1" key={event.id}>
+                    <OnlineEventCard event={event} />
                   </div>
                 );
               })}
