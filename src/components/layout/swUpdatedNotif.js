@@ -16,12 +16,12 @@ const ServiceWorkerUpdatedNotif = () => {
 
   return (
     <motion.div
-      class={`absolute w-full rounded-md bg-blue-50 p-4 ${
+      class={`absolute bottom-0 w-full rounded-md bg-blue-50 p-4 ${
         visible ? 'block' : 'hidden'
       }`}
       style={{ zIndex: '900' }}
       // Automatically close the notification window after 1.8 seconds (1000ms * 2.3 * 0.8)
-      animate={{ opacity: [1, 0], y: [0, -60] }}
+      animate={{ opacity: [1, 0], y: [0, 60] }}
       transition={{ duration: 2.3, times: [0.8, 1] }}
     >
       <div className="flex">
