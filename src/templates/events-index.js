@@ -7,10 +7,11 @@ import TopSection from '../components/sections/eventsIndex/topSection';
 import FilteringSection from '../components/sections/eventsIndex/filteringSection';
 import FeaturedAboutFeatured from '../components/sections/eventsIndex/featuredAboutSection';
 import LocalPartners from '../components/sections/eventsIndex/localPartnersSection';
+import { sortEventsByDate } from '../utils/processDate';
 
 const EventsIndex = ({ data }) => {
-  console.log(data.allSanityEvent);
-  const events = data.allSanityEvent.edges.map(({ node }) => node);
+  const rawEvents = data.allSanityEvent.edges.map(({ node }) => node);
+  const events = sortEventsByDate(rawEvents);
   const department = data.sanityDepartment.name;
   const logos = data.logos.edges.map(({ node }) => node);
   const { topTitle, partnersTitle } = data.sanityPage.pageContent[0];
