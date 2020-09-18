@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import styled from 'styled-components';
 import SEO from '../components/layout/seo';
 import Layout from '../components/layout/layout';
 import SectionWrapper from '../components/layout/sectionWrapper';
@@ -8,6 +9,12 @@ import SectionTitle from '../components/global/sectionTitle';
 import ContactSection from '../components/sections/contactPage/contactSection';
 import PortableText from '@sanity/block-content-to-react';
 import { serializers } from '../utils/portableTextSerializers';
+
+const PresseContactGrid = styled.div`
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(3, minmax(0, auto));
+  }
+`;
 
 const ContactPage = ({ data }) => {
   const departments = data.allSanityContactDepartment.group;
@@ -49,7 +56,7 @@ const ContactPage = ({ data }) => {
                       {page.contactTitle}
                     </span>
                   </h3>
-                  <div className="flex flex-col pt-6 space-y-6 sm:space-y-0 sm:grid-cols-3 sm:grid">
+                  <PresseContactGrid className="flex flex-col pt-6 space-y-6 sm:space-y-0 sm:grid">
                     <p className="flex items-center justify-center space-x-1 font-bold sm:border-r-2 sm:border-gray-400">
                       <span>{page.pressContact.name}</span>
                     </p>
@@ -90,7 +97,7 @@ const ContactPage = ({ data }) => {
                         {page.pressContact.phone}
                       </a>
                     </p>
-                  </div>
+                  </PresseContactGrid>
                 </div>
                 <div className="pt-16">
                   <h3 className="flex text-xl">
@@ -101,32 +108,36 @@ const ContactPage = ({ data }) => {
                   {/* List of resources */}
                   <ul className="flex flex-col pt-6 space-y-6 text-gray-700 md:pl-10">
                     {pressKits.map(({ node }) => {
-                      return (
-                        <li className="text-lg" key={node.id}>
-                          <a
-                            href={node.file.asset.url}
-                            className="flex items-center space-x-2"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              className="w-6 h-6"
+                      if (node.file) {
+                        return (
+                          <li className="text-lg" key={node.id}>
+                            <a
+                              href={node.file.asset.url}
+                              className="flex items-center space-x-2"
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-                              />
-                            </svg>
-                            <span className="underline">{node.name}</span>
-                          </a>
-                        </li>
-                      );
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                className="w-6 h-6"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+                                />
+                              </svg>
+                              <span className="underline">{node.name}</span>
+                            </a>
+                          </li>
+                        );
+                      } else {
+                        return null;
+                      }
                     })}
                   </ul>
                 </div>
