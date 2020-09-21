@@ -116,12 +116,18 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
 
       // Save the current page as a url query and update window history.
       // This allows to browse back to the page location after visiting an event.
-      window.history.pushState(
-        {},
-        null,
-        window.location.origin +
-          `/${formatDepartmentName(department)}?p=${pageNumber}`
-      );
+      scolaires
+        ? window.history.pushState(
+            {},
+            null,
+            window.location.origin + `/scolaires?p=${pageNumber}`
+          )
+        : window.history.pushState(
+            {},
+            null,
+            window.location.origin +
+              `/${formatDepartmentName(department)}?p=${pageNumber}`
+          );
     }
   };
 
