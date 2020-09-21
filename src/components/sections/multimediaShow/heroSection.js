@@ -25,39 +25,81 @@ const HeroCard = styled.div`
   }
 `;
 
-const BookingButton = ({ mediaUrl }) => {
-  return (
-    <a
-      href={mediaUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex transform rounded-md shadow-sm md:hover:scale-105"
-    >
-      <div
-        className={`inline-flex items-center px-4 py-4 md:py-2 space-x-2 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary`}
+const BookingButton = ({ mediaUrl, isBookingNeeded }) => {
+  if (isBookingNeeded) {
+    return (
+      <Link
+        to="#reservation"
+        className="inline-flex transform rounded-md shadow-sm md:hover:scale-105"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          className="w-6 h-6"
+        <div
+          className={`inline-flex items-center px-4 py-4 md:py-2 space-x-2 text-base font-bold leading-6 text-orange-900 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-secondary`}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-          />
-        </svg>
-        <span>Accéder au contenu</span>
-      </div>
-    </a>
-  );
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span>Réservations</span>
+        </div>
+      </Link>
+    );
+  } else {
+    return (
+      <a
+        href={mediaUrl ? mediaUrl : '#'}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex transform rounded-md shadow-sm md:hover:scale-105"
+      >
+        <div
+          className={`inline-flex items-center px-4 py-4 md:py-2 space-x-2 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary`}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+            />
+          </svg>
+          <span>Accéder au contenu</span>
+        </div>
+      </a>
+    );
+  }
 };
 
 const HeroSection = ({ event }) => {
-  const { title, audience, theme, timeSlots, image, mediaUrl } = event;
+  const {
+    title,
+    audience,
+    theme,
+    timeSlots,
+    image,
+    mediaUrl,
+    bookingRequired,
+    bookingRecommanded,
+  } = event;
+
+  const [isBookingNeeded, setIsBookingNeeded] = useState(
+    bookingRequired || bookingRecommanded
+  );
 
   return (
     <SectionWrapper>
@@ -110,7 +152,10 @@ const HeroSection = ({ event }) => {
             </div>
 
             <div className="items-center hidden col-span-1 col-start-2 md:flex">
-              <BookingButton mediaUrl={mediaUrl} />
+              <BookingButton
+                mediaUrl={mediaUrl}
+                isBookingNeeded={isBookingNeeded}
+              />
             </div>
             <div
               className={`flex col-span-1 col-start-2 space-x-6 md:mt-0 md:space-x-0 md:space-y-2 md:flex-col ${
@@ -131,9 +176,14 @@ const HeroSection = ({ event }) => {
             </div>
           </div>
           <div
-            className={`flex items-center justify-center w-full mt-2 md:hidden bg-primary`}
+            className={`flex items-center justify-center w-full mt-2 md:hidden ${
+              isBookingNeeded ? 'bg-secondary' : 'bg-primary'
+            }`}
           >
-            <BookingButton mediaUrl={mediaUrl} />
+            <BookingButton
+              mediaUrl={mediaUrl}
+              isBookingNeeded={isBookingNeeded}
+            />
           </div>
         </HeroCard>
       </SectionContainer>

@@ -16,7 +16,7 @@ const ServiceWorkerUpdatedNotif = () => {
 
   return (
     <motion.div
-      class={`fixed bottom-0 w-full rounded-md bg-blue-50 p-4 ${
+      className={`fixed bottom-0 w-full rounded-md bg-blue-50 p-4 ${
         visible ? 'block' : 'hidden'
       }`}
       style={{ zIndex: '900' }}
@@ -47,7 +47,7 @@ const ServiceWorkerUpdatedNotif = () => {
           <div className="-mx-1.5 -my-1.5">
             <button
               className="inline-flex rounded-md p-1.5 text-blue-700 hover:bg-blue-100 focus:outline-none focus:bg-blue-100 transition ease-in-out duration-150"
-              ariaLabel="Dismiss"
+              aria-label="Dismiss"
               onClick={() => setVisible(false)}
             >
               <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">

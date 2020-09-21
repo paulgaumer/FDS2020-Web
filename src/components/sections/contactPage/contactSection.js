@@ -11,7 +11,10 @@ const ContactSection = ({ department }) => {
       </h2>
       {contacts.map((contact) => {
         return (
-          <div className="flex flex-col items-center mt-8 md:mt-16">
+          <div
+            className="flex flex-col items-center mt-8 md:mt-16"
+            key={contact.id}
+          >
             <div className="flex items-center mb-6 h-28">
               {contact.url && (
                 <a href={contact.url} target="_blank" rel="noopener noreferrer">

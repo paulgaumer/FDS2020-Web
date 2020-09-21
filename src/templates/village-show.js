@@ -38,6 +38,7 @@ export const query = graphql`
         name
       }
       _rawDescription
+      eventCanceled
       timeSlots {
         _key
         endDate

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { MdToday } from 'react-icons/md';
-import { FaMapMarkerAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaBan } from 'react-icons/fa';
 import { IoIosPeople } from 'react-icons/io';
 import CustomGatsbyImage from '../../global/customGatsbyImage';
 import SectionWrapper from '../../layout/sectionWrapper';
@@ -26,21 +26,36 @@ const HeroCard = styled.div`
   }
 `;
 
-const BookingButton = ({}) => {
-  return (
-    <span className="inline-flex transform rounded-md shadow-sm hover:scale-105">
-      <Link
-        to="#village-events"
-        className={`inline-flex items-center px-4 py-2 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary `}
-      >
-        Voir les évenements
-      </Link>
-    </span>
-  );
+const BookingButton = ({ eventCanceled }) => {
+  if (eventCanceled) {
+    return (
+      <span className="inline-flex rounded-md shadow-sm">
+        <div
+          className={`inline-flex items-center px-4 py-2 space-x-2 text-base font-bold leading-6 text-red-600 uppercase transition duration-150 ease-in-out rounded-full border-4 border-red-600 `}
+        >
+          <span>
+            <FaBan />
+          </span>
+          <span>événement annulé</span>
+        </div>
+      </span>
+    );
+  } else {
+    return (
+      <span className="inline-flex transform rounded-md shadow-sm hover:scale-105">
+        <Link
+          to="#village-events"
+          className={`inline-flex items-center px-4 py-2 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full bg-primary `}
+        >
+          Voir les évenements
+        </Link>
+      </span>
+    );
+  }
 };
 
 const HeroSection = ({ village }) => {
-  const { title, timeSlots, image, map } = village;
+  const { title, timeSlots, image, map, eventCanceled } = village;
 
   return (
     <SectionWrapper>
@@ -94,14 +109,14 @@ const HeroSection = ({ village }) => {
             </div>
 
             <div className="items-center hidden col-span-1 col-start-2 md:flex">
-              <BookingButton />
+              <BookingButton eventCanceled={eventCanceled} />
             </div>
             <div className="flex col-span-1 col-start-2 mt-6 space-x-6 md:mt-0 md:space-x-0 md:space-y-2 md:flex-col"></div>
           </div>
           <div
             className={`flex items-center justify-center w-full mt-6 md:hidden bg-primary`}
           >
-            <BookingButton />
+            <BookingButton eventCanceled={eventCanceled} />
           </div>
         </HeroCard>
       </SectionContainer>

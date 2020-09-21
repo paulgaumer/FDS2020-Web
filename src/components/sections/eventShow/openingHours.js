@@ -29,7 +29,10 @@ const OpeningHours = ({ timeSlots, scolaires, eventCanceled }) => {
                 {timeSlots.map((slot, i) => {
                   const length = timeSlots.length;
                   return (
-                    <div className="flex flex-col items-start">
+                    <div
+                      className="flex flex-col items-start"
+                      key={`slot-${i}`}
+                    >
                       <li className="flex items-center space-x-2">
                         <span className="text-xl">
                           <MdToday />

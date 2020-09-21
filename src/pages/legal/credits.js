@@ -24,7 +24,7 @@ const Credits = ({ data }) => {
               {data.allSanityEvent.edges.map(({ node }) => {
                 const credit = node.eventImageCredits;
                 return credit ? (
-                  <li className="text-gray-600" key={credit.id}>
+                  <li className="text-gray-600" key={node.id}>
                     {node.eventImageCredits}
                   </li>
                 ) : null;

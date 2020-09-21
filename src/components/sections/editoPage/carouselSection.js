@@ -62,6 +62,7 @@ const CarouselSection = ({ previousEditions }) => {
                   style={{
                     backgroundImage: `url(${pic.asset.url})`,
                   }}
+                  key={pic.asset.url}
                 >
                   {pic.caption && <p className="legend">{pic.caption}</p>}
                 </div>

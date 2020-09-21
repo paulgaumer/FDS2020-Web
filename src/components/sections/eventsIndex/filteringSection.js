@@ -5,8 +5,11 @@ import EventCard from './eventCard';
 import Filters from './filters';
 import EventsMap from './eventsMap';
 import { multiFilter } from '../../../utils/multiFilter';
+import { hasWindow } from '../../../utils/hasWindow';
+import { formatDepartmentName } from '../../../utils/formatDepartmentName';
 import { FaSearch } from 'react-icons/fa';
-import Pagination from './pagination';
+import Pagination from '../../global/pager';
+import URLSearchParams from '@ungap/url-search-params';
 
 const OuterGrid = styled.div`
   grid-template-columns: minmax(150px, 25%) 1fr;
@@ -61,13 +64,22 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
   ]);
 
   // *******************************
-  // PAGINATION LOGIC
+  // PAGINATION LOGIC START
+  // *******************************
 
+  // Check window url for a page query
+  const checkPage = () => {
+    if (hasWindow) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const pageQuery = urlParams.get('p');
+      return pageQuery ? parseInt(pageQuery) : 1;
+    }
+  };
+
+  // Set the current page based on the page query
+  const [currentPage, setCurrentPage] = useState(checkPage());
   const [eventsToPaginate, setEventsToPaginate] = useState(selectedEvents);
-  const [currentPage, setCurrentPage] = useState(1);
   const [eventsPerPage] = useState(6);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
@@ -76,14 +88,49 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
     indexOfLastEvent
   );
 
+  const handlePopState = () => {
+    setCurrentPage(checkPage());
+  };
+
+  useEffect(() => {
+    // React to url changes, here the page number changing in the page query
+    if (hasWindow) {
+      window.addEventListener('popstate', handlePopState);
+      return () => {
+        window.removeEventListener('popstate', handlePopState);
+      };
+    }
+  }, []);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    if (hasWindow) {
+      // Scroll back to the first event of the list on page change
+      document
+        .getElementById('events-map-container')
+        .scrollIntoView({ block: 'start' });
+
+      // Save the current page as a url query and update window history.
+      // This allows to browse back to the page location after visiting an event.
+      window.history.pushState(
+        {},
+        null,
+        window.location.origin +
+          `/${formatDepartmentName(department)}?p=${pageNumber}`
+      );
+    }
+  };
+
   useEffect(() => {
     setEventsToPaginate(selectedEvents);
   }, [selectedEvents]);
   // *******************************
+  // PAGINATION LOGIC END
+  // *******************************
 
   return (
     <SectionContainer customClasses="pt-16 pb-20 flex flex-col-reverse md:flex-col">
-      <div className="mt-16 md:mt-0 md:mb-16">
+      <div className="mt-16 md:mt-0 md:mb-16" id={'events-map-container'}>
         <EventsMap selectedEvents={selectedEvents} department={department} />
       </div>
       <OuterGrid className="gap-0 lg:gap-10 md:grid">
@@ -119,10 +166,10 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
           )}
           <div data-name="pagination" className="col-span-2">
             <Pagination
-              itemsPerPage={eventsPerPage}
-              totalItems={eventsToPaginate.length}
-              paginate={paginate}
-              currentPage={currentPage}
+              activePage={currentPage}
+              itemsCountPerPage={eventsPerPage}
+              totalItemsCount={eventsToPaginate.length}
+              onChange={paginate}
             />
           </div>
         </InnerEventGrid>

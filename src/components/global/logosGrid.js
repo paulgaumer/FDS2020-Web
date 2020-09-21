@@ -30,9 +30,9 @@ const LogoGrid = styled.div`
 const LogosGrid = ({ logos }) => {
   return (
     <LogoGrid className="grid gap-20">
-      {logos.map((logo) => {
+      {logos.map((logo, i) => {
         return (
-          <div className="" key={logo.id}>
+          <div className="" key={`${logo.name}-${i}`}>
             <Img
               fluid={logo.image.asset.fluid}
               imgStyle={{ objectFit: 'contain' }}
