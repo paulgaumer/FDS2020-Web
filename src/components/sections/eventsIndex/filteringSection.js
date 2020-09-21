@@ -9,6 +9,7 @@ import { hasWindow } from '../../../utils/hasWindow';
 import { formatDepartmentName } from '../../../utils/formatDepartmentName';
 import { FaSearch } from 'react-icons/fa';
 import Pagination from '../../global/pager';
+import URLSearchParams from '@ungap/url-search-params';
 
 const OuterGrid = styled.div`
   grid-template-columns: minmax(150px, 25%) 1fr;
