@@ -5,9 +5,10 @@ import { MdToday } from 'react-icons/md';
 import { excerpt } from '../../../utils/excerpt';
 import { formatDepartmentName } from '../../../utils/formatDepartmentName';
 import { processDate } from '../../../utils/processDate';
+import CanceledLabel from '../../global/canceledLabel';
 
 const VillageCard = ({ village, department, scolaires }) => {
-  const { description, image, timeSlots, slug, title } = village;
+  const { description, image, timeSlots, slug, title, eventCanceled } = village;
   const dpt = formatDepartmentName(department);
 
   return (
@@ -15,6 +16,11 @@ const VillageCard = ({ village, department, scolaires }) => {
       <div className="shadow">
         <div data-name="image" style={{ height: '160px' }} className="relative">
           {image && <CustomGatsbyImage image={image} customClasses="h-full" />}
+          {eventCanceled && (
+            <div className="absolute flex w-full top-5 left-5">
+              <CanceledLabel customClasses="uppercase font-bold" />
+            </div>
+          )}
           <div
             data-name="title"
             className={`absolute z-10 px-6 py-2 font-bold text-gray-700 -left-4 ${

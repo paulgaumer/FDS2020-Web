@@ -182,6 +182,7 @@ export const query = graphql`
           slug {
             current
           }
+          eventCanceled
           timeSlots {
             _key
             endDate
