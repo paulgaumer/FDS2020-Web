@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import urlBuilder from '@sanity/image-url';
 import { MdToday } from 'react-icons/md';
-import { processDate } from '../../../utils/processDate';
+import { processDate, sortEventsByDate } from '../../../utils/processDate';
 import { excerpt } from '../../../utils/excerpt';
 import InfoCard from '../eventShow/infoCard';
 import SectionWrapper from '../../layout/sectionWrapper';
@@ -72,7 +72,8 @@ const EventsListSection = ({ villageId, department }) => {
     const params = { villageId: villageId };
 
     client.fetch(query, params).then((res) => {
-      setEvents(res[0].events);
+      const sortedEvents = sortEventsByDate(res[0].events);
+      setEvents(sortedEvents);
     });
   }, []);
 
