@@ -146,7 +146,7 @@ const EventsFilters = ({
       {/* *************************** */}
       {/* FILTERS MOBILE START */}
       {/* *************************** */}
-      <div className="mb-10 md:hidden">
+      <div className="mb-10 md:hidden" id="filter-accordion-mobile">
         <Accordion allowZeroExpanded={true}>
           <AccordionItem className="">
             <AccordionItemHeading>

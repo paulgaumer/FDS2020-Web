@@ -105,19 +105,29 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     if (hasWindow) {
-      // Scroll back to the first event of the list on page change
-      document
-        .getElementById('events-map-container')
-        .scrollIntoView({ block: 'start' });
+      // Scroll back to the first event of the list on page change. Different position based on screen size
+      window.innerWidth >= 768
+        ? document
+            .getElementById('events-map-container')
+            .scrollIntoView({ block: 'start' })
+        : document
+            .getElementById('filter-accordion-mobile')
+            .scrollIntoView({ block: 'start' });
 
       // Save the current page as a url query and update window history.
       // This allows to browse back to the page location after visiting an event.
-      window.history.pushState(
-        {},
-        null,
-        window.location.origin +
-          `/${formatDepartmentName(department)}?p=${pageNumber}`
-      );
+      scolaires
+        ? window.history.pushState(
+            {},
+            null,
+            window.location.origin + `/scolaires?p=${pageNumber}`
+          )
+        : window.history.pushState(
+            {},
+            null,
+            window.location.origin +
+              `/${formatDepartmentName(department)}?p=${pageNumber}`
+          );
     }
   };
 
