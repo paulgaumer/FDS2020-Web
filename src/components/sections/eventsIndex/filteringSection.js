@@ -5,6 +5,7 @@ import EventCard from './eventCard';
 import Filters from './filters';
 import EventsMap from './eventsMap';
 import { multiFilter } from '../../../utils/multiFilter';
+import { hasWindow } from '../../../utils/hasWindow';
 import { FaSearch } from 'react-icons/fa';
 import Pagination from '../../global/pager';
 
@@ -67,7 +68,15 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [eventsPerPage] = useState(6);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    // Scroll back to the first event of the list on page change
+    if (hasWindow) {
+      document
+        .getElementById('events-map-container')
+        .scrollIntoView({ block: 'start' });
+    }
+  };
 
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
@@ -83,7 +92,7 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
 
   return (
     <SectionContainer customClasses="pt-16 pb-20 flex flex-col-reverse md:flex-col">
-      <div className="mt-16 md:mt-0 md:mb-16">
+      <div className="mt-16 md:mt-0 md:mb-16" id={'events-map-container'}>
         <EventsMap selectedEvents={selectedEvents} department={department} />
       </div>
       <OuterGrid className="gap-0 lg:gap-10 md:grid">
