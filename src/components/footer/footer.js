@@ -135,6 +135,8 @@ const Footer = () => {
               <li>
                 <a
                   href="https://www.fetedelascience.fr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-base leading-6 text-cool-gray-600 hover:text-cool-gray-900"
                 >
                   Site National
