@@ -11,6 +11,16 @@ const VillageCard = ({ village, department, scolaires }) => {
   const { description, image, timeSlots, slug, title, eventCanceled } = village;
   const dpt = formatDepartmentName(department);
 
+  // Rich text can contain images before text, which excerpt can't process. Check for the presence of text
+  const showExcerpt = (richText) => {
+    if (richText[0].children[0] !== undefined) {
+      return richText[0].children[0].text
+        ? excerpt(richText[0].children[0].text)
+        : excerpt(richText[1].children[0].text);
+    } else {
+      return excerpt(richText[1].children[0].text);
+    }
+  };
   return (
     <Link to={`/${dpt}/${slug.current}`} className="col-span-1">
       <div className="shadow">
@@ -32,7 +42,7 @@ const VillageCard = ({ village, department, scolaires }) => {
           </div>
         </div>
         <div data-name="content" className="px-4 pt-16 pb-6 bg-white">
-          <p>{excerpt(description[0].children[0].text)}</p>
+          <p>{showExcerpt(description)}</p>
           <div className="flex items-center pt-6 space-x-1 text-sm">
             <span className="text-base">
               <MdToday />
