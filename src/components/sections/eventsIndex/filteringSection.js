@@ -6,6 +6,7 @@ import Filters from './filters';
 import EventsMap from './eventsMap';
 import { multiFilter } from '../../../utils/multiFilter';
 import { hasWindow } from '../../../utils/hasWindow';
+import { formatDepartmentName } from '../../../utils/formatDepartmentName';
 import { FaSearch } from 'react-icons/fa';
 import Pagination from '../../global/pager';
 
@@ -62,21 +63,22 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
   ]);
 
   // *******************************
-  // PAGINATION LOGIC
+  // PAGINATION LOGIC START
+  // *******************************
 
-  const [eventsToPaginate, setEventsToPaginate] = useState(selectedEvents);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [eventsPerPage] = useState(6);
-
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-    // Scroll back to the first event of the list on page change
+  // Check window url for a page query
+  const checkPage = () => {
     if (hasWindow) {
-      document
-        .getElementById('events-map-container')
-        .scrollIntoView({ block: 'start' });
+      const urlParams = new URLSearchParams(window.location.search);
+      const pageQuery = urlParams.get('p');
+      return pageQuery ? parseInt(pageQuery) : 1;
     }
   };
+
+  // Set the current page based on the page query
+  const [currentPage, setCurrentPage] = useState(checkPage());
+  const [eventsToPaginate, setEventsToPaginate] = useState(selectedEvents);
+  const [eventsPerPage] = useState(6);
 
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
@@ -85,9 +87,44 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
     indexOfLastEvent
   );
 
+  const handlePopState = () => {
+    setCurrentPage(checkPage());
+  };
+
+  useEffect(() => {
+    // React to url changes, here the page number changing in the page query
+    if (hasWindow) {
+      window.addEventListener('popstate', handlePopState);
+      return () => {
+        window.removeEventListener('popstate', handlePopState);
+      };
+    }
+  }, []);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    if (hasWindow) {
+      // Scroll back to the first event of the list on page change
+      document
+        .getElementById('events-map-container')
+        .scrollIntoView({ block: 'start' });
+
+      // Save the current page as a url query and update window history.
+      // This allows to browse back to the page location after visiting an event.
+      window.history.pushState(
+        {},
+        null,
+        window.location.origin +
+          `/${formatDepartmentName(department)}?p=${pageNumber}`
+      );
+    }
+  };
+
   useEffect(() => {
     setEventsToPaginate(selectedEvents);
   }, [selectedEvents]);
+  // *******************************
+  // PAGINATION LOGIC END
   // *******************************
 
   return (
