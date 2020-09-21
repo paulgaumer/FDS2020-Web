@@ -6,7 +6,7 @@ import Filters from './filters';
 import EventsMap from './eventsMap';
 import { multiFilter } from '../../../utils/multiFilter';
 import { FaSearch } from 'react-icons/fa';
-import Pagination from './pagination';
+import Pagination from '../../global/pager';
 
 const OuterGrid = styled.div`
   grid-template-columns: minmax(150px, 25%) 1fr;
@@ -119,10 +119,10 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
           )}
           <div data-name="pagination" className="col-span-2">
             <Pagination
-              itemsPerPage={eventsPerPage}
-              totalItems={eventsToPaginate.length}
-              paginate={paginate}
-              currentPage={currentPage}
+              activePage={currentPage}
+              itemsCountPerPage={eventsPerPage}
+              totalItemsCount={eventsToPaginate.length}
+              onChange={paginate}
             />
           </div>
         </InnerEventGrid>
