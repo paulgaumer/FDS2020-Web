@@ -23,7 +23,7 @@ const CoupsDeCoeur = ({ data }) => {
             <ul className="grid grid-cols-2 md:flex md:space-x-4 gap-x-10 gap-y-6 ">
               {Object.keys(departments).map((dep) => {
                 return (
-                  <li className="text-center underline">
+                  <li className="text-center underline" key={`sum-${dep}`}>
                     <Link to={`#${dep}`}>{dep}</Link>
                   </li>
                 );

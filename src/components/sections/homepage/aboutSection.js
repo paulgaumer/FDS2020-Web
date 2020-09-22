@@ -18,7 +18,7 @@ const About = ({ features, featuresButton, featuresTitle }) => {
   return (
     <SectionWrapper>
       <div id="a-propos" style={{ position: 'relative', top: '-50px' }} />
-      <SectionContainer customClasses="py-28">
+      <SectionContainer customClasses="pt-24 pb-16 md:pt-28 md:pb-20">
         <div className="flex flex-col items-center">
           <SectionTitle text={featuresTitle} />
 
