@@ -29,7 +29,7 @@ const PartnersSection = ({
     <SectionWrapper>
       <SectionContainer customClasses="pt-16 pb-16 md:py-20">
         <SectionTitle text={partnersTitle} />
-        <div className="text-lg leading-7 tracking-wide text-gray-600">
+        <div className="text-base leading-7 tracking-wide text-gray-600 sm:text-lg">
           <PortableText blocks={partnersContent} serializers={serializers} />
         </div>
         <div className="flex flex-col pt-20 space-y-28">

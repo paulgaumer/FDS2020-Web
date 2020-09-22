@@ -22,7 +22,7 @@ const BookingSection = ({
     <SectionWrapper>
       <SectionContainer customClasses="pb-12" id="reservation">
         <InfoCard title="réservation" customClasses="" scolaires={scolaires}>
-          <div className="text-lg leading-relaxed text-center">
+          <div className="text-base leading-relaxed text-center sm:text-lg">
             <p>{bookingText}</p>
             <div className="inline-flex flex-col pt-10 pb-8 space-y-6 md:space-y-0 md:flex md:items-start md:justify-center md:flex-row md:space-x-14">
               {bookingEmail && (

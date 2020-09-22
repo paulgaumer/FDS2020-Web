@@ -24,7 +24,7 @@ const MesuresCovid = ({ data }) => {
       <SectionWrapper>
         <SectionContainer customClasses="py-16 md:py-20 lg:pt-32 lg:pb-40">
           <SectionTitle text={topTitle} />
-          <PortableContainer className="text-lg text-gray-600">
+          <PortableContainer className="text-base text-gray-600 sm:text-lg">
             <PortableText blocks={contentBlock} serializers={serializers} />
           </PortableContainer>
         </SectionContainer>

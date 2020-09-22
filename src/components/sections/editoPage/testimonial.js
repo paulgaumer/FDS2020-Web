@@ -36,7 +36,7 @@ const Testimonial = ({ ambassador, reverse = false }) => {
             />
           </svg>
           <blockquote className="relative">
-            <div className="text-lg leading-9 text-gray-700">
+            <div className="text-base leading-9 text-gray-700 sm:text-lg">
               <PortableText blocks={_rawTestimony} serializers={serializers} />
             </div>
             <footer className="mt-8">
@@ -49,10 +49,10 @@ const Testimonial = ({ ambassador, reverse = false }) => {
                   />
                 </div>
                 <div className="ml-4 lg:ml-0">
-                  <div className="text-base leading-6 text-gray-600">
+                  <div className="text-sm leading-6 text-gray-600 sm:text-base">
                     {name}
                   </div>
-                  <div className="text-base leading-6 text-gray-600">
+                  <div className="text-sm leading-6 text-gray-600 sm:text-base">
                     {role}
                   </div>
                 </div>

@@ -71,7 +71,7 @@ const HeroSection = ({ village }) => {
             className="px-4 py-5 text-gray-500 sm:py-6 sm:px-10 md:grid"
           >
             <div className="col-span-1 row-span-1 text-center md:text-left">
-              <h1 className="text-3xl font-bold text-gray-700 uppercase md:text-3xl">
+              <h1 className="text-2xl font-bold text-gray-700 uppercase sm:text-3xl md:text-3xl">
                 {title}
               </h1>
               <p className="text-base font-hairline text-purple-400 md:text-lg">

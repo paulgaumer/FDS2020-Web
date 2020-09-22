@@ -6,12 +6,12 @@ import SectionContainer from '../../layout/sectionContainer';
 
 const Organizer = ({ organizer, scolaires }) => {
   return (
-    <div className="text-lg leading-relaxed">
+    <div className="text-base leading-relaxed sm:text-lg">
       <h3 className="flex space-x-3">
         <span className="pt-1 text-xl text-secondary">
           <FaWindowMinimize />
         </span>
-        <span className="text-2xl font-bold text-gray-700 uppercase">
+        <span className="text-lg font-bold text-gray-700 uppercase sm:text-2xl">
           {organizer.name}
         </span>
       </h3>

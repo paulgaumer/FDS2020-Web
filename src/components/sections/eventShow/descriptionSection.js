@@ -28,7 +28,7 @@ const DescriptionSection = ({
     <SectionWrapper>
       <SectionContainer customClasses="pb-12">
         <InfoCard title="description" customClasses="" scolaires={scolaires}>
-          <div className="text-lg leading-relaxed">
+          <div className="text-base leading-relaxed sm:text-lg">
             <PortableText blocks={description} serializers={serializers} />
           </div>
           {showCovid && showCovidButton && (
