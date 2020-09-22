@@ -65,7 +65,7 @@ class RegionMap extends React.Component {
           id="carte-accueil"
         /> */}
         <SectionContainer
-          customClasses="z-20 py-16 md:py-20 lg:py-28"
+          customClasses="z-20 pt-20 pb-16 md:py-20 lg:py-28"
           id="carte-accueil"
         >
           <div className="flex flex-col items-center">

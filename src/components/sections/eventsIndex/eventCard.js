@@ -24,8 +24,20 @@ const EventCard = ({ event }) => {
     department,
     // audience,
   } = event;
+
   const dpt = formatDepartmentName(department.name);
   moment.locale('fr');
+
+  // Rich text can contain images before text, which excerpt can't process. Check for the presence of text
+  const showExcerpt = (richText) => {
+    if (richText[0].children[0] !== undefined) {
+      return richText[0].children[0].text
+        ? excerpt(richText[0].children[0].text)
+        : excerpt(richText[1].children[0].text);
+    } else {
+      return excerpt(richText[1].children[0].text);
+    }
+  };
 
   return (
     <Link to={`/${dpt}/${slug.current}`} className="max-w-1/3 ">
@@ -53,7 +65,7 @@ const EventCard = ({ event }) => {
             - {theme[0].name}
           </p>
           {/* <p>{audience.name}</p> */}
-          <p className="pt-6">{excerpt(description[0].children[0].text)}</p>
+          <p className="pt-6">{showExcerpt(description)}</p>
           <div className="flex items-center pt-6 space-x-1 text-sm">
             <span className="text-base">
               <MdToday />
