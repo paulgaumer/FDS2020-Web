@@ -48,9 +48,8 @@ export default CoupsDeCoeur;
 export const query = graphql`
   query FeaturedPage {
     allSanityEvent(
-      filter: { featured: { eq: true } }
-    ) # sort: { fields: startDate___local, order: ASC }
-    {
+      filter: { featured: { eq: true } } # sort: { fields: startDate___local, order: ASC }
+    ) {
       edges {
         node {
           id
@@ -64,6 +63,7 @@ export const query = graphql`
           featured
           village {
             id
+            title
           }
           _rawDescription
           description {
