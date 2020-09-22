@@ -28,7 +28,7 @@ const Layout = ({ children, headerHidden }) => {
       </div>
       <CookieBanner />
       <PwaPrompt />
-      <QuizModal />
+      {/* <QuizModal /> */}
       <ServiceWorkerUpdatedNotif />
     </div>
   );
