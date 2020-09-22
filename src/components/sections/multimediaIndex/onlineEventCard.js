@@ -27,7 +27,7 @@ const OnlineEventCard = ({ event }) => {
           <h4 className="pb-3 text-xl font-bold text-center text-gray-700 sm:hidden">
             {title}
           </h4>
-          <div className="flex justify-between">
+          <div className="justify-between sm:flex">
             <div>
               <h4 className="hidden text-xl font-bold text-gray-700 sm:block">
                 {title}
@@ -36,7 +36,7 @@ const OnlineEventCard = ({ event }) => {
                 - {theme[0].name}
               </p>
             </div>
-            <div className="flex items-start pr-4 space-x-2 text-sm leading-tight sm:pr-2 sm:items-center sm:text-base sm:leading-normal">
+            <div className="flex items-start pt-1 pr-4 space-x-2 text-xs leading-tight sm:pt-0 sm:pr-2 sm:items-center sm:text-base sm:leading-normal">
               <span
                 className={`h-7 w-7 p-1 hidden sm:flex items-center justify-center text-2xl text-white rounded-full bg-primary`}
               >
