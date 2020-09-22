@@ -137,34 +137,25 @@ const QuizModal = () => {
                 data-name="answers-list"
                 className="flex-col w-full space-y-8 flex-"
               >
-                <h3 className="text-xl">{selectedDepartment.question}</h3>
-                <div className="flex flex-col space-y-6">
-                  {selectedDepartment.answers.map((answer, i) => {
-                    return (
-                      <div
-                        className="flex items-center"
-                        key={`${answer}-index-${i}`}
-                      >
-                        <input
-                          id={`${answer}-index-${i}`}
-                          value={answer}
-                          name="answer"
-                          type="radio"
-                          className="w-4 h-4 text-indigo-600 transition duration-150 ease-in-out form-radio"
-                          checked={selectedAnswer === answer}
-                          onChange={handleAnswerSelect}
-                        />
-                        <label
-                          htmlFor={`${answer}-index-${i}`}
-                          className="ml-3"
-                        >
-                          <span className="block text-base font-medium leading-5 text-gray-700">
-                            {answer}
-                          </span>
-                        </label>
-                      </div>
-                    );
-                  })}
+                <h3 className="text-xl text-center">
+                  {selectedDepartment.question}
+                </h3>
+                <div>
+                  <label htmlFor="answerSelect" aria-label="Questions" />
+                  <select
+                    id="answerSelect"
+                    className="block w-full px-3 py-2 mt-1 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md shadow-sm form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
+                    onChange={handleAnswerSelect}
+                  >
+                    <option value={null}>-- Choisir une réponse --</option>
+                    {selectedDepartment.answers.map((answer) => {
+                      return (
+                        <option value={answer} key={answer}>
+                          {answer}
+                        </option>
+                      );
+                    })}
+                  </select>
                 </div>
                 <button
                   type="submit"
