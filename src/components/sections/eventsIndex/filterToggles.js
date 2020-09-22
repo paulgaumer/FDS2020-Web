@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { excerpt } from '../../../utils/excerpt';
 
 const FilterToggles = ({ list, getValues }) => {
   // Initialize the list of themes and states
@@ -56,7 +57,8 @@ const FilterToggles = ({ list, getValues }) => {
             key={item.id}
             onClick={() => handleClick(item.id)}
           >
-            {item.name}
+            <span className="hidden sm:inline-block">{item.name}</span>
+            <span className="sm:hidden">{excerpt(item.name, 40)}</span>
           </li>
         );
       })}
