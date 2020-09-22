@@ -24,7 +24,7 @@ const VillageLinkSection = ({ event }) => {
               </span>
               <Link
                 to={`/${department}/${event.village.slug.current}`}
-                className="border-b-2 border-gray-500 hover:border-secondary"
+                className="text-sm border-b-2 border-gray-500 sm:text-base hover:border-secondary"
               >
                 {event.village.title}
               </Link>
