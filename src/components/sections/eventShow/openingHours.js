@@ -11,7 +11,7 @@ const OpeningHours = ({ timeSlots, scolaires, eventCanceled }) => {
     <SectionWrapper>
       <SectionContainer customClasses="pb-12" id="opening-hours">
         <InfoCard title="Horaires" customClasses="" scolaires={scolaires}>
-          <div className="flex justify-center text-lg leading-relaxed">
+          <div className="flex justify-center text-base leading-relaxed sm:text-lg">
             {eventCanceled && (
               <span className="inline-flex rounded-md shadow-sm">
                 <div

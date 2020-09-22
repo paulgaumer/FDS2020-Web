@@ -20,7 +20,7 @@ const Credits = ({ data }) => {
         <SectionContainer customClasses="py-16 md:py-20 lg:pt-32 lg:pb-40">
           <SectionTitle text="Crédits Photos" />
           {data.allSanityEvent.edges.length >= 1 && (
-            <ul className="list-disc">
+            <ul className="flex flex-col space-y-3 list-disc list-inside">
               {data.allSanityEvent.edges.map(({ node }) => {
                 const credit = node.eventImageCredits;
                 return credit ? (

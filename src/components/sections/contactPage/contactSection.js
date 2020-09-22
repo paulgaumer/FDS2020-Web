@@ -26,7 +26,7 @@ const ContactSection = ({ department }) => {
               )}
             </div>
 
-            <div className="text-2xl font-bold leading-6 text-gray-500">
+            <div className="text-2xl font-bold leading-6 text-center text-gray-500">
               <h3>{contact.name}</h3>
             </div>
 
