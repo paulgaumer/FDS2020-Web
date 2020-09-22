@@ -13,8 +13,6 @@ const CoupsDeCoeur = ({ data }) => {
     return acc;
   }, {});
 
-  console.log(departments);
-
   return (
     <Layout>
       <SEO title="Coups de Coeur" />
