@@ -4,11 +4,11 @@
 
 Front-end for the french event "Fete de la Science"
 
-Production site: [https://staging-fds-pdl2020.netlify.app/](https://staging-fds-pdl2020.netlify.app/)
+Production site: [https://fetedelascience-paysdelaloire.fr/](https://fetedelascience-paysdelaloire.fr/)
 
 The back-end is a Sanity CMS project:
 
-- [Sanity Dashboard](https://fete-de-la-science-2020.sanity.studio/)
+- [Sanity Dashboard](https://fete-de-la-science-pdl.sanity.studio/)
 - [Repo](https://github.com/paulgaumer/FDS2020-Studio)
 
 ## 🚀 Quick start
