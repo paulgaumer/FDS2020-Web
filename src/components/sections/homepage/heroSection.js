@@ -145,10 +145,10 @@ const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
                       <div className="absolute z-50 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0">
                         <div className="rounded-lg shadow-lg">
                           <div className="overflow-hidden rounded-lg shadow-xs">
-                            <div className="relative z-20 flex-col px-5 py-6 text-center bg-white">
+                            <div className="relative z-20 flex-col px-5 pt-2 pb-6 text-center bg-white">
                               <Link
                                 to="/loire-atlantique"
-                                className="block pb-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-50"
+                                className="block py-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-50"
                               >
                                 <p className="text-lg font-medium leading-6 text-gray-900">
                                   Loire Atlantique
