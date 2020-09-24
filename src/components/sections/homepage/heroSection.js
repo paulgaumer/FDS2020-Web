@@ -186,6 +186,14 @@ const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
                                   Vendée
                                 </p>
                               </Link>
+                              <Link
+                                to="/scolaires"
+                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
+                              >
+                                <p className="text-lg font-medium font-bold leading-6 text-gray-900">
+                                  Scolaires
+                                </p>
+                              </Link>
                             </div>
                           </div>
                         </div>
