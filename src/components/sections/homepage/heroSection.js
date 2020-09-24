@@ -145,10 +145,10 @@ const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
                       <div className="absolute z-50 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0">
                         <div className="rounded-lg shadow-lg">
                           <div className="overflow-hidden rounded-lg shadow-xs">
-                            <div className="relative z-20 grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
+                            <div className="relative z-20 flex-col px-5 py-6 text-center bg-white">
                               <Link
                                 to="/loire-atlantique"
-                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
+                                className="block pb-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-50"
                               >
                                 <p className="text-lg font-medium leading-6 text-gray-900">
                                   Loire Atlantique
@@ -156,7 +156,7 @@ const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
                               </Link>
                               <Link
                                 to="/maine-et-loire"
-                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
+                                className="block py-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-50"
                               >
                                 <p className="text-lg font-medium leading-6 text-gray-900">
                                   Maine et Loire
@@ -164,7 +164,7 @@ const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
                               </Link>
                               <Link
                                 to="/mayenne"
-                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
+                                className="block py-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-50"
                               >
                                 <p className="text-lg font-medium leading-6 text-gray-900">
                                   Mayenne
@@ -172,7 +172,7 @@ const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
                               </Link>
                               <Link
                                 to="/sarthe"
-                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
+                                className="block py-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-50"
                               >
                                 <p className="text-lg font-medium leading-6 text-gray-900">
                                   Sarthe
@@ -180,7 +180,7 @@ const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
                               </Link>
                               <Link
                                 to="/vendee"
-                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
+                                className="block pt-4 pb-6 transition duration-150 ease-in-out hover:bg-gray-50"
                               >
                                 <p className="text-lg font-medium leading-6 text-gray-900">
                                   Vendée
@@ -188,11 +188,24 @@ const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
                               </Link>
                               <Link
                                 to="/scolaires"
-                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
+                                className="flex items-center justify-center px-4 py-2 space-x-1 text-sm font-bold leading-6 text-gray-700 uppercase whitespace-no-wrap transition duration-150 ease-in-out border border-transparent rounded-md -flex bg-edu hover:bg-eduLight focus:outline-none focus:shadow-outline-indigo active:bg-bg-eduLight"
                               >
-                                <p className="text-lg font-medium font-bold leading-6 text-gray-900">
-                                  Scolaires
-                                </p>
+                                <svg
+                                  className="w-7 h-7"
+                                  viewBox="0 0 31 31"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M8.71875 21.2303L15.5 25.0448L22.2812 21.2303V17.2002L24.2188 16.1238V22.3634L15.5 27.2677L6.78125 22.3634V16.1238L8.71875 17.2002V21.2303Z"
+                                    fill="currentColor"
+                                  />
+                                  <path
+                                    d="M15.5 2.78375L29.0625 9.81615V11.4954L15.5 19.0299L3.875 12.5718V17.9219H1.9375V9.81615L15.5 2.78375ZM5.8125 11.4317L7.75 12.5081L15.5 16.8139L23.25 12.5081L25.1875 11.4317L26.5304 10.6857L15.5 4.96622L4.46963 10.6857L5.8125 11.4317Z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                                <span>Scolaires</span>
                               </Link>
                             </div>
                           </div>
