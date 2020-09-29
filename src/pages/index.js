@@ -5,10 +5,13 @@ import SEO from '../components/layout/seo';
 import Header from '../components/header/header';
 import HeroSection from '../components/sections/homepage/heroSection';
 import AboutSection from '../components/sections/homepage/aboutSection';
-import RegionMapSection from '../components/sections/homepage/regionMapSection';
+// import RegionMapSection from '../components/sections/homepage/regionMapSection';
 import InstagramSection from '../components/sections/homepage/instagramSection';
 import { hasWindow } from '../utils/hasWindow';
 import HideNavOnScrollHook from '../utils/scrollNavHook';
+const RegionMapSection = React.lazy(() =>
+  import('../components/sections/homepage/regionMapSection')
+);
 
 const IndexPage = ({ data }) => {
   const {
@@ -22,6 +25,7 @@ const IndexPage = ({ data }) => {
   const [showHeader, setShowHeader] = useState(false);
   const [windowHeight, setWindowHeight] = useState(1414);
   const [lastYPos, setLastYPos] = useState(0);
+  const [windowLoaded, setWindowLoaded] = useState(false);
 
   const handleScroll = (e) => {
     setLastYPos(window.scrollY);
@@ -31,6 +35,7 @@ const IndexPage = ({ data }) => {
   useEffect(() => {
     if (hasWindow) {
       setWindowHeight(window.innerHeight - 90);
+      setWindowLoaded(true);
     }
   }, []);
 
@@ -67,11 +72,16 @@ const IndexPage = ({ data }) => {
         featuresButton={featuresButton}
         featuresTitle={featuresTitle}
       />
-      <RegionMapSection />
-      <InstagramSection
+      {windowLoaded && (
+        <React.Suspense fallback={<div id="carte-accueil" />}>
+          <RegionMapSection />
+        </React.Suspense>
+      )}
+
+      {/* <InstagramSection
         instagramTitle={instagramTitle}
         instagramSettings={data.instagram}
-      />
+      /> */}
     </Layout>
   );
 };
