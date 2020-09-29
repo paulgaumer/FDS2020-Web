@@ -8,7 +8,6 @@ import SectionWrapper from '../../layout/sectionWrapper';
 import LogoFds from '../../../images/logo-fds-rouge-white.svg';
 import logoPdl from '../../../images/logo-pdl-white.svg';
 import logoMinister from '../../../images/hero-pastille-minister.svg';
-import poster from '../../../images/teaser-poster.png';
 import { GlobalStateContext } from '../../../context/global-context-provider';
 
 const ContentCenter = styled.div``;
@@ -17,7 +16,10 @@ const Timer = styled.div`
   background: rgba(239, 79, 95, 0.9);
 `;
 
-const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
+const HeroSection = ({
+  heroButton = 'Découvrir les événements',
+  videoBackground,
+}) => {
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const showCovid = useContext(GlobalStateContext).showCovid;
@@ -63,7 +65,7 @@ const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
         playsInline
         loop
         muted
-        poster={poster}
+        poster={videoBackground.videoPlaceholder.asset.url}
         style={{
           position: 'absolute',
           width: '100%',
@@ -72,10 +74,7 @@ const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
           zIndex: '0',
         }}
       >
-        <source
-          src="https://res.cloudinary.com/terredessciences/video/upload/v1601366040/teaser_ptcpbn.mp4"
-          type="video/mp4"
-        />
+        <source src={videoBackground.videoLink} type="video/mp4" />
       </video>
       {/* Video Background filter Start */}
       <div

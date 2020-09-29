@@ -66,7 +66,10 @@ const IndexPage = ({ data }) => {
           <Header />
         </div>
       </div>
-      <HeroSection heroButton={heroButton} />
+      <HeroSection
+        heroButton={heroButton}
+        videoBackground={data.videoBackground}
+      />
       <AboutSection
         features={features}
         featuresButton={featuresButton}
@@ -117,6 +120,14 @@ export const query = graphql`
     instagram: sanitySiteSettings {
       instagramLink
       instagramHashtag
+    }
+    videoBackground: sanitySiteSettings {
+      videoLink
+      videoPlaceholder {
+        asset {
+          url
+        }
+      }
     }
   }
 `;
