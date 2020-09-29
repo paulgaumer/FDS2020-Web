@@ -77,7 +77,6 @@ const IndexPage = ({ data }) => {
           <RegionMapSection />
         </React.Suspense>
       )}
-
       <InstagramSection
         instagramTitle={instagramTitle}
         instagramSettings={data.instagram}

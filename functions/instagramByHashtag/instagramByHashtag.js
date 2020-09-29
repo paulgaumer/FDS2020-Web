@@ -84,13 +84,14 @@ async function getPosts(hashtag) {
   // first see if we have a cache from the last 15 min (900 000 ms)
   const timeSinceLastFetch = Date.now() - cache.lastFetch;
   if (timeSinceLastFetch <= 900000) {
-    console.log('RETURNING FROM CACHE');
+    console.log('RETURNING PICS FROM CACHE');
     return cache.posts;
   }
   //Get the corresponding ID from the requested hashtag
   const hashtagId = await getHashtagId(hashtag);
   //Get most recent media (< 24h) for the hashtag
   const recentMedia = await getRecentMedia(hashtagId);
+  console.log('RETURNING FRESH PICS FROM INSTA');
   if (recentMedia.length >= 10) {
     const posts = sortPosts(recentMedia);
     cache.lastFetch = Date.now();
