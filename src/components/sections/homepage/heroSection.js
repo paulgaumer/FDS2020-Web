@@ -9,7 +9,6 @@ import LogoFds from '../../../images/logo-fds-rouge-white.svg';
 import logoPdl from '../../../images/logo-pdl-white.svg';
 import logoMinister from '../../../images/hero-pastille-minister.svg';
 import poster from '../../../images/teaser-poster.png';
-import teaser from '../../../../static/video/teaser.mp4';
 import { GlobalStateContext } from '../../../context/global-context-provider';
 
 const ContentCenter = styled.div``;
