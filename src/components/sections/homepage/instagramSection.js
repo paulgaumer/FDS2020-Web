@@ -48,6 +48,9 @@ const PicSkeleton = () => {
 
 // InstaPic Component
 const InstaPic = ({ pic }) => {
+  if (!pic) {
+    return <PicSkeleton />;
+  }
   return (
     <a
       href={pic.permalink}
@@ -55,14 +58,28 @@ const InstaPic = ({ pic }) => {
       rel="noopener noreferrer"
       alt={`Instagram picture`}
     >
-      <div
-        className="w-full h-full rounded"
-        style={{
-          backgroundImage: `url(${pic.media_url})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      ></div>
+      {pic.media_type === 'IMAGE' && (
+        <div
+          className="w-full h-full rounded"
+          style={{
+            backgroundImage: `url(${pic.media_url})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        ></div>
+      )}
+      {pic.media_type === 'VIDEO' && (
+        <video
+          autoPlay
+          loop
+          muted
+          controls
+          playsInline
+          className="object-cover object-center w-full h-auto rounded video"
+        >
+          <source src={pic.media_url} />
+        </video>
+      )}
     </a>
   );
 };
@@ -127,8 +144,10 @@ const InstagramSection = ({ instagramTitle, instagramSettings }) => {
                   <PicSkeleton />
                 </>
               )}
-              {instaPics.slice(0, 6).map((pic) => {
-                return <InstaPic pic={pic} key={pic.id} />;
+              {instaPics.slice(0, 6).map((pic, i) => {
+                return (
+                  <InstaPic pic={pic} key={pic ? pic.id : `pic-${i + 1}`} />
+                );
               })}
             </InstaGrid>
           </div>
@@ -158,8 +177,10 @@ const InstagramSection = ({ instagramTitle, instagramSettings }) => {
           )}
           {!isLoading && instaPics.length > 0 && (
             <InstaGrid className="hidden gap-5 md:grid md:grid-cols-4">
-              {gridPics[0].map((pic) => {
-                return <InstaPic pic={pic} key={pic.id} />;
+              {gridPics[0].map((pic, i) => {
+                return (
+                  <InstaPic pic={pic} key={pic ? pic.id : `pic-${i + 1}`} />
+                );
               })}
               <InstaPic pic={gridPics[1][0]} />
               <div className="flex-col items-center justify-center hidden col-span-2 px-10 space-y-2 font-bold text-purple-900 md:flex item-text-content">
@@ -170,9 +191,11 @@ const InstagramSection = ({ instagramTitle, instagramSettings }) => {
                 </a>
               </div>
               <InstaPic pic={gridPics[1][1]} />
-              {gridPics[2].map((pic) => (
-                <InstaPic pic={pic} key={pic.id} />
-              ))}
+              {gridPics[2].map((pic, i) => {
+                return (
+                  <InstaPic pic={pic} key={pic ? pic.id : `pic-${i + 1}`} />
+                );
+              })}
             </InstaGrid>
           )}
           {/* Desktop Grid End */}

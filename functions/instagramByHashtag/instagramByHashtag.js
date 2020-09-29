@@ -49,29 +49,49 @@ async function getTopMedia(hashtagId) {
 }
 
 const sortPosts = (posts) => {
-  const images = posts.filter((p) => p.media_type === 'IMAGE').slice(0, 10);
+  // Only accepts images that are of type IMAGE, VIDEO and that have a media_url property. Get the first 10.
+  const images = posts
+    .filter(
+      (p) =>
+        p.media_url && (p.media_type === 'IMAGE' || p.media_type === 'VIDEO')
+    )
+    .slice(0, 10);
   // Run the images through cloudimage.io to resize them down
   const finalPosts = images.map((i) => {
-    return {
-      id: i.id,
-      media_url: `${cloudImageBaseUrl}${i.media_url}${cloudImageParams}`,
-      media_type: i.media_type,
-      permalink: i.permalink,
-    };
+    if (i.media_type === 'IMAGE') {
+      return {
+        id: i.id,
+        media_url: `${cloudImageBaseUrl}${i.media_url}${cloudImageParams}`,
+        media_type: i.media_type,
+        permalink: i.permalink,
+      };
+    } else if (i.media_type === 'VIDEO') {
+      return {
+        id: i.id,
+        media_url: i.media_url,
+        media_type: i.media_type,
+        permalink: i.permalink,
+      };
+    } else {
+      return;
+    }
   });
+
   return finalPosts;
 };
 
 async function getPosts(hashtag) {
-  // first see if we have a cache from the last 10 min
+  // first see if we have a cache from the last 15 min (900 000 ms)
   const timeSinceLastFetch = Date.now() - cache.lastFetch;
-  if (timeSinceLastFetch <= 200000) {
+  if (timeSinceLastFetch <= 900000) {
+    console.log('RETURNING PICS FROM CACHE');
     return cache.posts;
   }
   //Get the corresponding ID from the requested hashtag
   const hashtagId = await getHashtagId(hashtag);
   //Get most recent media (< 24h) for the hashtag
   const recentMedia = await getRecentMedia(hashtagId);
+  console.log('RETURNING FRESH PICS FROM INSTA');
   if (recentMedia.length >= 10) {
     const posts = sortPosts(recentMedia);
     cache.lastFetch = Date.now();
