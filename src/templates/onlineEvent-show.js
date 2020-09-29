@@ -28,7 +28,7 @@ const EventShow = ({ data }) => {
           bookingPhone={event.bookingPhone}
           bookingEmail={event.bookingEmail}
           bookingWebsite={event.bookingWebsite}
-          scolaires={scolaires}
+          scolaires={false}
           bookingText="Réservations et inscriptions via le(s) lien(s) ci-dessous:"
         />
       )}

@@ -17,7 +17,8 @@ const EventGrid = styled.div`
 
 const Multimedia = ({ data }) => {
   const rawEvents = data.allSanityOnlineEvent.edges.map(({ node }) => node);
-  const events = sortEventsByDate(rawEvents);
+  // const events = sortEventsByDate(rawEvents);
+  const events = rawEvents;
   const { _rawContentBlock, topTitle } = data.sanityPage.pageContent[0];
 
   return (
