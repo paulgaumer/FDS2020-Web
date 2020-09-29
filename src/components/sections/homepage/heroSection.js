@@ -73,7 +73,10 @@ const HeroSection = ({ heroButton = 'Découvrir les événements' }) => {
           zIndex: '0',
         }}
       >
-        <source src={teaser} type="video/mp4" />
+        <source
+          src="https://res.cloudinary.com/terredessciences/video/upload/v1601366040/teaser_ptcpbn.mp4"
+          type="video/mp4"
+        />
       </video>
       {/* Video Background filter Start */}
       <div
