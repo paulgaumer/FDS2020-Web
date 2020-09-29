@@ -78,10 +78,10 @@ const IndexPage = ({ data }) => {
         </React.Suspense>
       )}
 
-      {/* <InstagramSection
+      <InstagramSection
         instagramTitle={instagramTitle}
         instagramSettings={data.instagram}
-      /> */}
+      />
     </Layout>
   );
 };
