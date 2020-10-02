@@ -82,6 +82,7 @@ export const query = graphql`
           slug {
             current
           }
+          summary
           description {
             children {
               text

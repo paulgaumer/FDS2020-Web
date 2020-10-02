@@ -8,19 +8,8 @@ import { excerpt } from '../../../utils/excerpt';
 import { processDate } from '../../../utils/processDate';
 
 const OnlineEventCard = ({ event }) => {
-  const { description, image, timeSlots, slug, title, theme, audience } = event;
+  const { summary, image, timeSlots, slug, title, theme, audience } = event;
   moment.locale('fr');
-
-  // Rich text can contain images before text, which excerpt can't process. Check for the presence of text
-  const showExcerpt = (richText) => {
-    if (richText[0].children[0] !== undefined) {
-      return richText[0].children[0].text
-        ? excerpt(richText[0].children[0].text)
-        : excerpt(richText[1].children[0].text);
-    } else {
-      return excerpt(richText[1].children[0].text);
-    }
-  };
 
   return (
     <Link to={`/multimedia/${slug.current}`} className="max-w-1/3 ">
@@ -60,7 +49,7 @@ const OnlineEventCard = ({ event }) => {
             </div>
           </div>
 
-          <p className="pt-6">{showExcerpt(description)}</p>
+          <p className="pt-6">{excerpt(summary)}</p>
           <div className="pt-6">
             <div className="flex items-center space-x-1 text-sm">
               <span className="text-base">
