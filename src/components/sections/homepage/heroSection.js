@@ -22,7 +22,7 @@ const HeroSection = ({
 }) => {
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [showCountdown, setShowCountDown] = useState(true);
+  const [showCountdown, setShowCountDown] = useState(false);
   const showCovid = useContext(GlobalStateContext).showCovid;
 
   // **** Settings for Timer Start ****
@@ -33,6 +33,7 @@ const HeroSection = ({
       return <div />;
     } else {
       // Render a countdown
+      setShowCountDown(true);
       return (
         <div className="flex justify-center">
           <div className="flex space-x-6">
