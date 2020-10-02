@@ -22,14 +22,15 @@ const HeroSection = ({
 }) => {
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showCountdown, setShowCountDown] = useState(true);
   const showCovid = useContext(GlobalStateContext).showCovid;
 
   // **** Settings for Timer Start ****
-  const Completionist = () => <p className="text-3xl">La Fête vous attend!</p>;
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
-      return <Completionist />;
+      setShowCountDown(false);
+      return <div />;
     } else {
       // Render a countdown
       return (
@@ -331,7 +332,11 @@ const HeroSection = ({
 
         {/* TIMER BLOCK START */}
         <div className="z-40 hidden grid-cols-12 lg:grid">
-          <div className="flex items-center justify-center col-start-6 col-end-8">
+          <div
+            className={`flex items-center justify-center col-start-6 col-end-8 ${
+              showCountdown ? 'py-0' : 'py-5'
+            }`}
+          >
             <Link
               to="/#a-propos"
               className="px-1 pt-4 pb-2 border-2 border-white rounded-full"
@@ -350,7 +355,11 @@ const HeroSection = ({
               </svg>
             </Link>
           </div>
-          <Timer className="relative block col-start-8 col-end-13 py-2 text-sm text-white uppercase xl:col-start-9 2xl:text-base 2xl:px-12 2xl:py-5 2xl:col-start-10">
+          <Timer
+            className={`relative col-start-8 col-end-13 py-2 text-sm text-white uppercase xl:col-start-9 2xl:text-base 2xl:px-12 2xl:py-5 2xl:col-start-10 ${
+              showCountdown ? 'block' : 'hidden'
+            }`}
+          >
             {/* <Countdown date={'2020-10-02T00:00:00'} renderer={renderer} /> */}
             <Countdown date={'2020-10-02T00:00:00'} renderer={renderer} />
 
