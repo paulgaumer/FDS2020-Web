@@ -8,7 +8,7 @@
   <h3 align="center">Fete de la Science Pays de la Loire</h3>
 
   <p align="center">
-    Front-end for the event "Fete de la Science" happening yearly in every French regions.
+    Front-end for the event "Fete de la Science" happening yearly in the French region "Pays de la Loire.
     <br />
     <br />
     <a href="https://fetedelascience-paysdelaloire.fr/">View Website</a>
@@ -42,7 +42,7 @@ The back-end is a Sanity CMS project:
 ### Built With
 
 - [Gatsby.js](https://www.gatsbyjs.com/) - front-end
-- [Sanity](https://www.sanity.io/) - back-end ([Lien vers repo](https://github.com/paulgaumer/FDS2020-Studio))
+- [Sanity](https://www.sanity.io/) - back-end ([repo](https://github.com/paulgaumer/FDS2020-Studio))
 - [Netlify](https://netlify.com) - hosting
 - [Tailwind CSS](https://tailwindcss.com)
 - [Styled Components](https://styled-components.com/)
@@ -101,4 +101,4 @@ The following credentials are needed:
 
 [Paul Gaumer](https://paulgaumer.com) - [@PaulGaumer](https://twitter.com/@PaulGaumer) - hello@paulgaumer.com
 
-Project Link: [https://github.com/paulgaumer/FDS2020-Studio](https://github.com/paulgaumer/FDS2020-Studio)
+Project Link: [https://github.com/paulgaumer/FDS2020-Web](https://github.com/paulgaumer/FDS2020-Web)
