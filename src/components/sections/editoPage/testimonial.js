@@ -13,14 +13,16 @@ const Testimonial = ({ ambassador, reverse = false }) => {
         reverse ? 'lg:flex-row-reverse lg:space-x-reverse' : 'lg:flex-row '
       }`}
     >
-      <div className="relative flex-shrink-0 hidden lg:block">
-        <div className="absolute z-0 w-full h-full right-5 bg-primary top-5" />
-        <CustomGatsbyImage
-          image={image}
-          alt={name}
-          customClasses={`relative z-10 border border-black w-64`}
-        />
-      </div>
+      {image && (
+        <div className="relative flex-shrink-0 hidden lg:block">
+          <div className="absolute z-0 w-full h-full right-5 bg-primary top-5" />
+          <CustomGatsbyImage
+            image={image}
+            alt={name}
+            customClasses={`relative z-10 border border-black w-64`}
+          />
+        </div>
+      )}
 
       <div className="relative pt-10 lg:flex lg:items-center">
         <div className="relative lg:ml-10">
@@ -42,11 +44,13 @@ const Testimonial = ({ ambassador, reverse = false }) => {
             <footer className="mt-8">
               <div className="flex items-center">
                 <div className="flex-shrink-0 lg:hidden">
-                  <CustomGatsbyImage
-                    image={image}
-                    alt={name}
-                    customClasses="w-24 h-24 rounded-full"
-                  />
+                  {image && (
+                    <CustomGatsbyImage
+                      image={image}
+                      alt={name}
+                      customClasses="w-24 h-24 rounded-full"
+                    />
+                  )}
                 </div>
                 <div className="ml-4 lg:ml-0">
                   <div className="text-sm leading-6 text-gray-600 sm:text-base">
