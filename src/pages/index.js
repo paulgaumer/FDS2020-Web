@@ -69,6 +69,7 @@ const IndexPage = ({ data }) => {
       <HeroSection
         heroButton={heroButton}
         videoBackground={data.videoBackground}
+        dates={data.dates}
       />
       <AboutSection
         features={features}
@@ -128,6 +129,10 @@ export const query = graphql`
           url
         }
       }
+    }
+    dates: sanitySiteSettings {
+      startDate
+      endDate
     }
   }
 `;

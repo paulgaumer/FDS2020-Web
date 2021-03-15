@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Countdown from 'react-countdown';
+import format from 'date-fns/format';
+import fr from 'date-fns/locale/fr';
 import Transition from '../../global/transition';
 import HeaderMobileContent from '../../header/headerMobileContent';
 import SectionWrapper from '../../layout/sectionWrapper';
@@ -19,11 +21,19 @@ const Timer = styled.div`
 const HeroSection = ({
   heroButton = 'Découvrir les événements',
   videoBackground,
+  dates,
 }) => {
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showCountdown, setShowCountDown] = useState(false);
   const showCovid = useContext(GlobalStateContext).showCovid;
+
+  const startDate = format(new Date(dates.startDate), 'dd MMMM', {
+    locale: fr,
+  });
+  const endDate = format(new Date(dates.endDate), 'dd MMMM Y', {
+    locale: fr,
+  });
 
   // **** Settings for Timer Start ****
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -316,7 +326,8 @@ const HeroSection = ({
               </h3>
 
               <p className="text-lg uppercase md:text-2xl 2xl:text-3xl">
-                02 Octobre - 12 Octobre 2020
+                {startDate && <span>{startDate}</span>}
+                {endDate && <span> - {endDate} </span>}
               </p>
             </div>
             <span className="inline-flex flex-shrink-0 rounded-md shadow-sm">
