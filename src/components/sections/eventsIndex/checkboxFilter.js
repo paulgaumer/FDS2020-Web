@@ -7,7 +7,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const InputField = ({ item, handleChange, scolaires }) => {
   return (
@@ -31,7 +31,7 @@ const InputField = ({ item, handleChange, scolaires }) => {
               scolaires ? 'bg-eduDark' : 'bg-primary'
             }`}
           >
-            <Img fluid={item.icon} className="w-full" />
+            <GatsbyImage image={item.icon} className="w-full" />
           </div>
         )}
         <span>{item.name}</span>
@@ -47,7 +47,7 @@ const CheckboxFilter = ({ list, getValues, topic, scolaires }) => {
       id: node.id,
       name: node.name,
       isChecked: false,
-      icon: topic === 'format' ? node.formatIcon.asset.fluid : null,
+      icon: topic === 'format' ? node.formatIcon.asset.gatsbyImageData : null,
     };
   });
   const [items, setItems] = useState(itemsList);

@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const CustomGatsbyImage = ({ image, alt, customClasses }) => {
   const hotspot =
@@ -10,8 +10,8 @@ const CustomGatsbyImage = ({ image, alt, customClasses }) => {
   const style = { objectPosition: hotspot };
 
   return (
-    <Img
-      fluid={image.asset.fluid}
+    <GatsbyImage
+      image={image.asset.gatsbyImageData}
       alt={alt || image.alt}
       className={`object-cover ${customClasses}`}
       imgStyle={style}

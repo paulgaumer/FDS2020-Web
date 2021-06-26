@@ -100,9 +100,7 @@ export const query = graphql`
           }
           image {
             asset {
-              fluid(maxWidth: 1000) {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(width: 1000, placeholder: BLURRED)
             }
             hotspot {
               x

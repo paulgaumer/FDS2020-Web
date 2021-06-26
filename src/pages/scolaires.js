@@ -71,9 +71,7 @@ export const query = graphql`
     }
     image {
       asset {
-        fluid(maxWidth: 1000) {
-          ...GatsbySanityImageFluid
-        }
+        gatsbyImageData(width: 1000, placeholder: BLURRED)
       }
       hotspot {
         x
@@ -122,9 +120,7 @@ export const query = graphql`
           }
           image {
             asset {
-              fluid(maxWidth: 450) {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(width: 450, placeholder: BLURRED)
             }
             hotspot {
               x
@@ -151,9 +147,7 @@ export const query = graphql`
           logosList {
             image {
               asset {
-                fluid(maxWidth: 300) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 300, placeholder: BLURRED)
               }
             }
           }

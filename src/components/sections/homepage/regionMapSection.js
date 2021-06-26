@@ -4,7 +4,7 @@ import { MdPlayArrow } from 'react-icons/md';
 import * as THREE from 'three';
 import NET from 'vanta/dist/vanta.net.min';
 import styled from 'styled-components';
-import tw from 'twin.macro';
+// import tw from 'twin.macro';
 import SectionContainer from '../../layout/sectionContainer';
 import VectorMap from './vectorMap';
 import SectionTitle from '../../global/sectionTitle';

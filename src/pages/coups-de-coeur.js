@@ -97,17 +97,13 @@ export const query = graphql`
             name
             formatIcon {
               asset {
-                fluid(maxWidth: 500) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 500, placeholder: BLURRED)
               }
             }
           }
           image {
             asset {
-              fluid(maxWidth: 1000) {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(width: 1000, placeholder: BLURRED)
             }
             hotspot {
               x

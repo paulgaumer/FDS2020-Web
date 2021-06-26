@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 
 const LogoGrid = styled.div`
@@ -33,8 +33,8 @@ const LogosGrid = ({ logos }) => {
       {logos.map((logo, i) => {
         return (
           <div className="" key={`${logo.name}-${i}`}>
-            <Img
-              fluid={logo.image.asset.fluid}
+            <GatsbyImage
+              image={logo.image.asset.gatsbyImageData}
               imgStyle={{ objectFit: 'contain' }}
               alt={logo.name}
             />

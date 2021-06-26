@@ -99,9 +99,7 @@ export const query = graphql`
           features {
             image {
               asset {
-                fluid(maxWidth: 500) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 500, placeholder: BLURRED)
               }
               hotspot {
                 x

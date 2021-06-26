@@ -166,9 +166,7 @@ export const query = graphql`
             url
             logo {
               asset {
-                fluid(maxWidth: 150) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 150, placeholder: BLURRED)
               }
             }
           }

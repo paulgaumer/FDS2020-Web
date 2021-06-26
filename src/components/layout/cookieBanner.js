@@ -1,6 +1,6 @@
 import React from 'react';
 import CookieConsent, { Cookies } from 'react-cookie-consent';
-import s from './cookieBanner.module.css';
+import * as s from './cookieBanner.module.css';
 
 const CookieBanner = () => {
   return (

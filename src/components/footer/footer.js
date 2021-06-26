@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+// import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import logoFDSRouge from '../../images/logo-fds-rouge.svg';
 import InstagramIcon from '../icons/instagram';
 import { GlobalStateContext } from '../../context/global-context-provider';
@@ -16,9 +17,7 @@ const Footer = () => {
               name
               image {
                 asset {
-                  fluid(maxWidth: 300) {
-                    ...GatsbySanityImageFluid
-                  }
+                  gatsbyImageData(width: 300, placeholder: BLURRED)
                 }
               }
             }
@@ -27,9 +26,7 @@ const Footer = () => {
               name
               image {
                 asset {
-                  fluid(maxWidth: 300) {
-                    ...GatsbySanityImageFluid
-                  }
+                  gatsbyImageData(width: 300, placeholder: BLURRED)
                 }
               }
             }
@@ -183,9 +180,9 @@ const Footer = () => {
             <img src={logoFDSRouge} alt="fête de la science" className="w-20" /> */}
             {data.footer.pageContent[0].logosRankTop.map((logo) => {
               return (
-                <Img
+                <GatsbyImage
                   key={logo.id}
-                  fluid={logo.image.asset.fluid}
+                  image={logo.image.asset.gatsbyImageData}
                   alt={logo.name}
                   className="flex-auto max-h-24"
                   imgStyle={{ objectFit: 'contain' }}
@@ -199,9 +196,9 @@ const Footer = () => {
             <img src={logoFDSRouge} alt="fête de la science" className="w-20" /> */}
             {data.footer.pageContent[0].logosRankBottom.map((logo) => {
               return (
-                <Img
+                <GatsbyImage
                   key={logo.id}
-                  fluid={logo.image.asset.fluid}
+                  image={logo.image.asset.gatsbyImageData}
                   alt={logo.name}
                   className="flex-auto max-h-20"
                   imgStyle={{ objectFit: 'contain' }}

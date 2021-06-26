@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const ContactSection = ({ department }) => {
   const contacts = department.edges.map(({ node }) => node);
@@ -18,11 +18,17 @@ const ContactSection = ({ department }) => {
             <div className="flex items-center mb-6 h-28">
               {contact.url && (
                 <a href={contact.url} target="_blank" rel="noopener noreferrer">
-                  <Img fluid={contact.logo.asset.fluid} className="w-28" />
+                  <GatsbyImage
+                    image={contact.logo.asset.gatsbyImageData}
+                    className="w-28"
+                  />
                 </a>
               )}
               {!contact.url && (
-                <Img fluid={contact.logo.asset.fluid} className="w-28" />
+                <GatsbyImage
+                  image={contact.logo.asset.gatsbyImageData}
+                  className="w-28"
+                />
               )}
             </div>
 

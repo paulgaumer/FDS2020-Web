@@ -38,9 +38,7 @@ const EventsFilters = ({
             id
             formatIcon {
               asset {
-                fluid(maxWidth: 500) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 500, placeholder: BLURRED)
               }
             }
           }

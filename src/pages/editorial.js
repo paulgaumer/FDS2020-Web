@@ -63,9 +63,7 @@ export const query = graphql`
             image {
               asset {
                 id
-                fluid(maxWidth: 500) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 500, placeholder: BLURRED)
               }
             }
             name
@@ -82,9 +80,7 @@ export const query = graphql`
             image {
               asset {
                 id
-                fluid(maxWidth: 500) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 500, placeholder: BLURRED)
               }
             }
             name
@@ -110,9 +106,7 @@ export const query = graphql`
           _rawTestimony
           image {
             asset {
-              fluid(maxWidth: 500) {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(width: 500, placeholder: BLURRED)
               url
             }
             hotspot {
