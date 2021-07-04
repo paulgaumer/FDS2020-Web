@@ -10,8 +10,3 @@ const React = require('react');
 export const wrapRootElement = ({ element }) => {
   return <GlobalContextProvider>{element}</GlobalContextProvider>;
 };
-
-export const onServiceWorkerUpdateReady = () => {
-  window.localStorage.setItem('serviceWorkerUpdated', 'true');
-  window.location.reload(true);
-};
