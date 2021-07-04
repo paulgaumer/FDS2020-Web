@@ -6,7 +6,6 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import QuizModal from '../global/quizModal';
 import CookieBanner from './cookieBanner';
-import PwaPrompt from './pwaPrompt';
 import ServiceWorkerUpdatedNotif from './swUpdatedNotif';
 import HideNavOnScrollHook from '../../utils/scrollNavHook';
 
@@ -36,7 +35,6 @@ const Layout = ({ children, headerHidden }) => {
         <Footer />
       </div>
       <CookieBanner />
-      <PwaPrompt />
       {data.sanitySiteSettings.showQuiz && <QuizModal />}
       <ServiceWorkerUpdatedNotif />
     </div>
