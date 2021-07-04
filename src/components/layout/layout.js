@@ -6,7 +6,6 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import QuizModal from '../global/quizModal';
 import CookieBanner from './cookieBanner';
-import ServiceWorkerUpdatedNotif from './swUpdatedNotif';
 import HideNavOnScrollHook from '../../utils/scrollNavHook';
 
 const Layout = ({ children, headerHidden }) => {
@@ -36,7 +35,6 @@ const Layout = ({ children, headerHidden }) => {
       </div>
       <CookieBanner />
       {data.sanitySiteSettings.showQuiz && <QuizModal />}
-      <ServiceWorkerUpdatedNotif />
     </div>
   );
 };
