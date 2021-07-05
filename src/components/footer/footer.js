@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import logoFDSRouge from '../../images/logo-fds-rouge.svg';
+import fdsLogoBlackDefault from '../../images/logo-fds-rouge.svg';
 import InstagramIcon from '../icons/instagram';
 import { GlobalStateContext } from '../../context/global-context-provider';
 
@@ -37,10 +37,19 @@ const Footer = () => {
           }
         }
       }
+      fdsLogo: sanitySiteSettings {
+        fdsLogoBlack {
+          asset {
+            url
+          }
+        }
+      }
     }
   `);
 
   const showCovid = useContext(GlobalStateContext).showCovid;
+  const logoFDSRouge =
+    data?.fdsLogo?.fdsLogoBlack?.asset?.url || fdsLogoBlackDefault;
 
   return (
     <footer className="max-w-screen-xl px-4 py-12 mx-auto bg-white sm:px-6 lg:py-16 lg:px-8 ">
