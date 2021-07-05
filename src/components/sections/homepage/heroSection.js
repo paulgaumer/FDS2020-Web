@@ -7,7 +7,7 @@ import fr from 'date-fns/locale/fr';
 import Transition from '../../global/transition';
 import HeaderMobileContent from '../../header/headerMobileContent';
 import SectionWrapper from '../../layout/sectionWrapper';
-import LogoFds from '../../../images/logo-fds-rouge-white.svg';
+import LogoFdsDefault from '../../../images/logo-fds-rouge-white.svg';
 import logoPdl from '../../../images/logo-pdl-white.svg';
 import logoMinister from '../../../images/hero-pastille-minister.svg';
 import { GlobalStateContext } from '../../../context/global-context-provider';
@@ -22,11 +22,14 @@ const HeroSection = ({
   heroButton = 'Découvrir les événements',
   videoBackground,
   dates,
+  fdsLogo,
 }) => {
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showCountdown, setShowCountDown] = useState(false);
   const showCovid = useContext(GlobalStateContext).showCovid;
+
+  const LogoFds = fdsLogo?.fdsLogoWhite?.asset?.url || LogoFdsDefault;
 
   const startDate = format(new Date(dates.startDate), 'dd MMMM', {
     locale: fr,
