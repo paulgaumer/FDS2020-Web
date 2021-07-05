@@ -7,7 +7,7 @@ import fr from 'date-fns/locale/fr';
 import Transition from '../../global/transition';
 import HeaderMobileContent from '../../header/headerMobileContent';
 import SectionWrapper from '../../layout/sectionWrapper';
-import LogoFds from '../../../images/logo-fds-rouge-white.svg';
+import LogoFdsDefault from '../../../images/logo-fds-rouge-white.svg';
 import logoPdl from '../../../images/logo-pdl-white.svg';
 import logoMinister from '../../../images/hero-pastille-minister.svg';
 import { GlobalStateContext } from '../../../context/global-context-provider';
@@ -22,11 +22,14 @@ const HeroSection = ({
   heroButton = 'Découvrir les événements',
   videoBackground,
   dates,
+  fdsLogo,
 }) => {
   const [isDepartmentActive, setIsDepartmentActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showCountdown, setShowCountDown] = useState(false);
   const showCovid = useContext(GlobalStateContext).showCovid;
+
+  const LogoFds = fdsLogo?.fdsLogoWhite?.asset?.url || LogoFdsDefault;
 
   const startDate = format(new Date(dates.startDate), 'dd MMMM', {
     locale: fr,
@@ -308,10 +311,10 @@ const HeroSection = ({
         <div className="h-40 md:h-52 lg:h-40 2xl:h-52" />
         {/* NAV PADDING END */}
         {/* CTA BLOCK START */}
-        <section className="flex self-center justify-center flex-grow w-full max-w-3xl px-6 pb-20 xl:pb-10 2xl:max-w-5xl 2xl:pb-20 3xl:max-w-7xl md:px-14 sm:px-6 lg:px-8">
+        <section className="flex self-center justify-center flex-grow w-full max-w-3xl px-6 pb-20 xl:pb-10 xl:max-w-4/5 2xl:pb-20 2xl:max-w-8xl md:px-14 sm:px-6 lg:px-8">
           <ContentCenter
             data-name="content-center"
-            className="flex flex-col items-center flex-grow lg:items-start"
+            className="flex flex-col items-center flex-grow"
           >
             <img
               src={LogoFds}
@@ -320,8 +323,8 @@ const HeroSection = ({
               className="h-full"
             />
 
-            <div className="mt-2 mb-10 text-white md:mb-12 2xl:mb-20">
-              <h3 className="text-4xl font-bold tracking-tight md:text-5xl 2xl:text-7xl">
+            <div className="mb-10 -mt-20 text-center text-white md:mb-12 2xl:mb-20">
+              <h3 className="text-4xl font-bold tracking-tight md:text-5xl xl:text-7xl">
                 Pays de la Loire
               </h3>
 

@@ -68,6 +68,7 @@ const IndexPage = ({ data }) => {
       </div>
       <HeroSection
         heroButton={heroButton}
+        fdsLogo={data.fdsLogo}
         videoBackground={data.videoBackground}
         dates={data.dates}
       />
@@ -133,6 +134,13 @@ export const query = graphql`
     dates: sanitySiteSettings {
       startDate
       endDate
+    }
+    fdsLogo: sanitySiteSettings {
+      fdsLogoWhite {
+        asset {
+          url
+        }
+      }
     }
   }
 `;
