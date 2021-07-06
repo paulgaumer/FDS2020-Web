@@ -323,7 +323,7 @@ const HeroSection = ({
               className="h-full"
             />
 
-            <div className="mb-10 -mt-20 text-center text-white md:mb-12 2xl:mb-20">
+            <div className="mb-10 text-center text-white md:mb-12 2xl:mb-20 2xl:-mt-20">
               <h3 className="text-4xl font-bold tracking-tight md:text-5xl xl:text-7xl">
                 Pays de la Loire
               </h3>
