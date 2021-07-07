@@ -6,7 +6,6 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import QuizModal from '../global/quizModal';
 import CookieBanner from './cookieBanner';
-import HideNavOnScrollHook from '../../utils/scrollNavHook';
 
 const Layout = ({ children, headerHidden }) => {
   const data = useStaticQuery(graphql`
@@ -19,11 +18,7 @@ const Layout = ({ children, headerHidden }) => {
 
   return (
     <div className="flex flex-col h-screen" id="site-layout">
-      {!headerHidden && (
-        <div className={`${HideNavOnScrollHook() ? 'hidden' : 'block'}`}>
-          <Header />
-        </div>
-      )}
+      {!headerHidden && <Header />}
       <div
         className={`flex-grow bg-sectionBackground
         ${headerHidden ? ' ' : 'pt-24'}`}
