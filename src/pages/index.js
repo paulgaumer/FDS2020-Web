@@ -52,7 +52,7 @@ const IndexPage = ({ data }) => {
   useEffect(() => {
     if (lastYPos >= 300) {
       setShowHeader(true);
-    } else if (lastYPos <= 300) {
+    } else if (lastYPos <= 400) {
       setShowHeader(false);
     }
   }, [lastYPos]);
@@ -60,9 +60,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout headerHidden={true}>
       <SEO title="Accueil" />
-      <div className={`${showHeader ? 'block' : 'hidden'}`}>
-        <Header />
-      </div>
+      <Header isVisible={showHeader} isHomepage />
       <HeroSection
         heroButton={heroButton}
         fdsLogo={data.fdsLogo}
