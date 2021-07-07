@@ -89,7 +89,10 @@ const HeroSection = ({
           zIndex: '0',
         }}
       >
-        <source src={videoBackground.videoLink} type="video/mp4" />
+        <source
+          src={`https://drive.google.com/uc?export=download&id=${videoBackground.videoLink}`}
+          type="video/mp4"
+        />
       </video>
       {/* Video Background filter Start */}
       <div
