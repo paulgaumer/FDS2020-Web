@@ -8,7 +8,6 @@ import AboutSection from '../components/sections/homepage/aboutSection';
 // import RegionMapSection from '../components/sections/homepage/regionMapSection';
 import InstagramSection from '../components/sections/homepage/instagramSection';
 import { hasWindow } from '../utils/hasWindow';
-import HideNavOnScrollHook from '../utils/scrollNavHook';
 const RegionMapSection = React.lazy(() =>
   import('../components/sections/homepage/regionMapSection')
 );
@@ -51,9 +50,9 @@ const IndexPage = ({ data }) => {
 
   // Define when the nav should appear on screen
   useEffect(() => {
-    if (lastYPos >= windowHeight) {
+    if (lastYPos >= 300) {
       setShowHeader(true);
-    } else if (lastYPos <= 300) {
+    } else if (lastYPos <= 400) {
       setShowHeader(false);
     }
   }, [lastYPos]);
@@ -61,11 +60,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout headerHidden={true}>
       <SEO title="Accueil" />
-      <div className={`${showHeader ? 'block' : 'hidden'}`}>
-        <div className={`${HideNavOnScrollHook() ? 'hidden' : 'block'}`}>
-          <Header />
-        </div>
-      </div>
+      <Header isVisible={showHeader} isHomepage />
       <HeroSection
         heroButton={heroButton}
         fdsLogo={data.fdsLogo}
