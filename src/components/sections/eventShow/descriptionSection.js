@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import InfoCard from './infoCard';
-import { FaExclamationTriangle } from 'react-icons/fa';
+import { FaExclamationTriangle, FaInfoCircle } from 'react-icons/fa';
 import SectionWrapper from '../../layout/sectionWrapper';
 import SectionContainer from '../../layout/sectionContainer';
 import PortableText from '@sanity/block-content-to-react';
@@ -19,6 +19,7 @@ const CovidButton = styled.div`
 `;
 
 const DescriptionSection = ({
+  audienceCustom,
   description,
   scolaires,
   showCovidButton = true,
@@ -29,6 +30,14 @@ const DescriptionSection = ({
       <SectionContainer customClasses="pb-12">
         <InfoCard title="description" customClasses="" scolaires={scolaires}>
           <div className="text-base leading-relaxed sm:text-lg">
+            {audienceCustom && (
+              <p className="flex items-center pb-5 space-x-2 font-bold">
+                <span className="text-sm">
+                  <FaInfoCircle />
+                </span>
+                <span>Réservé aux {audienceCustom}</span>
+              </p>
+            )}
             <PortableText blocks={description} serializers={serializers} />
           </div>
           {showCovid && showCovidButton && (
