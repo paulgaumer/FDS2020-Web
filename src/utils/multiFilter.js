@@ -24,13 +24,14 @@ export const multiFilter = (arr, filters, scolaires) => {
   };
 
   const checkAudience = (item, filtersList) => {
-    const itemAge = item.audience.id;
-    if (filtersList.audiences.length === 0) {
+    const itemAge = parseInt(item.audience.name.split(' ans')[0]);
+    const selectedAudience = filtersList.audiences;
+    if (selectedAudience <= 3) {
       return true;
-    } else if (filtersList.audiences.some((audience) => audience === itemAge)) {
-      return true;
-    } else {
+    } else if (itemAge > selectedAudience) {
       return false;
+    } else {
+      return true;
     }
   };
 
