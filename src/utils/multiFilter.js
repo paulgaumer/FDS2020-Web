@@ -24,17 +24,16 @@ export const multiFilter = (arr, filters, scolaires) => {
   };
 
   const checkAudience = (item, filtersList) => {
-    const itemAudiences = item.audience.map((a) => a.id);
+    const itemAge = item.audience.id;
     if (filtersList.audiences.length === 0) {
       return true;
-    } else if (
-      filtersList.audiences.some((audience) => itemAudiences.includes(audience))
-    ) {
+    } else if (filtersList.audiences.some((audience) => audience === itemAge)) {
       return true;
     } else {
       return false;
     }
   };
+
   const checkDepartment = (item, filtersList) => {
     return (
       filtersList.department === item.department.id ||

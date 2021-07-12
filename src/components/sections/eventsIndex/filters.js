@@ -342,7 +342,7 @@ const EventsFilters = ({
           <div className="overflow-hidden text-gray-500 bg-white rounded-lg">
             <div className="px-4 py-5 sm:p-6">
               <h4 className="pb-6 font-bold text-gray-700 uppercase">
-                Quel Public ?
+                A partir de
               </h4>
               <div data-name="audienceFilter">
                 <CheckboxFilter
@@ -384,7 +384,7 @@ const EventsFilters = ({
           <div className="overflow-hidden text-gray-500 bg-white rounded-lg">
             <div className="px-4 py-5 sm:p-6">
               <h4 className="pb-6 font-bold text-gray-700 uppercase">
-                Quel Public ?
+                A partir de
               </h4>
               <div data-name="audienceFilter">
                 <CheckboxFilter

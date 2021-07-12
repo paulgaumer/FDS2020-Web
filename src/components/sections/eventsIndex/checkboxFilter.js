@@ -99,6 +99,18 @@ const CheckboxFilter = ({ list, getValues, topic, scolaires }) => {
     getValues(checkedItems);
   }, [checkedItems, getValues]);
 
+  // Decide on default label based on topic
+  const getDefaultLabel = (topicName) => {
+    switch (topicName) {
+      case 'format':
+        return 'Toutes';
+      case 'audience':
+        return 'Tout age';
+      default:
+        return 'Tous';
+    }
+  };
+
   return (
     <div data-name="inputs" className="flex flex-col space-y-3">
       <div className="flex items-center">
@@ -115,7 +127,7 @@ const CheckboxFilter = ({ list, getValues, topic, scolaires }) => {
           htmlFor={`tous-${topic}`}
           className="block ml-2 text-sm leading-5"
         >
-          {topic === 'format' ? 'Toutes' : 'Tous'}
+          {getDefaultLabel(topic)}
         </label>
       </div>
       <Accordion allowZeroExpanded={true}>
