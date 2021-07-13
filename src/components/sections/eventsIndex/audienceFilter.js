@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
   Accordion,
@@ -8,6 +8,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
+import useDebounce from '../../../hooks/useDebounce';
 
 const InputContainer = styled.div`
   input[type='range'] {
@@ -88,19 +89,28 @@ const AudienceFilter = ({ setFilter }) => {
   const baseAudience = 3;
   const [allAudiences, setAllAudiences] = useState(true);
   const [selectedAudience, setSelectedAudience] = useState(baseAudience);
+  const [label, setLabel] = useState('');
+  const debouncedValue = useDebounce(selectedAudience, 800);
 
   const handleSelect = (e) => {
     const value = parseInt(e.target.value);
     setAllAudiences(false);
     setSelectedAudience(value);
-    setFilter(value);
   };
 
   const handleReset = () => {
     setAllAudiences(true);
     setSelectedAudience(baseAudience);
-    setFilter(baseAudience);
   };
+
+  useEffect(() => {
+    const text = selectedAudience <= 3 ? 'Tout age' : `${selectedAudience} ans`;
+    setLabel(text);
+  }, [selectedAudience]);
+
+  useEffect(() => {
+    setFilter(debouncedValue);
+  }, [debouncedValue]);
 
   return (
     <div className="flex flex-col space-y-4">
@@ -170,7 +180,7 @@ const AudienceFilter = ({ setFilter }) => {
                 onChange={(e) => handleSelect(e)}
                 className="cursor-pointer"
               />
-              <p className="text-base leading-5">{selectedAudience} ans</p>
+              <label className="text-base leading-5">{label}</label>
             </InputContainer>
           </AccordionItemPanel>
         </AccordionItem>
