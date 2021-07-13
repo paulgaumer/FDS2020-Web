@@ -101,6 +101,8 @@ const HeroSection = ({ event }) => {
     bookingRequired || bookingRecommanded
   );
 
+  const cleanAudience = audience?.name.split(' ans')[0];
+
   return (
     <SectionWrapper>
       <SectionContainer customClasses="pt-0 md:pt-20 pb-12">
@@ -168,7 +170,7 @@ const HeroSection = ({ event }) => {
                 >
                   <IoIosPeople />
                 </span>
-                <span>{audience[0].name}</span>
+                <span>Dès {cleanAudience} ans</span>
               </div>
             </div>
           </div>

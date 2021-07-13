@@ -11,6 +11,8 @@ const OnlineEventCard = ({ event }) => {
   const { summary, image, timeSlots, slug, title, theme, audience } = event;
   moment.locale('fr');
 
+  const cleanAudience = audience?.name.split(' ans')[0];
+
   return (
     <Link to={`/multimedia/${slug.current}`} className="max-w-1/3 ">
       <div
@@ -36,16 +38,13 @@ const OnlineEventCard = ({ event }) => {
                 - {theme[0].name}
               </p>
             </div>
-            <div className="flex items-start pt-1 pr-4 space-x-2 text-xs leading-tight sm:pt-0 sm:pr-2 sm:items-center sm:text-base sm:leading-normal">
+            <div className="flex items-start flex-shrink-0 pt-1 pl-8 pr-4 space-x-2 text-xs leading-tight sm:pt-0 sm:pr-2 sm:items-center sm:text-base sm:leading-normal">
               <span
                 className={`h-7 w-7 p-1 hidden sm:flex items-center justify-center text-2xl text-white rounded-full bg-primary`}
               >
                 <IoIosPeople />
               </span>
-              <span>
-                {audience[0].name}
-                {audience.length > 1 && ' et plus'}
-              </span>
+              <span>Dès {cleanAudience} ans</span>
             </div>
           </div>
 
