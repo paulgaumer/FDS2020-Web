@@ -68,7 +68,7 @@ const EventsListSection = ({ villageId, department }) => {
 
   useEffect(() => {
     // Get all events linked to a specific village
-    const query = `*[_type == 'village' && _id == $villageId ]{"events": *[_type == 'event' && references(^._id)]}`;
+    const query = `*[_type == 'village' && _id == $villageId]{"events": *[_type == 'event' && references(^._id) && !(_id in path('drafts.**'))]}`;
     const params = { villageId: villageId };
 
     client.fetch(query, params).then((res) => {
