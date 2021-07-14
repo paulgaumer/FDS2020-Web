@@ -41,6 +41,10 @@ const Header = ({ isVisible = true, isHomepage = false }) => {
   const depMenuRef = useRef();
   useClickOutside(depMenuRef, () => setIsDepartmentActive(false));
 
+  // handle mobile menu click
+  const mobileMenuRef = useRef();
+  useClickOutside(mobileMenuRef, () => setIsMobileMenuOpen(false));
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -250,7 +254,10 @@ const Header = ({ isVisible = true, isHomepage = false }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <HeaderMobileContent setIsMobileMenuOpen={setIsMobileMenuOpen} />
+              <HeaderMobileContent
+                setIsMobileMenuOpen={setIsMobileMenuOpen}
+                passRef={mobileMenuRef}
+              />
             </Transition>
           </div>
         </motion.header>
