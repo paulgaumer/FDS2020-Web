@@ -22,11 +22,11 @@ const About = ({ features, featuresButton, featuresTitle }) => {
         <div className="flex flex-col items-center">
           <SectionTitle text={featuresTitle} />
 
-          <div className="flex flex-col pb-10 space-y-20 text-base leading-relaxed text-gray-600 md:text-lg">
+          <div className="flex flex-col pb-10 space-y-10 text-base leading-relaxed text-gray-600 lg:space-y-6 md:text-lg">
             {features.map((f, i) => {
               return (
                 <div
-                  className={`flex flex-col items-center space-y-8  md:space-y-0 md:space-x-8 ${
+                  className={`flex flex-col items-center space-y-8  md:space-y-0 md:space-x-6 ${
                     i % 2 === 0
                       ? 'md:flex-row'
                       : 'md:flex-row-reverse md:space-x-reverse'
@@ -37,14 +37,14 @@ const About = ({ features, featuresButton, featuresTitle }) => {
                     <CustomGatsbyImage
                       image={f.image}
                       alt="fête de la science illustration"
-                      customClasses="flex-shrink-0 w-32 h-32 border-2 rounded-full border-secondary"
+                      customClasses="flex-shrink-0 w-48 h-48 border-2 rounded-full border-secondary"
                     />
                   )}
                   {!f.image && (
                     <img
                       src="http://placeimg.com/300/300/tech"
                       alt="fête de la science illustration"
-                      customClasses="flex-shrink-0 w-32 h-32 border-2 rounded-full border-secondary"
+                      customClasses="flex-shrink-0 w-48 h-48 border-2 rounded-full border-secondary"
                     />
                   )}
                   <PortableText
