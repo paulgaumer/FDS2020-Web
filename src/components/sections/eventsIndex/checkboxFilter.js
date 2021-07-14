@@ -120,12 +120,11 @@ const CheckboxFilter = ({ list, getValues, topic, scolaires }) => {
           value="Tous"
           checked={resetItems}
           onChange={handleReset}
-          className="w-4 h-4 transition duration-150 ease-in-out text-secondary form-checkbox"
+          className="w-4 h-4 transition duration-150 ease-in-out cursor-pointer text-secondary form-checkbox"
         />
         <label
-          id="tous"
           htmlFor={`tous-${topic}`}
-          className="block ml-2 text-sm leading-5"
+          className="block ml-2 text-sm leading-5 cursor-pointer"
         >
           {getDefaultLabel(topic)}
         </label>

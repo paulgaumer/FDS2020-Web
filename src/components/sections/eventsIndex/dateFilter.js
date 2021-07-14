@@ -10,41 +10,49 @@ const DateFilter = ({ getValues, firstDate, lastDate }) => {
 
   const [startDate, setStartDate] = useState(defaultStart);
   const [endDate, setEndDate] = useState(defaultEnd);
-  const [allDates, setAllDates] = useState(true);
+  const [resetItems, setResetItems] = useState(true);
 
   useEffect(() => {
-    if (allDates) {
+    if (resetItems) {
       setStartDate(defaultStart);
       setEndDate(defaultEnd);
       getValues({ startDate: defaultStart, endDate: defaultEnd });
     }
-  }, [allDates]);
+  }, [resetItems]);
 
   useEffect(() => {
     if (
       startDate.getTime() === defaultStart.getTime() &&
       endDate.getTime() === defaultEnd.getTime()
     ) {
-      setAllDates(true);
+      setResetItems(true);
       getValues({ startDate, endDate });
     } else {
-      setAllDates(false);
+      setResetItems(false);
       getValues({ startDate, endDate });
     }
   }, [startDate, endDate]);
+
+  const handleReset = () => {
+    setResetItems(true);
+  };
 
   return (
     <div className="flex flex-col space-y-4">
       <div className="flex items-center">
         <input
-          id="tous-dates"
+          id="allDates"
           type="checkbox"
           value="tous"
-          checked={allDates}
-          onChange={() => setAllDates(!allDates)}
-          className="w-4 h-4 transition duration-150 ease-in-out text-secondary form-checkbox"
+          checked={resetItems}
+          onChange={handleReset}
+          className="w-4 h-4 transition duration-150 ease-in-out cursor-pointer text-secondary form-checkbox"
         />
-        <label htmlFor="tous-dates" className="block ml-2 text-sm leading-5">
+        <label
+          htmlFor="allDates"
+          onClick={handleReset}
+          className="block ml-2 text-sm leading-5 cursor-pointer"
+        >
           Toutes les dates
         </label>
       </div>
