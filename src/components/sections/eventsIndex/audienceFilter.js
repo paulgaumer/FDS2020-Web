@@ -104,8 +104,12 @@ const AudienceFilter = ({ setFilter }) => {
   };
 
   useEffect(() => {
-    const text = selectedAudience <= 3 ? 'Tout age' : `${selectedAudience} ans`;
-    setLabel(text);
+    if (selectedAudience <= 3) {
+      setLabel('Tout age');
+      setAllAudiences(true);
+    } else {
+      setLabel(`${selectedAudience} ans`);
+    }
   }, [selectedAudience]);
 
   useEffect(() => {
@@ -180,7 +184,7 @@ const AudienceFilter = ({ setFilter }) => {
                 onChange={(e) => handleSelect(e)}
                 className="cursor-pointer"
               />
-              <label className="text-base leading-5">{label}</label>
+              <label className="text-sm leading-5">{label}</label>
             </InputContainer>
           </AccordionItemPanel>
         </AccordionItem>
