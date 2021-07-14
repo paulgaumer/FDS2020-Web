@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
@@ -9,6 +9,7 @@ import {
   GlobalDispatchContext,
   GlobalStateContext,
 } from '../../context/global-context-provider';
+import useClickOutside from '../../hooks/useClickOutside';
 
 const CovidButton = styled.span`
   background-color: rgba(42, 57, 81, 0.9);
@@ -28,15 +29,28 @@ const Header = ({ isVisible = true, isHomepage = false }) => {
   // Register to global state if the mobile menu is open or not, to stop hidding the navbar if necessary (=> scrollNavHook component)
   useEffect(() => {
     isMobileMenuOpen
-      ? dispatch({ type: 'mobileMenuOpen' })
-      : dispatch({ type: 'mobileMenuClosed' });
+      ? dispatch({
+          type: 'mobileMenuOpen',
+        })
+      : dispatch({
+          type: 'mobileMenuClosed',
+        });
   }, [isMobileMenuOpen]);
+
+  // Create a ref that we add to the element for which we want to detect outside clicks
+  const depMenuRef = useRef();
+  // State for our modal
+  // const [isDepMenuOpen, setDepMenuOpen] = useState(false);
+  // Call hook passing in the ref and a function to call on outside click
+  useClickOutside(depMenuRef, () => setIsDepartmentActive(false));
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.header
-          initial={{ opacity: isHomepage ? 0 : 1 }}
+          initial={{
+            opacity: isHomepage ? 0 : 1,
+          }}
           animate={{
             opacity: 1,
             transition: {
@@ -132,13 +146,16 @@ const Header = ({ isVisible = true, isHomepage = false }) => {
                       leaveFrom="opacity-100 translate-y-0"
                       leaveTo="opacity-0 translate-y-1"
                     >
-                      <div className="absolute z-50 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0">
+                      <div
+                        ref={depMenuRef}
+                        className="absolute z-50 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0"
+                      >
                         <div className="rounded-lg shadow-lg">
                           <div className="overflow-hidden rounded-lg shadow-xs">
                             <div className="relative z-20 grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
                               <Link
                                 to="/loire-atlantique"
-                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
+                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-100"
                               >
                                 <p className="text-base font-medium leading-6 text-gray-900">
                                   Loire Atlantique
@@ -146,7 +163,7 @@ const Header = ({ isVisible = true, isHomepage = false }) => {
                               </Link>
                               <Link
                                 to="/maine-et-loire"
-                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
+                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-100"
                               >
                                 <p className="text-base font-medium leading-6 text-gray-900">
                                   Maine et Loire
@@ -154,7 +171,7 @@ const Header = ({ isVisible = true, isHomepage = false }) => {
                               </Link>
                               <Link
                                 to="/mayenne"
-                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
+                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-100"
                               >
                                 <p className="text-base font-medium leading-6 text-gray-900">
                                   Mayenne
@@ -162,7 +179,7 @@ const Header = ({ isVisible = true, isHomepage = false }) => {
                               </Link>
                               <Link
                                 to="/sarthe"
-                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
+                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-100"
                               >
                                 <p className="text-base font-medium leading-6 text-gray-900">
                                   Sarthe
@@ -170,7 +187,7 @@ const Header = ({ isVisible = true, isHomepage = false }) => {
                               </Link>
                               <Link
                                 to="/vendee"
-                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
+                                className="block p-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-md hover:bg-gray-100"
                               >
                                 <p className="text-base font-medium leading-6 text-gray-900">
                                   Vendée
