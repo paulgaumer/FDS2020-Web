@@ -12,7 +12,18 @@ import OnlineEventCard from '../components/sections/multimediaIndex/onlineEventC
 import { sortEventsByDate } from '../utils/processDate';
 
 const EventGrid = styled.div`
-  grid-auto-rows: minmax(min-content, max-content);
+  column-count: 1;
+  column-gap: 1em;
+
+  .eventCardContainer {
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    column-count: 2;
+  }
 `;
 
 const Multimedia = ({ data }) => {
@@ -37,12 +48,14 @@ const Multimedia = ({ data }) => {
           )}
           <EventGrid
             data-name="events"
-            className="flex flex-col space-y-6 md:space-y-0 md:grid-cols-1 md:grid md:gap-10 lg:grid-cols-2"
+            // className="flex flex-col space-y-6 md:space-y-0 md:grid-cols-1 md:grid md:gap-10 lg:grid-cols-2"
+            className=""
           >
             {events.length > 0 &&
               events.map((event) => {
                 return (
-                  <div className="col-span-1" key={event.id}>
+                  // <div className="col-span-1" key={event.id}>
+                  <div className="eventCardContainer" key={event.id}>
                     <OnlineEventCard event={event} />
                   </div>
                 );
