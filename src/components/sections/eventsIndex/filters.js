@@ -11,12 +11,13 @@ import {
 import CheckboxFilter from './checkboxFilter';
 import SelectDepartmentFilter from './selectDepartmentFilter';
 import DateFilter from './dateFilter';
+import AudienceFilter from './audienceFilter';
 import FilterToggles from './filterToggles';
 
 const EventsFilters = ({
   setThemeFilters,
   setFormatFilters,
-  setAudienceFilters,
+  setAudienceFilter,
   setDatesFilter,
   setDepartmentFilter,
   scolaires,
@@ -106,7 +107,7 @@ const EventsFilters = ({
 
   const [selectedFormats, setSelectedFormats] = useState([]);
   const [selectedThemes, setSelectedThemes] = useState([]);
-  const [selectedAudiences, setSelectedAudiences] = useState([]);
+  const [selectedAudience, setSelectedAudience] = useState(0);
   const [selectedDates, setSelectedDates] = useState({
     startDate: new Date('2020-10-02T00:00:00.000Z'),
     endDate: new Date('2020-10-12T00:00:00.000Z'),
@@ -118,9 +119,9 @@ const EventsFilters = ({
   useEffect(() => {
     setFormatFilters(selectedFormats);
     setThemeFilters(selectedThemes);
-    setAudienceFilters(selectedAudiences);
+    setAudienceFilter(selectedAudience);
     setDatesFilter(selectedDates);
-  }, [selectedFormats, selectedThemes, selectedDates, selectedAudiences]);
+  }, [selectedFormats, selectedThemes, selectedDates, selectedAudience]);
 
   const startDate =
     data.firstDate.edges.length > 0
@@ -342,14 +343,10 @@ const EventsFilters = ({
           <div className="overflow-hidden text-gray-500 bg-white rounded-lg">
             <div className="px-4 py-5 sm:p-6">
               <h4 className="pb-6 font-bold text-gray-700 uppercase">
-                Quel Public ?
+                A partir de
               </h4>
               <div data-name="audienceFilter">
-                <CheckboxFilter
-                  list={data.scolairesAudience.edges}
-                  getValues={setSelectedAudiences}
-                  topic="audience"
-                />
+                <AudienceFilter setFilter={setSelectedAudience} />
               </div>
             </div>
           </div>
@@ -379,19 +376,14 @@ const EventsFilters = ({
             </div>
           </div>
         </div>
-
         {!scolaires && (
           <div className="overflow-hidden text-gray-500 bg-white rounded-lg">
             <div className="px-4 py-5 sm:p-6">
               <h4 className="pb-6 font-bold text-gray-700 uppercase">
-                Quel Public ?
+                A partir de
               </h4>
               <div data-name="audienceFilter">
-                <CheckboxFilter
-                  list={data.regularAudience.edges}
-                  getValues={setSelectedAudiences}
-                  topic="audience"
-                />
+                <AudienceFilter setFilter={setSelectedAudience} />
               </div>
             </div>
           </div>

@@ -20,6 +20,7 @@ const EventShow = ({ data }) => {
       <HeroSection event={event} scolaires={scolaires} />
       {event.village && <VillageLinkSection event={event} />}
       <DescriptionSection
+        audienceCustom={event.audienceCustom}
         description={event._rawDescription}
         scolaires={scolaires}
       />
@@ -72,6 +73,7 @@ export const query = graphql`
         id
         name
       }
+      audienceCustom
       featured
       eventCanceled
       village {

@@ -212,10 +212,7 @@ const HeroSection = ({ event, scolaires }) => {
                   <IoIosPeople />
                 </span>
 
-                <span>
-                  {audience[0].name}
-                  {audience.length > 1 && ' et plus'}
-                </span>
+                <span>Dès {audience.name}</span>
               </div>
             </div>
           </div>

@@ -25,7 +25,7 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
   const [selectedEvents, setSelectedEvents] = useState(allEvents);
   const [themeFilters, setThemeFilters] = useState([]);
   const [formatFilters, setFormatFilters] = useState([]);
-  const [audienceFilters, setAudienceFilters] = useState([]);
+  const [audienceFilter, setAudienceFilter] = useState(0);
   const [departmentFilter, setDepartmentFilter] = useState('all');
   const [datesFilter, setDatesFilter] = useState({
     startDate: new Date('2020-10-02T00:00:00.000Z'),
@@ -35,7 +35,7 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
   const [allFilters, setAllFilters] = useState({
     themes: themeFilters,
     formats: formatFilters,
-    audiences: audienceFilters,
+    audiences: audienceFilter,
     dates: datesFilter,
     department: departmentFilter,
   });
@@ -51,14 +51,14 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
     setAllFilters({
       themes: themeFilters,
       formats: formatFilters,
-      audiences: audienceFilters,
+      audiences: audienceFilter,
       dates: datesFilter,
       department: departmentFilter,
     });
   }, [
     themeFilters,
     formatFilters,
-    audienceFilters,
+    audienceFilter,
     datesFilter,
     departmentFilter,
   ]);
@@ -148,7 +148,7 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
           <Filters
             setThemeFilters={setThemeFilters}
             setFormatFilters={setFormatFilters}
-            setAudienceFilters={setAudienceFilters}
+            setAudienceFilter={setAudienceFilter}
             setDatesFilter={setDatesFilter}
             setDepartmentFilter={setDepartmentFilter}
             scolaires={scolaires}
