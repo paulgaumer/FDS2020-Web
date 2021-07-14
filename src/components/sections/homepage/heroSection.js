@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Countdown from 'react-countdown';
@@ -11,6 +11,7 @@ import LogoFdsDefault from '../../../images/logo-fds-rouge-white.svg';
 import logoPdl from '../../../images/logo-pdl-white.svg';
 import logoMinister from '../../../images/hero-pastille-minister.svg';
 import { GlobalStateContext } from '../../../context/global-context-provider';
+import useClickOutside from '../../../hooks/useClickOutside';
 
 const ContentCenter = styled.div``;
 
@@ -72,6 +73,10 @@ const HeroSection = ({
     }
   };
   // **** Settings for Timer End ****
+
+  // handle department menu click
+  const depMenuRef = useRef();
+  useClickOutside(depMenuRef, () => setIsDepartmentActive(false));
 
   return (
     <SectionWrapper backgroundColor="bg-teal-500 h-screen relative flex flex-col">
@@ -161,13 +166,16 @@ const HeroSection = ({
                       leaveFrom="opacity-100 translate-y-0"
                       leaveTo="opacity-0 translate-y-1"
                     >
-                      <div className="absolute z-50 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0">
+                      <div
+                        ref={depMenuRef}
+                        className="absolute z-50 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0"
+                      >
                         <div className="rounded-lg shadow-lg">
                           <div className="overflow-hidden rounded-lg shadow-xs">
                             <div className="relative z-20 flex-col px-5 pt-2 pb-6 text-center bg-white">
                               <Link
                                 to="/loire-atlantique"
-                                className="block py-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-50"
+                                className="block py-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-100"
                               >
                                 <p className="text-lg font-medium leading-6 text-gray-900">
                                   Loire Atlantique
@@ -175,7 +183,7 @@ const HeroSection = ({
                               </Link>
                               <Link
                                 to="/maine-et-loire"
-                                className="block py-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-50"
+                                className="block py-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-100"
                               >
                                 <p className="text-lg font-medium leading-6 text-gray-900">
                                   Maine et Loire
@@ -183,7 +191,7 @@ const HeroSection = ({
                               </Link>
                               <Link
                                 to="/mayenne"
-                                className="block py-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-50"
+                                className="block py-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-100"
                               >
                                 <p className="text-lg font-medium leading-6 text-gray-900">
                                   Mayenne
@@ -191,7 +199,7 @@ const HeroSection = ({
                               </Link>
                               <Link
                                 to="/sarthe"
-                                className="block py-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-50"
+                                className="block py-4 transition duration-150 ease-in-out border-b border-gray-200 hover:bg-gray-100"
                               >
                                 <p className="text-lg font-medium leading-6 text-gray-900">
                                   Sarthe
@@ -199,7 +207,7 @@ const HeroSection = ({
                               </Link>
                               <Link
                                 to="/vendee"
-                                className="block pt-4 pb-6 transition duration-150 ease-in-out hover:bg-gray-50"
+                                className="block pt-4 pb-6 transition duration-150 ease-in-out hover:bg-gray-100"
                               >
                                 <p className="text-lg font-medium leading-6 text-gray-900">
                                   Vendée

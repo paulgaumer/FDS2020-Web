@@ -11,7 +11,7 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 
-const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
+const HeaderMobileContent = ({ setIsMobileMenuOpen, passRef }) => {
   const showCovid = useContext(GlobalStateContext).showCovid;
   return (
     <>
@@ -25,7 +25,7 @@ const HeaderMobileContent = ({ setIsMobileMenuOpen }) => {
         <div
           className={`absolute top-0 inset-x-0 p-2 transition transform origin-top-right lg:hidden`}
         >
-          <div className="rounded-lg shadow-lg">
+          <div className="rounded-lg shadow-lg" ref={passRef}>
             <div className="bg-white divide-y-2 rounded-lg shadow-xs divide-gray-50">
               <div className="px-5 pt-5 pb-6 space-y-6">
                 <div className="flex items-center justify-between pb-3 border-b border-gray-200">
