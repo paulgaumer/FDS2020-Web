@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
 import PortableText from '@sanity/block-content-to-react';
 import { serializers } from '../utils/portableTextSerializers';
 import SEO from '../components/layout/seo';
@@ -10,21 +9,7 @@ import SectionContainer from '../components/layout/sectionContainer';
 import SectionTitle from '../components/global/sectionTitle';
 import OnlineEventCard from '../components/sections/multimediaIndex/onlineEventCard';
 import { sortEventsByDate } from '../utils/processDate';
-
-const EventGrid = styled.div`
-  column-count: 1;
-  column-gap: 1em;
-
-  .eventCardContainer {
-    display: inline-block;
-    margin: 0 0 1em;
-    width: 100%;
-  }
-
-  @media (min-width: 768px) {
-    column-count: 2;
-  }
-`;
+import MasonryGrid from '../components/global/masonryGrid';
 
 const Multimedia = ({ data }) => {
   const rawEvents = data.allSanityOnlineEvent.edges.map(({ node }) => node);
@@ -46,16 +31,11 @@ const Multimedia = ({ data }) => {
               />
             </div>
           )}
-          <EventGrid
-            data-name="events"
-            // className="flex flex-col space-y-6 md:space-y-0 md:grid-cols-1 md:grid md:gap-10 lg:grid-cols-2"
-            className=""
-          >
+          <MasonryGrid data-name="events">
             {events.length > 0 &&
               events.map((event) => {
                 return (
-                  // <div className="col-span-1" key={event.id}>
-                  <div className="eventCardContainer" key={event.id}>
+                  <div className="masonry-grid_item" key={event.id}>
                     <OnlineEventCard event={event} />
                   </div>
                 );
@@ -68,7 +48,7 @@ const Multimedia = ({ data }) => {
                 <p>Aucun événement n'a pour le moment été mis en ligne .</p>
               </div>
             )}
-          </EventGrid>
+          </MasonryGrid>
         </SectionContainer>
       </SectionWrapper>
     </Layout>
