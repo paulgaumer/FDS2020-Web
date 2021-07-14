@@ -10,14 +10,13 @@ import { formatDepartmentName } from '../../../utils/formatDepartmentName';
 import { FaSearch } from 'react-icons/fa';
 import Pagination from '../../global/pager';
 import URLSearchParams from '@ungap/url-search-params';
+import MasonryGrid from '../../global/masonryGrid';
 
 const OuterGrid = styled.div`
   grid-template-columns: minmax(150px, 25%) 1fr;
 `;
 
-const InnerEventGrid = styled.div`
-  grid-auto-rows: minmax(min-content, max-content);
-`;
+const InnerEventGrid = styled.div``;
 
 const FilteringSection = ({ department, events, scolaires = false }) => {
   // Initialize states
@@ -154,20 +153,20 @@ const FilteringSection = ({ department, events, scolaires = false }) => {
             scolaires={scolaires}
           />
         </div>
-        <InnerEventGrid
-          data-name="events"
-          className="flex flex-col space-y-6 md:ml-10 lg:ml-0 lg:space-y-0 lg:grid lg:gap-10 lg:grid-cols-2"
-        >
-          {selectedEvents.length > 0 &&
-            displayedEvents.map((event, i) => {
-              return (
-                <div className="col-span-1" key={event.id}>
-                  <EventCard event={event} />
-                </div>
-              );
-            })}
+        <InnerEventGrid>
+          {selectedEvents.length > 0 && (
+            <MasonryGrid data-name="events" className="">
+              {displayedEvents.map((event, i) => {
+                return (
+                  <div className="masonry-grid_item" key={event.id}>
+                    <EventCard event={event} />
+                  </div>
+                );
+              })}
+            </MasonryGrid>
+          )}
           {selectedEvents.length === 0 && (
-            <div className="flex flex-col items-center justify-center col-span-2 p-10 space-y-6 text-xl text-center text-gray-500 border border-dotted rounded-md shadow-inner">
+            <div className="flex flex-col items-center justify-center col-span-2 p-10 mb-6 space-y-6 text-xl text-center text-gray-500 border border-dotted rounded-md shadow-inner md:mb-10">
               <p className="text-3xl">
                 <FaSearch />
               </p>
