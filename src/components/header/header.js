@@ -37,11 +37,8 @@ const Header = ({ isVisible = true, isHomepage = false }) => {
         });
   }, [isMobileMenuOpen]);
 
-  // Create a ref that we add to the element for which we want to detect outside clicks
+  // handle department menu click
   const depMenuRef = useRef();
-  // State for our modal
-  // const [isDepMenuOpen, setDepMenuOpen] = useState(false);
-  // Call hook passing in the ref and a function to call on outside click
   useClickOutside(depMenuRef, () => setIsDepartmentActive(false));
 
   return (
