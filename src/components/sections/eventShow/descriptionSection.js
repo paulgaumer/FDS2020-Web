@@ -25,17 +25,21 @@ const DescriptionSection = ({
   showCovidButton = true,
 }) => {
   const showCovid = useContext(GlobalStateContext).showCovid;
+  const displayAudienceCustom = `
+  ${audienceCustom?.from || ''}${audienceCustom?.to ? '-' : ''}${
+    audienceCustom?.to || ''
+  } ans`;
   return (
     <SectionWrapper>
       <SectionContainer customClasses="pb-12">
         <InfoCard title="description" customClasses="" scolaires={scolaires}>
           <div className="text-base leading-relaxed sm:text-lg">
-            {audienceCustom && (
+            {audienceCustom?.from && (
               <p className="flex items-center pb-5 space-x-2 font-bold">
                 <span className="text-sm">
                   <FaInfoCircle />
                 </span>
-                <span>Réservé aux {audienceCustom}</span>
+                <span>Réservé aux {displayAudienceCustom}</span>
               </p>
             )}
             <PortableText blocks={description} serializers={serializers} />

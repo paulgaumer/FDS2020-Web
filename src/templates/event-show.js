@@ -73,7 +73,10 @@ export const query = graphql`
         id
         name
       }
-      audienceCustom
+      audienceCustom {
+        from
+        to
+      }
       featured
       eventCanceled
       village {
