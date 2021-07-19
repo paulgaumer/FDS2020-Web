@@ -99,6 +99,7 @@ const HeroSection = ({ event, scolaires }) => {
   const {
     title,
     audience,
+    audienceCustom,
     theme,
     format,
     bookingRequired,
@@ -123,6 +124,15 @@ const HeroSection = ({ event, scolaires }) => {
       return 'bg-primary';
     }
   };
+
+  const [displayAudience, setDisplayAudience] = useState(null);
+  useEffect(() => {
+    if (audienceCustom) {
+      setDisplayAudience(audienceCustom);
+    } else {
+      setDisplayAudience(audience?.name);
+    }
+  }, []);
 
   return (
     <SectionWrapper>
@@ -211,8 +221,12 @@ const HeroSection = ({ event, scolaires }) => {
                 >
                   <IoIosPeople />
                 </span>
-
-                <span>Dès {audience.name}</span>
+                {displayAudience && (
+                  <span>
+                    {!audienceCustom && 'Dès'} {displayAudience}
+                  </span>
+                )}
+                {!displayAudience && <span>Tout Public</span>}
               </div>
             </div>
           </div>
