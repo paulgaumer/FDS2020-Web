@@ -24,7 +24,7 @@ export const multiFilter = (arr, filters, scolaires) => {
   };
 
   const checkAudience = (item, filtersList) => {
-    const itemAge = parseInt(item.audience.name.split(' ans')[0]);
+    const itemAge = parseInt(item?.audience?.name.split(' ans')[0]) || 0;
     const selectedAudience = filtersList.audiences;
     if (selectedAudience <= 3) {
       return true;
