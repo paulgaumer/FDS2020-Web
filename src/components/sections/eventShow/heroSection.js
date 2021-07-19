@@ -128,7 +128,10 @@ const HeroSection = ({ event, scolaires }) => {
   const [displayAudience, setDisplayAudience] = useState(null);
   useEffect(() => {
     if (audienceCustom) {
-      setDisplayAudience(audienceCustom);
+      const value = `${audienceCustom?.from || ''}${
+        audienceCustom?.to ? '-' : ''
+      }${audienceCustom?.to || ''} ans`;
+      setDisplayAudience(value);
     } else {
       setDisplayAudience(audience?.name);
     }
