@@ -9,6 +9,9 @@ exports.createPages = ({ graphql, actions }) => {
     `src/templates/onlineEvent-show.js`
   );
   const villageShowTemplate = path.resolve(`src/templates/village-show.js`);
+  const quiz2021QuestionTemplate = path.resolve(
+    `src/templates/quiz2021-question.js`
+  );
   return graphql(
     `
       {
@@ -60,6 +63,9 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+        sanityQuiz2021 {
+          _rawQuestions
+        }
       }
     `,
     { limit: 1000 }
@@ -110,6 +116,18 @@ exports.createPages = ({ graphql, actions }) => {
         path: `/${department}/${edge.node.slug.current}`,
         component: villageShowTemplate,
         context: { villageId: edge.node.id },
+      });
+    });
+
+    // CREATE INDIVIDUAL QUIZ 2021 QUESTION PAGES
+    result.data.sanityQuiz2021._rawQuestions.forEach((question, i) => {
+      createPage({
+        path: `/quiz-21/${i + 1}`,
+        component: quiz2021QuestionTemplate,
+        context: {
+          questionKey: question._key,
+          questionNumber: i + 1,
+        },
       });
     });
   });
