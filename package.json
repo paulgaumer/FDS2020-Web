@@ -7,6 +7,7 @@
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "^1.150.1",
+    "@sanity/image-url": "^0.140.22",
     "@tailwindcss/typography": "^0.2.0",
     "@tailwindcss/ui": "^0.4.0",
     "@ungap/url-search-params": "^0.2.2",

@@ -11,17 +11,20 @@ const Quiz2021Question = ({ pageContext, data }) => {
   const { sectionTitle, _rawQuestions } = data.sanityQuiz2021;
   const { questionKey, questionNumber } = pageContext;
   const question = _rawQuestions.find((q) => q._key === questionKey);
+  const totalQuestion = _rawQuestions.length;
+
   return (
     <Layout>
       <SEO title={`Quiz 2021`} />
       <SectionWrapper>
-        <SectionContainer customClasses="pt-16 pb-20 md:py-20 lg:pt-32 lg:pb-20">
+        <SectionContainer customClasses="pt-16 pb-20 md:py-20 lg:pt-32 lg:pb-40">
           <SectionTitle text={sectionTitle} />
           {!question && <p>Question introuvable</p>}
           {question && (
             <QuestionSection
               question={question}
               questionNumber={questionNumber}
+              totalQuestion={totalQuestion}
             />
           )}
         </SectionContainer>

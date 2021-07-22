@@ -1,20 +1,17 @@
 import React from 'react';
 import PortableText from '@sanity/block-content-to-react';
 import { serializers } from '../../../utils/portableTextSerializers';
+import Title from './title';
+import InputType from './inputType';
 
-const QuestionSection = ({ question, questionNumber }) => {
-  const { title, picture } = question;
+const QuestionSection = ({ question, questionNumber, totalQuestion }) => {
+  const { title, _type } = question;
+  const props = { question, questionNumber, totalQuestion };
+
   return (
-    <div>
-      <h3 className="inline-flex items-center space-x-1 text-xl font-bold tracking-tight text-gray-700 uppercase md:text-xl">
-        <span>{questionNumber}</span>
-        <span>- {question.title}</span>
-      </h3>
-      {/* {picture && <CustomGatsbyImage image={image} customClasses="h-full" />} */}
-      {/* <img
-        src={`https://cdn.sanity.io/images/xpg3ofue/production/085f24df5c8d0363314b7b932fd6b56e1412e79e.png`}
-        alt="sda"
-      /> */}
+    <div className="flex flex-col items-center">
+      <Title title={title} questionNumber={questionNumber} />
+      {_type === 'inputTypeQuestion' && <InputType {...props} />}
     </div>
   );
 };
