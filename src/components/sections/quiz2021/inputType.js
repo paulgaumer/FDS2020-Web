@@ -6,7 +6,6 @@ import urlFor from '../../../utils/sanityImageUrl';
 
 const QuestionSection = ({ question, questionNumber, totalQuestion }) => {
   const { picture } = question;
-  const image = urlFor(picture[0]);
 
   const {
     register,
