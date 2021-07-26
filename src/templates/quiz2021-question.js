@@ -11,7 +11,7 @@ const Quiz2021Question = ({ pageContext, data }) => {
   const { sectionTitle, _rawQuestions } = data.sanityQuiz2021;
   const { questionKey, questionNumber } = pageContext;
   const question = _rawQuestions.find((q) => q._key === questionKey);
-  const totalQuestion = _rawQuestions.length;
+  const totalQuestions = _rawQuestions.length;
 
   return (
     <Layout>
@@ -24,7 +24,7 @@ const Quiz2021Question = ({ pageContext, data }) => {
             <QuestionSection
               question={question}
               questionNumber={questionNumber}
-              totalQuestion={totalQuestion}
+              totalQuestions={totalQuestions}
             />
           )}
         </SectionContainer>

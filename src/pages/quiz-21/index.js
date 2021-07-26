@@ -20,7 +20,7 @@ const Quiz21Welcome = ({ data }) => {
           <div className="flex flex-col items-center">
             <PortableText blocks={_rawWelcomeText} serializers={serializers} />
             <a
-              href=""
+              href="/quiz-21/1"
               className="px-4 py-2 mt-6 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out transform border border-transparent rounded-md cursor-pointer bg-primary hover:scale-105"
             >
               {startButton}
