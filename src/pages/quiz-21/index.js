@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { Link } from 'gatsby';
 import SEO from '../../components/layout/seo';
 import Layout from '../../components/layout/layout';
 import SectionWrapper from '../../components/layout/sectionWrapper';
@@ -19,12 +20,12 @@ const Quiz21Welcome = ({ data }) => {
           <SectionTitle text={sectionTitle} />
           <div className="flex flex-col items-center">
             <PortableText blocks={_rawWelcomeText} serializers={serializers} />
-            <a
-              href="/quiz-21/1"
+            <Link
+              to="/quiz-21/1"
               className="px-4 py-2 mt-6 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out transform border border-transparent rounded-md cursor-pointer bg-primary hover:scale-105"
             >
               {startButton}
-            </a>
+            </Link>
           </div>
         </SectionContainer>
       </SectionWrapper>
