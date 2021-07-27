@@ -38,12 +38,56 @@ const Answer = ({ isCorrect, correctAnswer, answerDetails, nextLink }) => {
   );
 };
 
+const OptionsWithImages = ({
+  options,
+  selectedAnswer,
+  isSubmitted,
+  isCorrect,
+  handleSelect,
+}) => {
+  const selectedBorder = `border-2 rounded-md ${
+    isSubmitted && !isCorrect ? 'border-red-500' : 'border-primary'
+  }`;
+
+  const handleClick = (op) => {
+    handleSelect(op);
+  };
+
+  return (
+    <div className="grid items-center justify-center w-full grid-cols-3 gap-4 mt-10">
+      {options.map((op) => {
+        const img = urlFor(op.picture);
+        if (img) {
+          return (
+            <div
+              key={op._key}
+              onClick={() => handleClick(op)}
+              className={`flex flex-col items-center justify-center py-4 ${
+                selectedAnswer?.title === op.title ? selectedBorder : ''
+              }`}
+            >
+              <img src={img} alt={op.title} className="w-3/4 rounded-md" />
+              <p className="mt-6 text-lg font-medium text-gray-700">
+                {op.title}
+              </p>
+            </div>
+          );
+        }
+      })}
+    </div>
+  );
+};
+
 const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
   const { answerDetails, options } = question;
-  const correctAnswer = options.find((o) => o.answer === true).title;
+  const correctAnswer = options.find((o) => o.answer === true)?.title;
+  const optionsWithImages = options.every((o) => o.picture);
+  console.log('IMAGES', optionsWithImages);
+
   const [selectedAnswer, setSelectedAnser] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
   const answerCompProps = {
     isCorrect,
     correctAnswer,
@@ -68,36 +112,17 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
     setIsSubmitted(true);
   };
 
-  const selectedBorder = `border-2 rounded-md ${
-    isSubmitted && !isCorrect ? 'border-red-500' : 'border-primary'
-  }`;
-
   return (
     <div className="flex flex-col items-center mt-8">
-      <div className="grid items-center justify-center w-full grid-cols-3 gap-4 mt-10">
-        {options &&
-          options.map((op) => {
-            const img = urlFor(op.picture);
-            if (img) {
-              return (
-                <div
-                  key={op._key}
-                  onClick={() => handleSelect(op)}
-                  className={`flex flex-col items-center justify-center py-4 ${
-                    selectedAnswer?.title === op.title ? selectedBorder : ''
-                  }`}
-                >
-                  <img src={img} alt="sda" className="w-3/4 rounded-md" />
-                  <p className="mt-6 text-lg font-medium text-gray-700">
-                    {op.title}
-                  </p>
-                </div>
-              );
-            } else {
-              return null;
-            }
-          })}
-      </div>
+      {optionsWithImages && (
+        <OptionsWithImages
+          options={options}
+          selectedAnswer={selectedAnswer}
+          isSubmitted={isSubmitted}
+          isCorrect={isCorrect}
+          handleSelect={handleSelect}
+        />
+      )}
 
       {isCorrect === null && (
         <button
