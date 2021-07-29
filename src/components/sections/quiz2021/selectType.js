@@ -7,7 +7,7 @@ import urlFor from '../../../utils/sanityImageUrl';
 
 const Answer = ({ isCorrect, correctAnswer, answerDetails, nextLink }) => {
   return (
-    <>
+    <div className="flex flex-col items-center w-3/4 ">
       <div
         className="flex flex-col items-center w-3/4 p-6 rounded-md mt-14"
         style={{ backgroundColor: isCorrect ? '#edfff7' : '#fdf1f1' }}
@@ -30,12 +30,12 @@ const Answer = ({ isCorrect, correctAnswer, answerDetails, nextLink }) => {
         )}
       </div>
       <Link
-        to={nextLink}
+        to={nextLink.url}
         className="inline-flex items-center justify-center px-4 py-2 mt-6 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-md cursor-pointer bg-primary"
       >
-        Prochaine question
+        {nextLink.text}
       </Link>
-    </>
+    </div>
   );
 };
 
@@ -47,9 +47,8 @@ const OptionsWithImages = ({
   handleSelect,
   handleSubmit,
 }) => {
-  const selectedBorder = `border-2 rounded-md ${
-    isSubmitted && !isCorrect ? 'border-red-500' : 'border-primary'
-  }`;
+  const selectedBorder =
+    isSubmitted && !isCorrect ? 'border-red-500' : 'border-primary';
 
   const handleClick = (op) => {
     handleSelect(op);
@@ -65,8 +64,10 @@ const OptionsWithImages = ({
               <div
                 key={op._key}
                 onClick={() => handleClick(op)}
-                className={`flex flex-col items-center justify-center py-4 ${
-                  selectedAnswer?.title === op.title ? selectedBorder : ''
+                className={`flex flex-col items-center justify-center py-4 border-2 rounded-md ${
+                  selectedAnswer?.title === op.title
+                    ? selectedBorder
+                    : 'border-white'
                 }`}
               >
                 <img src={img} alt={op.title} className="w-3/4 rounded-md" />
@@ -77,7 +78,7 @@ const OptionsWithImages = ({
                   </p>
                 )}
                 {!op.description && (
-                  <p className="mt-6 font-medium text-center text-gray-700">
+                  <p className="px-4 mt-6 font-medium text-center text-gray-700">
                     {op.title}
                   </p>
                 )}
@@ -98,26 +99,46 @@ const OptionsWithImages = ({
   );
 };
 
-const OptionsForm = ({ options, isCorrect, isSubmitted, handleFormSubmit }) => {
+const OptionsForm = ({
+  options,
+  isCorrect,
+  isSubmitted,
+  handleFormSubmit,
+  hasDescription,
+}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
     const cleanAnswer = data.answer === 'true' ? true : false;
     handleFormSubmit(cleanAnswer);
   };
 
+  const optionsEven = options.length % 2 === 0;
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col items-center text-gray-800"
+      className={`flex flex-col w-full items-center text-gray-800 ${
+        hasDescription ? '' : 'mt-10'
+      }`}
     >
-      <div className="flex flex-wrap items-center justify-center w-full space-x-12">
+      <div
+        className={`flex flex-wrap items-start justify-center w-3/4 ${
+          optionsEven ? 'w-3/4' : 'w-full'
+        }`}
+      >
         {options.map((op) => {
           return (
-            <div key={op._key} className="flex flex-col items-center">
+            <div
+              key={op._key}
+              className={`flex flex-col items-center ${
+                optionsEven ? 'w-1/2 mb-12' : 'w-2/6'
+              }`}
+            >
               <input
                 {...register('answer', { required: true })}
                 id={op._key}
@@ -125,13 +146,19 @@ const OptionsForm = ({ options, isCorrect, isSubmitted, handleFormSubmit }) => {
                 value={op?.answer}
                 disabled={isSubmitted}
               />
-              <label htmlFor={op._key} className="mt-2 text-center">
+              <label
+                htmlFor={op._key}
+                className="px-6 mt-2 text-lg font-bold text-center"
+              >
                 {op.title}
               </label>
             </div>
           );
         })}
       </div>
+      {errors.answer && (
+        <p className="pl-2 mt-1 text-sm text-center text-red-600"> * requis</p>
+      )}
       {isCorrect === null && (
         <input
           value="Valider"
@@ -143,7 +170,12 @@ const OptionsForm = ({ options, isCorrect, isSubmitted, handleFormSubmit }) => {
   );
 };
 
-const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
+const QuestionBody = ({
+  question,
+  questionNumber,
+  totalQuestions,
+  hasDescription,
+}) => {
   const { answerDetails, options } = question;
   const correctAnswer = options.find((o) => o.answer === true)?.title;
   const optionsWithImages = options.every((o) => o.picture);
@@ -161,9 +193,12 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
   const nextLink = () => {
     const base = '/quiz-21/';
     if (questionNumber + 1 === totalQuestions) {
-      return base + 'participer';
+      return { url: base + 'participer', text: 'Soumettre votre candidature' };
     } else {
-      return base + `${questionNumber + 1}`;
+      return {
+        url: base + `${questionNumber + 1}`,
+        text: 'Prochaine Question',
+      };
     }
   };
 
@@ -183,7 +218,7 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-8">
+    <div className="flex flex-col items-center w-full mt-8">
       {optionsWithImages && (
         <OptionsWithImages
           options={options}
@@ -199,6 +234,7 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
           options={options}
           isSubmitted={isSubmitted}
           isCorrect={isCorrect}
+          hasDescription={hasDescription}
           handleFormSubmit={handleFormSubmit}
         />
       )}

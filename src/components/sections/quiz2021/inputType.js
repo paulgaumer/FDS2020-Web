@@ -29,10 +29,10 @@ const Answer = ({ hasCorrectAnswer, answer, answerDetails, nextLink }) => {
         )}
       </div>
       <Link
-        to={nextLink}
+        to={nextLink.url}
         className="inline-flex items-center justify-center px-4 py-2 mt-6 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-md cursor-pointer bg-primary"
       >
-        Prochaine question
+        {nextLink.text}
       </Link>
     </>
   );
@@ -50,9 +50,12 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
   const nextLink = () => {
     const base = '/quiz-21/';
     if (questionNumber + 1 === totalQuestions) {
-      return base + 'participer';
+      return { url: base + 'participer', text: 'Soumettre votre candidature' };
     } else {
-      return base + `${questionNumber + 1}`;
+      return {
+        url: base + `${questionNumber + 1}`,
+        text: 'Prochaine Question',
+      };
     }
   };
 

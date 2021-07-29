@@ -7,6 +7,7 @@ import SelectType from './selectType';
 
 const QuestionSection = ({ question, questionNumber, totalQuestions }) => {
   const { title, _type, description } = question;
+  const hasDescription = description ? true : false;
 
   const props = {
     question,
@@ -23,7 +24,9 @@ const QuestionSection = ({ question, questionNumber, totalQuestions }) => {
         </div>
       )}
       {_type === 'inputTypeQuestion' && <InputType {...props} />}
-      {_type === 'selectTypeQuestion' && <SelectType {...props} />}
+      {_type === 'selectTypeQuestion' && (
+        <SelectType {...props} hasDescription={hasDescription} />
+      )}
     </div>
   );
 };
