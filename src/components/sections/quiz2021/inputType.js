@@ -50,7 +50,7 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
   const nextLink = () => {
     const base = '/quiz-21/';
     if (questionNumber + 1 === totalQuestions) {
-      return base + 'submit';
+      return base + 'participer';
     } else {
       return base + `${questionNumber + 1}`;
     }

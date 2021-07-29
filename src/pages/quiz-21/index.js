@@ -18,7 +18,7 @@ const Quiz21Welcome = ({ data }) => {
       <SectionWrapper>
         <SectionContainer customClasses="pt-16 pb-20 md:py-20 lg:pt-32 lg:pb-20">
           <SectionTitle text={sectionTitle} />
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center px-10 py-12 bg-white rounded-lg shadow">
             <PortableText blocks={_rawWelcomeText} serializers={serializers} />
             <Link
               to="/quiz-21/1"
