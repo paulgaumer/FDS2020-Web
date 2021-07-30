@@ -42,7 +42,7 @@ const QuizModal = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   // Record the quiz answers in Airtable
-  const url = `/.netlify/functions/sendQuizToSheet`;
+  const url = `/.netlify/functions/sendWelcomeQuizToAirtable`;
   const sendtoSheet = async () => {
     const res = await fetch(url, {
       method: 'POST',
