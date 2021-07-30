@@ -11,7 +11,7 @@ exports.handler = async (event, context, callback) => {
     const sheet = doc.sheetsByIndex[0];
 
     const data = JSON.parse(event.body);
-    const addedRow = await sheet.addRow(data); //needed
+    await sheet.addRow(data);
 
     return {
       statusCode: 200,
