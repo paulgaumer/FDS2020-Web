@@ -4,6 +4,7 @@ import { serializers } from '../../../utils/portableTextSerializers';
 import Title from './title';
 import InputType from './inputType';
 import SelectType from './selectType';
+import AssociationType from './associationType';
 
 const QuestionSection = ({ question, questionNumber, totalQuestions }) => {
   const { title, _type, description } = question;
@@ -24,6 +25,7 @@ const QuestionSection = ({ question, questionNumber, totalQuestions }) => {
         </div>
       )}
       {_type === 'inputTypeQuestion' && <InputType {...props} />}
+      {_type === 'associationTypeQuestion' && <AssociationType {...props} />}
       {_type === 'selectTypeQuestion' && (
         <SelectType {...props} hasDescription={hasDescription} />
       )}

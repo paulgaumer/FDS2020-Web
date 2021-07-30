@@ -109,7 +109,7 @@ const OptionsForm = ({
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
@@ -140,7 +140,7 @@ const OptionsForm = ({
               }`}
             >
               <input
-                {...register('answer', { required: true })}
+                {...register('answer')}
                 id={op._key}
                 type="radio"
                 value={op?.answer}
@@ -156,9 +156,9 @@ const OptionsForm = ({
           );
         })}
       </div>
-      {errors.answer && (
+      {/* {errors.answer && (
         <p className="pl-2 mt-1 text-sm text-center text-red-600"> * requis</p>
-      )}
+      )} */}
       {isCorrect === null && (
         <input
           value="Valider"
