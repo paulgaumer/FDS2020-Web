@@ -165,7 +165,7 @@ const Quiz21Submit = ({ data }) => {
                 </div>
 
                 <div className="w-full">
-                  <div className="flex flex-col mt-4">
+                  <div className="flex flex-col mt-8">
                     <div className="flex items-start space-x-3">
                       <input
                         id="termsConditions"

@@ -56,7 +56,7 @@ const OptionsWithImages = ({
 
   return (
     <>
-      <div className="grid items-center justify-center w-full grid-cols-3 gap-4 mt-10">
+      <div className="grid items-center justify-center w-full grid-cols-3 gap-4 p-6 mt-10 bg-gray-100 rounded-md">
         {options.map((op) => {
           const img = urlFor(op.picture);
           if (img) {
@@ -67,18 +67,22 @@ const OptionsWithImages = ({
                 className={`flex flex-col items-center justify-center py-4 border-2 rounded-md ${
                   selectedAnswer?.title === op.title
                     ? selectedBorder
-                    : 'border-white'
+                    : 'border-gray-100'
                 }`}
               >
-                <img src={img} alt={op.title} className="w-3/4 rounded-md" />
+                <img
+                  src={img}
+                  alt={op.title}
+                  className="w-3/4 rounded-md cursor-pointer"
+                />
 
                 {op.description && (
-                  <p className="mt-6 font-medium text-center text-gray-700">
+                  <p className="mt-6 font-medium text-center text-gray-700 cursor-pointer">
                     {op.description}
                   </p>
                 )}
                 {!op.description && (
-                  <p className="px-4 mt-6 font-medium text-center text-gray-700">
+                  <p className="px-4 mt-6 font-medium text-center text-gray-700 cursor-pointer">
                     {op.title}
                   </p>
                 )}
@@ -122,8 +126,8 @@ const OptionsForm = ({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className={`flex flex-col w-full items-center text-gray-800 ${
-        hasDescription ? '' : 'mt-10'
+      className={`flex flex-col w-full items-center text-gray-800 bg-gray-100 rounded-md p-6 pt-16 ${
+        hasDescription ? '' : 'mt-4'
       }`}
     >
       <div
@@ -145,10 +149,11 @@ const OptionsForm = ({
                 type="radio"
                 value={op?.answer}
                 disabled={isSubmitted}
+                className="cursor-pointer"
               />
               <label
                 htmlFor={op._key}
-                className="px-6 mt-2 text-lg font-bold text-center"
+                className="px-6 mt-2 text-lg font-bold text-center cursor-pointer"
               >
                 {op.title}
               </label>
