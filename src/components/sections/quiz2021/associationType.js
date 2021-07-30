@@ -66,7 +66,6 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
     answerDetails,
     options,
   };
-  const optionsEven = options.length % 2 === 0;
 
   const nextLink = () => {
     const base = '/quiz-21/';
@@ -89,11 +88,7 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
     setHasCorrectAnswer(correctAnswers === options.length);
   };
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
     checkAnswers(data);
@@ -130,7 +125,7 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
                       {op.title}
                     </label>
                     <select
-                      className="px-4 py-2 text-gray-700 border border-gray-300 rounded-md shadow-sm"
+                      className="px-4 py-2 text-gray-700 border border-gray-300 rounded-md shadow-sm cursor-pointer"
                       {...register(`${op.title}`, { required: true })}
                     >
                       <option value="">- </option>
