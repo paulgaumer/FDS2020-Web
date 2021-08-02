@@ -9,7 +9,7 @@ const Answer = ({ hasCorrectAnswer, answer, answerDetails, nextLink }) => {
   return (
     <>
       <div
-        className="flex flex-col items-center w-3/4 p-6 rounded-md mt-14"
+        className="flex flex-col items-center w-full p-6 mt-8 rounded-md lg:w-3/4"
         style={{ backgroundColor: hasCorrectAnswer ? '#edfff7' : '#fdf1f1' }}
       >
         {hasCorrectAnswer && (
@@ -91,7 +91,7 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
                   key={pic._key}
                   src={img}
                   alt="sda"
-                  className="w-1/2 rounded-md"
+                  className="w-full rounded-md md:w-1/2"
                 />
               );
             } else {
@@ -105,7 +105,7 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
       {hasCorrectAnswer === null && (
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col items-center w-1/2 p-6 space-y-6 bg-gray-100 rounded-md mt-14"
+          className="flex flex-col items-center w-full p-6 space-y-6 bg-gray-100 rounded-md md:w-4/5 lg:w-1/2 mt-14"
         >
           <div className="flex flex-col items-center w-full">
             <label htmlFor="answer" className="mb-4 font-bold text-gray-700">

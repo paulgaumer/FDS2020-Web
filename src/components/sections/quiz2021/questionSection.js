@@ -17,7 +17,7 @@ const QuestionSection = ({ question, questionNumber, totalQuestions }) => {
   };
 
   return (
-    <div className="flex flex-col items-center px-10 py-12 bg-white rounded-lg shadow">
+    <div className="flex flex-col items-center px-6 py-12 bg-white rounded-lg shadow md:px-10">
       <Title title={title} questionNumber={questionNumber} />
       {description && (
         <div className="mt-10 text-gray-800">
