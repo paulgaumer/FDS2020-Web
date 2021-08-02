@@ -17,7 +17,7 @@ const Answer = ({ hasCorrectAnswer, options, answerDetails, nextLink }) => {
   return (
     <>
       <div
-        className="flex flex-col items-center w-3/4 p-6 rounded-md mt-14"
+        className="flex flex-col items-center w-full p-6 mt-6 rounded-md lg:w-3/4 md:mt-8"
         style={{ backgroundColor: hasCorrectAnswer ? '#edfff7' : '#fdf1f1' }}
       >
         {hasCorrectAnswer && (
@@ -96,7 +96,7 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
 
   return (
     <div
-      className={`flex flex-col items-center w-full p-6 rounded-md mt-10 ${
+      className={`flex flex-col items-center w-full lg:p-6 rounded-md mt-10 ${
         hasCorrectAnswer !== null ? '' : 'bg-gray-100'
       }`}
     >
@@ -111,17 +111,17 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
               return (
                 <div
                   key={op._key}
-                  className={`flex justify-center w-full xl:w-1/2 mb-12 space-x-4`}
+                  className={`flex flex-col items-center md:items-start md:flex-row justify-center w-full xl:w-1/2 mb-12 md:space-x-4`}
                 >
                   {img && (
                     <img
                       src={img}
                       alt={img.alt}
-                      className="w-1/2 rounded-md xl:h-48"
+                      className="w-full rounded-md md:w-1/2 xl:h-48"
                     />
                   )}
                   <div className="flex flex-col space-y-3">
-                    <label className="font-bold text-gray-700">
+                    <label className="mt-3 font-bold text-center text-gray-700 md:text-left md:mt-0">
                       {op.title}
                     </label>
                     <select

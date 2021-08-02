@@ -7,9 +7,9 @@ import urlFor from '../../../utils/sanityImageUrl';
 
 const Answer = ({ isCorrect, correctAnswer, answerDetails, nextLink }) => {
   return (
-    <div className="flex flex-col items-center w-3/4 ">
+    <div className="flex flex-col items-center w-full lg:w-3/4 ">
       <div
-        className="flex flex-col items-center w-3/4 p-6 rounded-md mt-14"
+        className="flex flex-col items-center w-full p-6 mt-8 rounded-md lg:w-3/4"
         style={{ backgroundColor: isCorrect ? '#edfff7' : '#fdf1f1' }}
       >
         {isCorrect && (
@@ -24,14 +24,14 @@ const Answer = ({ isCorrect, correctAnswer, answerDetails, nextLink }) => {
           </p>
         )}
         {answerDetails && (
-          <div className="text-gray-800">
+          <div className="w-full overflow-hidden text-gray-800">
             <PortableText blocks={answerDetails} serializers={serializers} />
           </div>
         )}
       </div>
       <Link
         to={nextLink.url}
-        className="inline-flex items-center justify-center px-4 py-2 mt-6 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-md cursor-pointer bg-primary"
+        className="inline-flex items-center justify-center px-4 py-2 mt-6 text-base font-bold leading-6 text-center text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-md cursor-pointer bg-primary"
       >
         {nextLink.text}
       </Link>
@@ -56,7 +56,7 @@ const OptionsWithImages = ({
 
   return (
     <>
-      <div className="grid items-center justify-center w-full grid-cols-3 gap-4 p-6 mt-10 bg-gray-100 rounded-md">
+      <div className="items-center justify-center w-full grid-cols-3 gap-4 p-6 mt-4 bg-gray-100 rounded-md md:grid lg:mt-10">
         {options.map((op) => {
           const img = urlFor(op.picture);
           if (img) {
@@ -126,12 +126,12 @@ const OptionsForm = ({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className={`flex flex-col w-full items-center text-gray-800 bg-gray-100 rounded-md p-6 pt-16 ${
+      className={`flex flex-col w-full items-center text-gray-800 bg-gray-100 rounded-md p-6 pt-10 md:pt-16 ${
         hasDescription ? '' : 'mt-4'
       }`}
     >
       <div
-        className={`flex flex-wrap items-start justify-center w-3/4 ${
+        className={`flex flex-col space-y-6 md:space-y-0 md:flex-row flex-wrap items-start justify-center w-3/4 ${
           optionsEven ? 'w-3/4' : 'w-full'
         }`}
       >
@@ -139,8 +139,8 @@ const OptionsForm = ({
           return (
             <div
               key={op._key}
-              className={`flex flex-col items-center ${
-                optionsEven ? 'w-1/2 mb-12' : 'w-2/6'
+              className={`flex md:flex-col items-center justify-start w-full ${
+                optionsEven ? 'md:w-1/2 md:mb-12' : 'md:w-2/6'
               }`}
             >
               <input
@@ -149,11 +149,11 @@ const OptionsForm = ({
                 type="radio"
                 value={op?.answer}
                 disabled={isSubmitted}
-                className="cursor-pointer"
+                className="mt-2 cursor-pointer md:mt-0"
               />
               <label
                 htmlFor={op._key}
-                className="px-6 mt-2 text-lg font-bold text-center cursor-pointer"
+                className="px-6 mt-2 text-lg cursor-pointer md:font-bold md:text-center"
               >
                 {op.title}
               </label>
@@ -168,7 +168,7 @@ const OptionsForm = ({
         <input
           value="Valider"
           type="submit"
-          className="inline-flex items-center justify-center px-4 py-2 mt-12 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-md cursor-pointer bg-primary"
+          className="inline-flex items-center justify-center px-4 py-2 mt-12 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-md cursor-pointer md:mt-12 bg-primary"
         />
       )}
     </form>

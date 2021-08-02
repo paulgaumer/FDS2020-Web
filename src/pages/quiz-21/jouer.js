@@ -51,16 +51,16 @@ const Quiz21Submit = ({ data }) => {
     <Layout>
       <SEO title="Quiz 2021" />
       <SectionWrapper>
-        <SectionContainer customClasses="pt-16 pb-20 md:py-20 lg:pt-32 lg:pb-20">
+        <SectionContainer customClasses="pt-16 pb-20 md:py-20 lg:pt-32">
           <SectionTitle text={sectionTitle} />
-          <div className="flex flex-col items-center px-10 py-12 bg-white rounded-lg shadow">
+          <div className="flex flex-col items-center px-4 py-12 bg-white rounded-lg shadow md:px-10">
             <div>
               <PortableText blocks={_rawSubmitText} serializers={serializers} />
             </div>
-            <div className="w-2/3">
+            <div className="w-full md:w-2/3">
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="flex flex-col mt-10 space-y-6"
+                className="flex flex-col mt-4 space-y-6 md:mt-10"
               >
                 <div className="lg:flex lg:justify-between lg:space-x-6">
                   <div className="flex flex-col lg:flex-grow">
@@ -165,7 +165,7 @@ const Quiz21Submit = ({ data }) => {
                 </div>
 
                 <div className="w-full">
-                  <div className="flex flex-col mt-8">
+                  <div className="flex flex-col mt-3 md:mt-8">
                     <div className="flex items-start space-x-3">
                       <input
                         id="termsConditions"
