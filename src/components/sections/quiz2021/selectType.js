@@ -131,8 +131,8 @@ const OptionsForm = ({
       }`}
     >
       <div
-        className={`flex flex-col space-y-6 md:space-y-0 md:flex-row flex-wrap items-start justify-center w-3/4 ${
-          optionsEven ? 'w-3/4' : 'w-full'
+        className={`flex flex-col space-y-6 md:space-y-0 md:flex-row flex-wrap items-start justify-center w-full ${
+          optionsEven ? 'md:w-3/4' : 'md:w-full'
         }`}
       >
         {options.map((op) => {
@@ -149,7 +149,7 @@ const OptionsForm = ({
                 type="radio"
                 value={op?.answer}
                 disabled={isSubmitted}
-                className="mt-2 cursor-pointer md:mt-0"
+                className="flex-shrink-0 mt-2 cursor-pointer md:mt-0"
               />
               <label
                 htmlFor={op._key}
@@ -223,7 +223,11 @@ const QuestionBody = ({
   };
 
   return (
-    <div className="flex flex-col items-center w-full mt-8">
+    <div
+      className={`flex flex-col items-center w-full ${
+        hasDescription ? '' : 'mt-8'
+      }`}
+    >
       {optionsWithImages && (
         <OptionsWithImages
           options={options}

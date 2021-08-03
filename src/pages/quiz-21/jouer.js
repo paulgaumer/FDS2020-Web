@@ -170,7 +170,7 @@ const Quiz21Submit = ({ data }) => {
                       <input
                         id="termsConditions"
                         type="checkbox"
-                        className={`mt-1`}
+                        className={`mt-1 flex-shrink-0`}
                         {...register('termsConditions', { required: true })}
                       />
                       <label
