@@ -145,7 +145,7 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
             <input
               type="submit"
               value="Valider"
-              className="inline-flex items-center justify-center px-4 py-2 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-md cursor-pointer bg-primary"
+              className="inline-flex items-center justify-center px-4 py-2 mb-6 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-md cursor-pointer lg:mb-0 bg-primary"
             />
           </div>
         )}

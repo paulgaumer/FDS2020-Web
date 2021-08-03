@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import { useForm } from 'react-hook-form';
+import format from 'date-fns/format';
 import PortableText from '@sanity/block-content-to-react';
 import { serializers } from '../../utils/portableTextSerializers';
 import SEO from '../../components/layout/seo';
@@ -32,6 +33,8 @@ const Quiz21Submit = ({ data }) => {
   const canSubmit = watch('termsConditions');
 
   const onSubmit = (data) => {
+    const date = format(new Date(), 'yyyy-MM-dd kk:mm');
+
     fetch('/.netlify/functions/sendQuiz21ToGoogleSheet', {
       method: 'POST',
       body: JSON.stringify({
@@ -42,6 +45,7 @@ const Quiz21Submit = ({ data }) => {
         TEL: data.tel,
         ADRESSE: data.address,
         DEPARTEMENT: data.department,
+        DATE: date,
       }),
     });
     setFormSubmitted(true);
@@ -170,7 +174,7 @@ const Quiz21Submit = ({ data }) => {
                       <input
                         id="termsConditions"
                         type="checkbox"
-                        className={`mt-1`}
+                        className={`mt-1 flex-shrink-0`}
                         {...register('termsConditions', { required: true })}
                       />
                       <label
