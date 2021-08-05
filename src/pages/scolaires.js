@@ -135,6 +135,10 @@ export const query = graphql`
             id
             name
           }
+          audienceCustom {
+            from
+            to
+          }
           map {
             address
             lng
