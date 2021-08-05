@@ -96,6 +96,7 @@ export const query = graphql`
             id
           }
           featured
+          eventCanceled
           village {
             id
             title
