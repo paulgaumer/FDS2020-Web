@@ -96,6 +96,7 @@ export const query = graphql`
             id
           }
           featured
+          eventCanceled
           village {
             id
             title
@@ -134,6 +135,10 @@ export const query = graphql`
           audience {
             id
             name
+          }
+          audienceCustom {
+            from
+            to
           }
           map {
             address
