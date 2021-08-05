@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { useForm } from 'react-hook-form';
 import format from 'date-fns/format';
 import PortableText from '@sanity/block-content-to-react';
@@ -69,7 +69,7 @@ const Quiz21Submit = ({ data }) => {
                 <div className="lg:flex lg:justify-between lg:space-x-6">
                   <div className="flex flex-col lg:flex-grow">
                     <label className={labelStyles} htmlFor="firstName">
-                      Prénom {errors.termsConditions && <Error />}
+                      Prénom {errors.firstName && <Error />}
                     </label>
                     <input
                       id="firstName"
@@ -81,7 +81,7 @@ const Quiz21Submit = ({ data }) => {
 
                   <div className="flex flex-col mt-6 lg:mt-0 lg:flex-grow">
                     <label className={labelStyles} htmlFor="lastName">
-                      Nom {errors.termsConditions && <Error />}
+                      Nom {errors.lastName && <Error />}
                     </label>
                     <input
                       id="lastName"
@@ -94,7 +94,7 @@ const Quiz21Submit = ({ data }) => {
 
                 <div className="flex flex-col mt-6 lg:mt-0">
                   <label className={labelStyles} htmlFor="age">
-                    Age {errors.termsConditions && <Error />}
+                    Age {errors.age && <Error />}
                   </label>
                   <select
                     id="age"
@@ -112,7 +112,7 @@ const Quiz21Submit = ({ data }) => {
 
                 <div className="flex flex-col">
                   <label className={labelStyles} htmlFor="email">
-                    Email {errors.termsConditions && <Error />}
+                    Email {errors.email && <Error />}
                   </label>
                   <input
                     id="email"
@@ -125,7 +125,7 @@ const Quiz21Submit = ({ data }) => {
 
                 <div className="flex flex-col">
                   <label className={labelStyles} htmlFor="tel">
-                    Téléphone {errors.termsConditions && <Error />}
+                    Téléphone {errors.tel && <Error />}
                   </label>
                   <input
                     id="tel"
@@ -139,7 +139,7 @@ const Quiz21Submit = ({ data }) => {
                 <div className="lg:flex lg:justify-between lg:space-x-6">
                   <div className="flex flex-col lg:flex-grow">
                     <label className={labelStyles} htmlFor="address">
-                      Adresse {errors.termsConditions && <Error />}
+                      Adresse {errors.address && <Error />}
                     </label>
                     <input
                       id="address"
@@ -151,7 +151,7 @@ const Quiz21Submit = ({ data }) => {
 
                   <div className="flex flex-col mt-6 lg:mt-0">
                     <label className={labelStyles} htmlFor="department">
-                      Département {errors.termsConditions && <Error />}
+                      Département {errors.department && <Error />}
                     </label>
                     <select
                       id="department"
@@ -181,9 +181,12 @@ const Quiz21Submit = ({ data }) => {
                         className="text-sm text-gray-800"
                         htmlFor="termsConditions"
                       >
-                        Je reconnais avoir lu les conditions d'utilisation et
-                        accepte que mes données soient recueillies par la Fete
-                        de la Science {errors.termsConditions && <Error />}
+                        Je reconnais avoir lu les{' '}
+                        <Link to="/quiz-21/conditions" className="underline">
+                          conditions d'utilisation
+                        </Link>{' '}
+                        et accepte que mes données soient recueillies par la
+                        Fete de la Science {errors.termsConditions && <Error />}
                       </label>
                     </div>
                   </div>
