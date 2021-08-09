@@ -18,7 +18,11 @@ const QuestionSection = ({ question, questionNumber, totalQuestions }) => {
 
   return (
     <div className="flex flex-col items-center px-6 py-12 bg-white rounded-lg shadow md:px-10">
-      <Title title={title} questionNumber={questionNumber} />
+      <Title
+        title={title}
+        questionNumber={questionNumber}
+        totalQuestions={totalQuestions}
+      />
       {description && (
         <div className="mt-10 text-gray-800">
           <PortableText blocks={description} serializers={serializers} />
