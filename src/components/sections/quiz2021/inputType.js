@@ -50,7 +50,7 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
   const nextLink = () => {
     const base = '/quiz-21/';
     if (questionNumber + 1 === totalQuestions) {
-      return { url: base + 'jouer', text: 'Soumettre votre candidature' };
+      return { url: base + 'jouer', text: 'Participer au tirage au sort' };
     } else {
       return {
         url: base + `${questionNumber + 1}`,

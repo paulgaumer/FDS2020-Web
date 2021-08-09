@@ -197,8 +197,8 @@ const QuestionBody = ({
 
   const nextLink = () => {
     const base = '/quiz-21/';
-    if (questionNumber + 1 === totalQuestions) {
-      return { url: base + 'jouer', text: 'Soumettre votre candidature' };
+    if (questionNumber === totalQuestions) {
+      return { url: base + 'jouer', text: 'Participer au tirage au sort' };
     } else {
       return {
         url: base + `${questionNumber + 1}`,
