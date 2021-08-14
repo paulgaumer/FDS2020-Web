@@ -73,7 +73,7 @@ const Quiz21Submit = ({ data }) => {
                     </label>
                     <input
                       id="firstName"
-                      placeholder="Albert"
+                      placeholder="Neil"
                       className={inputStyles}
                       {...register('firstName', { required: true })}
                     />
@@ -85,7 +85,7 @@ const Quiz21Submit = ({ data }) => {
                     </label>
                     <input
                       id="lastName"
-                      placeholder="Einstein"
+                      placeholder="Armstrong"
                       className={inputStyles}
                       {...register('lastName', { required: true })}
                     />
@@ -118,7 +118,7 @@ const Quiz21Submit = ({ data }) => {
                     id="email"
                     type="email"
                     className={inputStyles}
-                    placeholder="adresse@email.com"
+                    placeholder="neil@nasa.com"
                     {...register('email', { required: true })}
                   />
                 </div>
@@ -144,7 +144,7 @@ const Quiz21Submit = ({ data }) => {
                     <input
                       id="address"
                       className={inputStyles}
-                      placeholder="5 Av. Anatole France, 49000 Angers"
+                      placeholder="5 Av. Marie Curie, 49000 Angers"
                       {...register('address', { required: true })}
                     />
                   </div>
@@ -186,7 +186,7 @@ const Quiz21Submit = ({ data }) => {
                           conditions d'utilisation
                         </Link>{' '}
                         et accepte que mes données soient recueillies par la
-                        Fete de la Science {errors.termsConditions && <Error />}
+                        Fête de la Science {errors.termsConditions && <Error />}
                       </label>
                     </div>
                   </div>
