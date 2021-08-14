@@ -1,26 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import ProgressBar from './progressBar';
-
-const TitleSC = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-
-  .progress-bar-container {
-    flex-shrink: 0;
-  }
-
-  .text-container {
-    flex-grow: 1;
-  }
-`;
 
 const Title = ({ title, questionNumber, totalQuestions }) => {
   return (
-    <TitleSC>
-      <div className="progress-bar-container">
+    <div className="flex flex-col items-center w-full space-y-6 sm:space-y-0 sm:space-x-6 sm:flex-row">
+      <div className="flex-shrink-0 progress-bar-container">
         <ProgressBar
           size={80}
           roundedStroke={true}
@@ -28,12 +12,12 @@ const Title = ({ title, questionNumber, totalQuestions }) => {
           totalQuestions={totalQuestions}
         />
       </div>
-      <div className="text-container">
-        <h3 className="inline-flex items-center space-x-1 text-xl font-bold tracking-tight text-gray-700 md:text-2xl">
+      <div className="flex-grow text-container">
+        <h3 className="inline-flex items-center space-x-1 text-xl font-bold tracking-tight text-center text-gray-700 md:text-2xl sm:text-left">
           {title}
         </h3>
       </div>
-    </TitleSC>
+    </div>
   );
 };
 
