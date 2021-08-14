@@ -84,7 +84,7 @@ const QuestionBody = ({ question, questionNumber, totalQuestions }) => {
       {picture && (
         <div className="flex justify-center w-full mt-10">
           {picture.map((pic) => {
-            const img = urlFor(pic);
+            const img = urlFor(pic).url();
             if (img) {
               return (
                 <img

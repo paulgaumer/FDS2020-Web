@@ -58,37 +58,40 @@ const OptionsWithImages = ({
     <>
       <div className="items-center justify-center w-full grid-cols-3 gap-4 p-6 mt-4 bg-gray-100 rounded-md md:grid lg:mt-10">
         {options.map((op) => {
-          const img = urlFor(op.picture);
-          if (img) {
-            return (
-              <div
-                key={op._key}
-                onClick={() => handleClick(op)}
-                className={`flex flex-col items-center justify-center py-4 border-2 rounded-md ${
-                  selectedAnswer?.title === op.title
-                    ? selectedBorder
-                    : 'border-gray-100'
-                }`}
-              >
+          const img = urlFor(op?.picture).height(230).url();
+          return (
+            <div
+              key={op._key}
+              onClick={() => handleClick(op)}
+              className={`flex flex-col items-center justify-center py-4 border-2 rounded-md ${
+                selectedAnswer?.title === op.title
+                  ? selectedBorder
+                  : 'border-gray-100'
+              }`}
+            >
+              {img && (
                 <img
                   src={img}
                   alt={op.title}
-                  className="w-3/4 rounded-md cursor-pointer"
+                  className="object-cover object-center w-3/4 h-56 rounded-md cursor-pointer"
                 />
+              )}
+              {!img && (
+                <div className="w-3/4 h-56 rounded-md cursor-pointer bg-gray-50" />
+              )}
 
-                {op.description && (
-                  <p className="mt-6 font-medium text-center text-gray-700 cursor-pointer">
-                    {op.description}
-                  </p>
-                )}
-                {!op.description && (
-                  <p className="px-4 mt-6 font-medium text-center text-gray-700 cursor-pointer">
-                    {op.title}
-                  </p>
-                )}
-              </div>
-            );
-          }
+              {op.description && (
+                <p className="mt-6 font-medium text-center text-gray-700 cursor-pointer">
+                  {op.description}
+                </p>
+              )}
+              {!op.description && (
+                <p className="px-4 mt-6 font-medium text-center text-gray-700 cursor-pointer">
+                  {op.title}
+                </p>
+              )}
+            </div>
+          );
         })}
       </div>
       {isCorrect === null && (
