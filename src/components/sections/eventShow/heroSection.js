@@ -53,7 +53,7 @@ const BookingButton = ({
     return (
       <Link
         to="#reservation"
-        className="inline-flex transform rounded-md shadow-sm hover:scale-105"
+        className="inline-flex transform rounded-md hover:scale-105"
       >
         <button
           type="button"
@@ -82,7 +82,7 @@ const BookingButton = ({
     );
   } else {
     return (
-      <span className="inline-flex rounded-md shadow-sm">
+      <span className="inline-flex rounded-md">
         <div
           className={`inline-flex items-center px-4 py-2 text-base font-bold leading-6 text-gray-700 uppercase transition duration-150 ease-in-out border border-transparent rounded-full ${
             scolaires ? 'bg-edu' : 'bg-primary'
