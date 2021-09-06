@@ -228,7 +228,8 @@ const HeroSection = ({ event, scolaires }) => {
                 </span>
                 {displayAudience && (
                   <span>
-                    {!audienceCustom && 'Dès'} {displayAudience}
+                    {!audienceCustom?.from && <span>Dès</span>}{' '}
+                    <span>{displayAudience}</span>
                   </span>
                 )}
                 {!displayAudience && <span>Tout Public</span>}
