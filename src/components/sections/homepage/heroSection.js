@@ -20,7 +20,8 @@ const Timer = styled.div`
 `;
 
 const HeroSection = ({
-  heroButton = 'Découvrir les événements',
+  heroButton,
+  heroUrl,
   videoBackground,
   dates,
   fdsLogo,
@@ -344,14 +345,16 @@ const HeroSection = ({
                 {endDate && <span> - {endDate} </span>}
               </p>
             </div>
-            <span className="inline-flex flex-shrink-0 rounded-md shadow-sm">
-              <Link
-                to="/#carte-accueil"
-                className="inline-flex items-center px-3 py-3 text-lg font-bold leading-6 text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-md xl:text-2xl xl:px-4 xl:py-4 2xl:px-6 2xl:py-6 2xl:text-3xl bg-primary hover:bg-primary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-primary"
-              >
-                {heroButton}
-              </Link>
-            </span>
+            {heroButton && (
+              <span className="inline-flex flex-shrink-0 rounded-md shadow-sm">
+                <Link
+                  to={heroUrl || '/'}
+                  className="inline-flex items-center px-3 py-3 text-lg font-bold leading-6 text-white uppercase transition duration-150 ease-in-out transform border border-transparent rounded-md xl:text-2xl xl:px-4 xl:py-4 2xl:px-6 2xl:py-6 2xl:text-3xl bg-primary hover:bg-primary focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-primary hover:scale-105"
+                >
+                  {heroButton}
+                </Link>
+              </span>
+            )}
           </ContentCenter>
         </section>
         {/* CTA BLOCK END */}

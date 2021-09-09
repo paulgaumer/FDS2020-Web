@@ -19,6 +19,7 @@ const IndexPage = ({ data }) => {
     featuresTitle,
     instagramTitle,
     heroButton,
+    heroUrl,
   } = data.sanityPage.pageContent[0];
 
   const [showHeader, setShowHeader] = useState(false);
@@ -63,6 +64,7 @@ const IndexPage = ({ data }) => {
       <Header isVisible={showHeader} isHomepage />
       <HeroSection
         heroButton={heroButton}
+        heroUrl={heroUrl}
         fdsLogo={data.fdsLogo}
         videoBackground={data.videoBackground}
         dates={data.dates}
@@ -111,6 +113,7 @@ export const query = graphql`
           featuresTitle
           instagramTitle
           heroButton
+          heroUrl
         }
       }
     }
