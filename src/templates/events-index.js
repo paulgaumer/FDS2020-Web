@@ -11,6 +11,7 @@ import { sortEventsByDate } from '../utils/processDate';
 
 const EventsIndex = ({ data }) => {
   const rawEvents = data.allSanityEvent.edges.map(({ node }) => node);
+  console.log(rawEvents.length);
   const events = sortEventsByDate(rawEvents);
   const department = data.sanityDepartment.name;
   const logos = data.logos.edges.map(({ node }) => node);
